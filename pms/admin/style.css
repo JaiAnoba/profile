@@ -15,7 +15,6 @@ body {
     max-width: 1900px;
     height: 1000px;
     display: flex;
-    border: solid;
 }
 
 /* Sidebar */
@@ -25,7 +24,6 @@ body {
     max-height: 990px;
     flex-shrink: 0;
     background-color: #a20d0d;
-    padding: 20px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -36,46 +34,79 @@ body {
 
 .sidebar .logo img {
     display: flex;
-    max-width: 50%;
+    max-width: 40%;
     margin-top: 20px;
     margin-inline: auto;
 }
 
+/* Navigation Styles */
 .sidebar .nav {
     list-style: none;
     margin-top: -4rem;
 }
 
 .sidebar .nav li {
-    margin: 0 15px 75px 0;
+    margin: 0 0 40px 20px;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 10px 0 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar .nav li i {
-    font-size: 1.5rem; 
-    margin-inline: 10px; 
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
 .sidebar .nav li a {
     color: #fff;
     text-decoration: none;
     font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
+.sidebar .nav li:hover {
+    background-color: #fff;
+}
+
+.sidebar .nav li:hover i,
+.sidebar .nav li:hover a {
+    color: #a20d0d; 
+}
+
+/* Logout button */
 .sidebar .logout {
     color: #fff;
     text-decoration: none;
-    margin-top: 20px;
+    margin: 20px 0 20px 20px;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 10px 0 0 10px;
     font-size: 1.1rem;
+    transition: background-color 0.3s ease;
 }
 
-.sidebar .logout i {   
+.sidebar .logout i {
     font-size: 1.5rem;
-    margin-inline: 10px; 
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
+
+.sidebar .logout:hover {
+    color: #a20d0d;
+    background-color: #fff; 
+}
+
+.sidebar .logout:hover i {
+    color: #a20d0d;
+}
+
 
 /* Main Content */
 .content {
@@ -158,7 +189,7 @@ body {
     font-size: 1.8rem;
     font-weight: bold;
     color: #000;
-    margin-top: 10px;
+    margin-top: 20px;
     position: relative;
 }
 
@@ -200,11 +231,12 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Top Artists Section */
 .top-artists {
     width: 700px; 
     border-radius: 30px;
     padding: 25px;
-    margin: -12rem 0 0 0;
+    margin: -13rem 0 0 0;
 }
 
 .top-artists h3 {
@@ -222,6 +254,7 @@ body {
 .artist-list li {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Space between the name/handle and percentage */
     margin-bottom: 29px;
     text-align: justify;
     padding: 5px;
@@ -239,22 +272,27 @@ body {
     margin-right: 10px;
 }
 
+/* Artist Info Grouping */
+.artist-info {
+    display: flex;
+    flex-direction: column; /* Stack name and handle vertically */
+}
+
 .artist-name {
     font-size: 1rem;
     font-weight: bold;
-    margin-left: 10px;
 }
 
 .artist-handle {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #888;
-    margin-left:100px;
 }
 
+/* Artist Percentage */
 .artist-percentage {
     font-size: 1.1rem;
     font-weight: bold;
-    margin-left: 200px;
+    margin-left: auto; /* Ensure it stays on the right */
 }
 
 .view-more {
