@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard"> 
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="pics/worxist.png" alt="Logo">
+            </div>
+            <ul class="nav">
+                <li class="active"><i class='bx bxs-dashboard' style='color:#ffffff'></i><a href="#">Dashboard</a></li>
+                <li><i class='bx bxs-user-account' style='color:#ffffff' ></i><a href="#">Accounts</a></li>
+                <li><i class='bx bxs-blanket'></i><a href="#">Posts</a></li>
+                <li><i class='bx bxs-cog' style='color:#ffffff' ></i><a href="#">Settings</a></li>
+            </ul>
+            <a href="#" class="logout"><i class='bx bx-log-out' style='color:#ffffff' ></i>Logout</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="header">
+                <h1>Dashboard</h1>
+                <span class="date">Saturday, 28 Sept. 2024</span>
+                <div class="notifications">
+                    <span class="bell-icon" id="notification-bell"><i class='bx bxs-bell' undefined ></i></span>
+                    <img src="pics/1672369246156.jpg" class="user">
+                </div>
+            </header>
+
+            <section class="overview">
+                <div class="acc">
+                    <div class="stat-box">
+                        <h3>Accounts <span class="badge red">5</span></h3>
+                    </div>
+                    <div class="a_number">
+                        <p>219,3k</p>
+                    </div>
+                </div>
+                <div class="request">
+                    <div class="stat-box">
+                        <h3>Requests <span class="badge blue">3</span></h3>
+                    </div>
+                    <div class="r_number">
+                        <p>1.5k</p>
+                    </div>
+                </div>
+            </section>   
+
+            <section class="main-content">
+                <div class="best-posts">
+                    <h3>Best Performing Posts</h3>
+                    <div class="post">
+                        <img src="pics/a1.jpg" alt="Post Image">
+                        <div class="post-info">
+                            <p>Likes</p>
+                            <div class="likes">
+                                <span class="heart">❤</span>
+                                <span class="count">7.2k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <img src="pics/a2.jpg" alt="Post Image">
+                        <div class="post-info">
+                            <p>Likes</p>
+                            <div class="likes">
+                                <span class="heart">❤</span>
+                                <span class="count">6.4k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <img src="pics/a3.jpg" alt="Post Image">
+                        <div class="post-info">
+                            <p>Likes</p>
+                            <div class="likes">
+                                <span class="heart">❤</span>
+                                <span class="count">3.5k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-stats">
+                    <h3>Post Stats</h3>
+                    <canvas id="postStatsChart"></canvas>
+                </div>
+            </section>
+
+           
+                <section class="top-artists">
+                    <h3>Top 10 Artists</h3>
+                    <ul class="artist-list">
+                        <li>
+                            <img src="pics/1672369246156.jpg" alt="Artist Image">
+                            <span class="artist-name">Jera Anderson</span>
+                            <span class="artist-handle">@jeraander</span>
+                            <span class="artist-percentage">35%</span>
+                        </li>
+                        <li>
+                            <img src="pics/mona.jpg" alt="Artist Image">
+                            <span class="artist-name">Jandeb Laplap</span>
+                            <span class="artist-handle">@jandebdab</span>
+                            <span class="artist-percentage">18%</span>
+                        </li>
+                        <li>
+                            <img src="pics/SHREK.jpg" alt="Artist Image">
+                            <span class="artist-name">Jimmy Boy</span>
+                            <span class="artist-handle">@jimmyboy</span>
+                            <span class="artist-percentage">25%</span>
+                        </li>
+                        <li>
+                            <img src="pics/1672369246156.jpg" alt="Artist Image">
+                            <span class="artist-name">Jera Anderson</span>
+                            <span class="artist-handle">@jeraander</span>
+                            <span class="artist-percentage">35%</span>
+                        </li>
+                        <li>
+                            <img src="pics/mona.jpg" alt="Artist Image">
+                            <span class="artist-name">Jandeb Laplap</span>
+                            <span class="artist-handle">@jandebdab</span>
+                            <span class="artist-percentage">18%</span>
+                        </li>
+                        <li>
+                            <img src="pics/SHREK.jpg" alt="Artist Image">
+                            <span class="artist-name">Jimmy Boy</span>
+                            <span class="artist-handle">@jimmyboy</span>
+                            <span class="artist-percentage">25%</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="view-more">View More</a>
+                </section>
+
+                <section class="activity">
+                    <h3>Activity</h3>
+                    <canvas id="activityChart"></canvas>
+                </section>
+            
+        </main>
+    </div>
+
+    <!-- Chart.js Script -->
+    <script>
+        // Post Stats Chart
+        const ctx1 = document.getElementById('postStatsChart').getContext('2d');
+        const postStatsChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Item 1', 'Item 2', 'Item 3'], 
+                datasets: [{
+                    label: 'Saved',
+                    data: [5, 10, 15],
+                    backgroundColor: '#d68b8b',
+                    borderRadius: 20,
+                    barThickness: 40 
+                },
+                {
+                    label: 'Likes',
+                    data: [8, 12, 18],
+                    backgroundColor: '#8b0d0d',
+                    borderRadius: 20,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, 
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 25, 
+                            font: {
+                                size: 14,
+                                family: 'Poppins', 
+                                // weight: 'bold' 
+                            },
+                            color: '#000' 
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false 
+                        },
+                        ticks: {
+                            font: {
+                                size: 14,
+                                family: 'Poppins', 
+                                // weight: 'bold' 
+                            },
+                            color: '#000' 
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 5, 
+                            font: {
+                                size: 14,
+                                family: 'Poppins', 
+                                weight: 'bold' 
+                            },
+                            color: '#000' 
+                        }
+                    }
+                }
+            }
+        });
+    
+
+        // Activity Chart
+        const ctx2 = document.getElementById('activityChart').getContext('2d');
+
+        const dpr = window.devicePixelRatio || 1;
+        ctx2.canvas.width = ctx2.canvas.clientWidth * dpr;
+        ctx2.canvas.height = ctx2.canvas.clientHeight * dpr;
+        ctx2.scale(dpr, dpr);
+
+        const activityChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
+                datasets: [{
+                    label: 'Posts',
+                    data: [24, 25, 40, 50, 45],
+                    borderColor: '#a20d0d',
+                    backgroundColor: '#a20d0d',
+                    fill: false,
+                    borderWidth: 2 
+                }, {
+                    label: 'Requests',
+                    data: [35, 17, 45, 40, 50],
+                    borderColor: '#ff7272',
+                    backgroundColor: '#ff7272',
+                    fill: false,
+                    borderWidth: 2
+                }, {
+                    label: 'Exhibitions',
+                    data: [10, 5, 20, 15, 35],
+                    borderColor: '#ed1c24',
+                    backgroundColor: '#ed1c24',
+                    fill: false,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 14,  
+                                family: 'Poppins', 
+                                 weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,  
+                                family: 'Poppins', 
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 14, 
+                                family: 'Poppins', 
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

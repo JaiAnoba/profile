@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+.dashboard {
+    max-width: 1900px;
+    height: 1000px;
+    display: flex;
+    border: solid;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    min-width: 200px;
+    max-height: 990px;
+    flex-shrink: 0;
+    background-color: #a20d0d;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-right-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+
+.sidebar .logo img {
+    display: flex;
+    max-width: 50%;
+    margin-top: 20px;
+    margin-inline: auto;
+}
+
+.sidebar .nav {
+    list-style: none;
+    margin-top: -4rem;
+}
+
+.sidebar .nav li {
+    margin: 0 15px 75px 0;
+    display: flex;
+    align-items: center; 
+}
+
+.sidebar .nav li i {
+    font-size: 1.5rem; 
+    margin-inline: 10px; 
+}
+
+.sidebar .nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.sidebar .logout {
+    color: #fff;
+    text-decoration: none;
+    margin-top: 20px;
+    display: flex;
+    align-items: center; 
+    font-size: 1.1rem;
+}
+
+.sidebar .logout i {   
+    font-size: 1.5rem;
+    margin-inline: 10px; 
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.header .date {
+    color: #666;
+    font-size: 0.9rem; 
+    text-align: left; 
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+    margin-left: 93rem;
+    margin-top: -3.5rem;
+}
+
+.bell-icon i {
+    font-size: 2rem;
+    margin-left: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.user {
+    width: 45px;
+    border-radius: 90px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* TOTAL NO. */
+.overview {
+    display: flex;
+    gap: 45px;
+    margin-top: 50px;
+}
+
+.acc, .request {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-left: 73px;
+}
+
+/* Stat Box */
+.stat-box {
+    background-color: #f1ecec;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 220px;
+}
+
+.stat-box h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+.a_number p, .r_number p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+    position: relative;
+}
+
+/* Notification Badge */
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: 40px;
+}
+
+.red {
+    background-color: #c91f1f;
+}
+
+.blue {
+    background-color: #3762d8;
+}
+
+.a_number p, .r_number p {
+    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Main Content */
+.main-content {
+    display: flex;
+    gap: 18rem;
+    margin: -105px 0 0 390px;
+}
+
+/* Top Artists*/
+.top-artists, .best-posts, .post-stats, .activity {
+    background-color: #eeeeee;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.top-artists {
+    width: 700px; 
+    border-radius: 30px;
+    padding: 25px;
+    margin: -12rem 0 0 0;
+}
+
+.top-artists h3 {
+    font-size: 1.4rem;
+    color: #91041b;
+    margin-bottom: 15px;
+}
+
+.artist-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.artist-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 29px;
+    text-align: justify;
+    padding: 5px;
+}
+
+.artist-list li:hover {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.artist-list li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.artist-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.artist-handle {
+    font-size: 1rem;
+    color: #888;
+    margin-left:100px;
+}
+
+.artist-percentage {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 200px;
+}
+
+.view-more {
+    display: block;
+    margin-top: 20px;
+    color: #b20f29;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Best Posts */
+.best-posts {
+    width: 400px;
+    height: 350px;
+    padding: 35px;
+    margin-inline: auto;
+    border-radius: 30px;
+}
+
+.best-posts h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.post img {
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+    margin: 0 30px 0 85px;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.post-info p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+}
+
+.heart {
+    color: #a20d0d;
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.count {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Post Stats Section */
+.post-stats {
+    width: 400px;
+    height: 350px;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 0 10px 0 -600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.post-stats h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+canvas {
+    margin-inline: auto;
+    width: 85% !important;
+    height: 90% !important;
+}
+
+/* Activity Section */
+.activity {
+    margin: -430px 0 0 745px;
+    width: 865px;
+    height: 430px;
+    padding: 25px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    grid-column: span 1;
+}
