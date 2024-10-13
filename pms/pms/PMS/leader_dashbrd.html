@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="user.css">
+</head>
+
+<body>
+    <!-- container start -->
+    <div class="container"> 
+        <!-- left start -->
+        <div class="left">
+            <!-- header start -->
+            <header>
+                <!-- logo start -->
+                <div class="logo">
+                    <img src="pics/logo.png" class="log">
+                    <h2 class="logo_name">PMS</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <!-- nav start -->
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="leader_dashbrd.html">
+                                <span class="material-symbols-outlined full">
+                                </span>
+                                <img src="pics/dashboard-solid-48.png" alt="">
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined">
+                                </span>
+                                <img src="pics/package-solid-48.png" alt="">
+                                <span class="title">Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined">
+                                </span>
+                                <img src="pics/calendar-solid-48.png" alt="">
+                                <span class="title">Calendar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined">
+                                </span>
+                                <img src="pics/chat-solid-48.png" alt="">
+                                <span class="title">Message</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined">
+                                </span>
+                                <img src="pics/cog-solid-48.png">
+                                <span class="title">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="home.html">
+                                <span class="material-symbols-outlined">
+                                </span>
+                                <img src="pics/log-out-circle-regular-48.png">
+                                <span class="title">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- nav end -->
+
+            </header>
+            <!-- upgrade start -->
+            <div class="upgrade">
+                <h2>Go PRO</h2>
+                <h4>Upgrade to <bold>PRO</bold> for<br> more features</h4>
+                <div class="upBtn">
+                    <button>Upgrade</button>
+                </div>
+                <img src="pics/up.png" class="up_pic">
+            </div>
+            <!-- upgrade end -->
+
+        </div>
+        <!-- left end -->
+        <!-- right start -->
+        <div class="right">
+            <!-- top start -->
+            <div class="top">
+                <!-- searchBx start -->
+                <div class="searchBx">
+                    <h2>Hi, Angel!</h2>
+                    <div class="inputBx">
+                        <span class="material-symbols-outlined searchOpen">
+                            <!-- search -->
+                        </span>
+                        <img src="pics/search-regular-36.png">
+                        <input type="text" placeholder="Search...">
+                        <span class="material-symbols-outlined searchClose"></span>
+                    </div>
+                    <img src="pics/bell-regular-48.png" class="notif">
+                </div>
+                <!-- searchBx end -->
+
+                <!-- user start -->
+                <div class="user">
+                    <span class="material-symbols-outlined"></span>
+                    <div class="userImg">
+                        <img src="pics/mona.jpg" alt="user">
+                    </div>
+                </div>
+                <!-- user end -->
+            </div>
+            <!-- top end -->
+            <!-- main start -->
+            <main>
+                <!-- projectCard start -->
+                <div class="projectCard">
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <span>Pending Projects</span>
+                            <p>29</p>
+                        </div>
+                        <div class="info-box">
+                            <span>Completed Projects</span>
+                            <p>29</p>
+                        </div>
+                        <div class="info-box">
+                            <span>Pending Tasks</span>
+                            <p>29</p>
+                        </div>
+                        <div class="info-box">
+                            <span>Completed Tasks</span>
+                            <p>29</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- projectCard end -->
+
+                <!-- Container for Ongoing Projects -->
+                <div class="projects-container">
+                    <div class="projects-header">
+                        <h2>Ongoing Projects</h2>
+                        <a href="#" class="all-projects-link">All Projects</a>
+                    </div>
+
+                    <div class="projects-grid">
+                        <!-- Project Card 1 -->
+                        <div class="project-card white-bg">
+                            <div class="project-header">
+                                <span class="project-date">Oct. 7, 2024</span>
+                                <span class="project-menu">⋮</span>
+                            </div>
+                            <h3>Web Designing</h3>
+                            <p>Prototyping</p>
+                            <div class="project-progress-bar">
+                                <div class="progress blue"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="team">
+                                    <img src="pics/SHREK.jpg" alt="team member">
+                                    <img src="pics/bob.jpg" alt="team member">
+                                    <span class="add-member">+</span>
+                                </div>
+                                <span class="days-left">2 Days Left</span>
+                            </div>
+                        </div>
+                    
+                        <!-- Project Card 2 -->
+                        <div class="project-card red-bg">
+                            <div class="project-header">
+                                <span class="project-date">Oct. 8, 2024</span>
+                                <span class="project-menu">⋮</span>
+                            </div>
+                            <h3>Mobile App</h3>
+                            <p>Shopping</p>
+                            <div class="project-progress-bar">
+                                <div class="progress red"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="team">
+                                    <img src="pics/bob.jpg" alt="team member">
+                                    <img src="pics/1672369246156.jpg" alt="team member">
+                                    <span class="add-member">+</span>
+                                </div>
+                                <span class="days-left">2 Days Left</span>
+                            </div>
+                        </div>
+                    
+                        <!-- Project Card 3 -->
+                        <div class="project-card green-bg">
+                            <div class="project-header">
+                                <span class="project-date">Oct. 7, 2024</span>
+                                <span class="project-menu">⋮</span>
+                            </div>
+                            <h3>Web Designing</h3>
+                            <p>Prototyping</p>
+                            <div class="project-progress-bar">
+                                <div class="progress green"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="team">
+                                    <img src="pics/SHREK.jpg" alt="team member">
+                                    <img src="pics/bob.jpg" alt="team member">
+                                    <span class="add-member">+</span>
+                                </div>
+                                <span class="days-left">2 Days Left</span>
+                            </div>
+                        </div>
+                    
+                        <!-- Project Card 4 -->
+                        <div class="project-card white-bg">
+                            <div class="project-header">
+                                <span class="project-date">Oct. 7, 2024</span>
+                                <span class="project-menu">⋮</span>
+                            </div>
+                            <h3>Web Designing</h3>
+                            <p>Prototyping</p>
+                            <div class="project-progress-bar">
+                                <div class="progress blue"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="team">
+                                    <img src="pics/1672369246156.jpg" alt="team member">
+                                    <img src="pics/mona.jpg" alt="team member">
+                                    <span class="add-member">+</span>
+                                </div>
+                                <span class="days-left">2 Days Left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- projectCard2 end -->
+
+                <!-- myTasks start -->
+                <div class="myTasks">
+                    <!-- tasksHead start -->
+                    <div class="tasks">
+                        <div class="task-header">
+                            <h3>Recent Tasks</h3>
+                            <a href="#">All Tasks</a>
+                        </div>
+                        <ul class="task-list">
+                            <li>
+                                <div class="task-details">
+                                    <span class="task-name">Web Design Review</span>
+                                    <span class="task-tool">Figma</span>
+                                </div>
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
+                            </li>
+                            <li>
+                                <div class="task-details">
+                                    <span class="task-name">Web Design Review</span>
+                                    <span class="task-tool">Figma</span>
+                                </div>
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
+                            </li>
+                            <li>
+                                <div class="task-details">
+                                    <span class="task-name">Web Design Review</span>
+                                    <span class="task-tool">Figma</span>
+                                </div>
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
+                            </li>
+                            <li>
+                                <div class="task-details">
+                                    <span class="task-name">Web Design Review</span>
+                                    <span class="task-tool">Figma</span>
+                                </div>
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- tasks ens -->
+                </div>
+                <!-- myTasks end -->
+
+                <!-- calendar start -->
+                <div class="calendar">
+                    <!-- calendarHead start -->
+                    <div class="calendarHead">
+                        <h2>October 2024</h2>
+                        <div class="calendarIcon">
+                            <span class="material-symbols-outlined">
+                                <img src="pics/less than.png" class="less">
+                            </span>
+                            <span class="material-symbols-outlined">
+                                <img src="pics/greater.png" class="great">
+                            </span>
+                        </div>
+                    </div>
+                    <!-- calendarHead end -->
+                    <!-- calendarData start -->
+                    <div class="calendarData">
+                        <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                        <ul class="days">
+                            <li class="inactive">25</li>
+                            <li class="inactive">26</li>
+                            <li class="inactive">27</li>
+                            <li class="inactive">28</li>
+                            <li class="inactive">29</li>
+                            <li class="inactive">30</li>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li>18</li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li class="active">21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                            <li>29</li>
+                            <li>30</li>
+                            <li>31</li>
+                            <li class="inactive">1</li>
+                            <li class="inactive">2</li>
+                            <li class="inactive">3</li>
+                            <li class="inactive">4</li>
+                            <li class="inactive">5</li>
+                        </ul>
+                    </div>
+                    <!-- calendarData end -->
+                </div>
+                <!-- calendar end -->
+                <!-- messages start -->
+                <div class="messages">
+                    <!-- messagesHead start -->
+                    <div class="messagesHead">
+                        <h2>Messages</h2>
+                    </div>
+                    <!-- messagesHead end -->
+                    <!-- messagesUser start -->
+                    <div class="messagesUser">
+                        <div class="messagesUserImg">
+                            <img src="pics/1672369246156.jpg" alt="img1">
+                        </div>
+                        <h2>Jai Anoba<br><span>Front-end</span></h2>
+                    </div>
+                    <!-- messagesUser end -->
+                    <!-- messagesUser start -->
+                    <div class="messagesUser">
+                        <div class="messagesUserImg">
+                            <img src="pics/bob.jpg" alt="img2">
+                        </div>
+                        <h2>Gen La Rosa<br><span>Analyst</span></h2>
+                    </div>
+                    <!-- messagesUser end -->
+                    <!-- messagesUser start -->
+                    <div class="messagesUser">
+                        <div class="messagesUserImg">
+                            <img src="pics/mona.jpg" alt="img3">
+                        </div>
+                        <h2>Jera Peritos<br><span>QA</span></h2>
+                    </div>
+                    <!-- messagesUser end -->
+                    <!-- messagesUser start -->
+                    <div class="messagesUser">
+                        <div class="messagesUserImg">
+                            <img src="pics/SHREK.jpg" alt="img4">
+                        </div>
+                        <h2>Elmer Rapon<br><span>Back-end</span></h2>
+                    </div>
+                    <!-- messagesUser end -->
+                    <!-- messagesUser start -->
+                    <div class="messagesUser">
+                        <div class="messagesUserImg">
+                            <img src="pics/bob.jpg" alt="img5">
+                        </div>
+                        <h2>Ian Tradio<br><span>Front-end</span></h2>
+                    </div>
+                    <!-- messagesUser end -->
+                </div>
+                <!-- messages end -->
+            </main>
+            <!-- main end -->
+        </div>
+        <!-- right end -->
+    </div>
+    <!-- container end -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
