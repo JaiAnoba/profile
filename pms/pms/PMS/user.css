@@ -482,24 +482,6 @@ body {
     background-color: #ffca90;
 }
 
-/* .projectCard2 { */
-    /* position: relative; */
-    /* width: 70rem; */
-    /* height: 98%; */
-    /* background-color: rgba(255, 255, 255, 1); */
-    /* backdrop-filter: blur(5px); */
-    /* border-radius: 20px; */
-    /* box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px, */
-        /* inset rgba(255, 255, 255, 0.6) -8px -8px 16px 0px, */
-        /* inset rgb(255, 255, 255) 0px 11px 28px 0px; */
-    /* padding: 20px; */
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* flex-direction: column; */
-    /* grid-row: 1 / 4; */
-/* } */
-
 /* Container for Ongoing Projects */
 .projects-container {
     position: relative;
@@ -788,6 +770,7 @@ body {
 .calendar {
     position: relative;
     margin-left: -32.5rem;
+    padding: 30px;
     width: 507px;
     height: 100%;
     background-color: rgba(255, 255, 255, 1);
@@ -829,6 +812,7 @@ body {
     position: relative;
     display: flex;
     gap: 10px;
+    cursor: pointer;
 }
 
 .container .right main .calendar .calendarHead .calendarIcon .material-symbols-outlined {
@@ -837,13 +821,19 @@ body {
     height: 25px;
     border: 3px solid #9fa7d6;
     border-radius: 50%;
-    cursor: pointer;
     color: #9fa7d6;
     font-size: 1.3em;
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.today {
+    width: 40px;
+    height: 40px;
+    background: #5494f3;
+    font-weight: 700; 
 }
 
 .less {
@@ -871,13 +861,13 @@ body {
 
 .weeks li {
     list-style: none;
-    cursor: pointer;
     font-size: 1.1em;
     font-weight: 500;
 }
 
 .days {
     position: relative;
+    gap: 30px;
     width: 100%;
     height: calc(100% - 30px);
     display: grid;
@@ -897,12 +887,14 @@ body {
     color: #000;
     border-radius: 50%;
     cursor: pointer;
-    transition: .3s ease;
+    transition: 0.3s ease;
+    visibility: visible;
 }
 
-.days li.inactive {
-    color: #999;
-}
+/* .days li.inactive { */
+    /* color: #999; */
+/* } */
+/*  */
 
 .days li:hover {
     background: #999;
@@ -910,10 +902,11 @@ body {
     transition: 0s;
 }
 
-.days li.active {
-    background: #6577ff;
-    color: #fff;
-}
+/* .days li.active { */
+    /* background: #6577ff; */
+    /* color: #fff; */
+/* } */
+
 /* calendar end */
 
 /* CHATS */

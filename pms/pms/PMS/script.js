@@ -112,3 +112,29 @@ window.onclick = (e) => {
 function toggleCheck(element) {
   element.classList.toggle("checked");
 }
+
+
+// CALENDAR
+document.addEventListener('DOMContentLoaded', function () {
+  // Get the elements by their IDs
+  const monthYear = document.getElementById("monthYear");
+  const calendarDays = document.getElementById("calendarDays");
+  const prevMonth = document.getElementById("prevMonth");
+  const nextMonth = document.getElementById("nextMonth");
+
+  // Check if elements exist to avoid null errors
+  if (monthYear && calendarDays && prevMonth && nextMonth) {
+      // Your logic to interact with these elements
+      prevMonth.addEventListener("click", function () {
+          console.log("Previous month clicked");
+          // Your logic for going to the previous month
+      });
+
+      nextMonth.addEventListener("click", function () {
+          console.log("Next month clicked");
+          // Your logic for going to the next month
+      });
+  } else {
+      console.error("One or more elements are missing");
+  }
+});
