@@ -43,8 +43,6 @@ body {
     height: 95vh;
     background: rgba(40, 130, 204, 0.582);
     border-radius: 25px;
-    /* backdrop-filter: blur(10px); */
-    /* border: 1px solid #fff; */
     box-shadow: 0 0 5px rgba(0, 0, 0, .1),
         0 0 10px rgba(0, 0, 0, .2),
         0 0 15px rgba(0, 0, 0, .2);
@@ -59,7 +57,7 @@ body {
     position: relative;
     width: 240px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px,
@@ -163,9 +161,10 @@ body {
     width: 4px;
 }
 
-.left header nav ul li a img {
+.left header nav ul li a i {
     margin: 0 10px 0 -5px;
-    width: 13%;
+    font-size: 1.5rem;
+    color: #000;
 }
 
 .left header nav ul li a .material-symbols-outlined {
@@ -180,8 +179,8 @@ body {
 }
 
 .left header nav ul li a:hover .material-symbols-outlined,
-.left header nav ul li a:hover .title {
-    color: #6577ff;
+.left header nav ul li a:hover .title, .left header nav ul li a:hover i{
+    color: #5c9ed4;
 }
 /* nav end */
 
@@ -268,7 +267,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #fff;
+    background-color: rgb(250, 247, 247);
     border-radius: 20px;
 }
 
@@ -293,7 +292,7 @@ body {
     position: relative;
     width: 300px;
     height: 40px;
-    background: #f8f2fe;
+    background: white;
     border-radius: 10px;
     display: flex;
     justify-content: flex-start;
@@ -403,8 +402,7 @@ body {
     opacity: 1;
     visibility: visible;
 }
-/* user end */
-/* top end */
+
 /* main start */
 .right main {
     position: relative;
@@ -421,7 +419,7 @@ body {
     position: relative;
     width: 510px;
     height: 380px;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px,
@@ -489,7 +487,7 @@ body {
     width: 69.1rem; 
     height: 98%;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: rgb(248, 243, 243);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -658,7 +656,7 @@ body {
     position: relative;
     width: 580px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px,
@@ -773,7 +771,7 @@ body {
     padding: 30px;
     width: 507px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px,
@@ -915,7 +913,7 @@ body {
     left: 71rem;
     width: 510px;
     height: 89%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: rgba(255, 255, 255, 0.5) 35px 35px 68px 0px,

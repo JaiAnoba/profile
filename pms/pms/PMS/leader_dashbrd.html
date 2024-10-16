@@ -35,7 +35,7 @@
                             <a href="leader_dashbrd.html">
                                 <span class="material-symbols-outlined full">
                                 </span>
-                                <img src="pics/dashboard-solid-48.png" alt="">
+                                <i class='bx bxs-dashboard'></i>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
@@ -43,7 +43,7 @@
                             <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
-                                <img src="pics/package-solid-48.png" alt="">
+                                <i class='bx bxs-package'></i>
                                 <span class="title">Projects</span>
                             </a>
                         </li>
@@ -51,7 +51,7 @@
                             <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
-                                <img src="pics/calendar-solid-48.png" alt="">
+                                <i class='bx bxs-calendar' ></i>
                                 <span class="title">Calendar</span>
                             </a>
                         </li>
@@ -59,7 +59,7 @@
                             <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
-                                <img src="pics/chat-solid-48.png" alt="">
+                                <i class='bx bxs-chat' ></i>
                                 <span class="title">Message</span>
                             </a>
                         </li>
@@ -67,7 +67,7 @@
                             <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
-                                <img src="pics/cog-solid-48.png">
+                                <i class='bx bxs-cog' ></i>
                                 <span class="title">Settings</span>
                             </a>
                         </li>
@@ -75,7 +75,7 @@
                             <a href="home.html">
                                 <span class="material-symbols-outlined">
                                 </span>
-                                <img src="pics/log-out-circle-regular-48.png">
+                                <i class='bx bxs-log-out-circle' ></i>
                                 <span class="title">Logout</span>
                             </a>
                         </li>
@@ -377,58 +377,7 @@
         <!-- right end -->
     </div>
     <!-- container end -->
-
-    <script>
-        const monthYear = document.getElementById('monthYear');
-        const calendarDays = document.getElementById('calendarDays');
-        const prevMonth = document.getElementById('prevMonth');
-        const nextMonth = document.getElementById('nextMonth');
-
-        let currentDate = new Date();
-
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-
-            // Set the month and year header
-            monthYear.innerText = currentDate.toLocaleString('default', { month: 'long' }) + ' ' + year;
-
-            // Clear previous days
-            calendarDays.innerHTML = '';
-
-            // Get the first day of the month
-            const firstDayOfMonth = new Date(year, month, 1);
-            const lastDayOfMonth = new Date(year, month + 1, 0);
-            const totalDays = lastDayOfMonth.getDate();
-
-            // Get the starting day of the week
-            const startingDay = firstDayOfMonth.getDay();
-
-            // Fill the calendar days
-            for (let i = 0; i < startingDay; i++) {
-                calendarDays.innerHTML += '<li></li>'; 
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                const isToday = (day === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear());
-                calendarDays.innerHTML += `<li class="${isToday ? 'today' : ''}">${day}</li>`;
-            }
-        }
-
-        prevMonth.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
-        });
-
-        nextMonth.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
-        });
-
-        // Initial render
-        renderCalendar();
-    </script>
-
+    <script src="calendar.js"></script>
     <script src="script.js"></script>
 </body>
 
