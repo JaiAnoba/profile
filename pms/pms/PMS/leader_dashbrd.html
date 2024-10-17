@@ -289,7 +289,6 @@
 
                 <!-- calendar start -->
                 <div class="calendar">
-                    <!-- calendarHead start -->
                     <div class="calendarHead">
                         <h2 id="monthYear"></h2>
                         <div class="calendarIcon">
@@ -301,9 +300,6 @@
                             </span>
                         </div>
                     </div>
-                    <!-- calendarHead end -->
-                
-                    <!-- calendarData start -->
                     <div class="calendarData">
                         <ul class="weeks">
                             <li>Sun</li>
@@ -316,8 +312,8 @@
                         </ul>
                         <ul class="days" id="calendarDays"></ul>
                     </div>
-                    <!-- calendarData end -->
                 </div>
+                
                 <!-- calendar end -->
 
                 <!-- messages start -->
@@ -431,7 +427,7 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="project-cards">
+                <div class="project-cards color1">
                     <div class="card-headers">
                         <p>Oct. 8, 2024</p>
                         <div class="menu-icon">
@@ -485,7 +481,7 @@
                 </div>
 
                 <!-- Project Card 1 -->
-                <div class="project-cards">
+                <div class="project-cards color11">
                     <div class="card-headers">
                         <p>Oct. 7, 2024</p>
                         <div class="menu-icon">
@@ -510,8 +506,9 @@
                         <p class="due">2 Days Left</p>
                     </div>
                 </div>
+
                 <!-- Project Card 2 -->
-                <div class="project-cards">
+                 <div class="project-cards color2">
                     <div class="card-headers">
                         <p>Oct. 8, 2024</p>
                         <div class="menu-icon">
@@ -564,7 +561,7 @@
                 </div>
 
                 <!-- Project Card 1 -->
-                <div class="project-cards">
+                <div class="project-cards color3">
                     <div class="card-headers">
                         <p>Oct. 7, 2024</p>
                         <div class="menu-icon">
@@ -615,6 +612,41 @@
                         <p class="due">2 Days Left</p>
                     </div>
                 </div>
+        </section>   
+
+        <!-- CALENDAR -->
+        <section class="calendars" id="calendar">
+            <div class="cal">
+                <h1>Calendar</h1>
+            </div>
+            <div class="cal-wrapper">
+            <div class="small-calendar">
+                <div class="month-navigation">
+                    <button onclick="prevMonth()"><img src="pics/less than.png" ></button>
+                    <span id="month-year"></span>
+                    <button onclick="nextMonth()"><img src="pics/greater.png"></button>
+                </div>
+                <div id="mini-calendar"></div>
+            </div>
+            
+            <div class="big-calendar">
+                <h2 id="big-month-year"></h2>
+                <div id="large-calendar"></div>
+            </div>
+            </div>
+            <div class="taskss">
+                <h3>Tasks</h3>
+                <ul>
+                    <li><span class="task-color user-interview"></span> User Interview</li>
+                    <li><span class="task-color web-design-review"></span> Web Design Review</li>
+                    <li><span class="task-color meeting-with-client"></span> Meeting With Client</li>
+                    <li><span class="task-color mobile-app"></span> Mobile App</li>
+                    <li><span class="task-color ui-ux"></span> UI/UX</li>
+                </ul>
+            </div>
+        </section>        
+        
+
             </div>
     </div>
     <!-- container end -->
