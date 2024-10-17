@@ -53,3 +53,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     dateElement.textContent = formattedDate;
 });
+
+// LIST-VIEW PROJECT-CARDS
+// Toggle between grid and list view
+document.addEventListener("DOMContentLoaded", function () {
+    const listViewIcon = document.querySelector(".bx-list-ul");
+    const gridViewIcon = document.querySelector(".bx-grid-alt");
+    const projectsGrids = document.querySelector(".projects-grids");
+    const projectCards = document.querySelectorAll(".project-cards");
+
+    // Click event for list view
+    listViewIcon.addEventListener("click", function () {
+        projectsGrids.classList.add("list-view");
+        projectCards.forEach(card => {
+            card.classList.add("list");
+        });
+    });
+
+    // Click event for grid view
+    gridViewIcon.addEventListener("click", function () {
+        projectsGrids.classList.remove("list-view");
+        projectCards.forEach(card => {
+            card.classList.remove("list");
+        });
+    });
+});
+

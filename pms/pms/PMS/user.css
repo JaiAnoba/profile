@@ -447,7 +447,7 @@ body {
 }
 
 .info-box:nth-child(1) {
-    background-color: #ffbab6;
+    background-color: #b6c1ff;
 }
 
 .info-box:nth-child(2) {
@@ -459,7 +459,7 @@ body {
 }
 
 .info-box:nth-child(4) {
-    background-color: #ffca90;
+    background-color: #e6b7e0;
 }
 
 /* Container for Ongoing Projects */
@@ -525,7 +525,7 @@ body {
 }
 
 .green-bg {
-    background-color: #b6e5b9;
+    background-color: #b7e6c9;
 }
 
 .project-header {
@@ -814,7 +814,7 @@ body {
 .today {
     width: 40px;
     height: 40px;
-    background: #5494f3;
+    background: #a3c5f7;
     font-weight: 700; 
 }
 
@@ -969,6 +969,7 @@ body {
 
 .proj {
     margin: 0 0 20px 260px;
+    overflow: hidden;
     /* display: none;  */
 }
 
@@ -983,8 +984,10 @@ body {
 
 .projects-stats {
     display: flex;
-    padding-right: 920px;
+    position: sticky;
+    margin-right: 910px;
     gap: 50px;
+    overflow: hidden;
 }
 
 .projects-stats .stat {
@@ -1050,11 +1053,64 @@ body {
 
 
 /* Project Grid */
+/* List View Styles */
+.projects-grids.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 670px; 
+    overflow-y: auto; 
+    padding-right: 15px;
+}
+
+.projects-grids.list-view::-webkit-scrollbar {
+    width: 10px;
+}
+
+.projects-grids.list-view::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.projects-grids.list-view::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+}
+
+.project-cards.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 115px;
+}
+
+.project-cards.list .card-headers {
+    width: 15%;
+}
+
+.project-cards.list h3,
+.project-cards.list p,
+.project-cards.list .progresss,
+.project-cards.list .progress-percentage {
+    width: 20%;
+    text-align: left;
+}
+
+.project-cards.list .project-footers {
+    width: 25%;
+    justify-content: flex-start;
+}
+
 .projects-grids {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 50px;
     padding: 20px;
+    overflow: hidden;
 }
 
 .project-cards {
