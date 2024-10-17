@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>PMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="user.css">
@@ -24,7 +24,6 @@
                     <h2 class="logo_name">PMS</h2>
                     <div class="close">
                         <span class="material-symbols-outlined">
-                            close
                         </span>
                     </div>
                 </div>
@@ -32,15 +31,15 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="leader_dashbrd.html">
+                            <a href="#dashboard">
                                 <span class="material-symbols-outlined full">
                                 </span>
                                 <i class='bx bxs-dashboard'></i>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li class="projects-option">
+                            <a href="#projects">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-package'></i>
@@ -94,38 +93,37 @@
                 <img src="pics/up.png" class="up_pic">
             </div>
             <!-- upgrade end -->
-
         </div>
         <!-- left end -->
-        <!-- right start -->
-        <div class="right">
-            <!-- top start -->
-            <div class="top">
-                <!-- searchBx start -->
-                <div class="searchBx">
-                    <h2>Hi, Angel!</h2>
-                    <div class="inputBx">
-                        <span class="material-symbols-outlined searchOpen">
-                            <!-- search -->
-                        </span>
-                        <img src="pics/search-regular-36.png">
-                        <input type="text" placeholder="Search...">
-                        <span class="material-symbols-outlined searchClose"></span>
-                    </div>
-                    <img src="pics/bell-regular-48.png" class="notif">
+        <div class="top">
+            <!-- searchBx start -->
+            <div class="searchBx">
+                <h2>Hi, Angel!</h2>
+                <div class="inputBx">
+                    <span class="material-symbols-outlined searchOpen">
+                        <!-- search -->
+                    </span>
+                    <img src="pics/search-regular-36.png">
+                    <input type="text" placeholder="Search...">
+                    <span class="material-symbols-outlined searchClose"></span>
                 </div>
-                <!-- searchBx end -->
-
-                <!-- user start -->
-                <div class="user">
-                    <span class="material-symbols-outlined"></span>
-                    <div class="userImg">
-                        <img src="pics/mona.jpg" alt="user">
-                    </div>
-                </div>
-                <!-- user end -->
+                <img src="pics/bell-regular-48.png" class="notif">
             </div>
-            <!-- top end -->
+            <!-- searchBx end -->
+            <!-- user start -->
+            <div class="user">
+                <span class="material-symbols-outlined"></span>
+                <div class="userImg">
+                    <img src="pics/mona.jpg" alt="user">
+                </div>
+            </div>
+            <!-- user end -->
+        </div>
+        <!-- top end -->
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="right">
+
             <!-- main start -->
             <main>
                 <!-- projectCard start -->
@@ -328,40 +326,35 @@
                     <div class="messagesHead">
                         <h2>Messages</h2>
                     </div>
-                    <!-- messagesHead end -->
-                    <!-- messagesUser start -->
+
                     <div class="messagesUser">
                         <div class="messagesUserImg">
                             <img src="pics/1672369246156.jpg" alt="img1">
                         </div>
                         <h2>Jai Anoba<br><span>Front-end</span></h2>
                     </div>
-                    <!-- messagesUser end -->
-                    <!-- messagesUser start -->
+
                     <div class="messagesUser">
                         <div class="messagesUserImg">
                             <img src="pics/bob.jpg" alt="img2">
                         </div>
                         <h2>Gen La Rosa<br><span>Analyst</span></h2>
                     </div>
-                    <!-- messagesUser end -->
-                    <!-- messagesUser start -->
+
                     <div class="messagesUser">
                         <div class="messagesUserImg">
                             <img src="pics/mona.jpg" alt="img3">
                         </div>
                         <h2>Jera Peritos<br><span>QA</span></h2>
                     </div>
-                    <!-- messagesUser end -->
-                    <!-- messagesUser start -->
+
                     <div class="messagesUser">
                         <div class="messagesUserImg">
                             <img src="pics/SHREK.jpg" alt="img4">
                         </div>
                         <h2>Elmer Rapon<br><span>Back-end</span></h2>
                     </div>
-                    <!-- messagesUser end -->
-                    <!-- messagesUser start -->
+
                     <div class="messagesUser">
                         <div class="messagesUserImg">
                             <img src="pics/bob.jpg" alt="img5">
@@ -373,8 +366,256 @@
                 <!-- messages end -->
             </main>
             <!-- main end -->
-        </div>
-        <!-- right end -->
+        </section>
+        <!-- DASHBOARD END -->
+
+        <!-- PROJECTS -->
+        <section id="projects" class="proj">
+        
+            <div class="projects-overview">
+                <h1>Projects</h1>
+                <div class="projects-date">
+                    <p id="current-date">
+                </div>
+            </div>
+            
+            <div class="projects-actions">
+                <div class="projects-stats">
+                    <div class="stat">
+                        <p>15</p>
+                        <span>In Progress</span>
+                    </div>
+                    <div class="stat">
+                        <p>5</p>
+                        <span>Completed</span>
+                    </div>
+                    <div class="stat">
+                        <p>20</p>
+                        <span>Total Projects</span>
+                    </div>
+                </div>
+                <button class="new-project-btn">+ New Project</button>
+                <div class="view-toggle">
+                    <i class="bx bx-list-ul"></i>
+                    <i class="bx bx-grid-alt"></i>
+                </div>
+            </div>
+            
+
+            <div class="projects-grids">
+                <!-- Project Card 1 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 7, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Web Designing</h3>
+                    <p>Prototyping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/mona.jpg" alt="Team Member">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 8, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Shopping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <img src="pics/1672369246156.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 9, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Dashboard</h3>
+                    <p>Medical</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <img src="pics/mona.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 1 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 7, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Web Designing</h3>
+                    <p>Prototyping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/1672369246156.jpg" alt="Team Member">
+                            <img src="pics/mona.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 8, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>   
+                        </div>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Shopping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/mona.jpg" alt="Team Member">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 9, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Dashboard</h3>
+                    <p>Medical</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/1672369246156.jpg" alt="Team Member">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 1 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 7, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Web Designing</h3>
+                    <p>Prototyping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <img src="pics/mona.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-cards">
+                    <div class="card-headers">
+                        <p>Oct. 8, 2024</p>
+                        <div class="menu-icon">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Shopping</p>
+                    <div class="progresss">
+                        <div class="progress-bars" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span>40%</span>
+                    </div>
+                    <div class="project-footers">
+                        <div class="avatars">
+                            <img src="pics/1672369246156.jpg" alt="Team Member">
+                            <img src="pics/SHREK.jpg" alt="Team Member">
+                            <span class="add-team-member">+</span>
+                        </div>
+                        <p class="due">2 Days Left</p>
+                    </div>
+                </div>
+            </div>
     </div>
     <!-- container end -->
     <script src="calendar.js"></script>

@@ -40,3 +40,16 @@ nextMonth.addEventListener('click', () => {
 
 // Initial render
 renderCalendar();
+
+// PROJECT-DATE
+document.addEventListener('DOMContentLoaded', function() {
+    const dateElement = document.getElementById('current-date');
+    
+    const today = new Date();
+    
+    const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+
+    const formattedDate = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+    
+    dateElement.textContent = formattedDate;
+});
