@@ -737,74 +737,168 @@
 
 
         <!-- SETTINGS -->
-        <section class="settings" id="settings">
-            <div class="s_sidebar">
-                <h2>Settings</h2>
-                <ul>
-                    <li><a href="#s-profile-section" id="profile-link">Public Profile</a></li>
-                    <li><a href="#account-section" id="account-link">Account Settings</a></li>
-                    <li><a href="#notifications-section" id="notifications-link">Notifications</a></li>
-                </ul>
-            </div>
-    
-            <div class="s_content" id="content">
-                <!-- Public Profile Section -->
-                <div id="s-profile-section" class="s_section">
-                    <h3>My Profile</h3>
-                    <div class="s_profile">
-                        <div class="s_profile-image">
-                            <img src="profile.jpg" alt="Profile">
-                            <button>Upload new image</button>
+        <section class="settings" id="chats">
+            <div class="settings-container">
+                <!-- Sidebar -->
+                <div class="s_sidebar">
+                    <h1>Settings</h1>
+                    <ul>
+                        <li><a href="#s-profile-section" id="profile-link">Public Profile</a></li>
+                        <li><a href="#account-section" id="account-link">Account Settings</a></li>
+                        <li><a href="#notifications-section" id="notifications-link">Notifications</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Content -->
+                <div class="s_content" id="content">
+                    <!-- Public Profile Section -->
+                    <div id="s-profile-section" class="ss_section active">
+                        <h3>My Profile</h3>
+                        <div class="s_profile">
+                            <!-- Profile Image Section -->
+                            <div class="s_profile-image">
+                                <img src="pics/mona.jpg" alt="Profile" class="profile-pic">
+                                <div class="s_text">
+                                    <h4>Upload new image</h4>
+                                    <p class="file-size">Max file size - 10mb</p>
+                                </div>
+                                <div class="image-buttons">
+                                    <button class="upload-btn">Upload</button>
+                                    <button class="remove-btn">Remove image</button>
+                                </div>
+                            </div>
+                    
+                            <!-- Profile Form Section -->
+                            <form>
+                                <label>Edit Username</label>
+                                <input type="text" value="angel123" class="input-field">
+                                
+                                <label>Role</label>
+                                <input type="text" value="Team Leader" class="input-field" disabled>
+                                
+                                <label>Bio</label>
+                                <textarea placeholder="Write a short introduction..." class="textarea-field"></textarea>
+                                
+                                <div class="form-buttons">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                    <button type="reset" class="clear-btn">Clear all</button>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    
+        
+                    <!-- Account Settings Section -->
+                    <div id="account-section" class="ss_section hidden">
+                        <h3>Account Settings</h3>
                         <form>
-                            <label>Username</label>
-                            <input type="text" value="angel123">
-                            <label>Role</label>
-                            <input type="text" value="Team Leader" disabled>
-                            <label>Bio</label>
-                            <textarea placeholder="Write a short introduction..."></textarea>
-                            <button type="submit">Save Changes</button>
+                            <!-- Name Section -->
+                            <h4 class="namee">Name</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <p>First name</p>
+                                    <input type="text" value="Angel" class="f-input-field">
+                                </div>
+                                <div class="form-group">
+                                    <p>Last name</p>
+                                    <div class="name">
+                                        <input type="text" value="Canete" class="l-input-field">
+                                        <a href="#" class="change-link">Change</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Email Address Section -->
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <div class="email">
+                                    <p class="email-display">Your email is <strong>angelbaby@gmail.com</strong></p>
+                                    <a href="#" class="change-link">Change</a>
+                                </div>
+                            </div>
+                    
+                            <!-- Password Section -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <div class="pass">
+                                    <input type="password" value="********" class="p-input-field">
+                                    <a href="#" class="change-link">Change</a>
+                                </div>
+                            </div>
+                    
+                            <!-- Delete Account Section -->
+                            <div class="delete-account">
+                                <label>Delete Account</label>
+                                <div class="del">
+                                    <p class="d-text">Would you like to delete your account? Deleting your account will remove all the content associated with it.</p>
+                                    <a href="#" class="delete-link">I want to delete my account</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
-                </div>
-    
-                <!-- Account Settings Section -->
-                <div id="account-section" class="ss_section hidden">
-                    <h3>Account Settings</h3>
-                    <form>
-                        <label>First Name</label>
-                        <input type="text" value="Angel">
-                        <label>Last Name</label>
-                        <input type="text" value="Canete">
-                        <label>Email Address</label>
-                        <input type="email" value="angelbaby@gmail.com">
-                        <label>Password</label>
-                        <input type="password" value="********">
-                        <button type="submit">Save Changes</button>
-                        <p><a href="#">I want to delete my account</a></p>
-                    </form>
-                </div>
-    
-                <!-- Notifications Section -->
-                <div id="notifications-section" class="ss_section hidden">
-                    <h3>Notifications</h3>
-                    <div class="s_notifications">
-                        <label>
-                            <input type="checkbox" checked> Enable Desktop Notification
-                        </label>
-                        <label>
-                            <input type="checkbox" checked> Enable Unread Notification
-                        </label>
-                        <label>
-                            <input type="checkbox" checked> Communication Emails
-                        </label>
-                        <label>
-                            <input type="checkbox" checked> Announcements & Updates
-                        </label>
+                    
+        
+                    <!-- Notifications Section -->
+                    <div id="notifications-section" class="ss_section hidden">
+                        <h3>Notifications</h3>
+                        <div class="s_notifications">
+                            <!-- Enable Desktop Notification -->
+                            <div class="notification-group">
+                                <div class="notification-text">
+                                    <strong>Enable Desktop Notification</strong>
+                                    <p>Receive notification for all messages, updates, and documents</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                    
+                            <!-- Enable Unread Notification -->
+                            <div class="notification-group">
+                                <div class="notification-text">
+                                    <strong>Enable Unread Notification</strong>
+                                    <p>Shows a red badge when you have an unread message</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                    
+                            <!-- Email Notifications -->
+                            <h3 class="n_email">Email Notifications</h3>
+                    
+                            <!-- Communication Emails -->
+                            <div class="notification-group">
+                                <div class="notification-text">
+                                    <strong>Communication Emails</strong>
+                                    <p>Receive emails for messages, contracts, and documents</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                    
+                            <!-- Announcements & Updates -->
+                            <div class="notification-group">
+                                <div class="notification-text">
+                                    <strong>Announcements & Updates</strong>
+                                    <p>Receive emails about product updates, improvements, etc.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
-        </section>
+        </section>        
+    
         
     </div>
     <!-- container end -->

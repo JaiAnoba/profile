@@ -337,7 +337,7 @@ document.getElementById("notifications-link").addEventListener("click", function
 });
 
 function showSection(sectionId) {
-    let sections = document.querySelectorAll('.s_section');
+    let sections = document.querySelectorAll('.ss_section');
     sections.forEach(section => {
         section.classList.add('hidden');
     });
