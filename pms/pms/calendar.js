@@ -321,3 +321,27 @@ function sendMessage() {
         clearFile(); // Clear any attached files
     }
 }
+
+
+// SETTINGS
+document.getElementById("profile-link").addEventListener("click", function() {
+    showSection('s-profile-section');
+});
+
+document.getElementById("account-link").addEventListener("click", function() {
+    showSection('account-section');
+});
+
+document.getElementById("notifications-link").addEventListener("click", function() {
+    showSection('notifications-section');
+});
+
+function showSection(sectionId) {
+    let sections = document.querySelectorAll('.s_section');
+    sections.forEach(section => {
+        section.classList.add('hidden');
+    });
+    
+    document.getElementById(sectionId).classList.remove('hidden');
+    document.getElementById(sectionId).classList.add('active');
+}

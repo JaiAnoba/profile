@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#calendar">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-calendar' ></i>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#chats">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-chat' ></i>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#settings">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-cog' ></i>
@@ -81,8 +81,8 @@
                     </ul>
                 </nav>
                 <!-- nav end -->
-
             </header>
+
             <!-- upgrade start -->
             <div class="upgrade">
                 <h2>Go PRO</h2>
@@ -647,85 +647,164 @@
         </section> 
 
         <!-- CHATS -->
-<section class="message" id="chats">
-    <div class="chat-list">
-        <header>
-            <div class="header-container">
-                <h2>Chats</h2>
-                <div class="menu-iconn" onclick="toggleMenu()"><i class='bx bx-box' undefined ></i></div>
-            </div>
-        </header>
-        <div class="profile" oncontextmenu="showContextMenu(event)">
-            <img src="pics/mona.jpg" alt="Profile Picture">
-            <h3>Angel Baby</h3>
-            <span>Team Leader</span>
-        </div>
-        <div class="search-box-container">
-            <input type="text" placeholder="Search" class="search-boxx">
-            <i class="bx bx-search search-icon"></i>
-        </div>        
-        <div class="button-container">
-            <button class="add-btn" onclick="addMember()">+</button>
-            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
-        </div>
-
-        <div class="chats">
-            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Team Athena')">
-                <img src="pics/1672369246156.jpg" alt="Team Athena">
-                <div>
-                    <h4>Team Athena</h4>
-                    <p>What to do?</p>
+        <section class="message" id="chats">
+            <div class="chat-list">
+                <header>
+                    <div class="header-container">
+                        <h2>Chats</h2>
+                        <div class="menu-iconn" onclick="toggleMenu()"><i class='bx bx-box' undefined ></i></div>
+                    </div>
+                </header>
+                <div class="profile" oncontextmenu="showContextMenu(event)">
+                    <img src="pics/mona.jpg" alt="Profile Picture">
+                    <h3>Angel Baby</h3>
+                    <span>Team Leader</span>
                 </div>
-                <span class="time">12:15</span>
-            </div>
-            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Jai Anoba')">
-                <img src="pics/1672369246156.jpg" alt="Jai Anoba">
-                <div>
-                    <h4>Jai Anoba</h4>
-                    <p>I'm done.</p>
+                <div class="search-box-container">
+                    <input type="text" placeholder="Search" class="search-boxx">
+                    <i class="bx bx-search search-icon"></i>
+                </div>        
+                <div class="button-container">
+                    <button class="add-btn" onclick="addMember()">+</button>
+                    <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
                 </div>
-                <span class="time">12:16</span>
+
+                <div class="chats">
+                    <div class="chat-item" oncontextmenu="showContextMenu(event, 'Team Athena')">
+                        <img src="pics/1672369246156.jpg" alt="Team Athena">
+                        <div>
+                            <h4>Team Athena</h4>
+                            <p>What to do?</p>
+                        </div>
+                        <span class="time">12:15</span>
+                    </div>
+                    <div class="chat-item" oncontextmenu="showContextMenu(event, 'Jai Anoba')">
+                        <img src="pics/SHREK.jpg" alt="Jai Anoba">
+                        <div>
+                            <h4>Jai Anoba</h4>
+                            <p>I'm done.</p>
+                        </div>
+                        <span class="time">12:16</span>
+                    </div>
+                    <!-- Repeat for more chats -->
+                </div>
             </div>
-            <!-- Repeat for more chats -->
-        </div>
-    </div>
-    <div class="chat-window">
-        <header>
-            <h4>Team Athena</h4>
-            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
-        </header>
-        <div class="messages-container">
-            <div class="messagee leftt">Hello</div>
-            <div class="messagee rightt">Hi there!</div>
-        </div>
-        <div class="message-input">
-            <!-- Display container for selected file -->
-            <div id="fileDisplay" class="file-display" style="display: none;"></div>
-                    
-            <!-- Text input for message -->
-            <input type="text" id="messageInput" placeholder="Write your message...">
-        
-            <!-- Hidden file input for attachment -->
-            <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
-            
-            <!-- Attachment icon triggers the file input -->
-            <i class="bx bx-paperclip attach-icon" onclick="document.getElementById('fileInput').click();"></i>
-            
-            <!-- Send button -->
-            <button class="send-btn" onclick="sendMessage()"><i class="bx bx-send"></i></button>
-        </div>
-    </div>
-</div>
+            <div class="chat-window">
+                <header>
+                    <div class="header-left">
+                        <img src="pics/1672369246156.jpg" alt="Team Avatar" class="team-avatar">
+                        <h4>Team Athena</h4>
+                    </div>
+                    <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
+                </header>
+                <div class="messages-container">
+                    <div class="message-row leftt">
+                        <img src="pics/SHREK.jpg" alt="User Avatar" class="avatar">
+                        <div class="messagee">....</div>
+                    </div>
+                    <div class="message-row rightt">
+                        <div class="messagee">....</div>
+                        <img src="pics/mona.jpg" alt="User Avatar" class="avatar">
+                    </div>
+                </div>
 
-    <div class="context-menu" id="contextMenu">
-        <ul>
-            <li onclick="archiveChat()">Archive</li>
-            <li onclick="deleteChat()">Delete</li>
-            <li onclick="blockUser()">Block</li>
-        </ul>
-    </div>
-</section>
+                <div class="message-input">
+                    <!-- Display container for selected file -->
+                    <div id="fileDisplay" class="file-display" style="display: none;"></div>
 
+                    <!-- Text input for message -->
+                    <input type="text" id="messageInput" placeholder="Write your message...">
+
+                    <!-- Hidden file input for attachment -->
+                    <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
+
+                    <!-- Attachment icon triggers the file input -->
+                    <i class="bx bx-paperclip attach-icon" onclick="document.getElementById('fileInput').click();"></i>
+
+                    <!-- Send button -->
+                    <button class="send-btn" onclick="sendMessage()"><i class="bx bx-send"></i></button>
+                </div>
+            </div>
+
+            <div class="context-menu" id="contextMenu">
+                <ul>
+                    <li onclick="archiveChat()">Archive</li>
+                    <li onclick="deleteChat()">Delete</li>
+                    <li onclick="blockUser()">Block</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- SETTINGS -->
+        <section class="settings" id="settings">
+            <div class="s_sidebar">
+                <h2>Settings</h2>
+                <ul>
+                    <li><a href="#s-profile-section" id="profile-link">Public Profile</a></li>
+                    <li><a href="#account-section" id="account-link">Account Settings</a></li>
+                    <li><a href="#notifications-section" id="notifications-link">Notifications</a></li>
+                </ul>
+            </div>
+    
+            <div class="s_content" id="content">
+                <!-- Public Profile Section -->
+                <div id="s-profile-section" class="s_section">
+                    <h3>My Profile</h3>
+                    <div class="s_profile">
+                        <div class="s_profile-image">
+                            <img src="profile.jpg" alt="Profile">
+                            <button>Upload new image</button>
+                        </div>
+                        <form>
+                            <label>Username</label>
+                            <input type="text" value="angel123">
+                            <label>Role</label>
+                            <input type="text" value="Team Leader" disabled>
+                            <label>Bio</label>
+                            <textarea placeholder="Write a short introduction..."></textarea>
+                            <button type="submit">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+    
+                <!-- Account Settings Section -->
+                <div id="account-section" class="ss_section hidden">
+                    <h3>Account Settings</h3>
+                    <form>
+                        <label>First Name</label>
+                        <input type="text" value="Angel">
+                        <label>Last Name</label>
+                        <input type="text" value="Canete">
+                        <label>Email Address</label>
+                        <input type="email" value="angelbaby@gmail.com">
+                        <label>Password</label>
+                        <input type="password" value="********">
+                        <button type="submit">Save Changes</button>
+                        <p><a href="#">I want to delete my account</a></p>
+                    </form>
+                </div>
+    
+                <!-- Notifications Section -->
+                <div id="notifications-section" class="ss_section hidden">
+                    <h3>Notifications</h3>
+                    <div class="s_notifications">
+                        <label>
+                            <input type="checkbox" checked> Enable Desktop Notification
+                        </label>
+                        <label>
+                            <input type="checkbox" checked> Enable Unread Notification
+                        </label>
+                        <label>
+                            <input type="checkbox" checked> Communication Emails
+                        </label>
+                        <label>
+                            <input type="checkbox" checked> Announcements & Updates
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
         
     </div>
     <!-- container end -->
