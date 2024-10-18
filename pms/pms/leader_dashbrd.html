@@ -644,10 +644,89 @@
                     <li><span class="task-color ui-ux"></span> UI/UX</li>
                 </ul>
             </div>
-        </section>        
-        
+        </section> 
 
+        <!-- CHATS -->
+<section class="message" id="chats">
+    <div class="chat-list">
+        <header>
+            <div class="header-container">
+                <h2>Chats</h2>
+                <div class="menu-iconn" onclick="toggleMenu()"><i class='bx bx-box' undefined ></i></div>
             </div>
+        </header>
+        <div class="profile" oncontextmenu="showContextMenu(event)">
+            <img src="pics/mona.jpg" alt="Profile Picture">
+            <h3>Angel Baby</h3>
+            <span>Team Leader</span>
+        </div>
+        <div class="search-box-container">
+            <input type="text" placeholder="Search" class="search-boxx">
+            <i class="bx bx-search search-icon"></i>
+        </div>        
+        <div class="button-container">
+            <button class="add-btn" onclick="addMember()">+</button>
+            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
+        </div>
+
+        <div class="chats">
+            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Team Athena')">
+                <img src="pics/1672369246156.jpg" alt="Team Athena">
+                <div>
+                    <h4>Team Athena</h4>
+                    <p>What to do?</p>
+                </div>
+                <span class="time">12:15</span>
+            </div>
+            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Jai Anoba')">
+                <img src="pics/1672369246156.jpg" alt="Jai Anoba">
+                <div>
+                    <h4>Jai Anoba</h4>
+                    <p>I'm done.</p>
+                </div>
+                <span class="time">12:16</span>
+            </div>
+            <!-- Repeat for more chats -->
+        </div>
+    </div>
+    <div class="chat-window">
+        <header>
+            <h4>Team Athena</h4>
+            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
+        </header>
+        <div class="messages-container">
+            <div class="messagee leftt">Hello</div>
+            <div class="messagee rightt">Hi there!</div>
+        </div>
+        <div class="message-input">
+            <!-- Display container for selected file -->
+            <div id="fileDisplay" class="file-display" style="display: none;"></div>
+                    
+            <!-- Text input for message -->
+            <input type="text" id="messageInput" placeholder="Write your message...">
+        
+            <!-- Hidden file input for attachment -->
+            <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
+            
+            <!-- Attachment icon triggers the file input -->
+            <i class="bx bx-paperclip attach-icon" onclick="document.getElementById('fileInput').click();"></i>
+            
+            <!-- Send button -->
+            <button class="send-btn" onclick="sendMessage()"><i class="bx bx-send"></i></button>
+        </div>
+    </div>
+</div>
+
+    <div class="context-menu" id="contextMenu">
+        <ul>
+            <li onclick="archiveChat()">Archive</li>
+            <li onclick="deleteChat()">Delete</li>
+            <li onclick="blockUser()">Block</li>
+        </ul>
+    </div>
+</section>
+
+        
     </div>
     <!-- container end -->
     <script src="calendar.js"></script>

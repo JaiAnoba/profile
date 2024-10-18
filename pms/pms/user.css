@@ -231,7 +231,8 @@ body {
 
 /* top start */
 .top {
-    width: 1640px;
+    width: 1520px;
+    height: 70px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -239,15 +240,16 @@ body {
     padding: 20px;
     background-color: rgb(250, 247, 247);
     border-radius: 20px;
-    margin: -875px 0 20px 255px;
+    margin: -857px 0 20px 255px;
 }
 
 /* right start */
 .right {
     position: relative;
-    width: 103rem;
-    height: 100%;
+    width: 100rem;
+    height: 90%;
     margin-left: 255px;
+    margin-bottom: 40px;
     flex-direction: column;
     gap: 20px;
     /* display: none; */
@@ -258,7 +260,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .searchBx h2 {
@@ -266,7 +268,7 @@ body {
     width: 100px;
     font-size: 1.2rem;
     cursor: pointer;
-    margin-right: 67rem;
+    margin-right: 60rem;
     margin-left: 10px;
 }
 
@@ -534,7 +536,7 @@ body {
 }
 
 .red-bg {
-    background-color: #ffb6e9;
+    background-color: #e6b7e0;
 }
 
 .green-bg {
@@ -766,7 +768,7 @@ body {
     position: relative;
     margin-left: -32.5rem;
     padding: 30px;
-    width: 507px;
+    width: 385px;
     height: 100%;
     background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
@@ -791,6 +793,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
 }
 
 .calendarHead h2 {
@@ -852,6 +855,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 5px;
 }
 
 .weeks li {
@@ -862,8 +866,9 @@ body {
 
 .days {
     position: relative;
-    gap: 30px;
+    gap: 15px;
     width: 100%;
+    margin-top: 20px;
     height: calc(100% - 30px);
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -896,7 +901,7 @@ body {
 .messages {
     position: relative;
     left: 71rem;
-    width: 510px;
+    width: 385px;
     height: 89%;
     background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
@@ -999,10 +1004,9 @@ body {
 
 .projects-stats {
     display: flex;
-    position: sticky;
-    margin-right: 910px;
-    gap: 50px;
-    overflow: hidden;
+    margin-right: 820px;
+    gap: 30px;
+    white-space: nowrap;
 }
 
 .projects-stats .stat {
@@ -1013,7 +1017,6 @@ body {
 .projects-stats .stat p {
     font-size: 24px;
     font-weight: bold;
-    margin: 0;
     color: #282a52; 
 }
 
@@ -1030,10 +1033,10 @@ body {
 
 .projects-actions {
     display: flex;
-    justify-content: flex-end; 
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+    white-space: nowrap;
 }
 
 .new-project-btn {
@@ -1041,9 +1044,10 @@ body {
     background-color: #4f8ed1;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
+    white-space: nowrap;
     transition: background-color 0.3s ease;
 }
 
@@ -1289,7 +1293,6 @@ body {
 .cal {
     display: flex;
     font-size: 1.1rem;
-    margin-block: 20px;
 }
 
 .cal-wrapper {
@@ -1359,10 +1362,11 @@ button {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
+    min-height: 600px;
 }
 
 .big-calendar h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 #large-calendar {
@@ -1370,14 +1374,14 @@ button {
     grid-template-columns: repeat(7, 1fr);
     gap: 10px; 
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     border-top: 1px solid #fff;
     border-left: 1px solid #fff;
 }
 
 #large-calendar div {
     padding: 10px;
-    min-height: 60px;
+    min-height: 80px; 
     text-align: left;
     font-size: 1.4em;
     position: relative;
@@ -1388,9 +1392,9 @@ button {
 /* Task list styling */
 .taskss {
     width: 300px;
-    height: 300px;
+    height: 270px;
     padding: 20px;
-    margin-top:-120px;
+    margin-top:-270px;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1411,8 +1415,8 @@ button {
 .taskss li {
     display: flex;
     align-items: center;
-    margin-block: 20px;
-    font-size: 1em;
+    margin-block: 17px;
+    font-size: 0.9rem;
 }
 
 .task-color {
@@ -1428,6 +1432,312 @@ button {
 .meeting-with-client { background-color: #d3a3e6; }
 .mobile-app { background-color: #b2e6a3; }
 .ui-ux { background-color: #e3b3a3; }
+
+/* CHATS START */
+.message {
+    display: flex;
+    max-width: 1650px;
+    min-height: 775px;
+    margin-top: 50px;
+    padding: 20px;
+    margin: 0 0 20px 260px;
+    background-color: #f9f9f9;
+    border-radius: 40px; 
+    gap: 20px;
+}
+
+.chat-list {
+    width: 300px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-list header {
+    margin-bottom: 20px;
+}
+
+.header-container h2 {
+    font-size: 1.5em;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.profile span {
+    font-size: 0.9em;
+    color: gray;
+}
+
+/* Search Box */
+.search-box-container {
+    position: relative;
+    width: 210px;
+    margin: 5px 0 0 30px;
+}
+
+.search-boxx {
+    width: 200px;
+    height: 30px;
+    padding: 10px 40px 10px 15px;
+    color: black;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    background-color: #ebeaea;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: rgb(146, 145, 145);
+    pointer-events: none; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 20px;
+}
+
+.add-btn {
+    background: #4b7bec;
+    color: white;
+    font-size: 0.9rem;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 25px; 
+    height: 25px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 205px;
+}
+
+.chats .chat-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu-iconn {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.menu-iconn i {
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+.chats .chat-item:hover {
+    background: #f1f1f1;
+}
+
+.chat-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-item h4 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.chat-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: gray;
+}
+
+.chat-item .time {
+    margin-left: auto;
+    color: gray;
+}
+
+.chat-window {
+    flex-grow: 1;
+    background: #ffffff;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-window header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.messages-container {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.messagee {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+}
+
+.leftt {
+    background: #d8e9fd;
+    align-self: flex-start;
+}
+
+.rightt {
+    background: #f1f1f1;
+    align-self: flex-end;
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.message-input input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.file-display {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 10px;
+    gap: 5px;
+    flex-wrap: wrap; 
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.file-icon {
+    font-size: 1.5em;
+    color: #4b7bec;
+}
+
+.file-name {
+    color: #333;
+    margin-right: 5px;
+}
+
+.clear-file {
+    color: #888;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.file-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.attach-icon {
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+
+.send-btn {
+    padding: 10px;
+    background: #4b7bec;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-btn i {
+    font-size: 1.2em;
+}
+
+.see-more-btn {
+    background-color: transparent;
+    border: none;
+    color: #4b7bec;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.context-menu ul li:hover {
+    background-color: #f1f1f1;
+}
 
 
 /* Responsive */
