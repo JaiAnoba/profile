@@ -31,7 +31,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="#dashboard" id="dashboard-link">
+                            <a href="#dashboard">
                                 <span class="material-symbols-outlined full">
                                 </span>
                                 <i class='bx bxs-dashboard'></i>
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="projects-option">
-                            <a href="#projects" id="projects-link">
+                            <a href="#projects">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-package'></i>
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#calendar" id="calendar-link">
+                            <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-calendar' ></i>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#chats" id="chats-link">
+                            <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-chat' ></i>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#settings" id="settings-link">
+                            <a href="#">
                                 <span class="material-symbols-outlined">
                                 </span>
                                 <i class='bx bxs-cog' ></i>
@@ -81,8 +81,8 @@
                     </ul>
                 </nav>
                 <!-- nav end -->
-            </header>
 
+            </header>
             <!-- upgrade start -->
             <div class="upgrade">
                 <h2>Go PRO</h2>
@@ -120,7 +120,7 @@
             <!-- user end -->
         </div>
         <!-- top end -->
-    
+
         <!-- DASHBOARD -->
         <section id="dashboard" class="right">
 
@@ -647,262 +647,88 @@
         </section> 
 
         <!-- CHATS -->
-        <section class="message" id="chats">
-            <div class="chat-list">
-                <header>
-                    <div class="header-container">
-                        <h2>Chats</h2>
-                        <div class="menu-iconn" onclick="toggleMenu()"><i class='bx bx-box' undefined ></i></div>
-                    </div>
-                </header>
-                <div class="profile" oncontextmenu="showContextMenu(event)">
-                    <img src="pics/mona.jpg" alt="Profile Picture">
-                    <h3>Angel Baby</h3>
-                    <span>Team Leader</span>
-                </div>
-                <div class="search-box-container">
-                    <input type="text" placeholder="Search" class="search-boxx">
-                    <i class="bx bx-search search-icon"></i>
-                </div>        
-                <div class="button-container">
-                    <button class="add-btn" onclick="addMember()">+</button>
-                    <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
-                </div>
-
-                <div class="chats">
-                    <div class="chat-item" oncontextmenu="showContextMenu(event, 'Team Athena')">
-                        <img src="pics/1672369246156.jpg" alt="Team Athena">
-                        <div>
-                            <h4>Team Athena</h4>
-                            <p>What to do?</p>
-                        </div>
-                        <span class="time">12:15</span>
-                    </div>
-                    <div class="chat-item" oncontextmenu="showContextMenu(event, 'Jai Anoba')">
-                        <img src="pics/SHREK.jpg" alt="Jai Anoba">
-                        <div>
-                            <h4>Jai Anoba</h4>
-                            <p>I'm done.</p>
-                        </div>
-                        <span class="time">12:16</span>
-                    </div>
-                    <!-- Repeat for more chats -->
-                </div>
+<section class="message" id="chats">
+    <div class="chat-list">
+        <header>
+            <div class="header-container">
+                <h2>Chats</h2>
+                <div class="menu-iconn" onclick="toggleMenu()"><i class='bx bx-box' undefined ></i></div>
             </div>
-            <div class="chat-window">
-                <header>
-                    <div class="header-left">
-                        <img src="pics/1672369246156.jpg" alt="Team Avatar" class="team-avatar">
-                        <h4>Team Athena</h4>
-                    </div>
-                    <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
-                </header>
-                <div class="messages-container">
-                    <div class="message-row leftt">
-                        <img src="pics/SHREK.jpg" alt="User Avatar" class="avatar">
-                        <div class="messagee">....</div>
-                    </div>
-                    <div class="message-row rightt">
-                        <div class="messagee">....</div>
-                        <img src="pics/mona.jpg" alt="User Avatar" class="avatar">
-                    </div>
+        </header>
+        <div class="profile" oncontextmenu="showContextMenu(event)">
+            <img src="pics/mona.jpg" alt="Profile Picture">
+            <h3>Angel Baby</h3>
+            <span>Team Leader</span>
+        </div>
+        <div class="search-box-container">
+            <input type="text" placeholder="Search" class="search-boxx">
+            <i class="bx bx-search search-icon"></i>
+        </div>        
+        <div class="button-container">
+            <button class="add-btn" onclick="addMember()">+</button>
+            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
+        </div>
+
+        <div class="chats">
+            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Team Athena')">
+                <img src="pics/1672369246156.jpg" alt="Team Athena">
+                <div>
+                    <h4>Team Athena</h4>
+                    <p>What to do?</p>
                 </div>
-
-                <div class="message-input">
-                    <!-- Display container for selected file -->
-                    <div id="fileDisplay" class="file-display" style="display: none;"></div>
-
-                    <!-- Text input for message -->
-                    <input type="text" id="messageInput" placeholder="Write your message...">
-
-                    <!-- Hidden file input for attachment -->
-                    <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
-
-                    <!-- Attachment icon triggers the file input -->
-                    <i class="bx bx-paperclip attach-icon" onclick="document.getElementById('fileInput').click();"></i>
-
-                    <!-- Send button -->
-                    <button class="send-btn" onclick="sendMessage()"><i class="bx bx-send"></i></button>
-                </div>
+                <span class="time">12:15</span>
             </div>
-
-            <div class="context-menu" id="contextMenu">
-                <ul>
-                    <li onclick="archiveChat()">Archive</li>
-                    <li onclick="deleteChat()">Delete</li>
-                    <li onclick="blockUser()">Block</li>
-                </ul>
-            </div>
-        </section>
-
-
-        <!-- SETTINGS -->
-        <section class="settings" id="settings">
-            <div class="settings-container">
-                <!-- Sidebar -->
-                <div class="s_sidebar">
-                    <h1>Settings</h1>
-                    <ul>
-                        <li><a href="#s-profile-section" id="profile-link">Public Profile</a></li>
-                        <li><a href="#account-section" id="account-link">Account Settings</a></li>
-                        <li><a href="#notifications-section" id="notifications-link">Notifications</a></li>
-                    </ul>
+            <div class="chat-item" oncontextmenu="showContextMenu(event, 'Jai Anoba')">
+                <img src="pics/1672369246156.jpg" alt="Jai Anoba">
+                <div>
+                    <h4>Jai Anoba</h4>
+                    <p>I'm done.</p>
                 </div>
+                <span class="time">12:16</span>
+            </div>
+            <!-- Repeat for more chats -->
+        </div>
+    </div>
+    <div class="chat-window">
+        <header>
+            <h4>Team Athena</h4>
+            <div class="menu-iconn" onclick="toggleChatMenu()">⋮</div>
+        </header>
+        <div class="messages-container">
+            <div class="messagee leftt">Hello</div>
+            <div class="messagee rightt">Hi there!</div>
+        </div>
+        <div class="message-input">
+            <!-- Display container for selected file -->
+            <div id="fileDisplay" class="file-display" style="display: none;"></div>
+                    
+            <!-- Text input for message -->
+            <input type="text" id="messageInput" placeholder="Write your message...">
         
-                <!-- Content -->
-                <div class="s_content" id="content">
-                    <!-- Public Profile Section -->
-                    <div id="s-profile-section" class="ss_section active">
-                        <h3>My Profile</h3>
-                        <div class="s_profile">
-                            <!-- Profile Image Section -->
-                            <div class="s_profile-image">
-                                <img src="pics/mona.jpg" alt="Profile" class="profile-pic">
-                                <div class="s_text">
-                                    <h4>Upload new image</h4>
-                                    <p class="file-size">Max file size - 10mb</p>
-                                </div>
-                                <div class="image-buttons">
-                                    <button class="upload-btn">Upload</button>
-                                    <button class="remove-btn">Remove image</button>
-                                </div>
-                            </div>
-                    
-                            <!-- Profile Form Section -->
-                            <form>
-                                <label>Edit Username</label>
-                                <input type="text" value="angel123" class="input-field">
-                                
-                                <label>Role</label>
-                                <input type="text" value="Team Leader" class="input-field" disabled>
-                                
-                                <label>Bio</label>
-                                <textarea placeholder="Write a short introduction..." class="textarea-field"></textarea>
-                                
-                                <div class="form-buttons">
-                                    <button type="submit" class="save-btn">Save Changes</button>
-                                    <button type="reset" class="clear-btn">Clear all</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-        
-                    <!-- Account Settings Section -->
-                    <div id="account-section" class="ss_section hidden">
-                        <h3>Account Settings</h3>
-                        <form>
-                            <!-- Name Section -->
-                            <h4 class="namee">Name</h4>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <p>First name</p>
-                                    <input type="text" value="Angel" class="f-input-field">
-                                </div>
-                                <div class="form-group">
-                                    <p>Last name</p>
-                                    <div class="name">
-                                        <input type="text" value="Canete" class="l-input-field">
-                                        <a href="#" class="change-link">Change</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Email Address Section -->
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <div class="email">
-                                    <p class="email-display">Your email is <strong>angelbaby@gmail.com</strong></p>
-                                    <a href="#" class="change-link">Change</a>
-                                </div>
-                            </div>
-                    
-                            <!-- Password Section -->
-                            <div class="form-group">
-                                <label>Password</label>
-                                <div class="pass">
-                                    <input type="password" value="********" class="p-input-field">
-                                    <a href="#" class="change-link">Change</a>
-                                </div>
-                            </div>
-                    
-                            <!-- Delete Account Section -->
-                            <div class="delete-account">
-                                <label>Delete Account</label>
-                                <div class="del">
-                                    <p class="d-text">Would you like to delete your account? Deleting your account will remove all the content associated with it.</p>
-                                    <a href="#" class="delete-link">I want to delete my account</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    
-        
-                    <!-- Notifications Section -->
-                    <div id="notifications-section" class="ss_section hidden">
-                        <h3>Notifications</h3>
-                        <div class="s_notifications">
-                            <!-- Enable Desktop Notification -->
-                            <div class="notification-group">
-                                <div class="notification-text">
-                                    <strong>Enable Desktop Notification</strong>
-                                    <p>Receive notification for all messages, updates, and documents</p>
-                                </div>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                    
-                            <!-- Enable Unread Notification -->
-                            <div class="notification-group">
-                                <div class="notification-text">
-                                    <strong>Enable Unread Notification</strong>
-                                    <p>Shows a red badge when you have an unread message</p>
-                                </div>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                    
-                            <!-- Email Notifications -->
-                            <h3 class="n_email">Email Notifications</h3>
-                    
-                            <!-- Communication Emails -->
-                            <div class="notification-group">
-                                <div class="notification-text">
-                                    <strong>Communication Emails</strong>
-                                    <p>Receive emails for messages, contracts, and documents</p>
-                                </div>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                    
-                            <!-- Announcements & Updates -->
-                            <div class="notification-group">
-                                <div class="notification-text">
-                                    <strong>Announcements & Updates</strong>
-                                    <p>Receive emails about product updates, improvements, etc.</p>
-                                </div>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>        
-    
+            <!-- Hidden file input for attachment -->
+            <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
+            
+            <!-- Attachment icon triggers the file input -->
+            <i class="bx bx-paperclip attach-icon" onclick="document.getElementById('fileInput').click();"></i>
+            
+            <!-- Send button -->
+            <button class="send-btn" onclick="sendMessage()"><i class="bx bx-send"></i></button>
+        </div>
+    </div>
+</div>
+
+    <div class="context-menu" id="contextMenu">
+        <ul>
+            <li onclick="archiveChat()">Archive</li>
+            <li onclick="deleteChat()">Delete</li>
+            <li onclick="blockUser()">Block</li>
+        </ul>
+    </div>
+</section>
+
         
     </div>
     <!-- container end -->
-     <script src="sidebar.js"></script>
     <script src="calendar.js"></script>
     <script src="script.js"></script>
 </body>
