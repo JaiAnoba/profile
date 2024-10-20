@@ -995,12 +995,12 @@ body {
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 30px; 
-    max-width: 1650px;
-    min-height: 775px;
+    max-width: 1520px;
+    height: 780px;
 }
 
 .proj {
-    margin: 0 0 20px 260px;
+    margin: 90px 0 20px 260px;
     overflow: hidden;
     /* display: none;  */
 }
@@ -1093,13 +1093,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-height: 670px; 
+    max-height: 550px; 
     overflow-y: auto; 
     padding-right: 15px;
 }
 
 .projects-grids.list-view::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 .projects-grids.list-view::-webkit-scrollbar-thumb {
@@ -1120,7 +1120,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
-    height: 115px;
+    height: 93px;
 }
 
 .project-cards.list .card-headers {
@@ -1142,10 +1142,10 @@ body {
 
 .projects-grids {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 50px;
     padding: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .project-cards {
@@ -1155,6 +1155,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-top: 5px solid transparent;
+    height: 230px;
 }
 
 .project-cards:hover {
@@ -1171,7 +1172,7 @@ body {
 }
 
 .card-headers p {
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 /* Ellipsis Menu Icon */
@@ -1180,8 +1181,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 4px;
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
     cursor: pointer;
 }
 
@@ -1199,14 +1200,14 @@ body {
 
 /* Project Title and Description */
 .project-cards h3 {
-    font-size: 20px;
+    font-size: 1rem;
     text-align: center;
-    margin: 5px 0;
+    margin-top: -10px;
     color: #333;
 }
 
 .project-cards p {
-    font-size: 14px;
+    font-size: 0.8rem;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -1247,7 +1248,7 @@ body {
 .progress-percentage {
     text-align: right;
     margin-top: -5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 /* Project Footer Section */
@@ -1255,26 +1256,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .avatars {
     display: flex;
     align-items: center;
     gap: -20px;
+    margin-top: -20px;
 }
 
 .avatars img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
 }
 
 .add-team-member {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: #79afe9;
     color: white;
@@ -1283,12 +1286,14 @@ body {
 
 /* Due Date Styling */
 .due {
-    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
     font-weight: 600;
     width: 100px;
-    height: 35px;
+    height: 28px;
     padding: 7px;
-    margin-top: 20px;
     color: white;
     background-color: #79afe9;
     border-radius: 30px;
@@ -1297,8 +1302,8 @@ body {
 
 /* CALENDAR */
 .calendars {
-    max-width: 1650px;
-    min-height: 775px;
+    max-width: 1520px;
+    height: 780px;
     margin: 70px 0 20px 260px;
     padding: 50px;
     background-color: #f9f9f9;
@@ -1452,8 +1457,8 @@ button {
 /* CHATS START */
 .message {
     display: flex;
-    max-width: 1650px;
-    min-height: 775px;
+    max-width: 1520px;
+    height: 780px;  
     margin-top: 50px;
     padding: 20px;
     margin: 0 0 20px 260px;
@@ -1807,8 +1812,8 @@ button {
 /* SETTINGS START */
 .settings {
     display: flex;
-    max-width: 1650px;
-    min-height: 775px;
+    max-width: 1520px;
+    height: 780px;
     margin-top: 50px;
     padding: 20px;
     margin: 0 0 20px 260px;
@@ -2117,11 +2122,13 @@ button {
     color: #333;
 }
 
+/* Notifications */
+
 .notification-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 .notification-text {
