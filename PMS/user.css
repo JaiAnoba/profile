@@ -349,8 +349,7 @@ body {
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: #1f1f1f;
-    color: #fff;
+    background-color: #ebe9e9;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     display: none;
@@ -358,8 +357,18 @@ body {
     width: 220px;
 }
 
+.nam {
+    padding: 20px;
+    margin-left: 15px;
+}
+
+.nam p{
+    font-size: 0.6rem;
+}
+
 .dropdown ul {
     list-style: none;
+    margin-top: -20px;
     padding: 10px;
     position: relative;
     z-index: 1;
@@ -370,14 +379,25 @@ body {
     align-items: center;
     padding: 12px;
     gap: 10px;
-    font-size: 16px;
+    font-size: 0.8rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.2s ease-in-out;
 }
 
 .dropdown li:hover {
-    background-color: #333;
+    background-color: #d4d3d3;
+}
+
+.dropdown li a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown .bx-log-out {
+    margin-inline: 10px;
 }
 
 .dropdown .material-symbols-outlined {
