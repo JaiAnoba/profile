@@ -102,6 +102,7 @@ function showSection(sectionId) {
 // USER DROPDOWN 
 document.querySelector('.userImg').addEventListener('click', function() {
   const dropdown = document.querySelector('.dropdown');
+  dropdown.style.zIndex = 10000;
   dropdown.classList.toggle('show-dropdown');
 });
   
