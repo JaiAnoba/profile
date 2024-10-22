@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const calendarSection = document.querySelector('.calendars');
     const messageSection = document.querySelector('.message');
     const settingsSection = document.querySelector('.settings');
+    const topSection = document.querySelector('.top');
   
     // Hide all sections initially except for the dashboard (.right)
     projSection.style.display = 'none';
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarSection.style.display = 'none';
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
+      topSection.style.display = 'flex';
     });
 
     // Projects section
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarSection.style.display = 'none';
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
+      topSection.style.display = 'flex';
     });
   
     // Calendar section
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarSection.style.display = 'block';
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
+      topSection.style.display = 'flex';
     });
   
     // Message section
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarSection.style.display = 'none';
       messageSection.style.display = 'block';
       settingsSection.style.display = 'none';
+      topSection.style.display = 'flex';
     });
   
     // Settings section
@@ -67,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarSection.style.display = 'none';
       messageSection.style.display = 'none';
       settingsSection.style.display = 'block';
+      topSection.style.display = 'none'; 
     });
   });
 
@@ -92,4 +98,10 @@ function showSection(sectionId) {
   document.getElementById(sectionId).classList.remove('hidden');
   document.getElementById(sectionId).classList.add('active');
 }
+
+// USER DROPDOWN 
+document.querySelector('.userImg').addEventListener('click', function() {
+  const dropdown = document.querySelector('.dropdown');
+  dropdown.classList.toggle('show-dropdown');
+});
   
