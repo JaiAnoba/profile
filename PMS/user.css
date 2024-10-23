@@ -1467,15 +1467,86 @@ button {
     width: 12px;
     height: 12px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
     border-radius: 50%;
 }
 
-.user-interview { background-color: #f39c9c; }
-.web-design-review { background-color: #8dbbff; }
-.meeting-with-client { background-color: #d3a3e6; }
-.mobile-app { background-color: #b2e6a3; }
-.ui-ux { background-color: #e3b3a3; }
+/* Highlight styles for selected dates */
+.personal {
+    background-color: #b2e6a3; 
+}
+
+.work {
+    background-color: #8dbbff;
+}
+
+.urgent {
+    background-color: #f39c9c; 
+}
+
+/* Style for task title in big calendar */
+.big-calendar .task-title {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #333;
+    font-weight: bold;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.bx-x {
+    cursor: pointer;
+    float: right;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.bx-x:hover {
+    color: #f00;
+}
+
+.modal input, .modal textarea, .modal select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#add-task-btn {
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: #5c84b8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#add-task-btn:hover {
+    background-color: #4c73ae;
+}
 
 /* CHATS START */
 .message {

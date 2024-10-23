@@ -53,21 +53,19 @@ function initDashboardCalendar() {
 // Call the function to initialize the dashboard calendar
 initDashboardCalendar();
 
+
+
+
 // SECTION CALENDAR
+let selectedDates = [];
+let tasks = {}; // Moved tasks outside the initSectionCalendar to make it accessible globally
+
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"];
-
-    const tasks = {
-        "2022-03-09": "user-interview",
-        "2022-03-05": "web-design-review",
-        "2022-03-25": "meeting-with-client",
-        "2022-03-28": "mobile-app",
-        "2022-03-30": "ui-ux"
-    };
 
     function loadCalendar(month, year) {
         document.getElementById("month-year").innerText = `${monthNames[month]} ${year}`;
@@ -78,19 +76,139 @@ function initSectionCalendar() {
 
         const miniCalendar = document.getElementById("mini-calendar");
         miniCalendar.innerHTML = "";
-        
+
         for (let i = 0; i < firstDay; i++) {
             miniCalendar.innerHTML += `<div></div>`;
         }
 
         for (let day = 1; day <= daysInMonth; day++) {
             const date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-            const taskClass = tasks[date] ? tasks[date] : "";
-            miniCalendar.innerHTML += `<div class="${taskClass}">${day}</div>`;
+            const taskClass = tasks[date] ? tasks[date].map(task => task.category).join(' ') : "";
+            miniCalendar.innerHTML += `<div class="${taskClass}" onclick="selectDate('${date}', this)">${day}</div>`;
         }
 
         const largeCalendar = document.getElementById("large-calendar");
         largeCalendar.innerHTML = miniCalendar.innerHTML;
+
+        // Load tasks for the current month
+        loadTasksForCurrentMonth(month, year);
+    }
+
+    // Handle date selection
+    window.selectDate = function(date, element) {
+        if (selectedDates.includes(date)) {
+            selectedDates = selectedDates.filter(d => d !== date);
+            element.classList.remove('selected'); // Remove highlight
+        } else {
+            selectedDates.push(date);
+            element.classList.add('selected'); // Add highlight
+        }
+        openTaskModal(); // Open modal to add task
+    }
+
+    // Open the task modal
+    function openTaskModal() {
+        document.getElementById('task-modal').style.display = 'flex';
+        // Re-attach close button listener each time the modal opens
+        const closeButton = document.querySelector('.bx-x');
+        closeButton.onclick = closeTaskModal; // Attach close function
+    }
+
+    // Close the task modal
+    function closeTaskModal() {
+        document.getElementById('task-modal').style.display = 'none';
+        resetTaskForm(); // Reset form when closing
+    }
+
+    // Add task to the selected dates
+    document.getElementById('add-task-btn').onclick = function() {
+        const title = document.getElementById('task-title').value.trim();
+        const desc = document.getElementById('task-desc').value.trim();
+        const time = document.getElementById('task-time').value; // Get time input
+        const category = document.getElementById('task-category').value;
+
+        // Check if title is filled; if not, do not add to tasks
+        if (!title || !category) {
+            // Close modal if important details are missing
+            closeTaskModal();
+            return; // Do not proceed to add task
+        }
+
+        selectedDates.forEach(date => {
+            if (!tasks[date]) {
+                tasks[date] = [];
+            }
+            tasks[date].push({ title, desc, time, category });
+            highlightDateInCalendar(date, category);
+            addTaskToList(title, formatTime(time), category); // Format time before adding to list
+        });
+
+        closeTaskModal(); // Close the modal after adding tasks
+    };
+
+    // Load tasks for the current month
+    function loadTasksForCurrentMonth(month, year) {
+        // Clear existing tasks displayed
+        const taskList = document.querySelector('.taskss ul');
+        taskList.innerHTML = '';
+
+        // Calculate the start and end dates of the current month
+        const startDate = new Date(year, month, 1);
+        const endDate = new Date(year, month + 1, 0); // Last date of the month
+
+        // Loop through each date in the current month
+        for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
+            const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+            if (tasks[formattedDate]) {
+                tasks[formattedDate].forEach(task => {
+                    addTaskToList(task.title, formatTime(task.time), task.category);
+                });
+            }
+        }
+    }
+
+    // Highlight dates in the calendar
+    function highlightDateInCalendar(date, category) {
+        const dateElements = document.querySelectorAll('#mini-calendar div, #large-calendar div');
+        dateElements.forEach(element => {
+            const dayText = element.innerText;
+            const currentDate = new Date(date);
+            if (dayText === currentDate.getDate().toString()) {
+                element.classList.add(category); // Add class for coloring
+            }
+        });
+    }
+
+    // Add task to the task list
+    function addTaskToList(title, time, category) {
+        const taskList = document.querySelector('.taskss ul');
+        const li = document.createElement('li');
+        
+        // Define the color based on the category
+        const colorClass = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
+        
+        // Create a color circle using CSS styles
+        li.innerHTML = `
+            <span class="task-color" style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:${colorClass}; margin-right:5px;"></span>
+            ${title} - ${time}
+        `;
+        taskList.appendChild(li);
+    }
+
+    // Format time to AM/PM
+    function formatTime(timeString) {
+        const date = new Date(`1970-01-01T${timeString}`);
+        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+        return date.toLocaleString('en-US', options);
+    }
+
+    // Reset the task form
+    function resetTaskForm() {
+        document.getElementById('task-title').value = '';
+        document.getElementById('task-desc').value = '';
+        document.getElementById('task-time').value = ''; // Reset time input
+        document.getElementById('task-category').value = 'personal';
+        selectedDates = []; // Clear selected dates
     }
 
     function prevMonth() {
@@ -121,44 +239,8 @@ function initSectionCalendar() {
 initSectionCalendar();
 
 
-// PROJECT-DATE
-document.addEventListener('DOMContentLoaded', function() {
-    const dateElement = document.getElementById('current-date');
-    
-    const today = new Date();
-    
-    const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
 
-    const formattedDate = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
-    
-    dateElement.textContent = formattedDate;
-});
-
-// LIST-VIEW & GRID PROJECT-CARDS
-document.addEventListener("DOMContentLoaded", function () {
-    const listViewIcon = document.querySelector(".bx-list-ul");
-    const gridViewIcon = document.querySelector(".bx-grid-alt");
-    const projectsGrids = document.querySelector(".projects-grids");
-    const projectCards = document.querySelectorAll(".project-cards");
-
-    // list view
-    listViewIcon.addEventListener("click", function () {
-        projectsGrids.classList.add("list-view");
-        projectCards.forEach(card => {
-            card.classList.add("list");
-        });
-    });
-
-    // grid view
-    gridViewIcon.addEventListener("click", function () {
-        projectsGrids.classList.remove("list-view");
-        projectCards.forEach(card => {
-            card.classList.remove("list");
-        });
-    });
-});
-
-// SELECT FILE
+// SELECT FILE IN MESSAGES
 const fileDisplay = document.getElementById('fileDisplay');
 const fileInput = document.getElementById('fileInput');
 const messageInput = document.getElementById('messageInput');
