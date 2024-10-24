@@ -649,11 +649,29 @@
                     <span id="month-year"></span>
                     <button onclick="nextMonth()"><img src="pics/greater.png"></button>
                 </div>
+                <div class="weekdays-s">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
                 <div id="mini-calendar"></div>
             </div>
             
             <div class="big-calendar">
                 <h2 id="big-month-year"></h2>
+                <div class="weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
                 <div id="large-calendar"></div>
             </div>
             </div>
@@ -673,8 +691,11 @@
                 
                 <label for="task-desc">Description</label>
                 <textarea id="task-desc" placeholder="Task Description"></textarea>
+
+                <label for="task-date">Date</label>
+                <input type="date" id="task-date" value="" disabled>
                 
-                <label for="task-deadline">Deadline</label>
+                <label for="task-deadline">Time</label>
                 <input type="time" id="task-time">
                 
                 <label for="task-category">Category</label>

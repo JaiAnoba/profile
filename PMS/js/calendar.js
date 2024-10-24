@@ -59,6 +59,7 @@ initDashboardCalendar();
 // SECTION CALENDAR
 let selectedDates = [];
 let tasks = {}; // Moved tasks outside the initSectionCalendar to make it accessible globally
+let selectedDate; // Variable to hold the selected date
 
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
@@ -96,20 +97,16 @@ function initSectionCalendar() {
 
     // Handle date selection
     window.selectDate = function(date, element) {
-        if (selectedDates.includes(date)) {
-            selectedDates = selectedDates.filter(d => d !== date);
-            element.classList.remove('selected'); // Remove highlight
-        } else {
-            selectedDates.push(date);
-            element.classList.add('selected'); // Add highlight
-        }
+        selectedDate = date; // Set selected date
+        selectedDates.push(date); // Add date to selected dates
+        element.classList.toggle('selected'); // Toggle highlight
         openTaskModal(); // Open modal to add task
+        document.getElementById('task-date').value = date; // Set the date in the modal
     }
 
     // Open the task modal
     function openTaskModal() {
         document.getElementById('task-modal').style.display = 'flex';
-        // Re-attach close button listener each time the modal opens
         const closeButton = document.querySelector('.bx-x');
         closeButton.onclick = closeTaskModal; // Attach close function
     }
@@ -127,21 +124,18 @@ function initSectionCalendar() {
         const time = document.getElementById('task-time').value; // Get time input
         const category = document.getElementById('task-category').value;
 
-        // Check if title is filled; if not, do not add to tasks
-        if (!title || !category) {
-            // Close modal if important details are missing
+        // Check if title and category are filled; if not, do not add to tasks
+        if (!title || !category || !selectedDate) {
             closeTaskModal();
             return; // Do not proceed to add task
         }
 
-        selectedDates.forEach(date => {
-            if (!tasks[date]) {
-                tasks[date] = [];
-            }
-            tasks[date].push({ title, desc, time, category });
-            highlightDateInCalendar(date, category);
-            addTaskToList(title, formatTime(time), category); // Format time before adding to list
-        });
+        if (!tasks[selectedDate]) {
+            tasks[selectedDate] = [];
+        }
+        tasks[selectedDate].push({ title, desc, time, category });
+        highlightDateInCalendar(selectedDate, category);
+        addTaskToList(title, formatTime(time), selectedDate, category);
 
         closeTaskModal(); // Close the modal after adding tasks
     };
@@ -161,7 +155,7 @@ function initSectionCalendar() {
             const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
             if (tasks[formattedDate]) {
                 tasks[formattedDate].forEach(task => {
-                    addTaskToList(task.title, formatTime(task.time), task.category);
+                    addTaskToList(task.title, formatTime(task.time), formattedDate, task.category);
                 });
             }
         }
@@ -180,7 +174,7 @@ function initSectionCalendar() {
     }
 
     // Add task to the task list
-    function addTaskToList(title, time, category) {
+    function addTaskToList(title, time, date, category) {
         const taskList = document.querySelector('.taskss ul');
         const li = document.createElement('li');
         
@@ -190,7 +184,7 @@ function initSectionCalendar() {
         // Create a color circle using CSS styles
         li.innerHTML = `
             <span class="task-color" style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:${colorClass}; margin-right:5px;"></span>
-            ${title} - ${time}
+            ${title} - ${time} on ${date} 
         `;
         taskList.appendChild(li);
     }
@@ -209,6 +203,7 @@ function initSectionCalendar() {
         document.getElementById('task-time').value = ''; // Reset time input
         document.getElementById('task-category').value = 'personal';
         selectedDates = []; // Clear selected dates
+        selectedDate = null; // Reset selected date
     }
 
     function prevMonth() {
@@ -236,7 +231,7 @@ function initSectionCalendar() {
 }
 
 // Call the function to initialize the section calendar
-initSectionCalendar();
+initSectionCalendar();   
 
 
 
