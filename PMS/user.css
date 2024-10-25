@@ -246,7 +246,6 @@ body {
 
 /* right start */
 .right {
-    position: relative;
     width: 100rem;
     height: 90%;
     margin: 90px 0 20px 255px;
@@ -804,7 +803,6 @@ body {
 
 /* CALENDAR */
 .calendar {
-    position: relative;
     margin-left: -32.5rem;
     padding: 30px;
     width: 385px;
@@ -826,7 +824,6 @@ body {
 }
 
 .calendarHead {
-    position: relative;
     width: 100%;
     height: 30px;
     display: flex;
@@ -836,7 +833,6 @@ body {
 }
 
 .calendarHead h2 {
-    position: relative;
     width: 100%;
     height: 100%;
     line-height: 18px;
@@ -846,14 +842,12 @@ body {
 }
 
 .calendarIcon {
-    position: relative;
     display: flex;
     gap: 10px;
     cursor: pointer;
 }
 
 .container .right main .calendar .calendarHead .calendarIcon .material-symbols-outlined {
-    position: relative;
     width: 25px;
     height: 25px;
     border: 3px solid #9fa7d6;
@@ -1136,32 +1130,57 @@ body {
 
 .project-cards.list {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 15px;
+    align-items: center;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     height: 93px;
+    background-color: white;
 }
 
-.project-cards.list .card-headers {
-    width: 15%;
+.project-cards.list .card-headers p{
+    display: none;
 }
 
-.project-cards.list h3,
-.project-cards.list p,
-.project-cards.list .progresss,
+.project-cards.list .progresss {
+    display: none;
+}
+
 .project-cards.list .progress-percentage {
-    width: 20%;
-    text-align: left;
+    display: none;
 }
 
-.project-cards.list .project-footers {
-    width: 25%;
-    justify-content: flex-start;
+.project-cards.list .p-title {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: 30px;
+    right: 500px;
 }
+
+.project-cards.list .avatars {
+    position: relative;
+    right: 980px;
+}
+
+.project-cards.list .menu-icon {
+    position: relative;
+    left: 1300px;
+}
+
+.project-cards.list .menu-icon span {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.project-cards.list .due {
+    position: relative;
+    right: 90px;
+}
+
 
 .projects-grids {
     display: grid;
@@ -1399,10 +1418,6 @@ button {
     padding: 5px;
     border-radius: 4px;
 }
-
-/* #mini-calendar .selected { */
-    /* border-radius: 100%; */
-/* } */
 
 #large-calendar .task-title {
     font-size: 0.8em;
