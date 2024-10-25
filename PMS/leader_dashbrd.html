@@ -876,7 +876,7 @@
                                 <label>Email Address</label>
                                 <div class="email">
                                     <p class="email-display">Your email is <strong>angelbaby@gmail.com</strong></p>
-                                    <a href="#" class="change-link">Change</a>
+                                    <!-- <a href="#" class="change-link">Change</a> -->
                                 </div>
                             </div>
                     
@@ -884,8 +884,19 @@
                             <div class="form-group">
                                 <label>Password</label>
                                 <div class="pass">
-                                    <input type="password" value="********" class="p-input-field">
-                                    <a href="#" class="change-link">Change</a>
+                                    <div id="password-view">
+                                        <input type="password" value="********" class="p-input-field" disabled>
+                                        <a href="#" id="change-link" class="change-link">Change</a>
+                                    </div>
+                                    <div id="password-edit" class="p-hidden">
+                                        <label>New Password</label>
+                                        <input type="password" id="new-password" class="p--input-field" placeholder="Enter new password">
+                                        <label>Current Password</label>
+                                        <input type="password" id="current-password" class="p--input-field" placeholder="Enter current password">
+                                        <a href="#" id="hide-link" class="change-link">Hide</a>
+                                        <p>Can't remember your current password? <a href="#">Reset your password</a></p>
+                                        <button type="button" id="save-password-btn">Save password</button>
+                                    </div>
                                 </div>
                             </div>
                     
@@ -965,7 +976,7 @@
         
     </div>
     <!-- container end -->
-     <script src="js/sidebar.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/script.js"></script>
 </body>

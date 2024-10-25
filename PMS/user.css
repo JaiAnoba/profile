@@ -2192,6 +2192,10 @@ button {
     white-space: nowrap;
 }
 
+.p-hidden {
+    display: none;
+}
+
 .pass {
     display: flex;
     flex-direction: row;
@@ -2204,6 +2208,28 @@ button {
     border-radius: 10px;
     font-size: 16px;
     margin-right: 650px;
+}
+
+.p--input-field {
+    width: 370px;
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#save-password-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#save-password-btn:hover {
+    background-color: #0056b3;
 }
 
 /* Delete Account Section */

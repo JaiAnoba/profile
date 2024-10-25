@@ -106,3 +106,31 @@ document.querySelector('.userImg').addEventListener('click', function() {
   dropdown.classList.toggle('show-dropdown');
 });
   
+
+//CHANGE & HIDE PASSWORD
+
+document.getElementById('change-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('password-view').classList.add('p-hidden');  // Hides the "Change" view
+  document.getElementById('password-edit').classList.remove('p-hidden'); // Shows the "Edit" view
+});
+
+document.getElementById('hide-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('password-view').classList.remove('p-hidden'); // Shows the "Change" view
+  document.getElementById('password-edit').classList.add('p-hidden'); // Hides the "Edit" view
+});
+
+document.getElementById('save-password-btn').addEventListener('click', function() {
+  var newPassword = document.getElementById('new-password').value;
+  var currentPassword = document.getElementById('current-password').value;
+
+  if (newPassword && currentPassword) {
+      alert('Password successfully changed!');
+      // After success, return to the original view
+      document.getElementById('password-view').classList.remove('p-hidden');
+      document.getElementById('password-edit').classList.add('p-hidden');
+  } else {
+      alert('Please fill in both fields.');
+  }
+});
