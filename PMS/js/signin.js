@@ -11,9 +11,4 @@ signInButton.addEventListener('click', () => {
 });            
 
 
-// CHECK CIRCLE
-function toggleCheck(element) {
-  element.classList.toggle("checked");
-}
-
 

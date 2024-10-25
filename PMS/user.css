@@ -1400,6 +1400,15 @@ button {
     border-radius: 4px;
 }
 
+/* #mini-calendar .selected { */
+    /* border-radius: 100%; */
+/* } */
+
+#large-calendar .task-title {
+    font-size: 0.8em;
+    color: gray;
+}
+
 /* Main large calendar styling */
 .big-calendar {
     flex-grow: 2;
@@ -1409,7 +1418,8 @@ button {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
-    min-height: 600px;
+    width: 900%;
+    height: 620px;
     overflow: auto;
 }
 
@@ -1420,22 +1430,15 @@ button {
 #large-calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px; 
-    width: 100%;
-    margin-top: 30px;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
+    gap: 11px; 
+    margin-top: 35px;
 }
 
 #large-calendar div {
-    position: fixed;
     padding: 10px;
-    min-height: 80px; 
-    text-align: left;
-    font-size: 1.4em;
-    position: relative;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    min-height: 75px; 
+    text-align: center;
+    font-size: 1.2em;   
 }
 
 .weekdays-s {
@@ -1464,10 +1467,10 @@ button {
 /* Task list styling */
 .taskss {
     width: 300px;
-    height: 270px;
+    height: 290px;
     padding: 20px;
     position: fixed;
-    margin-top:-270px;
+    margin-top: -290px;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1481,8 +1484,9 @@ button {
 
 .taskss ul {
     list-style: none;
-    padding-left: 40px;
+    padding-left: 30px;
     margin: 0;
+    overflow: auto;
 }
 
 .taskss li {

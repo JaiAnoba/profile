@@ -76,6 +76,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+// CHECK CIRCLE
+function toggleCheck(element) {
+  element.classList.toggle("checked");
+}
+
+
 // SETTINGS
 document.getElementById("profile-link").addEventListener("click", function() {
   showSection('s-profile-section');
@@ -98,6 +105,8 @@ function showSection(sectionId) {
   document.getElementById(sectionId).classList.remove('hidden');
   document.getElementById(sectionId).classList.add('active');
 }
+
+
 
 // USER DROPDOWN 
 document.querySelector('.userImg').addEventListener('click', function() {
