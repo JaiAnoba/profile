@@ -905,14 +905,15 @@ body {
 
 .days {
     position: relative;
-    gap: 15px;
+    gap: 17px;
     width: 100%;
-    margin-top: 20px;
-    height: calc(100% - 30px);
+    margin-top: 25px;
+    height: calc(100% - 85px);
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
     place-items: center;
+    overflow: auto;
 }
 
 .days li {
@@ -2129,6 +2130,15 @@ button {
     margin-bottom: -40px;
 }
 
+.s-full {
+    position: fixed;
+    margin-top: -60px;
+}
+
+.s-em {
+    margin-top: 150px;
+}
+
 /* Form Layout */
 .form-row {
     display: flex;
@@ -2138,7 +2148,7 @@ button {
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin-top: 65px;
+    margin: 55px 40px 0 0;
 }
 
 .form-group label {
@@ -2149,7 +2159,7 @@ button {
 .l-input-field {
     width: 300px;
     padding: 10px; 
-    margin-right: 230px;
+    margin-right: 220px;
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 16px;
@@ -2196,9 +2206,31 @@ button {
     display: none;
 }
 
+.p-pass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+}
+
 .pass {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.p-current {
+    margin-right: 150px;
+}
+
+.p-new {
+    margin-right: 220px;
+}
+
+.reset {
+    margin-top: 15px;
+    white-space: nowrap;
 }
 
 .p-input-field {
@@ -2207,11 +2239,11 @@ button {
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 16px;
-    margin-right: 650px;
+    margin-right: 600px;
 }
 
 .p--input-field {
-    width: 370px;
+    width: 220px;
     padding: 10px; 
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -2223,6 +2255,7 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
+    margin-top: 20px;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;

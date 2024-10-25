@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // SETTINGS
+// SETTINGS
 document.getElementById("profile-link").addEventListener("click", function() {
   showSection('s-profile-section');
 });
@@ -107,30 +107,101 @@ document.querySelector('.userImg').addEventListener('click', function() {
 });
   
 
-//CHANGE & HIDE PASSWORD
 
+// CHANGE & HIDE PASSWORD
 document.getElementById('change-link').addEventListener('click', function(e) {
   e.preventDefault();
-  document.getElementById('password-view').classList.add('p-hidden');  // Hides the "Change" view
-  document.getElementById('password-edit').classList.remove('p-hidden'); // Shows the "Edit" view
+  document.getElementById('password-view').style.display = 'none';  // Hides the "Change" view
+  document.getElementById('password-edit').style.display = 'block'; // Shows the "Edit" view
 });
 
 document.getElementById('hide-link').addEventListener('click', function(e) {
   e.preventDefault();
-  document.getElementById('password-view').classList.remove('p-hidden'); // Shows the "Change" view
-  document.getElementById('password-edit').classList.add('p-hidden'); // Hides the "Edit" view
+  document.getElementById('password-view').style.display = 'flex'; // Shows the "Change" view
+  document.getElementById('password-edit').style.display = 'none'; // Hides the "Edit" view
 });
 
 document.getElementById('save-password-btn').addEventListener('click', function() {
   var newPassword = document.getElementById('new-password').value;
   var currentPassword = document.getElementById('current-password').value;
 
-  if (newPassword && currentPassword) {
-      alert('Password successfully changed!');
-      // After success, return to the original view
-      document.getElementById('password-view').classList.remove('p-hidden');
-      document.getElementById('password-edit').classList.add('p-hidden');
-  } else {
+  // Check if both fields are filled
+  if (!newPassword || !currentPassword) {
       alert('Please fill in both fields.');
+      return;
   }
+
+  // Validate the new password length (at least 8 characters)
+  if (newPassword.length < 8) {
+      alert('New password must be at least 8 characters long.');
+      return;
+  }
+
+  // Validate if the password contains at least one uppercase letter
+  if (!/[A-Z]/.test(newPassword)) {
+      alert('New password must contain at least one uppercase letter.');
+      return;
+  }
+
+  // Validate if the password contains at least one lowercase letter
+  if (!/[a-z]/.test(newPassword)) {
+      alert('New password must contain at least one lowercase letter.');
+      return;
+  }
+
+  // Validate if the password contains at least one number
+  if (!/[0-9]/.test(newPassword)) {
+      alert('New password must contain at least one number.');
+      return;
+  }
+
+  // Validate if the password contains at least one special character
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(newPassword)) {
+      alert('New password must contain at least one special character.');
+      return;
+  }
+
+  // Logic to handle password change 
+  alert('Password successfully changed!');
+
+  // After success, return to the original view
+  document.getElementById('password-view').style.display = 'flex';  // Shows the "Change" view
+  document.getElementById('password-edit').style.display = 'none';  // Hides the "Edit" view
+});
+
+// PROJECT-DATE
+document.addEventListener('DOMContentLoaded', function() {
+  const dateElement = document.getElementById('current-date');
+  
+  const today = new Date();
+  
+  const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+
+  const formattedDate = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+  
+  dateElement.textContent = formattedDate;
+});
+
+// LIST-VIEW & GRID PROJECT-CARDS
+document.addEventListener("DOMContentLoaded", function () {
+  const listViewIcon = document.querySelector(".bx-list-ul");
+  const gridViewIcon = document.querySelector(".bx-grid-alt");
+  const projectsGrids = document.querySelector(".projects-grids");
+  const projectCards = document.querySelectorAll(".project-cards");
+
+  // list view
+  listViewIcon.addEventListener("click", function () {
+      projectsGrids.classList.add("list-view");
+      projectCards.forEach(card => {
+          card.classList.add("list");
+      });
+  });
+
+  // grid view
+  gridViewIcon.addEventListener("click", function () {
+      projectsGrids.classList.remove("list-view");
+      projectCards.forEach(card => {
+          card.classList.remove("list");
+      });
+  });
 });
