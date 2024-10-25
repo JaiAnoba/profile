@@ -214,3 +214,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+//SIDEBAR COLLAPSED
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.querySelector(".left");
+  const toggleButton = document.querySelector(".logo");
+
+  toggleButton.addEventListener("click", function () {
+      sidebar.classList.toggle("collapsed");
+  });
+});
+
