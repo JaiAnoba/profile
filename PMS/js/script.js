@@ -248,3 +248,31 @@ window.addEventListener('click', (event) => {
     }
 });
 
+
+//CARD-PROJECT TEMPLATE
+function addProject(projectData) {
+  const template = document.getElementById('project-card-template');
+  const newProject = template.cloneNode(true);
+  newProject.style.display = 'block';
+  
+  // Populate the data (replace text and styles as necessary)
+  newProject.querySelector('.project-date').textContent = projectData.date;
+  newProject.querySelector('.p-title h3').textContent = projectData.title;
+  newProject.querySelector('.p-title p').textContent = projectData.category;
+  newProject.querySelector('.progress-bars').style.width = projectData.progress + '%';
+  newProject.querySelector('.progress-percentage').textContent = projectData.progress + '%';
+  newProject.querySelector('.due').textContent = projectData.daysLeft + ' Days Left';
+  
+  // Add new project to the container
+  document.getElementById('project-container').appendChild(newProject);
+}
+
+//PROJECT COLOR THEME
+const colorOptions = document.querySelectorAll('.color-option');
+
+colorOptions.forEach(option => {
+    option.addEventListener('click', function () {
+        colorOptions.forEach(opt => opt.classList.remove('select'));
+        this.classList.add('select');
+    });
+});

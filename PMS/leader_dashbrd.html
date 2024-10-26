@@ -420,11 +420,11 @@
             </div>
             
 
-            <div class="projects-grids">
+            <div id="project-container" class="projects-grids">
                 <!-- Project Card 1 -->
-                <div class="project-cards">
+                <div id="project-card-template" class="project-cards" style="display: none;">
                     <div class="card-headers">
-                        <p>Oct. 7, 2024</p>
+                        <p class="project-date">Oct. 7, 2024</p>
                         <div class="menu-icon">
                             <span class="dot"></span>
                             <span class="dot"></span>
@@ -463,28 +463,79 @@
         
                     <label for="project-category">Category</label>
                     <input type="text" id="project-category" placeholder="Enter category">
-        
-                    <!-- Due Date Section -->
-                    <label for="due-date">Due Date</label>
-                    <div class="date-range">
-                        <label for="start-date">Start</label>
-                        <input type="date" id="start-date">
-                        <label for="finish-date">Finish</label>
-                        <input type="date" id="finish-date">
-                    </div>
                 
                     <!-- Attachments Section -->
                     <label>Attachments</label>
                     <div class="attachments">
                         <button type="button" class="add-file">+ Add File</button>
                     </div>
-        
-                    <label for="team-members">Team Members</label>
-                    <input type="text" id="team-members" placeholder="Add team members">
-        
+
+                    <!-- Add Description -->
                     <label for="description">Description</label>
-                    <textarea id="description" rows="4" placeholder="Project description"></textarea>
-        
+                    <div class="des">
+                        <textarea id="description" rows="2" placeholder="Project description"></textarea>
+                    </div>
+
+                    <!-- Add Team Member -->
+                    <label for="team-members">Team Members</label>
+                    <div class="team-members-container">
+                        <div class="input-container">
+                            <i class='bx bxs-envelope' style='color:#868686'></i>
+                            <input type="text" id="team-members" placeholder="Add team members">
+                            <select class="access-level">
+                                <option>Can view</option>
+                                <option>Full access</option>
+                            </select>
+                        </div>
+                    
+                        <!-- Dropdown with search results -->
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <img src="profile1.jpg" alt="Profile Picture">
+                                <div class="info">
+                                    <p class="name">Anthony</p>
+                                    <p class="email">email@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <img src="profile2.jpg" alt="Profile Picture">
+                                <div class="info">
+                                    <p class="name">Aubrey</p>
+                                    <p class="email">email@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <img src="profile3.jpg" alt="Profile Picture">
+                                <div class="info">
+                                    <p class="name">Anya</p>
+                                    <p class="email">email@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Due Date Section -->
+                    <label for="due-date">Due Date</label>
+                    <div class="date-range">
+                        <div class="date-field">
+                            <label for="start-date">Start</label>
+                            <input type="date" id="start-date">
+                        </div>
+                        <div class="date-field">
+                            <label for="finish-date">Finish</label>
+                            <input type="date" id="finish-date">
+                        </div>
+                    </div>
+
+                    <!-- Color Theme Section -->
+                    <label for="color-theme">Color Theme</label>
+                    <div class="color-theme">
+                        <div class="color-option" style="background-color: #e6b7e0;" data-color="#e6b7e0"></div>
+                        <div class="color-option" style="background-color: #b6c1ff;" data-color="#b6c1ff"></div>
+                        <div class="color-option" style="background-color: #b7e6c9;" data-color="#b7e6c9"></div>
+                        <div class="color-option" style="background-color: #ffffff; border: 1px solid #ccc;" data-color="#ffffff"></div>
+                    </div>
+       
                     <button type="submit" class="save-project-btn">Save Project</button>
                 </form>
             </div>
