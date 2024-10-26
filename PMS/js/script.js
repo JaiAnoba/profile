@@ -225,3 +225,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+//PROJECT MODAL
+const newProjectBtn = document.querySelector('.new-project-btn');
+const modalOverlay = document.getElementById('modal-overlay');
+// const closeModalBtn = document.getElementById('bx-x');
+
+// Show Modal
+newProjectBtn.addEventListener('click', () => {
+    modalOverlay.style.display = 'flex';
+});
+
+// Hide Modal
+closeModalBtn.addEventListener('click', () => {
+    modalOverlay.style.display = 'none';
+});
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === modalOverlay) {
+        modalOverlay.style.display = 'none';
+    }
+});
+
