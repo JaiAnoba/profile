@@ -196,24 +196,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const listViewIcon = document.querySelector(".bx-list-ul");
   const gridViewIcon = document.querySelector(".bx-grid-alt");
   const projectsGrids = document.querySelector(".projects-grids");
-  const projectCards = document.querySelectorAll(".project-cards");
 
-  // list view
+  // Toggle list view
   listViewIcon.addEventListener("click", function () {
       projectsGrids.classList.add("list-view");
-      projectCards.forEach(card => {
+      document.querySelectorAll(".project-cards").forEach(card => {
           card.classList.add("list");
+          card.classList.remove("grid");
       });
   });
 
-  // grid view
+  // Toggle grid view
   gridViewIcon.addEventListener("click", function () {
       projectsGrids.classList.remove("list-view");
-      projectCards.forEach(card => {
+      document.querySelectorAll(".project-cards").forEach(card => {
           card.classList.remove("list");
+          card.classList.add("grid");
       });
   });
 });
+
 
 //SIDEBAR COLLAPSED
 document.addEventListener("DOMContentLoaded", function () {
@@ -226,53 +228,119 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//PROJECT MODAL
-const newProjectBtn = document.querySelector('.new-project-btn');
-const modalOverlay = document.getElementById('modal-overlay');
-// const closeModalBtn = document.getElementById('bx-x');
+// PROJECT MODAL
+document.addEventListener("DOMContentLoaded", function () {
+  const modalOverlay = document.getElementById("modal-overlay");
+  const newProjectBtn = document.querySelector(".new-project-btn");
+  const saveProjectBtn = document.querySelector(".save-project-btn");
+  const projectContainer = document.getElementById("project-container");
+  const colorOptions = document.querySelectorAll(".color-option");
+  let selectedColor = "#ffffff"; // Default color
 
-// Show Modal
-newProjectBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'flex';
-});
+  // Open the modal
+  newProjectBtn.addEventListener("click", () => {
+      modalOverlay.style.display = "flex";
+  });
 
-// Hide Modal
-closeModalBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'none';
-});
+  // Close the modal when clicking outside
+  modalOverlay.addEventListener("click", (event) => {
+      if (event.target === modalOverlay) {
+          modalOverlay.style.display = "none";
+      }
+  });
 
-// Close modal when clicking outside of it
-window.addEventListener('click', (event) => {
-    if (event.target === modalOverlay) {
-        modalOverlay.style.display = 'none';
-    }
-});
+  // Function to calculate days left
+  function calculateDaysLeft(finishDate) {
+      const currentDate = new Date();
+      const endDate = new Date(finishDate);
+      const timeDiff = endDate - currentDate;
+      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+  }
 
+  // Function to darken a color
+  function darkenColor(color, percentage) {
+      const colorValue = parseInt(color.slice(1), 16);
+      const r = Math.max(0, ((colorValue >> 16) & 0xff) * (1 - percentage));
+      const g = Math.max(0, ((colorValue >> 8) & 0xff) * (1 - percentage));
+      const b = Math.max(0, (colorValue & 0xff) * (1 - percentage));
+      return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+  }
 
-//CARD-PROJECT TEMPLATE
-function addProject(projectData) {
-  const template = document.getElementById('project-card-template');
-  const newProject = template.cloneNode(true);
-  newProject.style.display = 'block';
-  
-  // Populate the data (replace text and styles as necessary)
-  newProject.querySelector('.project-date').textContent = projectData.date;
-  newProject.querySelector('.p-title h3').textContent = projectData.title;
-  newProject.querySelector('.p-title p').textContent = projectData.category;
-  newProject.querySelector('.progress-bars').style.width = projectData.progress + '%';
-  newProject.querySelector('.progress-percentage').textContent = projectData.progress + '%';
-  newProject.querySelector('.due').textContent = projectData.daysLeft + ' Days Left';
-  
-  // Add new project to the container
-  document.getElementById('project-container').appendChild(newProject);
-}
+  // Event listener for selecting a color theme
+  colorOptions.forEach(option => {
+      option.addEventListener("click", () => {
+          // Remove 'select' class from all options and add to the clicked one
+          colorOptions.forEach(opt => opt.classList.remove("select"));
+          option.classList.add("select");
+          
+          // Get the selected color
+          selectedColor = option.getAttribute("data-color");
+      });
+  });
 
-//PROJECT COLOR THEME
-const colorOptions = document.querySelectorAll('.color-option');
+  // Function to create a new project card
+  function createProjectCard(name, category, date, daysLeft) {
+      const card = document.createElement("div");
+      card.classList.add("project-cards");
+      card.style.backgroundColor = selectedColor;
 
-colorOptions.forEach(option => {
-    option.addEventListener('click', function () {
-        colorOptions.forEach(opt => opt.classList.remove('select'));
-        this.classList.add('select');
-    });
+      // Set text color to black
+      const textColor = "#000000";
+      const darkerColor = darkenColor(selectedColor, 0.2); // 20% darker
+
+      card.innerHTML = `
+          <div class="card-headers">
+              <p class="project-date" style="color: ${textColor};">${new Date(date).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+              })}</p>
+              <div class="menu-icon">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+              </div>
+          </div>
+          <div class="p-title" style="color: ${textColor};">
+              <h3>${name}</h3>
+              <p>${category}</p>
+          </div>
+          <div class="progresss">
+              <div class="progress-bars" style="width: 0%; background-color: ${darkerColor};"></div>
+          </div>
+          <div class="progress-percentage">
+              <span style="color: ${textColor};">0%</span>
+          </div>
+          <div class="project-footers">
+              <div class="avatars">
+                  <img src="pics/mona.jpg" alt="Team Member">
+                  <img src="pics/SHREK.jpg" alt="Team Member">
+                  <span class="add-team-member" style="background-color: ${darkerColor};">+</span>
+              </div>
+              <p class="due" style="background-color: ${darkerColor}; color: ${textColor};">${daysLeft} Days Left</p>
+          </div>
+      `;
+
+      projectContainer.appendChild(card);
+  }
+
+  // Save project and create card
+  saveProjectBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      // Get form values
+      const projectName = document.getElementById("project-name").value;
+      const projectCategory = document.getElementById("project-category").value;
+      const startDate = new Date();  // Capture current date when project is added
+      const finishDate = document.getElementById("finish-date").value;
+
+      // Calculate days left
+      const daysLeft = calculateDaysLeft(finishDate);
+
+      // Create project card
+      createProjectCard(projectName, projectCategory, startDate, daysLeft);
+
+      // Clear and close the modal
+      document.querySelector(".project-form").reset();
+      modalOverlay.style.display = "none";
+  });
 });

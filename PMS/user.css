@@ -1097,9 +1097,9 @@ body {
 }
 
 .projects-stats .stat p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #282a52; 
+    color: #25274e; 
 }
 
 .projects-stats .stat span {
@@ -1108,7 +1108,7 @@ body {
 }
 
 .projects-date {
-    font-size: 18px;
+    font-size: 1.1rem;
     font-weight: bold;
     text-align: right;
 }
@@ -1190,11 +1190,11 @@ body {
     background-color: white;
 }
 
-.project-cards.list .card-headers p{
+.project-cards.list .project-date{
     display: none;
 }
 
-.project-cards.list .progresss {
+.project-cards.list .progress-bars {
     display: none;
 }
 
@@ -1207,7 +1207,7 @@ body {
     position: relative;
     flex-direction: column;
     margin-top: 30px;
-    right: 500px;
+    right: 350px;
 }
 
 .project-cards.list .avatars {
@@ -1480,26 +1480,26 @@ body {
     width: 200px;
 }
 
-.attachments {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin: 5px 0 20px 0;
-}
-
-.add-file {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
-    padding: 8px;
-    font-size: 0.9em;
-    color: #7f8c8d;
-    cursor: pointer;
-    border: 1px solid #d7e0e0;
-    border-radius: 5px;
-    margin-top: 5px;
-}
+/* .attachments { */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* gap: 5px; */
+    /* margin: 5px 0 20px 0; */
+/* } */
+/*  */
+/* .add-file { */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* background: #f9f9f9; */
+    /* padding: 8px; */
+    /* font-size: 0.9em; */
+    /* color: #7f8c8d; */
+    /* cursor: pointer; */
+    /* border: 1px solid #d7e0e0; */
+    /* border-radius: 5px; */
+    /* margin-top: 5px; */
+/* } */
 
 .des {
     margin-bottom: -8px;
