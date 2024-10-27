@@ -178,6 +178,19 @@ document.getElementById('save-password-btn').addEventListener('click', function(
   document.getElementById('password-edit').style.display = 'none';  // Hides the "Edit" view
 });
 
+
+//SIDEBAR COLLAPSED
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.querySelector(".left");
+  const toggleButton = document.querySelector(".logo");
+
+  toggleButton.addEventListener("click", function () {
+      sidebar.classList.toggle("collapsed");
+  });
+});
+
+
+
 // PROJECT-DATE
 document.addEventListener('DOMContentLoaded', function() {
   const dateElement = document.getElementById('current-date');
@@ -213,17 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
           card.classList.remove("list");
           card.classList.add("grid");
       });
-  });
-});
-
-
-//SIDEBAR COLLAPSED
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebar = document.querySelector(".left");
-  const toggleButton = document.querySelector(".logo");
-
-  toggleButton.addEventListener("click", function () {
-      sidebar.classList.toggle("collapsed");
   });
 });
 
@@ -298,6 +300,11 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="menu-icon">
                   <span class="dot"></span>
                   <span class="dot"></span>
+                  <!-- Dropdown menu -->
+                  <div class="p-dropdown-menu">
+                    <div class="p-dropdown-item archive">Archive</div>
+                    <div class="p-dropdown-item delete">Delete</div>
+                  </div>
               </div>
           </div>
           <div class="p-title" style="color: ${textColor};">
@@ -342,5 +349,47 @@ document.addEventListener("DOMContentLoaded", function () {
       // Clear and close the modal
       document.querySelector(".project-form").reset();
       modalOverlay.style.display = "none";
+  });
+});
+
+
+//PROJECT-CARD MENU DROPDOWN
+document.addEventListener("DOMContentLoaded", function () {
+  const projectContainer = document.getElementById("project-container");
+
+  // Event listener for menu-icon clicks to show/hide the dropdown
+  projectContainer.addEventListener("click", function (event) {
+      const menuIcon = event.target.closest(".menu-icon");
+      
+      // If a menu icon was clicked
+      if (menuIcon) {
+          // Prevent click event from propagating to document
+          event.stopPropagation();
+
+          // Find the dropdown menu within the clicked menu icon
+          const dropdown = menuIcon.querySelector(".p-dropdown-menu");
+          if (dropdown) {
+              // Toggle dropdown visibility
+              dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+          }
+      } else {
+          // Close all dropdowns if clicked outside the menu-icon
+          document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
+      }
+  });
+
+  // Event listener for delete button inside dropdown menu
+  projectContainer.addEventListener("click", function (event) {
+      if (event.target.classList.contains("delete")) {
+          const card = event.target.closest(".project-cards");
+          if (card) {
+              card.remove(); // Remove the project card
+          }
+      }
+  });
+
+  // Close dropdown if clicked outside of menu-icon
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
   });
 });
