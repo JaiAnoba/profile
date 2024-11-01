@@ -403,3 +403,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+
+//DELETE ACC POP-UP
+document.addEventListener("DOMContentLoaded", function () {
+  const deleteLink = document.querySelector(".delete-link");
+  const popup = document.getElementById("popup");
+  const continueButton = document.getElementById("continueButton");
+  const cancelButton = document.getElementById("cancelButton");
+
+  // Show the popup when the delete link is clicked
+  deleteLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      popup.style.display = "flex";
+  });
+
+  // Handle the Continue button click (delete action)
+  continueButton.addEventListener("click", function () {
+      popup.style.display = "none";
+      alert("Account deleted successfully."); // Replace with actual delete function if needed
+  });
+
+  // Handle the Cancel button click (close popup)
+  cancelButton.addEventListener("click", function () {
+      popup.style.display = "none";
+  });
+});
+
