@@ -108,15 +108,6 @@ function showSection(sectionId) {
 
 
 
-// USER DROPDOWN 
-document.querySelector('.userImg').addEventListener('click', function() {
-  const dropdown = document.querySelector('.dropdown');
-  dropdown.style.zIndex = 10000;
-  dropdown.classList.toggle('show-dropdown');
-});
-  
-
-
 // CHANGE & HIDE PASSWORD
 document.getElementById('change-link').addEventListener('click', function(e) {
   e.preventDefault();
@@ -391,5 +382,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Close dropdown if clicked outside of menu-icon
   document.addEventListener("click", function () {
       document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
+  });
+});
+
+
+
+//USER DROPDOWN
+document.addEventListener("DOMContentLoaded", function () {
+  const userImg = document.querySelector(".userImg");
+  const dropdown = document.querySelector(".dropdown");
+
+  userImg.addEventListener("click", function () {
+      dropdown.classList.toggle("active");
+  });
+
+  // Close dropdown if clicking outside of it
+  document.addEventListener("click", function (event) {
+      if (!userImg.contains(event.target) && !dropdown.contains(event.target)) {
+          dropdown.classList.remove("active");
+      }
   });
 });
