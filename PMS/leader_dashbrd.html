@@ -469,12 +469,6 @@
         
                     <label for="project-category">Category</label>
                     <input type="text" id="project-category" placeholder="Enter category">
-                
-                    <!-- Attachments Section -->
-                    <!-- <label>Attachments</label> -->
-                    <!-- <div class="attachments"> -->
-                        <!-- <button type="button" class="add-file">+ Add File</button> -->
-                    <!-- </div> -->
 
                     <!-- Add Description -->
                     <label for="description">Description</label>
@@ -493,31 +487,6 @@
                                 <option>Full access</option>
                             </select>
                         </div>
-                    
-                        <!-- Dropdown with search results -->
-                        <!-- <div class="dropdown"> -->
-                            <!-- <div class="dropdown-item"> -->
-                                <!-- <img src="profile1.jpg" alt="Profile Picture"> -->
-                                <!-- <div class="info"> -->
-                                    <!-- <p class="name">Anthony</p> -->
-                                    <!-- <p class="email">email@gmail.com</p> -->
-                                <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="dropdown-item"> -->
-                                <!-- <img src="profile2.jpg" alt="Profile Picture"> -->
-                                <!-- <div class="info"> -->
-                                    <!-- <p class="name">Aubrey</p> -->
-                                    <!-- <p class="email">email@gmail.com</p> -->
-                                <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="dropdown-item"> -->
-                                <!-- <img src="profile3.jpg" alt="Profile Picture"> -->
-                                <!-- <div class="info"> -->
-                                    <!-- <p class="name">Anya</p> -->
-                                    <!-- <p class="email">email@gmail.com</p> -->
-                                <!-- </div> -->
-                            <!-- </div> -->
-                        <!-- </div> -->
                     </div>
 
                     <!-- Due Date Section -->
@@ -546,6 +515,62 @@
                 </form>
             </div>
         </div>
+
+        <!-- TASKS & DOCUMENTS -->
+        <div id="project-details" class="hidden">
+            <div class="tabs">
+                <button id="tasks-tab" class="tab active">Tasks</button>
+                <button id="documents-tab" class="tab">Documents</button>
+            </div>
+            
+            <div class="stats-bar">
+                <div class="tasks-stats">
+                    <p><strong>15</strong> Done</p>
+                    <p><strong>8</strong> Remaining Tasks</p>
+                </div>
+                <button class="new-task-btn">+ New Task</button>
+            </div>
+            
+            <div id="tasks-view" class="view active">
+                <!-- Task List -->
+                <div class="task-item">
+                    <div class="task-circle"></div>
+                    <div class="task-details">
+                        <h3>Web Designing</h3>
+                        <p>Prototyping</p>
+                    </div>
+                    <div class="task-options">...</div>
+                </div>
+                <div class="task-item" style="background-color: #e8d9ff;">
+                    <div class="task-circle"></div>
+                    <div class="task-details">
+                        <h3>User Interview</h3>
+                        <p>Zoom Meeting</p>
+                    </div>
+                    <div class="task-options">...</div>
+                </div>
+                <div class="task-item">
+                    <div class="task-circle"></div>
+                    <div class="task-details">
+                        <h3>Design Review</h3>
+                        <p>Webflow</p>
+                    </div>
+                    <div class="task-options">...</div>
+                </div>
+            </div>
+        
+            <div id="documents-view" class="view">
+                <!-- Document List -->
+                <div class="document-grid">
+                    <div class="document-item">
+                        <h3>Web Designing</h3>
+                        <p>Oct. 7, 2024</p>
+                        <div class="doc-options">...</div>
+                    </div>
+                    <!-- Duplicate for additional document items -->
+                </div>
+            </div>
+        </div>        
 
         <!-- CALENDAR -->
         <section class="calendars" id="calendar">

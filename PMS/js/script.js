@@ -430,3 +430,40 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//TASKS & DOCUMENTS
+document.addEventListener("DOMContentLoaded", function () {
+    // const projectsTemp = document.querySelector("project-card-template");
+    // const projectDetails = document.getElementById("project-details");
+    const tasksTab = document.getElementById("tasks-tab");
+    const documentsTab = document.getElementById("documents-tab");
+    const tasksView = document.getElementById("tasks-view");
+    const documentsView = document.getElementById("documents-view");
+
+    function showProjectDetails() {
+        const hiddenSection = document.querySelector('.hidden');
+        if (hiddenSection) {
+            hiddenSection.style.display = 'block';  // Show the hidden section
+        }
+    }
+    
+
+    // Show project details when the projects grid is clicked
+    document.querySelectorAll('.projects-grids').forEach(card => {
+        card.addEventListener('click', showProjectDetails);
+    });
+
+    // Toggle between Tasks and Documents views
+    tasksTab.addEventListener("click", function () {
+        tasksTab.classList.add("active");
+        documentsTab.classList.remove("active");
+        tasksView.classList.add("active");
+        documentsView.classList.remove("active");
+    });
+
+    documentsTab.addEventListener("click", function () {
+        documentsTab.classList.add("active");
+        tasksTab.classList.remove("active");
+        documentsView.classList.add("active");
+        tasksView.classList.remove("active");
+    });
+});
