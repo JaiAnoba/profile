@@ -422,7 +422,7 @@
 
             <div id="project-container" class="projects-grids">
                 <!-- Project Card 1 -->
-                <div id="project-card-template" class="project-cards" style="display: none">
+                <div id="project-card-template" class="project-cards">
                     <div class="card-headers">
                         <p class="project-date"></p>
                         <div class="menu-icon">
@@ -431,7 +431,6 @@
 
                              <!-- Dropdown menu -->
                             <div class="p-dropdown-menu">
-                                <div class="p-ropdown-item archive">Archive</div>
                                 <div class="p-dropdown-item delete">Delete</div>
                             </div>
                         </div>
@@ -454,6 +453,63 @@
                         </div>
                         <p class="due"></p>
                     </div>
+
+                    <!-- TASKS & DOCUMENTS -->
+                    <div id="project-details" class="hidden">
+                        <div class="tabs">
+                            <button id="tasks-tab" class="tab active">Tasks</button>
+                            <button id="documents-tab" class="tab">Documents</button>
+                        </div>
+                        
+                        <div class="stats-bar">
+                            <div class="tasks-stats">
+                                <p><strong>15</strong> Done</p>
+                                <p><strong>8</strong> Remaining Tasks</p>
+                            </div>
+                            <button class="new-task-btn">+ New Task</button>
+                        </div>
+                        
+                        <div id="tasks-view" class="view active">
+                            <!-- Task List -->
+                            <div class="task-item">
+                                <div class="task-circle"></div>
+                                <div class="task-details">
+                                    <h3>Web Designing</h3>
+                                    <p>Prototyping</p>
+                                </div>
+                                <div class="task-options">...</div>
+                            </div>
+                            <div class="task-item" style="background-color: #e8d9ff;">
+                                <div class="task-circle"></div>
+                                <div class="task-details">
+                                    <h3>User Interview</h3>
+                                    <p>Zoom Meeting</p>
+                                </div>
+                                <div class="task-options">...</div>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-circle"></div>
+                                <div class="task-details">
+                                    <h3>Design Review</h3>
+                                    <p>Webflow</p>
+                                </div>
+                                <div class="task-options">...</div>
+                            </div>
+                        </div>
+                            
+                        <div id="documents-view" class="view">
+                            <!-- Document List -->
+                            <div class="document-grid">
+                                <div class="document-item">
+                                    <h3>Web Designing</h3>
+                                    <p>Oct. 7, 2024</p>
+                                    <div class="doc-options">...</div>
+                                </div>
+                                <!-- Duplicate for additional document items -->
+                            </div>
+                        </div>
+                    </div>  
+
                 </div>
             </div>
         </section>   
@@ -461,7 +517,6 @@
         <!-- PROJECT MODAL -->
         <div class="modal-overlay" id="modal-overlay">
             <div class="p-modal">
-                <!-- <i class='bx bx-x-x'></i> -->
                 <h2>Add New Project</h2>
                 <form class="project-form">
                     <label for="project-name">Project Name</label>
@@ -516,61 +571,6 @@
             </div>
         </div>
 
-        <!-- TASKS & DOCUMENTS -->
-        <div id="project-details" class="hidden">
-            <div class="tabs">
-                <button id="tasks-tab" class="tab active">Tasks</button>
-                <button id="documents-tab" class="tab">Documents</button>
-            </div>
-            
-            <div class="stats-bar">
-                <div class="tasks-stats">
-                    <p><strong>15</strong> Done</p>
-                    <p><strong>8</strong> Remaining Tasks</p>
-                </div>
-                <button class="new-task-btn">+ New Task</button>
-            </div>
-            
-            <div id="tasks-view" class="view active">
-                <!-- Task List -->
-                <div class="task-item">
-                    <div class="task-circle"></div>
-                    <div class="task-details">
-                        <h3>Web Designing</h3>
-                        <p>Prototyping</p>
-                    </div>
-                    <div class="task-options">...</div>
-                </div>
-                <div class="task-item" style="background-color: #e8d9ff;">
-                    <div class="task-circle"></div>
-                    <div class="task-details">
-                        <h3>User Interview</h3>
-                        <p>Zoom Meeting</p>
-                    </div>
-                    <div class="task-options">...</div>
-                </div>
-                <div class="task-item">
-                    <div class="task-circle"></div>
-                    <div class="task-details">
-                        <h3>Design Review</h3>
-                        <p>Webflow</p>
-                    </div>
-                    <div class="task-options">...</div>
-                </div>
-            </div>
-        
-            <div id="documents-view" class="view">
-                <!-- Document List -->
-                <div class="document-grid">
-                    <div class="document-item">
-                        <h3>Web Designing</h3>
-                        <p>Oct. 7, 2024</p>
-                        <div class="doc-options">...</div>
-                    </div>
-                    <!-- Duplicate for additional document items -->
-                </div>
-            </div>
-        </div>        
 
         <!-- CALENDAR -->
         <section class="calendars" id="calendar">

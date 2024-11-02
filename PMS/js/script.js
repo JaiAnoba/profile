@@ -223,124 +223,127 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // PROJECT MODAL
 document.addEventListener("DOMContentLoaded", function () {
-  const modalOverlay = document.getElementById("modal-overlay");
-  const newProjectBtn = document.querySelector(".new-project-btn");
-  const saveProjectBtn = document.querySelector(".save-project-btn");
-  const projectContainer = document.getElementById("project-container");
-  const colorOptions = document.querySelectorAll(".color-option");
-  let selectedColor = "#ffffff"; // Default color
+    const modalOverlay = document.getElementById("modal-overlay");
+    const newProjectBtn = document.querySelector(".new-project-btn");
+    const saveProjectBtn = document.querySelector(".save-project-btn");
+    const projectContainer = document.getElementById("project-container");
+    const projectTemplate = document.getElementById("project-card-template");
+    const colorOptions = document.querySelectorAll(".color-option");
+    let selectedColor = "#ffffff"; // Default color
 
-  // Open the modal
-  newProjectBtn.addEventListener("click", () => {
-      modalOverlay.style.display = "flex";
-  });
+    // Open the modal
+    newProjectBtn.addEventListener("click", () => {
+        modalOverlay.style.display = "flex";
+    });
 
-  // Close the modal when clicking outside
-  modalOverlay.addEventListener("click", (event) => {
-      if (event.target === modalOverlay) {
-          modalOverlay.style.display = "none";
-      }
-  });
+    // Close the modal when clicking outside
+    modalOverlay.addEventListener("click", (event) => {
+        if (event.target === modalOverlay) {
+            modalOverlay.style.display = "none";
+        }
+    });
 
-  // Function to calculate days left
-  function calculateDaysLeft(finishDate) {
-      const currentDate = new Date();
-      const endDate = new Date(finishDate);
-      const timeDiff = endDate - currentDate;
-      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
-  }
+    // Event listener for selecting a color theme
+    colorOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            colorOptions.forEach(opt => opt.classList.remove("select"));
+            option.classList.add("select");
+            selectedColor = option.getAttribute("data-color");
+        });
+    });
 
-  // Function to darken a color
-  function darkenColor(color, percentage) {
-      const colorValue = parseInt(color.slice(1), 16);
-      const r = Math.max(0, ((colorValue >> 16) & 0xff) * (1 - percentage));
-      const g = Math.max(0, ((colorValue >> 8) & 0xff) * (1 - percentage));
-      const b = Math.max(0, (colorValue & 0xff) * (1 - percentage));
-      return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
-  }
+    // Function to calculate days left
+    function calculateDaysLeft(finishDate) {
+        const currentDate = new Date();
+        const endDate = new Date(finishDate);
+        const timeDiff = endDate - currentDate;
+        return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+    }
 
-  // Event listener for selecting a color theme
-  colorOptions.forEach(option => {
-      option.addEventListener("click", () => {
-          // Remove 'select' class from all options and add to the clicked one
-          colorOptions.forEach(opt => opt.classList.remove("select"));
-          option.classList.add("select");
-          
-          // Get the selected color
-          selectedColor = option.getAttribute("data-color");
-      });
-  });
+    // Function to darken a color
+    function darkenColor(color, percentage) {
+        const colorValue = parseInt(color.slice(1), 16);
+        const r = Math.max(0, ((colorValue >> 16) & 0xff) * (1 - percentage));
+        const g = Math.max(0, ((colorValue >> 8) & 0xff) * (1 - percentage));
+        const b = Math.max(0, (colorValue & 0xff) * (1 - percentage));
+        return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+    }
 
-  // Function to create a new project card
-  function createProjectCard(name, category, date, daysLeft) {
-      const card = document.createElement("div");
-      card.classList.add("project-cards");
-      card.style.backgroundColor = selectedColor;
+    // Function to apply darkened colors to specific elements
+    function applyDarkenedColors(card, color) {
+        const darkenedColor = darkenColor(color, 0.2); // Darken by 20%
+        const addTeamMemberElement = card.querySelector(".add-team-member");
+        const dueElement = card.querySelector(".due");
+        const progBars = card.querySelector(".progress-bars");
+        
+        if (addTeamMemberElement) {
+            addTeamMemberElement.style.backgroundColor = darkenedColor;
+        }
+        if (dueElement) {
+            dueElement.style.backgroundColor = darkenedColor;
+        }
+        if (progBars) {
+            progBars.style.backgroundColor = darkenedColor;
+        }
+    }
 
-      // Set text color to black
-      const textColor = "#000000";
-      const darkerColor = darkenColor(selectedColor, 0.2); // 20% darker
+    // Function to get the current date
+    function getCurrentDate() {
+        const currentDate = new Date();
+        return currentDate.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
+    }
 
-      card.innerHTML = `
-          <div class="card-headers">
-              <p class="project-date" style="color: ${textColor};">${new Date(date).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-              })}</p>
-              <div class="menu-icon">
-                  <span class="dot"></span>
-                  <span class="dot"></span>
-                  <!-- Dropdown menu -->
-                  <div class="p-dropdown-menu">
-                    <div class="p-dropdown-item archive">Archive</div>
-                    <div class="p-dropdown-item delete">Delete</div>
-                  </div>
-              </div>
-          </div>
-          <div class="p-title" style="color: ${textColor};">
-              <h3>${name}</h3>
-              <p>${category}</p>
-          </div>
-          <div class="progresss">
-              <div class="progress-bars" style="width: 0%; background-color: ${darkerColor};"></div>
-          </div>
-          <div class="progress-percentage">
-              <span style="color: ${textColor};">0%</span>
-          </div>
-          <div class="project-footers">
-              <div class="avatars">
-                  <img src="pics/mona.jpg" alt="Team Member">
-                  <img src="pics/SHREK.jpg" alt="Team Member">
-                  <span class="add-team-member" style="background-color: ${darkerColor};">+</span>
-              </div>
-              <p class="due" style="background-color: ${darkerColor}; color: ${textColor};">${daysLeft} Days Left</p>
-          </div>
-      `;
+    // Save project and create card
+    saveProjectBtn.addEventListener("click", (event) => {
+        event.preventDefault();
 
-      projectContainer.appendChild(card);
-  }
+        // Get form values
+        const projectName = document.getElementById("project-name").value;
+        const projectCategory = document.getElementById("project-category").value;
+        const finishDate = document.getElementById("finish-date").value;
 
-  // Save project and create card
-  saveProjectBtn.addEventListener("click", (event) => {
-      event.preventDefault();
+        // if (!projectName || !projectCategory || !finishDate) {
+            // alert("Please fill in all fields.");
+            // return;
+        // }
 
-      // Get form values
-      const projectName = document.getElementById("project-name").value;
-      const projectCategory = document.getElementById("project-category").value;
-      const startDate = new Date();  // Capture current date when project is added
-      const finishDate = document.getElementById("finish-date").value;
+        const daysLeft = calculateDaysLeft(finishDate);
 
-      // Calculate days left
-      const daysLeft = calculateDaysLeft(finishDate);
+        // Clone the template
+        const newCard = projectTemplate.cloneNode(true);
+        newCard.style.display = "block";  // Show the new card
+        newCard.removeAttribute("id");    // Remove id to avoid duplicates
+        newCard.classList.add("project-cards");
+        newCard.style.backgroundColor = selectedColor;
 
-      // Create project card
-      createProjectCard(projectName, projectCategory, startDate, daysLeft);
+        // Populate card details
+        newCard.querySelector(".project-date").textContent = new Date(finishDate).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
+        newCard.querySelector(".project-date").textContent = getCurrentDate();
+        newCard.querySelector(".p-title h3").textContent = projectName;
+        newCard.querySelector(".p-title p").textContent = projectCategory;
+        newCard.querySelector(".due").textContent = `${daysLeft} Days Left`;
 
-      // Clear and close the modal
-      document.querySelector(".project-form").reset();
-      modalOverlay.style.display = "none";
-  });
+        // Apply darkened colors to .add-team-member and .due
+        applyDarkenedColors(newCard, selectedColor);
+
+        // Append to container
+        projectContainer.appendChild(newCard);
+
+        // Make sure the container is visible
+        projectContainer.style.display = "grid";
+
+        // Clear and close the modal
+        document.querySelector(".project-form").reset();
+        modalOverlay.style.display = "none";
+    });
 });
 
 
@@ -387,6 +390,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//TASKS & DOCUMENTS
+document.addEventListener("DOMContentLoaded", function () {
+    const tasksTab = document.getElementById("tasks-tab");
+    const documentsTab = document.getElementById("documents-tab");
+    const tasksView = document.getElementById("tasks-view");
+    const documentsView = document.getElementById("documents-view");
+
+
+    // Toggle between Tasks and Documents views
+    tasksTab.addEventListener("click", function () {
+        tasksTab.classList.add("active");
+        documentsTab.classList.remove("active");
+        tasksView.classList.add("active");
+        documentsView.classList.remove("active");
+    });
+
+    documentsTab.addEventListener("click", function () {
+        documentsTab.classList.add("active");
+        tasksTab.classList.remove("active");
+        documentsView.classList.add("active");
+        tasksView.classList.remove("active");
+    });
+});
+
+
+
 //USER DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
   const userImg = document.querySelector(".userImg");
@@ -403,6 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
 
 
 //DELETE ACC POP-UP
@@ -428,42 +458,4 @@ document.addEventListener("DOMContentLoaded", function () {
   cancelButton.addEventListener("click", function () {
       popup.style.display = "none";
   });
-});
-
-//TASKS & DOCUMENTS
-document.addEventListener("DOMContentLoaded", function () {
-    // const projectsTemp = document.querySelector("project-card-template");
-    // const projectDetails = document.getElementById("project-details");
-    const tasksTab = document.getElementById("tasks-tab");
-    const documentsTab = document.getElementById("documents-tab");
-    const tasksView = document.getElementById("tasks-view");
-    const documentsView = document.getElementById("documents-view");
-
-    function showProjectDetails() {
-        const hiddenSection = document.querySelector('.hidden');
-        if (hiddenSection) {
-            hiddenSection.style.display = 'block';  // Show the hidden section
-        }
-    }
-    
-
-    // Show project details when the projects grid is clicked
-    document.querySelectorAll('.projects-grids').forEach(card => {
-        card.addEventListener('click', showProjectDetails);
-    });
-
-    // Toggle between Tasks and Documents views
-    tasksTab.addEventListener("click", function () {
-        tasksTab.classList.add("active");
-        documentsTab.classList.remove("active");
-        tasksView.classList.add("active");
-        documentsView.classList.remove("active");
-    });
-
-    documentsTab.addEventListener("click", function () {
-        documentsTab.classList.add("active");
-        tasksTab.classList.remove("active");
-        documentsView.classList.add("active");
-        tasksView.classList.remove("active");
-    });
 });
