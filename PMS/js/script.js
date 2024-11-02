@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to apply darkened colors to specific elements
     function applyDarkenedColors(card, color) {
-        const darkenedColor = darkenColor(color, 0.2); // Darken by 20%
+        const darkenedColor = darkenColor(color, 0.2);
         const addTeamMemberElement = card.querySelector(".add-team-member");
         const dueElement = card.querySelector(".due");
         const progBars = card.querySelector(".progress-bars");
@@ -333,18 +333,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Apply darkened colors to .add-team-member and .due
         applyDarkenedColors(newCard, selectedColor);
+        projectContainer.appendChild(newCard); 
+        projectContainer.style.display = "grid";  
 
-        // Append to container
-        projectContainer.appendChild(newCard);
-
-        // Make sure the container is visible
-        projectContainer.style.display = "grid";
+        // PROJECT & PROJ-DETAILS TOGGLE
+        newCard.addEventListener('click', function() {
+            const projectCards = document.querySelectorAll('.proj-cards');
+    
+            // Hide all project cards
+            projectCards.forEach(card => {
+                card.style.display = 'none'; // Hide all cards
+                card.classList.remove('details-visible'); // Remove the class from all cards
+            });
+    
+            // Show details for the clicked card
+            const details = newCard.querySelector('.proj-details');
+            details.style.display = 'block'; // Show the clicked card's details
+            newCard.classList.add('details-visible'); // Add the class to the clicked card
+    
+            // Optionally, hide the grids and wrap if required
+            document.querySelector('.projects-grids').classList.add('hide');
+            document.querySelector('.proj-wrap').classList.add('hide');
+        });
 
         // Clear and close the modal
         document.querySelector(".project-form").reset();
         modalOverlay.style.display = "none";
     });
 });
+
+
+
 
 
 //PROJECT-CARD MENU DROPDOWN
@@ -386,32 +405,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function () {
       document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
   });
-});
-
-
-
-//TASKS & DOCUMENTS
-document.addEventListener("DOMContentLoaded", function () {
-    const tasksTab = document.getElementById("tasks-tab");
-    const documentsTab = document.getElementById("documents-tab");
-    const tasksView = document.getElementById("tasks-view");
-    const documentsView = document.getElementById("documents-view");
-
-
-    // Toggle between Tasks and Documents views
-    tasksTab.addEventListener("click", function () {
-        tasksTab.classList.add("active");
-        documentsTab.classList.remove("active");
-        tasksView.classList.add("active");
-        documentsView.classList.remove("active");
-    });
-
-    documentsTab.addEventListener("click", function () {
-        documentsTab.classList.add("active");
-        tasksTab.classList.remove("active");
-        documentsView.classList.add("active");
-        tasksView.classList.remove("active");
-    });
 });
 
 

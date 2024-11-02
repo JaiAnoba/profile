@@ -389,127 +389,156 @@
 
         <!-- PROJECTS -->
         <section id="projects" class="proj">
-        
-            <div class="projects-overview">
-                <h1>Projects</h1>
-                <div class="projects-date">
-                    <p id="current-date">
+            <div class="proj-wrap">
+                <div class="projects-overview">
+                    <h1>Projects</h1>
+                    <div class="projects-date">
+                        <p id="current-date">
+                    </div>
+                </div>
+
+                <div class="projects-actions">
+                    <div class="projects-stats">
+                        <div class="stat">
+                            <p>15</p>
+                            <span>In Progress</span>
+                        </div>
+                        <div class="stat">
+                            <p>5</p>
+                            <span>Completed</span>
+                        </div>
+                        <div class="stat">
+                            <p>20</p>
+                            <span>Total Projects</span>
+                        </div>
+                    </div>
+                    <button class="new-project-btn">+ New Project</button>
+                    <div class="view-toggle">
+                        <i class="bx bx-list-ul"></i>
+                        <i class="bx bx-grid-alt"></i>
+                    </div>
                 </div>
             </div>
-            
-            <div class="projects-actions">
-                <div class="projects-stats">
-                    <div class="stat">
-                        <p>15</p>
-                        <span>In Progress</span>
-                    </div>
-                    <div class="stat">
-                        <p>5</p>
-                        <span>Completed</span>
-                    </div>
-                    <div class="stat">
-                        <p>20</p>
-                        <span>Total Projects</span>
-                    </div>
-                </div>
-                <button class="new-project-btn">+ New Project</button>
-                <div class="view-toggle">
-                    <i class="bx bx-list-ul"></i>
-                    <i class="bx bx-grid-alt"></i>
-                </div>
-            </div>
-            
 
             <div id="project-container" class="projects-grids">
                 <!-- Project Card 1 -->
                 <div id="project-card-template" class="project-cards">
-                    <div class="card-headers">
-                        <p class="project-date"></p>
-                        <div class="menu-icon">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                    <div class="proj-cards">
+                        <div class="card-headers">
+                            <p class="project-date"></p>
+                            <div class="menu-icon">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
 
-                             <!-- Dropdown menu -->
-                            <div class="p-dropdown-menu">
-                                <div class="p-dropdown-item delete">Delete</div>
+                                 <!-- Dropdown menu -->
+                                <div class="p-dropdown-menu">
+                                    <div class="p-dropdown-item delete">Delete</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="p-title">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                    <div class="progresss">
-                        <div class="progress-bars" style="width: 0%;"></div>
-                    </div>
-                    <div class="progress-percentage">
-                        <span>0%</span>
-                    </div>
-                    <div class="project-footers">
-                        <div class="avatars">
-                            <img src="pics/mona.jpg" alt="Team Member">
-                            <img src="pics/SHREK.jpg" alt="Team Member">
-                            <span class="add-team-member">+</span>
+                        <div class="p-title">
+                            <h3></h3>
+                            <p></p>
                         </div>
-                        <p class="due"></p>
+                        <div class="progresss">
+                            <div class="progress-bars" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-percentage">
+                            <span>0%</span>
+                        </div>
+                        <div class="project-footers">
+                            <div class="avatars">
+                                <img src="pics/mona.jpg" alt="Team Member">
+                                <img src="pics/SHREK.jpg" alt="Team Member">
+                                <span class="add-team-member">+</span>
+                            </div>
+                            <p class="due"></p>
+                        </div>
                     </div>
 
                     <!-- TASKS & DOCUMENTS -->
-                    <div id="project-details" class="hidden">
+                    <div class="proj-details" style="display: none;">
+                        <a href=""><i class='bx bx-chevron-left'></i></a>
+                        <!-- Tabs for switching between Tasks and Documents -->
                         <div class="tabs">
-                            <button id="tasks-tab" class="tab active">Tasks</button>
-                            <button id="documents-tab" class="tab">Documents</button>
+                            <span id="tasks-tab" class="tab active">Tasks</span>
+                            <span id="documents-tab" class="tab">Documents</span>
+                            <div class="ad-btn">
+                                <button class="proj-add-user"><i class='bx bx-plus'></i> <i class='bx bxs-user'></i></button>
+                            </div>
                         </div>
                         
-                        <div class="stats-bar">
-                            <div class="tasks-stats">
-                                <p><strong>15</strong> Done</p>
-                                <p><strong>8</strong> Remaining Tasks</p>
+                        <!-- Tasks Section -->
+                        <div id="tasks-section" class="section-task">
+                          <div class="proj-header">
+                            <div class="proj-status">
+                                <div class="proj-stat">
+                                    <p>15</p>
+                                    <span>Done</span>
+                                </div>
+                                <div class="proj-stat">
+                                    <p>8</p>
+                                    <span>Remaining Tasks</span>
+                                </div>
                             </div>
                             <button class="new-task-btn">+ New Task</button>
-                        </div>
-                        
-                        <div id="tasks-view" class="view active">
-                            <!-- Task List -->
-                            <div class="task-item">
-                                <div class="task-circle"></div>
-                                <div class="task-details">
-                                    <h3>Web Designing</h3>
-                                    <p>Prototyping</p>
+                          </div>
+                          
+                          <div class="p-tasks">
+                            <!-- Task items -->
+                            <div class="proj-task">
+                              <input type="checkbox" class="proj-checkbox">
+                              <div class="proj-task-info">
+                                <span class="proj-task-title">Web Designing</span>
+                                <span class="proj-task-subtitle">Prototyping</span>
+                              </div>
+                              <div class="proj-icon">
+                                <span class="dott"></span>
+                                <span class="dott"></span>
+                                 <!-- Dropdown menu -->
+                                <div class="p-dropdown-icon">
+                                    <div class="p-drop-item edit">Edit</div>
+                                    <div class="p-drop-item del">Delete</div>
                                 </div>
-                                <div class="task-options">...</div>
                             </div>
-                            <div class="task-item" style="background-color: #e8d9ff;">
-                                <div class="task-circle"></div>
-                                <div class="task-details">
-                                    <h3>User Interview</h3>
-                                    <p>Zoom Meeting</p>
-                                </div>
-                                <div class="task-options">...</div>
                             </div>
-                            <div class="task-item">
-                                <div class="task-circle"></div>
-                                <div class="task-details">
-                                    <h3>Design Review</h3>
-                                    <p>Webflow</p>
-                                </div>
-                                <div class="task-options">...</div>
-                            </div>
-                        </div>
                             
-                        <div id="documents-view" class="view">
-                            <!-- Document List -->
-                            <div class="document-grid">
-                                <div class="document-item">
-                                    <h3>Web Designing</h3>
-                                    <p>Oct. 7, 2024</p>
-                                    <div class="doc-options">...</div>
+                            <div class="proj-task highlighted">
+                                <input type="checkbox" class="proj-checkbox">
+                                <div class="proj-task-info">
+                                    <span class="proj-task-title">User Interview</span>
+                                    <span class="proj-task-subtitle">Zoom Meeting</span>
                                 </div>
-                                <!-- Duplicate for additional document items -->
+                                <div class="proj-icon">
+                                    <span class="dott"></span>
+                                    <span class="dott"></span>
+                                     <!-- Dropdown menu -->
+                                    <div class="p-dropdown-icon">
+                                        <div class="p-drop-item edit">Edit</div>
+                                        <div class="p-drop-item del">Delete</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>  
-
+                    
+                        <!-- Documents Section -->
+                        <div id="documents-section" class="section">
+                          <div class="proj-header">
+                            <div class="proj-status">
+                              <span class="files-count"><b>0</b> All Files</span>
+                            </div>
+                            <button class="proj-upload-btn">Upload</button>
+                          </div>
+                          <div class="document-grid">
+                            <!-- Document items for grid layout -->
+                            <div class="document-card highlighted-blue">
+                              <span class="document-title">Web Designing</span>
+                              <span class="document-date">Oct 7, 2024</span>
+                              <span class="proj-options">⋮</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>   
