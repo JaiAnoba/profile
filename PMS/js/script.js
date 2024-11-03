@@ -360,6 +360,50 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".project-form").reset();
         modalOverlay.style.display = "none";
     });
+
+    // Select tabs and sections
+    // Select tabs and sections
+const tasksTab = document.getElementById("tasks-tab");
+const documentsTab = document.getElementById("documents-tab");
+const tasksSection = document.getElementById("tasks-section");
+const documentsSection = document.getElementById("documents-section");
+
+// Function to show the tasks section and hide the documents section
+function showTasks() {
+    if (tasksSection && documentsSection) {
+        tasksSection.style.display = "block";        // Show tasks section
+        documentsSection.style.display = "none";     // Hide documents section
+        tasksTab.classList.add("active");            // Add active class to tasks tab
+        documentsTab.classList.remove("active");     // Remove active class from documents tab
+    } else {
+        console.error("tasksSection or documentsSection not found");
+    }
+}
+
+// Function to show the documents section and hide the tasks section
+function showDocuments() {
+    if (tasksSection && documentsSection) {
+        documentsSection.style.display = "block";    // Show documents section
+        tasksSection.style.display = "none";         // Hide tasks section
+        documentsTab.classList.add("active");        // Add active class to documents tab
+        tasksTab.classList.remove("active");         // Remove active class from tasks tab
+    } else {
+        console.error("tasksSection or documentsSection not found");
+    }
+}
+
+// Event listeners for the tabs
+if (tasksTab && documentsTab) {
+    tasksTab.addEventListener("click", showTasks);
+    documentsTab.addEventListener("click", showDocuments);
+} else {
+    console.error("tasksTab or documentsTab not found");
+}
+
+// Initialize by showing the tasks section by default
+showTasks();
+
+
 });
 
 

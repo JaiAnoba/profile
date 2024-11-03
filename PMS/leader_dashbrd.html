@@ -458,10 +458,10 @@
 
                     <!-- TASKS & DOCUMENTS -->
                     <div class="proj-details" style="display: none;">
-                        <a href=""><i class='bx bx-chevron-left'></i></a>
+                        <a href="#project-container"><i class='bx bx-chevron-left'></i></a>
                         <!-- Tabs for switching between Tasks and Documents -->
                         <div class="tabs">
-                            <span id="tasks-tab" class="tab active">Tasks</span>
+                            <span id="tasks-tab" class="tab">Tasks</span>
                             <span id="documents-tab" class="tab">Documents</span>
                             <div class="ad-btn">
                                 <button class="proj-add-user"><i class='bx bx-plus'></i> <i class='bx bxs-user'></i></button>
@@ -487,7 +487,7 @@
                           <div class="p-tasks">
                             <!-- Task items -->
                             <div class="proj-task">
-                              <input type="checkbox" class="proj-checkbox">
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
                               <div class="proj-task-info">
                                 <span class="proj-task-title">Web Designing</span>
                                 <span class="proj-task-subtitle">Prototyping</span>
@@ -496,15 +496,15 @@
                                 <span class="dott"></span>
                                 <span class="dott"></span>
                                  <!-- Dropdown menu -->
-                                <div class="p-dropdown-icon">
+                                <div class="p-dropdown-icon" style="display: none;">
                                     <div class="p-drop-item edit">Edit</div>
                                     <div class="p-drop-item del">Delete</div>
                                 </div>
-                            </div>
+                              </div>
                             </div>
                             
                             <div class="proj-task highlighted">
-                                <input type="checkbox" class="proj-checkbox">
+                                <span class="check-circle" onclick="toggleCheck(this)"></span>
                                 <div class="proj-task-info">
                                     <span class="proj-task-title">User Interview</span>
                                     <span class="proj-task-subtitle">Zoom Meeting</span>
@@ -513,7 +513,7 @@
                                     <span class="dott"></span>
                                     <span class="dott"></span>
                                      <!-- Dropdown menu -->
-                                    <div class="p-dropdown-icon">
+                                    <div class="p-dropdown-icon" style="display: none;">
                                         <div class="p-drop-item edit">Edit</div>
                                         <div class="p-drop-item del">Delete</div>
                                     </div>
@@ -522,7 +522,7 @@
                         </div>
                     
                         <!-- Documents Section -->
-                        <div id="documents-section" class="section">
+                        <div id="documents-section" class="section-docs">
                           <div class="proj-header">
                             <div class="proj-status">
                               <span class="files-count"><b>0</b> All Files</span>
