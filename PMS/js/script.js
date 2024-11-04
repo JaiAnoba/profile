@@ -334,79 +334,75 @@ document.addEventListener("DOMContentLoaded", function () {
         // Apply darkened colors to .add-team-member and .due
         applyDarkenedColors(newCard, selectedColor);
         projectContainer.appendChild(newCard); 
-        projectContainer.style.display = "grid";  
-
-        // PROJECT & PROJ-DETAILS TOGGLE
-        newCard.addEventListener('click', function() {
-            const projectCards = document.querySelectorAll('.proj-cards');
-    
-            // Hide all project cards
-            projectCards.forEach(card => {
-                card.style.display = 'none'; // Hide all cards
-                card.classList.remove('details-visible'); // Remove the class from all cards
-            });
-    
-            // Show details for the clicked card
-            const details = newCard.querySelector('.proj-details');
-            details.style.display = 'block'; // Show the clicked card's details
-            newCard.classList.add('details-visible'); // Add the class to the clicked card
-    
-            // Optionally, hide the grids and wrap if required
-            document.querySelector('.projects-grids').classList.add('hide');
-            document.querySelector('.proj-wrap').classList.add('hide');
-        });
+        projectContainer.style.display = "grid"; 
 
         // Clear and close the modal
         document.querySelector(".project-form").reset();
         modalOverlay.style.display = "none";
     });
-
-    // Select tabs and sections
-    // Select tabs and sections
-const tasksTab = document.getElementById("tasks-tab");
-const documentsTab = document.getElementById("documents-tab");
-const tasksSection = document.getElementById("tasks-section");
-const documentsSection = document.getElementById("documents-section");
-
-// Function to show the tasks section and hide the documents section
-function showTasks() {
-    if (tasksSection && documentsSection) {
-        tasksSection.style.display = "block";        // Show tasks section
-        documentsSection.style.display = "none";     // Hide documents section
-        tasksTab.classList.add("active");            // Add active class to tasks tab
-        documentsTab.classList.remove("active");     // Remove active class from documents tab
-    } else {
-        console.error("tasksSection or documentsSection not found");
-    }
-}
-
-// Function to show the documents section and hide the tasks section
-function showDocuments() {
-    if (tasksSection && documentsSection) {
-        documentsSection.style.display = "block";    // Show documents section
-        tasksSection.style.display = "none";         // Hide tasks section
-        documentsTab.classList.add("active");        // Add active class to documents tab
-        tasksTab.classList.remove("active");         // Remove active class from tasks tab
-    } else {
-        console.error("tasksSection or documentsSection not found");
-    }
-}
-
-// Event listeners for the tabs
-if (tasksTab && documentsTab) {
-    tasksTab.addEventListener("click", showTasks);
-    documentsTab.addEventListener("click", showDocuments);
-} else {
-    console.error("tasksTab or documentsTab not found");
-}
-
-// Initialize by showing the tasks section by default
-showTasks();
-
-
 });
 
+//PROJECT-DETAILS
+document.addEventListener("DOMContentLoaded", function () {
+    const projectContainer = document.getElementById("project-container");
+    const projSection = document.querySelector(".proj");
+    const projDetails = document.querySelector(".proj-details");
+    const backButton = projDetails.querySelector(".bx-chevron-left");
 
+    // Function to show project details
+    function showProjectDetails() {
+        projSection.style.display = "none";
+        projDetails.style.display = "block";
+    }
+
+    // Function to go back to project list
+    function hideProjectDetails() {
+        projSection.style.display = "block";
+        projDetails.style.display = "none";
+    }
+
+    // Add click event to each project card
+    projectContainer.addEventListener("click", (event) => {
+        const clickedElement = event.target.closest(".project-cards");
+        if (clickedElement) {
+            showProjectDetails();
+        }
+    });
+
+    // Add click event to the back button in proj-details
+    backButton.addEventListener("click", hideProjectDetails);
+});
+
+//TASKS & DOCS TOGGLE
+document.addEventListener("DOMContentLoaded", function () {
+    const tasksTab = document.getElementById("tasks-tab");
+    const documentsTab = document.getElementById("documents-tab");
+    const tasksSection = document.getElementById("tasks-section");
+    const documentsSection = document.getElementById("documents-section");
+
+    // Function to show the Tasks section and hide the Documents section
+    function showTasks() {
+        tasksSection.style.display = "block";
+        documentsSection.style.display = "none";
+        tasksTab.classList.add("active-tab");
+        documentsTab.classList.remove("active-tab");
+    }
+
+    // Function to show the Documents section and hide the Tasks section
+    function showDocuments() {
+        documentsSection.style.display = "block";
+        tasksSection.style.display = "none";
+        documentsTab.classList.add("active-tab");
+        tasksTab.classList.remove("active-tab");
+    }
+
+    // Event listeners for the tabs
+    tasksTab.addEventListener("click", showTasks);
+    documentsTab.addEventListener("click", showDocuments);
+
+    // Initial setup: show the Tasks section by default
+    showTasks();
+});
 
 
 

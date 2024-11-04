@@ -1741,125 +1741,118 @@ body {
     top: -20px;
 }
   
-  .new-task-btn, .proj-upload-btn {
-    height: 45px;
-    padding: 10px 20px;
-    background-color: #4f8ed1;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    white-space: nowrap;
-    transition: background-color 0.3s ease;
-  }
+.new-task-btn, .proj-upload-btn {
+  height: 45px;
+  padding: 10px 20px;
+  background-color: #4f8ed1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+.new-task-btn {
+  position: relative;
+  top: -10px;
+  left: -50px;
+}
+.new-task-btn:hover {
+  background-color: #282a52;
+}
 
-  .new-task-btn {
-    position: relative;
-    top: -10px;
-    left: -50px;
-  }
+.p-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 550px;
+  overflow-y: auto; 
+  overflow-x: none;
+}
 
-  .new-task-btn:hover {
-    background-color: #282a52;
-  }
-  
-  .p-tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-height: 550px;
-    overflow-y: auto; 
-    overflow-x: none;
-  }
-  
-  .proj-task, .document-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    gap: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-  }
+.proj-task, .document-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  gap: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+.proj-task {
+  margin-inline: auto;
+  width: 1400px;
+  height: 80px;
+  padding: 30px;
+}
 
-  .proj-task {
-    margin-inline: auto;
-    width: 1400px;
-    height: 80px;
-    padding: 30px;
-  }
+.proj-task.highlighted {
+  background-color: #c6b7f7;
+}
+
+.proj-task-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 15px;
+  flex: 1;
+}
+
+.proj-task-title {
+  font-weight: bold;
+}
+
+.proj-task-subtitle {
+  color: #7a7a7a;
+  font-size: 0.9em;
+}
+.proj-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+}
+.proj-icon .dott{
+  display: block;
+  width: 10px;
+  height: 10px;      
+  background-color: black;
+  border-radius: 50%;
+}
+
+.proj-options {
+  cursor: pointer;
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.document-card.highlighted-blue {
+  background-color: #b8e1eb;
+}
+
+.document-title {
+  font-weight: bold;
+}
   
-  .proj-task.highlighted {
-    background-color: #c6b7f7;
-  }
-  
-  .proj-task-info {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 15px;
-    flex: 1;
-  }
-  
-  .proj-task-title {
-    font-weight: bold;
-  }
-  
-  .proj-task-subtitle {
+.document-date {
     color: #7a7a7a;
     font-size: 0.9em;
   }
 
-  .proj-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 4px;
-    width: 19px;
-    height: 19px;
-    cursor: pointer;
-  }
-
-  .proj-icon .dott{
-    display: block;
-    width: 10px;
-    height: 10px;      
-    background-color: black;
-    border-radius: 50%;
-  }
-  
-  .proj-options {
-    cursor: pointer;
-  }
-  
-  .document-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-  }
-  
-  .document-card.highlighted-blue {
-    background-color: #b8e1eb;
-  }
-  
-  .document-title {
-    font-weight: bold;
-  }
-  
-  .document-date {
-    color: #7a7a7a;
-    font-size: 0.9em;
-  }
-
-  /* Additional styles for active tab */
-.tab.active {
+.active-tab {
     color: #4d8fff;
     border-bottom: 2px solid #4d8fff;
 }
 
-/* Display none for the sections to initially hide them */
 #tasks-section,
 #documents-section {
     display: none;
