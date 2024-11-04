@@ -455,6 +455,7 @@
                             <p class="due"></p>
                         </div>
                     </div>
+                </div>
             </div>
         </section>   
 
@@ -469,7 +470,7 @@
                     <button class="proj-add-user"><i class='bx bx-plus'></i> <i class='bx bxs-user'></i></button>
                 </div>
             </div>
-            
+
             <!-- Tasks Section -->
             <div id="tasks-section" class="section-task">
               <div class="proj-header">
@@ -484,9 +485,34 @@
                     </div>
                 </div>
                 <button class="new-task-btn">+ New Task</button>
-              </div>
-              
-              <div class="p-tasks">
+            </div>
+
+            <!-- Proj-Task Modal -->
+            <div id="p-task-modal" class="p-modal-task" style="display: none;">
+                <div class="p-modal-content">
+                  <h2>New Task</h2>
+                
+                  <form id="p-task-form">
+                    <label for="p-task-title">Title</label>
+                    <input type="text" id="p-task-title" name="p-task-title">
+                
+                    <label for="assigned-to">Assigned To:</label>
+                    <input type="text" id="assigned-to" name="assigned-to">
+                
+                    <label for="p-task-color">Choose Color Theme:</label>
+                    <div class="p-color-options">
+                      <span class="p-color-option" data-color="#e6b7e0" style="background-color: #e6b7e0;"></span>
+                      <span class="p-color-option" data-color="#b6c1ff" style="background-color: #b6c1ff;"></span>
+                      <span class="p-color-option" data-color="#b7e6c9" style="background-color: #b7e6c9;"></span>
+                      <span class="p-color-option" data-color="#e6e6e6" style="background-color: #e6e6e6;"></span>
+                    </div>
+                
+                    <button type="submit" class="p-save-task-btn">Save Task</button>
+                  </form>
+                </div>
+            </div>
+
+            <div class="p-tasks" id="tasks-container" style="display: none;">
                 <!-- Task items -->
                 <div class="proj-task">
                     <span class="check-circle" onclick="toggleCheck(this)"></span>
@@ -504,25 +530,8 @@
                     </div>
                   </div>
                 </div>
-                
-                <div class="proj-task highlighted">
-                    <span class="check-circle" onclick="toggleCheck(this)"></span>
-                    <div class="proj-task-info">
-                        <span class="proj-task-title">User Interview</span>
-                        <span class="proj-task-subtitle">Zoom Meeting</span>
-                    </div>
-                    <div class="proj-icon">
-                        <span class="dott"></span>
-                        <span class="dott"></span>
-                         <!-- Dropdown menu -->
-                        <div class="p-dropdown-icon" style="display: none;">
-                            <div class="p-drop-item edit">Edit</div>
-                            <div class="p-drop-item del">Delete</div>
-                        </div>
-                    </div>
-                </div>
             </div>
-                            
+
             <!-- Documents Section -->
             <div id="documents-section" class="section-docs">
               <div class="proj-header">

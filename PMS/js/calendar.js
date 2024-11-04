@@ -1,4 +1,4 @@
-// CALENDAR
+// DASHBOARD CALENDAR
 function initDashboardCalendar() {
     const monthYear = document.getElementById('monthYear');
     const calendarDays = document.getElementById('calendarDays');

@@ -79,7 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // CHECK CIRCLE
 function toggleCheck(element) {
-  element.classList.toggle("checked");
+    const currentColor = window.getComputedStyle(element).backgroundColor;
+    
+    if (currentColor === "rgb(40, 42, 82)") {  
+        element.style.backgroundColor = ""; // Reset color
+    } else {
+        element.style.backgroundColor = "#282a52"; 
+    }
 }
 
 
@@ -170,6 +176,7 @@ document.getElementById('save-password-btn').addEventListener('click', function(
 });
 
 
+
 //SIDEBAR COLLAPSED
 document.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.querySelector(".left");
@@ -194,6 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   dateElement.textContent = formattedDate;
 });
+
+
 
 // LIST-VIEW & GRID PROJECT-CARDS
 document.addEventListener("DOMContentLoaded", function () {
@@ -342,6 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 //PROJECT-DETAILS
 document.addEventListener("DOMContentLoaded", function () {
     const projectContainer = document.getElementById("project-container");
@@ -372,6 +382,62 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add click event to the back button in proj-details
     backButton.addEventListener("click", hideProjectDetails);
 });
+
+
+//TASKS-DROPDOWN
+document.addEventListener("DOMContentLoaded", function () {
+    // Select the container that holds all tasks
+    const tasksContainer = document.getElementById("tasks-container");
+
+    // Event delegation to handle clicks on the dots within each task
+    tasksContainer.addEventListener("click", function (event) {
+        // Check if the clicked element is one of the dots
+        if (event.target.classList.contains("dott")) {
+            // Find the closest .proj-task element and toggle its dropdown
+            const task = event.target.closest(".proj-task");
+            const dropdown = task.querySelector(".p-dropdown-icon");
+
+            // Toggle dropdown display
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            event.stopPropagation(); // Prevent further propagation
+        }
+    });
+
+    // Hide dropdown if clicking outside of any task dropdown
+    document.addEventListener("click", function (event) {
+        // Check if the click is outside any .proj-task
+        const isClickInsideTask = event.target.closest(".proj-task");
+
+        // If clicked outside, hide all dropdowns
+        if (!isClickInsideTask) {
+            document.querySelectorAll(".p-dropdown-icon").forEach(dropdown => {
+                dropdown.style.display = "none";
+            });
+        }
+    });
+
+    // Add functionality for the Edit and Delete options within each dropdown
+    tasksContainer.querySelectorAll(".proj-task").forEach(task => {
+        const dropdown = task.querySelector(".p-dropdown-icon");
+        const editOption = dropdown.querySelector(".edit");
+        const deleteOption = dropdown.querySelector(".del");
+
+        // Edit functionality
+        editOption.addEventListener("click", function () {
+            const taskTitle = task.querySelector(".proj-task-title").textContent;
+            alert(`Edit task: ${taskTitle}`);
+            dropdown.style.display = "none"; // Hide dropdown after selecting
+        });
+
+        // Delete functionality
+        deleteOption.addEventListener("click", function () {
+            task.remove(); // Remove the task from the DOM
+            alert("Task deleted");
+        });
+    });
+});
+
+
 
 //TASKS & DOCS TOGGLE
 document.addEventListener("DOMContentLoaded", function () {
@@ -405,46 +471,127 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//PROJ-TASK MODAL
+document.addEventListener("DOMContentLoaded", function () {
+    const taskModal = document.getElementById("p-task-modal");
+    const newTaskBtn = document.querySelector(".new-task-btn");
+    const saveTaskBtn = document.querySelector(".p-save-task-btn");
+    const tasksSection = document.getElementById("tasks-section");
+    const colorOptions = document.querySelectorAll(".p-color-option");
+    let selectedTaskColor = "#ffffff"; // Default color
+
+    // Open the task modal
+    newTaskBtn.addEventListener("click", () => {
+        taskModal.style.display = "flex";
+    });
+
+    // Close the modal by clicking outside the content
+    taskModal.addEventListener("click", (event) => {
+        if (event.target === taskModal) {
+            taskModal.style.display = "none";
+        }
+    });
+
+    // Handle color selection
+    colorOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            colorOptions.forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            selectedTaskColor = option.getAttribute("data-color");
+        });
+    });
+
+    // Save task and add it to tasks section
+    saveTaskBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Retrieve task details
+        const taskTitle = document.getElementById("p-task-title").value;
+        const assignedTo = document.getElementById("assigned-to").value;
+
+        // Create task card if inputs are valid
+        const newTask = document.createElement("div");
+        newTask.classList.add("proj-task");
+        newTask.style.backgroundColor = selectedTaskColor;
+
+        // Add task content
+        const checkCircle = document.createElement("span");
+        checkCircle.classList.add("check-circle");
+        checkCircle.onclick = function () { toggleCheck(this); };
+
+        const taskInfo = document.createElement("div");
+        taskInfo.classList.add("proj-task-info");
+
+        const titleSpan = document.createElement("span");
+        titleSpan.classList.add("proj-task-title");
+        titleSpan.textContent = taskTitle || "Untitled Task";
+
+        const assignedSpan = document.createElement("span");
+        assignedSpan.classList.add("proj-task-subtitle");
+        assignedSpan.textContent = assignedTo ? `Assigned to: ${assignedTo}` : "Unassigned";
+
+        const iconContainer = document.createElement("div");
+        iconContainer.classList.add("proj-icon");
+
+        const dot1 = document.createElement("span");
+        dot1.classList.add("dott");
+        const dot2 = document.createElement("span");
+        dot2.classList.add("dott");
+
+        // Append elements to build the task card structure
+        taskInfo.appendChild(titleSpan);
+        taskInfo.appendChild(assignedSpan);
+        iconContainer.appendChild(dot1);
+        iconContainer.appendChild(dot2);
+
+        newTask.appendChild(checkCircle);
+        newTask.appendChild(taskInfo);
+        newTask.appendChild(iconContainer);
+
+        tasksSection.appendChild(newTask);
+
+        // Reset form and close modal
+        document.getElementById("p-task-form").reset();
+        colorOptions.forEach(opt => opt.classList.remove("selected"));
+        taskModal.style.display = "none";
+    });
+});
+
+
 
 //PROJECT-CARD MENU DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
-  const projectContainer = document.getElementById("project-container");
+    const projectContainer = document.getElementById("project-container");
 
-  // Event listener for menu-icon clicks to show/hide the dropdown
-  projectContainer.addEventListener("click", function (event) {
-      const menuIcon = event.target.closest(".menu-icon");
-      
-      // If a menu icon was clicked
-      if (menuIcon) {
-          // Prevent click event from propagating to document
-          event.stopPropagation();
+    // Event listener for each menu-icon click to show/hide its dropdown
+    const menuIcons = projectContainer.querySelectorAll(".menu-icon");
+    
+    menuIcons.forEach(icon => {
+        icon.addEventListener("click", function (event) {
+            event.stopPropagation(); // Prevent click event from reaching document
 
-          // Find the dropdown menu within the clicked menu icon
-          const dropdown = menuIcon.querySelector(".p-dropdown-menu");
-          if (dropdown) {
-              // Toggle dropdown visibility
-              dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-          }
-      } else {
-          // Close all dropdowns if clicked outside the menu-icon
-          document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
-      }
-  });
+            // Toggle visibility of the dropdown menu within this icon
+            const dropdown = icon.querySelector(".p-dropdown-menu");
+            if (dropdown) {
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            }
+        });
+    });
 
-  // Event listener for delete button inside dropdown menu
-  projectContainer.addEventListener("click", function (event) {
-      if (event.target.classList.contains("delete")) {
-          const card = event.target.closest(".project-cards");
-          if (card) {
-              card.remove(); // Remove the project card
-          }
-      }
-  });
+    // Event listener for delete button inside each dropdown menu
+    projectContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("delete")) {
+            const card = event.target.closest(".project-cards");
+            if (card) {
+                card.remove(); // Remove the project card
+            }
+        }
+    });
 
-  // Close dropdown if clicked outside of menu-icon
-  document.addEventListener("click", function () {
-      document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
-  });
+    // Close all dropdowns if clicked outside any menu icon
+    document.addEventListener("click", function () {
+        document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
+    });
 });
 
 
