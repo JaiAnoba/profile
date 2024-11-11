@@ -1044,6 +1044,8 @@ body {
 .proj {
     margin: 90px 0 20px 260px;
     overflow: hidden;
+    visibility: hidden;
+    position: relative;
 }
 
 .projects-overview {
@@ -1622,10 +1624,11 @@ body {
 
 /* TASKS & DOCUMENTS */
 .proj-details {
-    display: none;
+    visibility: hidden;   
+    position: absolute;
     position: fixed;
-    right: 200px;
-    bottom: 42px;
+    left: 257px;
+    top: 90px;
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 30px; 
@@ -1650,6 +1653,28 @@ body {
   width: 55px;
   border-radius: 10px;
   background-color: #636363;
+}
+
+.proj-upload-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    position: relative;
+    right: 70px;
+}
+
+.proj-upload-btn i {
+    margin-right: 8px;
+}
+
+.proj-upload-btn:hover {
+    background-color: #333;
 }
 
 .ad-btn {
@@ -2012,34 +2037,29 @@ proj-stat p {
   /* Grid styling */
   .document-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
   
   /* Card styling */
   .document-card {
+    overflow: hidden;
     background-color: #fff;
     border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
     text-align: center;
     position: relative;
     width: 200px;
     height: 150px;
-  }
-  
-  .document-card.highlighted-blue {
-    background-color: #b8e1eb;
   }
 
   .pp-docs {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
+    position: fixed;
     text-align: left;
     gap: 4px;
-    left: 15px; 
   }
 
   .projj-icon {
@@ -2052,7 +2072,7 @@ proj-stat p {
     height: 19px;
     cursor: pointer;
     bottom: 40px;
-    left: 16px;
+    left: 146px;
   }
   
   .projj-icon .dottt{
@@ -2105,6 +2125,46 @@ proj-stat p {
     cursor: pointer;
   }
   
+  /* Grid View - default */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.document-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* List View */
+.document-grid.list-view {
+    display: flex;
+flex-direction: column;
+gap: 15px;
+max-height: 550px; 
+overflow-y: auto; 
+overflow-x: none;
+padding-right: 15px;
+}
+
+.document-card.list-view {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.document-card.list-view .pp-docs {
+    flex-grow: 1;
+}
+
+.document-card.list-view .projj-icon {
+    display: inline-block;
+}
+
 
 .active-tab {
     color: #4d8fff;

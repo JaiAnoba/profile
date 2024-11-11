@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageSection = document.querySelector('.message');
     const settingsSection = document.querySelector('.settings');
     const topSection = document.querySelector('.top');
+    const projDetails = document.querySelector('.proj-details');
   
     // Hide all sections initially except for the dashboard (.right)
     projSection.style.display = 'none';
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
       topSection.style.display = 'flex';
+      projDetails.style.display = 'none';
     });
 
     // Projects section
@@ -36,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       rightSection.style.display = 'none';
       projSection.style.display = 'block';
+      projSection.style.visibility = 'visible'; 
+      projSection.style.position = 'relative';  
+      projDetails.style.display = 'none'; 
       calendarSection.style.display = 'none';
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
@@ -51,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
       messageSection.style.display = 'none';
       settingsSection.style.display = 'none';
       topSection.style.display = 'flex';
+      projDetails.style.display = 'none';
     });
   
     // Message section
@@ -62,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
       messageSection.style.display = 'block';
       settingsSection.style.display = 'none';
       topSection.style.display = 'flex';
+      projDetails.style.display = 'none';
     });
   
     // Settings section
@@ -73,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
       messageSection.style.display = 'none';
       settingsSection.style.display = 'block';
       topSection.style.display = 'none'; 
+      projDetails.style.display = 'none';
     });
   });
 
@@ -363,12 +371,18 @@ document.addEventListener("DOMContentLoaded", function () {
     function showProjectDetails() {
         projSection.style.display = "none";
         projDetails.style.display = "block";
+        projDetails.style.visibility = "visible";
+        projDetails.style.position = "relative";
     }
 
     // Function to go back to project list
     function hideProjectDetails() {
-        projSection.style.display = "block";
-        projDetails.style.display = "none";
+        projSection.style.display = "block"; 
+        projSection.style.visibility = "visible"; // Show proj section without affecting layout
+        projSection.style.position = "fixed";   // Ensure it stays in normal layout flow
+
+        projDetails.style.visibility = "hidden";   // Hide proj-details without affecting layout
+        projDetails.style.position = "absolute";  
     }
 
     // Add click event to each project card
@@ -445,30 +459,162 @@ document.addEventListener("DOMContentLoaded", function () {
     const documentsTab = document.getElementById("documents-tab");
     const tasksSection = document.getElementById("tasks-section");
     const documentsSection = document.getElementById("documents-section");
+    const addUserButton = document.querySelector(".proj-add-user");
+    const uploadButton = document.querySelector(".proj-upload-btn");
 
-    // Function to show the Tasks section and hide the Documents section
+    // Function to show the Tasks section, show addUser button, and hide the Upload button
     function showTasks() {
         tasksSection.style.display = "block";
         documentsSection.style.display = "none";
         tasksTab.classList.add("active-tab");
         documentsTab.classList.remove("active-tab");
+        addUserButton.style.display = "inline-flex"; // Show add user button
+        uploadButton.style.display = "none"; // Hide upload button in Tasks section
     }
 
-    // Function to show the Documents section and hide the Tasks section
+    // Function to show the Documents section, show Upload button, and hide the addUser button
     function showDocuments() {
         documentsSection.style.display = "block";
         tasksSection.style.display = "none";
         documentsTab.classList.add("active-tab");
         tasksTab.classList.remove("active-tab");
+        uploadButton.style.display = "inline-flex";  // Show upload button
+        addUserButton.style.display = "none";  // Hide add user button
     }
 
     // Event listeners for the tabs
     tasksTab.addEventListener("click", showTasks);
     documentsTab.addEventListener("click", showDocuments);
 
-    // Show the Tasks section by default
+    // Initial setup: show the Tasks section and addUser button by default, hide upload button
     showTasks();
 });
+
+
+//UPLOAD-FILE IN DOCUMENTS
+document.addEventListener("DOMContentLoaded", function () {
+    const uploadButton = document.querySelector(".proj-upload-btn");
+    const documentGrid = document.querySelector(".document-grid");
+
+    // Function to handle file upload
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            // Create a new document card to display the uploaded file
+            const documentCard = document.createElement("div");
+            documentCard.classList.add("document-card");
+
+            // Create the content for the document card
+            const docContent = document.createElement("div");
+            docContent.classList.add("pp-docs");
+
+            // Set the title and date (using the file name and current date)
+            const fileName = file.name;
+            const fileDate = new Date().toLocaleDateString();
+            const titleSpan = document.createElement("span");
+            titleSpan.classList.add("document-title");
+            titleSpan.textContent = fileName;
+
+            const dateSpan = document.createElement("span");
+            dateSpan.classList.add("document-date");
+            dateSpan.textContent = fileDate;
+
+            // Append the title and date to the document content
+            docContent.appendChild(titleSpan);
+            docContent.appendChild(dateSpan);
+
+            // Add the icons and dropdown menu (if needed)
+            const icons = document.createElement("div");
+            icons.classList.add("projj-icon");
+            const dot1 = document.createElement("span");
+            dot1.classList.add("dottt");
+            const dot2 = document.createElement("span");
+            dot2.classList.add("dottt");
+
+            const dropdownMenu = document.createElement("div");
+            dropdownMenu.classList.add("p-dropdown-iconn");
+            dropdownMenu.style.display = "none";
+            const editItem = document.createElement("div");
+            editItem.classList.add("p-drop-itemm", "editt");
+            editItem.textContent = "Edit";
+            const deleteItem = document.createElement("div");
+            deleteItem.classList.add("p-drop-itemm", "dell");
+            deleteItem.textContent = "Delete";
+
+            // Append dots and dropdown menu to the icons
+            icons.appendChild(dot1);
+            icons.appendChild(dot2);
+            dropdownMenu.appendChild(editItem);
+            dropdownMenu.appendChild(deleteItem);
+
+            // Append everything to the document card
+            documentCard.appendChild(docContent);
+            documentCard.appendChild(icons);
+            documentCard.appendChild(dropdownMenu);
+
+            // Make the document card clickable to open the file
+            documentCard.addEventListener("click", function() {
+                const fileUrl = URL.createObjectURL(file);
+                window.open(fileUrl, "_blank");
+            });
+
+            // Append the document card to the document grid
+            documentGrid.appendChild(documentCard);
+        }
+    }
+
+    // Event listener for file selection
+    uploadButton.addEventListener("click", function() {
+        // Create an invisible file input
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.style.display = "none";
+        document.body.appendChild(fileInput);
+
+        // Trigger the file input click to open the file picker
+        fileInput.click();
+
+        // Handle the file selection
+        fileInput.addEventListener("change", handleFileUpload);
+    });
+});
+
+
+//GRID & LIST VIEW OF DOCS
+document.addEventListener("DOMContentLoaded", function () {
+    const listViewIcon = document.querySelector(".proj-list");
+    const gridViewIcon = document.querySelector(".proj-grid");
+    const documentGrid = document.querySelector(".document-grid");
+
+    // Function to switch to list view
+    function switchToListView() {
+        documentGrid.classList.add("list-view");
+        documentGrid.classList.remove("grid-view");
+    }
+
+    // Function to switch to grid view
+    function switchToGridView() {
+        documentGrid.classList.add("grid-view");
+        documentGrid.classList.remove("list-view");
+    }
+
+    // Event listeners for list and grid view icons
+    listViewIcon.addEventListener("click", switchToListView);
+    gridViewIcon.addEventListener("click", switchToGridView);
+
+    // Initialize default view: set to grid view initially
+    switchToGridView();
+
+    // Optional: Interaction with document cards (if you want to show more details on click)
+    const documentCards = document.querySelectorAll(".document-card");
+    documentCards.forEach(card => {
+        card.addEventListener("click", function() {
+            // Example interaction: toggle highlighted class on click
+            card.classList.toggle("highlighted-blue");
+        });
+    });
+});
+
 
 
 //PROJ-TASK MODAL
