@@ -466,7 +466,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tasksTab.addEventListener("click", showTasks);
     documentsTab.addEventListener("click", showDocuments);
 
-    // Initial setup: show the Tasks section by default
+    // Show the Tasks section by default
     showTasks();
 });
 

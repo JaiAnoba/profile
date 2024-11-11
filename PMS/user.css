@@ -1830,7 +1830,7 @@ proj-stat p {
 }
 
 .p-dropdown-icon {
-    display: none; /* Hidden by default */
+    display: none; 
     position: absolute;
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -1964,26 +1964,147 @@ proj-stat p {
   align-items: center;
   justify-content: space-between;
 }
+
+/* DOCS SECTION */
+.section-docs {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
   
-
-.document-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
-}
-
-.document-card.highlighted-blue {
-  background-color: #b8e1eb;
-}
-
-.document-title {
-  font-weight: bold;
-}
+  .projj-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    left: 30px;
+    top: -45px;
+  }
   
-.document-date {
+  .files-count {
+    font-size: 1.2em;
+    white-space: nowrap;
+  }
+
+  .proj-controls {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: -40px;
+    gap: 15px;
+  }
+  
+  .sort-option {
+    cursor: pointer;
+  }
+  
+  .proj-list {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  .proj-grid {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
+  /* Grid styling */
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  
+  /* Card styling */
+  .document-card {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    height: 150px;
+  }
+  
+  .document-card.highlighted-blue {
+    background-color: #b8e1eb;
+  }
+
+  .pp-docs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    text-align: left;
+    gap: 4px;
+    left: 15px; 
+  }
+
+  .projj-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    gap: 4px;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    bottom: 40px;
+    left: 16px;
+  }
+  
+  .projj-icon .dottt{
+    display: block;
+    width: 10px;
+    height: 10px;      
+    background-color: black;
+    border-radius: 50%;
+  }
+  
+  .p-dropdown-iconn {
+      display: none; 
+      position: absolute;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+      padding: 5px 0;
+      z-index: 10;
+  }
+  
+  .p-drop-itemm {
+      padding: 8px 12px;
+      cursor: pointer;
+  }
+  
+  .p-drop-itemm:hover {
+      background-color: #f0f0f0;
+  }
+  
+  .document-title {
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .document-date {
     color: #7a7a7a;
-    font-size: 0.9em;
-}
+    font-size: 0.85em;
+  }
+  
+  /* Options icon styling */
+  .proj-options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    color: #333;
+    cursor: pointer;
+  }
+  
 
 .active-tab {
     color: #4d8fff;
