@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <title>Book Flight</title>
 </head>
@@ -16,66 +17,81 @@
         </div>
 
         <div class="wrap">
-            <img src="pics/logo.png" class="logo">
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="nav">
-                    <div class="nav-item">
-                        <img src="plane-icon.png" alt="plane" class="icon"> Book Flight
-                    </div>
-                    <div class="nav-item">
-                        <img src="search-icon.png" alt="search" class="icon"> Search Flight
-                    </div>
-                    <div class="nav-item">
-                        <img src="passenger-icon.png" alt="passenger" class="icon"> Passenger Details
-                    </div>
-                    <div class="nav-item">
-                        <img src="details-icon.png" alt="details" class="icon"> Flight Details
+            <img src="pics/cloud 1.png" class="cloud-1">
+            <img src="pics/cloud 2.png" class="cloud-3">
+            <!-- <img src="pics/cloud 4.png" class="cloud-5"> -->
+            <div class="content">
+                <img src="pics/logo.png" class="logo">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="nav">
+                        <div class="nav-item">
+                            <div class="item">
+                                <i class='bx bxs-plane-alt'></i> <p>Book Flight</p>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="item">
+                                <i class='bx bx-search-alt'></i> <p>Search Flight</p>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="item">
+                                <i class='bx bxs-backpack'></i> <p>Passenger Details</p>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="item">
+                                <i class='bx bx-map-alt'></i> <p>Flight Details</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="container">
-                <!-- Booking Form -->
-                <div class="form-container">
-                    <h2><img src="flight-icon.png" alt="icon" class="title-icon"> Book Your Flight</h2>
-                    <form>
-                        <div class="trip-type">
-                            <label><input type="radio" name="trip" checked> Round Trip</label>
-                            <label><input type="radio" name="trip"> One Way</label>
-                        </div>
-                        <div class="form-group">
-                            <label>Flying from</label>
-                            <select>
-                                <option>Choose city</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Flying to</label>
-                            <select>
-                                <option>Choose city</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Departure Date</label>
-                            <input type="date">
-                        </div>
-                        <div class="form-group">
-                            <label>Return Date</label>
-                            <input type="date">
-                        </div>
-                        <div class="class-options">
-                            <label><input type="radio" name="class" checked> Economy Class</label>
-                            <label><input type="radio" name="class"> Premium Class</label>
-                            <label><input type="radio" name="class"> First Class</label>
-                            <label><input type="radio" name="class"> Business Class</label>
-                        </div>
-                        <div class="form-group">
-                            <label>Number of passenger</label>
-                            <input type="number" min="1" value="1">
-                        </div>
-                        <button type="submit" class="search-button">Search Flights</button>
-                    </form>
+            
+                <div class="container">
+                    <img src="pics/cloud 2.png" class="cloud-2">
+                    <img src="pics/cloud 3.png" class="cloud-4">
+                    <!-- Booking Form -->
+                    <div class="form-container">
+                        <h2><i class='bx bxs-plane-take-off'></i> Book Your Flight</h2>
+                        <form>
+                            <div class="trip-type">
+                                <label><input type="radio" name="trip" checked> Round Trip</label>
+                                <label><input type="radio" name="trip"> One Way</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Flying from</label>
+                                <select>
+                                    <option>Choose city</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Flying to</label>
+                                <select>
+                                    <option>Choose city</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Departure Date</label>
+                                <input type="date">
+                            </div>
+                            <div class="form-group">
+                                <label>Return Date</label>
+                                <input type="date">
+                            </div>
+                            <div class="class-options">
+                                <label><input type="radio" name="class" checked> Economy Class</label>
+                                <label><input type="radio" name="class"> Premium Class</label>
+                                <label><input type="radio" name="class"> First Class</label>
+                                <label><input type="radio" name="class"> Business Class</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Number of passenger</label>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <button type="submit" class="search-button">Search Flights</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
