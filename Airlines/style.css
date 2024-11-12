@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition-behavior: smooth;
+}
+
+body {
+    background-color: #fff;
+}
+
+.wrapper {
+    max-width: 1900px;
+    height: 1010px;
+}
+
+.home-button {
+    width: 250px;
+    padding: 8px;
+    border-radius: 50px;
+    background-color: #36649b;
+    position: relative;
+    top: -190px;
+    left: 840px;
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    border: none; 
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0c3464;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* 2ND PAGE */
+.wrap {
+    max-width: 1900px;
+    height: 1000px;
+    background-color: #f3f0eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('cloud-background.png'); 
+    background-size: cover;
+}
+
+.logo {
+    position: relative;
+    left: 140px;
+    bottom: 400px;
+    width: 160px;
+    height: 110px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    margin-left: -150px;
+    width: 180px;
+    background-color: #ffffff;
+    padding: 30px;
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-item {
+    font-size: 1rem;
+    color: #5a5a5a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* BOOK FLIGHT */
+.container {
+    display: flex;
+    height: 800px;
+    max-width: 1900px;
+    margin-left: 150px; 
+    background-color: #ffffff;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.form-container {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #2b3a4a;
+    margin-bottom: 20px;
+}
+
+.title-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #5a5a5a;
+    margin-bottom: 5px;
+}
+
+select, input[type="date"], input[type="number"] {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.trip-type, .class-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.trip-type label, .class-options label {
+    font-size: 1rem;
+    color: #2b3a4a;
+}
+
+.search-button {
+    padding: 12px;
+    width: 18%;
+    background-color: #36649b;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px 0 0 850px;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #2b527b;
+}
