@@ -117,7 +117,7 @@ body {
 }
 
 .nav-item:hover {
-    color: #0c3464;
+    color: #36649b;
 }
 
 .nav-item p {
@@ -332,13 +332,13 @@ input[type="radio"]:checked + label  {
     row-gap: 25px;
     column-gap: 20px;
     max-width: 1600px;
-    margin: 30px 0 10px 0;
+    margin-top: 10px;
     padding: 10px;
     overflow-y: auto;
 }
 
 .flight-card {
-    height: 150px;
+    height: 160px;
     width: 320px;
     background-color: #f9f9f9;
     border-radius: 20px;
@@ -355,37 +355,55 @@ input[type="radio"]:checked + label  {
 }
 
 .lowest-fare .fare-type {
+    font-size: 0.9rem;
     color: #0070c0;
 }
 
 .highest-fare .fare-type {
+    font-size: 0.9rem;
     color: #d9534f;
 }
 
 .flight-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .flight-number {
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .route {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;
-    font-size: 12px;
-    margin-bottom: 15px;
+    margin: 0 0 15px 7px;
 }
 
-.city, .time {
+.route img {
+    width: 165px;
+}
+
+.route-time {
+    display: flex;
+    gap: 67px;
+    align-items: center;
+    font-size: 0.7rem;
+    margin: -13px 0 15px 8px;
+}
+
+.time {
+    color: #888;
+}
+
+.city {
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
 .duration {
-    font-size: 12px;
+    font-size: 0.7rem;
     color: #888;
 }
 
@@ -396,13 +414,14 @@ input[type="radio"]:checked + label  {
 }
 
 .price {
-    font-size: 18px;
+    font-size: 1.5rem;
     font-weight: bold;
+    color: #224163;
 }
 
 .availability {
-    font-size: 12px;
-    color: #888;
+    font-size: 0.8rem;
+    color: #5e5e5e;
 }
 
 .continue-btn {
