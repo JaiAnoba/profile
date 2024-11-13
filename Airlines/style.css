@@ -165,55 +165,123 @@ body {
     left: -597px;
 }
 
-/* BOOK-FLIGHT INPUTS */
-.form-container {
+/* BOOK-FLIGHT CONTAINER */
+.form-container-1 {
     background: none;
     padding: 10px;
     position: relative;
     left: -795px;
 }
 
-.form-container h2 {
+.form-container-1 h2 {
     font-size: 1.8rem;
-    color: #2b3a4a;
-    margin-block: 20px;
+    margin: 20px 0 50px 0;
 }
 
-.title-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
+.bxs-plane-take-off {
+    color: #2b3a4a;
+    font-size: 2.5rem;
+    position: relative;
+    top: 5px;
+    right: -20px;
+}
+
+.trip-type {
+    display: flex;
+    position: relative;
+    left: 230px;
+    gap: 320px;
+    font-weight: 700;
+}
+
+.destination {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    margin: 40px 0 40px 160px;
+}
+
+.flight-date {
+    display: flex;
+    flex-direction: row;
+    margin-left: 160px;
+    gap: 150px;
 }
 
 .form-group {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+    flex-direction: row;
+    margin: 10px 0 0 60px;
 }
 
-label {
-    font-size: 1rem;
-    color: #5a5a5a;
-    margin-bottom: 5px;
-}
-
-select, input[type="date"], input[type="number"] {
+.form-container-1 select, input[type="date"], input[type="number"] {
     padding: 8px;
-    font-size: 1rem;
     border: 1px solid #d0d0d0;
     border-radius: 5px;
-    width: 100%;
+    width: 250px;
+    color: #3a3939;
+    font-weight: 500;
 }
 
-.trip-type, .class-options {
+.book-class {
+    margin: 50px 0 60px 0;
+}
+
+.class {
+    position: relative;
+    left: 60px;
+    bottom: 20px;
+}
+
+.class-options {
     display: flex;
-    gap: 15px;
+    position: relative;
+    left: 95px;
+    gap: 70px;
     margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.form-group1 {
+    display: flex;
+    flex-direction: column;
+    margin-block: 15px;
+}
+
+.form-group1 label {
+    position: relative;
+    left: 60px;
+    bottom: 20px;
+}
+
+.form-group1  input {
+    position: relative;
+    left: 90px;
+}
+
+.trip-type label input[type="radio"],
+.class-options label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    accent-color: #36649b; 
+}
+
+.trip-type input[type="radio"]:checked + label,
+.class-options input[type="radio"]:checked + label {
+    color: #36649b;
 }
 
 .trip-type label, .class-options label {
-    font-size: 1rem;
-    color: #2b3a4a;
+    font-size: 1.2rem;
+}
+
+input[type="radio"]:checked {
+    accent-color: #36649b;
+}
+
+input[type="radio"]:checked + label  {
+    accent-color: #36649b;
 }
 
 .search-button {
@@ -235,3 +303,6 @@ select, input[type="date"], input[type="number"] {
 .search-button:hover {
     background-color: #2b527b;
 }
+/* END OF BOOK-FLIGHT CONTAINER */
+
+/* SEARCH-FLIGHT CONTAINER */
