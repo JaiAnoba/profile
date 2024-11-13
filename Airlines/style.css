@@ -117,7 +117,6 @@ body {
 }
 
 .nav-item:hover {
-    /* border-left: 1px solid #0c3464; */
     color: #0c3464;
 }
 
@@ -306,3 +305,122 @@ input[type="radio"]:checked + label  {
 /* END OF BOOK-FLIGHT CONTAINER */
 
 /* SEARCH-FLIGHT CONTAINER */
+.form-container-2 {
+    background: none;
+    padding: 10px;
+    position: relative;
+    left: -795px;
+}
+
+.form-container-2 h2 {
+    font-size: 1.8rem;
+    margin: 20px 0 0 0;
+}
+
+.bxs-map-pin {
+    color: #2b3a4a;
+    font-size: 2.5rem;
+    position: relative;
+    top: 5px;
+    right: -20px;
+}
+
+.flights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    row-gap: 25px;
+    column-gap: 20px;
+    max-width: 1600px;
+    margin: 30px 0 10px 0;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.flight-card {
+    height: 150px;
+    width: 320px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: left; 
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lowest-fare .fare-type {
+    color: #0070c0;
+}
+
+.highest-fare .fare-type {
+    color: #d9534f;
+}
+
+.flight-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.flight-number {
+    font-weight: bold;
+}
+
+.route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.city, .time {
+    font-weight: bold;
+}
+
+.duration {
+    font-size: 12px;
+    color: #888;
+}
+
+.price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.availability {
+    font-size: 12px;
+    color: #888;
+}
+
+.continue-btn {
+    padding: 12px;
+    width: 200px;
+    background-color: #36649b;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px 0 0 850px;
+    transition: background-color 0.3s;
+}
+
+.continue-btn:hover {
+    background-color: #2b527b;
+}
