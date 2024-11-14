@@ -327,19 +327,19 @@ input[type="radio"]:checked + label  {
 
 .flights {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
-    row-gap: 25px;
-    column-gap: 20px;
+    row-gap: 15px;
+    column-gap: 0px;
     max-width: 1600px;
-    margin-top: 10px;
+    margin: 10px 0 0 60px;
     padding: 10px;
     overflow-y: auto;
 }
 
 .flight-card {
-    height: 160px;
-    width: 320px;
+    height: 170px;
+    width: 440px;
     background-color: #f9f9f9;
     border-radius: 20px;
     padding: 15px;
@@ -356,18 +356,20 @@ input[type="radio"]:checked + label  {
 
 .lowest-fare .fare-type {
     font-size: 0.9rem;
+    font-weight: 600;
     color: #0070c0;
 }
 
 .highest-fare .fare-type {
     font-size: 0.9rem;
+    font-weight: 600;
     color: #d9534f;
 }
 
 .flight-info {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+    gap: 280px;
+    margin: 0 15px 0 18px;
 }
 
 .flight-number {
@@ -376,21 +378,22 @@ input[type="radio"]:checked + label  {
 
 .route {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
-    margin: 0 0 15px 7px;
+    margin: 0 0 15px 35px;
 }
 
 .route img {
-    width: 165px;
+    width: 210px;
 }
 
 .route-time {
     display: flex;
-    gap: 67px;
+    gap: 104px;
     align-items: center;
     font-size: 0.7rem;
-    margin: -13px 0 15px 8px;
+    margin: -13px 0 20px 35px;
+    white-space: nowrap;
 }
 
 .time {
@@ -409,19 +412,44 @@ input[type="radio"]:checked + label  {
 
 .price-info {
     display: flex;
-    justify-content: space-between;
+    gap: 95px;
     align-items: center;
+    margin-left: 35px;
+}
+
+.seat-info {
+    white-space: nowrap;
 }
 
 .price {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
-    color: #224163;
+    color: #ff3131;
+    margin-left: -20px;
+}
+
+.promo-t {
+    font-size: 0.7rem;
+    color: #5e5e5e;
+}
+
+.seats {
+    font-size: 0.7rem;
+    color: #5e5e5e;
+}
+
+.promo {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #36649b;
+    text-align: center;
 }
 
 .availability {
-    font-size: 0.8rem;
-    color: #5e5e5e;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #36649b;
+    text-align: center;
 }
 
 .continue-btn {
