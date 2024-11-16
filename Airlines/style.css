@@ -781,56 +781,100 @@ input[type="radio"]:checked + label  {
     padding: 20px;
     position: relative;
     left: -560px;
+    top: 30px;
 }
   
 .airline-logo {
-    width: 120px;
-    height: 70px;
-    margin-bottom: 10px;
+    width: 240px;
+    margin: 15px 0 40px 160px;
+    display: flex;
+    justify-content: center;
 }
 
-.f-route {
+.f-location {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px 0;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 10px;
 }
 
-.f-location h3 {
-  font-size: 1.2em;
+.f-location img {
+    width: 175px;
+    margin-top: 5px;
+}
+
+.f-destination {
+  font-size: 1.4em;
   margin: 0;
 }
 
 .f-timeline {
   display: flex;
-  align-items: center;
-  flex: 1;
+  justify-content: center;
+  flex-direction: row;
   margin: 0 10px;
-  position: relative;
+  gap: 80px;
 }
 
 .f-duration {
-    font-size: 0.9em;
-    color: #666;
+    font-size: 0.8em;
+    color: #888;
+    margin: 0 5px;
+}
+
+.f-time1, .f-time2{
+    font-size: 0.8em;
+    color: #888;
     margin: 0 5px;
 }
 
 .f-dates {
-  font-size: 0.9em;
-  color: #666;
-  margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 30px;
+    gap: 190px;
 }
 
-.f-details, .fare-summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  text-align: left;
-  margin: 10px 0;
-  gap: 10px;
+.date1, .date2 {
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #858585;
+    margin: 0 5px;
 }
 
-.detail-item, .fare-item {
-  font-size: 0.9em;
+.f-details1, .f-details2, .fare-summary {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.f-details1 {
+    gap: 80px;
+    margin: 35px 0 30px 0;
+}
+
+.f-details2 {
+    gap: 115px;
+    margin: 0 0 35px -20px;
+} 
+
+.fare-summary {
+    gap: 105px;
+    margin: 35px 0;
+}
+
+.detail-item p, .fare-item p {
+    font-size: 0.9em;
+}
+
+.detail-item strong {
+  font-size: 1em;
+}
+
+.fare-item strong {
+    color: #36649b;
 }
 
 .line {
@@ -841,30 +885,37 @@ input[type="radio"]:checked + label  {
 }
 
 .total-fare {
-  margin: 20px 0;
-  font-size: 1.5em;
-  color: red;
-  font-weight: bold;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px 0;
+    gap: 20px;
 }
 
-.total-fare span {
-  font-size: 0.9em;
-  color: #666;
+.total-fare strong {
+    font-size: 2.5em;
+    color: red;
+}
+
+.total-fare p {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-block: auto;
 }
 
 .broken-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    border-top: 2px dotted #000;
-    height: 2px;
-    position: relative;
+    width: 45%;
+    border-top: 4px dotted #8a8989;
+    height: 5px;
+    margin-block: auto;
 }
 
 .book-button {
     padding: 12px;
-    width: 180px;
+    width: 190px;
     height: 50px;
     background-color: #36649b;
     color: #ffffff;
@@ -875,7 +926,7 @@ input[type="radio"]:checked + label  {
     white-space: nowrap;
     cursor: pointer;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    margin: 650px 0 0 -1130px;
+    margin: 660px 0 0 -950px;
     transition: background-color 0.3s;
 }
 
