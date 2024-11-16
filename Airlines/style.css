@@ -770,3 +770,115 @@ input[type="radio"]:checked + label  {
 .view-button:hover {
     background-color: #2b527b;
 }
+
+
+/* FLIGHT DETAILS CONTAINER*/
+.form-container-4 {
+    width: 600px;
+    height: 600px;
+    background: #edebeb;
+    border-radius: 25px;
+    padding: 20px;
+    position: relative;
+    left: -560px;
+}
+  
+.airline-logo {
+    width: 120px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.f-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.f-location h3 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.f-timeline {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin: 0 10px;
+  position: relative;
+}
+
+.f-duration {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 5px;
+}
+
+.f-dates {
+  font-size: 0.9em;
+  color: #666;
+  margin: 10px 0;
+}
+
+.f-details, .fare-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: left;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.detail-item, .fare-item {
+  font-size: 0.9em;
+}
+
+.line {
+    width: 100%;      
+    height: 1px;    
+    background-color: #dbd6d6; 
+    margin: 20px 0;  
+}
+
+.total-fare {
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: red;
+  font-weight: bold;
+}
+
+.total-fare span {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.broken-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    border-top: 2px dotted #000;
+    height: 2px;
+    position: relative;
+}
+
+.book-button {
+    padding: 12px;
+    width: 180px;
+    height: 50px;
+    background-color: #36649b;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin: 650px 0 0 -1130px;
+    transition: background-color 0.3s;
+}
+
+.book-button:hover {
+    background-color: #2b527b;
+}
