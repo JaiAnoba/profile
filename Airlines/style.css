@@ -378,8 +378,8 @@ input[type="radio"]:checked + label  {
 }
 
 
-/* E.C ONE-WAY */
-.ec-ow-flights {
+/* ONE-WAY */
+.ow-flights {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
@@ -391,7 +391,7 @@ input[type="radio"]:checked + label  {
     overflow-y: auto;
 }
 
-.ec-ow-flight-card {
+.ow-flight-card {
     height: 165px;
     width: 440px;
     background-color: #f9f9f9;
@@ -403,34 +403,34 @@ input[type="radio"]:checked + label  {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ec-ow-flight-card:hover {
+.ow-flight-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-.ec-ow-flight-info {
+.ow-flight-info {
     display: flex;
     gap: 280px;
     margin-left: 18px;
 }
 
-.ec-ow-flight-number {
+.ow-flight-number {
     font-weight: 500;
     color: #36649b;
 }
 
-.ec-ow-route {
+.ow-route {
     display: flex;
     gap: 20px;
     align-items: center;
     margin: 10px 0 15px 35px;
 }
 
-.ec-ow-route img {
+.ow-route img {
     width: 170px;
 }
 
-.ec-ow-route-time {
+.ow-route-time {
     display: flex;
     gap: 84px;
     align-items: center;
@@ -439,57 +439,57 @@ input[type="radio"]:checked + label  {
     white-space: nowrap;
 }
 
-.ec-ow-time {
+.ow-time {
     color: #888;
 }
 
-.ec-ow-city {
+.ow-city {
     font-size: 1rem;
     font-weight: bold;
     white-space: nowrap;
 }
 
-.ec-ow-duration {
+.ow-duration {
     font-size: 0.7rem;
     color: #888;
 }
 
-.ec-ow-price-info {
+.ow-price-info {
     display: flex;
     gap: 95px;
     align-items: center;
     margin-left: 35px;
 }
 
-.ec-ow-seat-info {
+.ow-seat-info {
     white-space: nowrap;
 }
 
-.ec-ow-price {
+.ow-price {
     font-size: 1.8rem;
     font-weight: bold;
     color: #ff3131;
     margin-left: -30px;
 }
 
-.ec-ow-promo-t {
+.ow-promo-t {
     font-size: 0.7rem;
     color: #5e5e5e;
 }
 
-.ec-ow-seats {
+.ow-seats {
     font-size: 0.7rem;
     color: #5e5e5e;
 }
 
-.ec-ow-promo {
+.ow-promo {
     font-size: 1rem;
     font-weight: 700;
     color: #36649b;
     text-align: center;
 }
 
-.ec-ow-availability {
+.ow-availability {
     font-size: 1rem;
     font-weight: 700;
     color: #36649b;
@@ -497,7 +497,7 @@ input[type="radio"]:checked + label  {
 }
 
 /* E.C ROUND-TRIP */
-.ec-rt-flights {
+.rt-flights {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
@@ -509,7 +509,7 @@ input[type="radio"]:checked + label  {
     overflow-y: auto;
 }
 
-.ec-rt-flight-card {
+.rt-flight-card {
     height: 365px;
     width: 360px;
     background-color: #f9f9f9;
@@ -521,41 +521,41 @@ input[type="radio"]:checked + label  {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ec-rt-flight-card:hover {
+.rt-flight-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-.ec-rt-flight-number {
+.rt-flight-number {
     font-size: 0.9rem;
     font-weight: 500;
     color: #36649b;
     text-align: left;
 }
 
-.ec-rt-route1 {
+.rt-route1 {
     display: flex;
     gap: 18px;
     justify-content: center;
     margin: 15px 0 15px 0;
 }
 
-.ec-rt-route1 img {
+.rt-route1 img {
     width: 155px;
 }
 
-.ec-rt-route2 {
+.rt-route2 {
     display: flex;
     gap: 18px;
     justify-content: center;
     margin: 15px 0 15px 0;
 }
 
-.ec-rt-route2 img {
+.rt-route2 img {
     width: 155px;
 }
 
-.ec-rt-route-time1 {
+.rt-route-time1 {
     display: flex;
     gap: 73px;
     justify-content: center;
@@ -564,7 +564,7 @@ input[type="radio"]:checked + label  {
     white-space: nowrap;
 }
 
-.ec-rt-route-time2 {
+.rt-route-time2 {
     display: flex;
     gap: 73px;
     justify-content: center;
@@ -573,16 +573,16 @@ input[type="radio"]:checked + label  {
     white-space: nowrap;
 }
 
-.ec-rt-time {
+.rt-time {
     color: #888;
 }
 
-.ec-rt-city {
+.rt-city {
     font-size: 1rem;
     font-weight: bold;
 }
 
-.ec-rt-duration {
+.rt-duration {
     font-size: 0.7rem;
     color: #888;
 }
@@ -594,17 +594,17 @@ input[type="radio"]:checked + label  {
     margin: 20px 0;  
 }
 
-.ec-rt-price-info {
+.rt-price-info {
     display: flex;
     gap: 60px;
     justify-content: center;
 }
 
-.ec-rt-seat-info {
+.rt-seat-info {
     white-space: nowrap;
 }
 
-.ec-rt-price {
+.rt-price {
     font-size: 1.9rem;
     font-weight: bold;
     color: #ff3131;
@@ -612,151 +612,31 @@ input[type="radio"]:checked + label  {
     text-align: center;
 }
 
-.ec-rt-promo-t {
+.rt-promo-t {
     font-size: 0.7rem;
     color: #5e5e5e;
 }
 
-.ec-rt-seats {
+.rt-seats {
     font-size: 0.7rem;
     color: #5e5e5e;
 }
 
-.ec-rt-promo {
+.rt-promo {
     font-size: 1rem;
     font-weight: 700;
     color: #36649b;
     text-align: center;
 }
 
-.ec-rt-availability {
+.rt-availability {
     font-size: 1rem;
     font-weight: 700;
     color: #36649b;
     text-align: center;
 }
 
-
-/* E.C ONE-WAY */
-.ec-ow-flights {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-    row-gap: 35px;
-    column-gap: 10px;
-    max-width: 1600px;
-    margin: 20px 0 0 60px;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-.ec-ow-flight-card {
-    height: 165px;
-    width: 440px;
-    background-color: #f9f9f9;
-    border-radius: 20px;
-    padding: 15px;
-    text-align: left; 
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ec-ow-flight-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.ec-ow-flight-info {
-    display: flex;
-    gap: 280px;
-    margin-left: 18px;
-}
-
-.ec-ow-flight-number {
-    font-weight: 500;
-    color: #36649b;
-}
-
-.ec-ow-route {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin: 10px 0 15px 35px;
-}
-
-.ec-ow-route img {
-    width: 170px;
-}
-
-.ec-ow-route-time {
-    display: flex;
-    gap: 84px;
-    align-items: center;
-    font-size: 0.7rem;
-    margin: -13px 0 15px 35px;
-    white-space: nowrap;
-}
-
-.ec-ow-time {
-    color: #888;
-}
-
-.ec-ow-city {
-    font-size: 1rem;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.ec-ow-duration {
-    font-size: 0.7rem;
-    color: #888;
-}
-
-.ec-ow-price-info {
-    display: flex;
-    gap: 95px;
-    align-items: center;
-    margin-left: 35px;
-}
-
-.ec-ow-seat-info {
-    white-space: nowrap;
-}
-
-.ec-ow-price {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #ff3131;
-    margin-left: -30px;
-}
-
-.ec-ow-promo-t {
-    font-size: 0.7rem;
-    color: #5e5e5e;
-}
-
-.ec-ow-seats {
-    font-size: 0.7rem;
-    color: #5e5e5e;
-}
-
-.ec-ow-promo {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #36649b;
-    text-align: center;
-}
-
-.ec-ow-availability {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #36649b;
-    text-align: center;
-}
-
-
-
+/* S-F BUTTON */
 .continue-btn {
     padding: 12px;
     width: 200px;
@@ -774,5 +654,119 @@ input[type="radio"]:checked + label  {
 }
 
 .continue-btn:hover {
+    background-color: #2b527b;
+}
+
+
+/* PASSENGER DETAILS CONTAINER*/
+.form-container-3 {
+    background: none;
+    padding: 10px;
+    position: relative;
+    left: -795px;
+}
+
+.form-container-3 h2 {
+    font-size: 1.8rem;
+    margin: 20px 0 50px 0;
+}
+
+.bxs-book-reader {
+    color: #2b3a4a;
+    font-size: 2.5rem;
+    position: relative;
+    top: 5px;
+    right: -20px;
+}
+
+.nm-add {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    margin: 90px 0 80px 160px;
+}
+
+.birth-phone {
+    display: flex;
+    flex-direction: row;
+    margin-left: 160px;
+    gap: 150px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 0 60px;
+}
+
+.form-container-3 input[type="text"], input[type="tel"], input[type="date"]{
+    padding: 8px;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    width: 250px;
+    color: #3a3939;
+    font-weight: 500;
+}
+
+.gender-type {
+    margin: 110px 0 55px 0;
+}
+
+.gender {
+    font-size: 1rem;
+    position: relative;
+    left: 160px;
+    bottom: 20px;
+}
+
+.gender-options {
+    display: flex;
+    position: relative;
+    left: 220px;
+    gap: 375px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.gender-options label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    accent-color: #36649b; 
+}
+
+.gender-options input[type="radio"]:checked + label {
+    color: #36649b;
+}
+
+.gender-options label {
+    font-size: 1.2rem;
+}
+
+input[type="radio"]:checked {
+    accent-color: #36649b;
+}
+
+input[type="radio"]:checked + label  {
+    accent-color: #36649b;
+}
+
+.view-button {
+    padding: 12px;
+    width: 200px;
+    background-color: #36649b;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px 0 0 850px;
+    transition: background-color 0.3s;
+}
+
+.view-button:hover {
     background-color: #2b527b;
 }
