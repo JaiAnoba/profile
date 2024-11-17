@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <title>Book Flight</title>
+    <title>Airlines</title>
 </head>
 <body>
     <main>
@@ -16,7 +16,7 @@
             </section>
         </div>
 
-        <div class="wrap">
+        <section class="wrap">
             <img src="pics/cloud 1.png" class="cloud-1">
             <img src="pics/cloud 2.png" class="cloud-3">
 
@@ -53,11 +53,11 @@
                     <img src="pics/cloud 3.png" class="cloud-4">
                     
                     <!-- Booking Form -->
-                    <div id="book-flight" class="form-container-1" style="display:none">
+                    <div id="book-flight" class="form-container-1">
                         <h2><i class='bx bxs-plane-take-off'></i> Book Your Flight</h2>
                         <form>
                             <div class="trip-type">
-                                <label><input type="radio" name="trip" checked> Round Trip</label>
+                                <label><input type="radio" name="trip"> Round Trip</label>
                                 <label><input type="radio" name="trip"> One Way</label>
                             </div>
 
@@ -66,7 +66,8 @@
                                     <label>Flying from</label>
                                     <div class="form-group">
                                         <select>
-                                            <option>Choose city</option>
+                                            <option>Cebu</option>
+                                            <option>Davao</option>
                                         </select>
                                     </div>
                                 </div>
@@ -75,7 +76,8 @@
                                     <label>Flying to</label>
                                     <div class="form-group">
                                         <select>
-                                            <option>Choose city</option>
+                                            <option>Manila</option>
+                                            <option>Puerto Princessa</option>
                                         </select>
                                     </div>
                                 </div>
@@ -100,7 +102,7 @@
                             <div class="book-class">
                                 <div class="class"><p>Seat Class</p></div>
                                 <div class="class-options">
-                                    <label><input type="radio" name="class" checked> Economy Class</label>
+                                    <label><input type="radio" name="class"> Economy Class</label>
                                     <label><input type="radio" name="class"> Premium Class</label>
                                     <label><input type="radio" name="class"> First Class</label>
                                     <label><input type="radio" name="class"> Business Class</label>
@@ -109,14 +111,14 @@
 
                             <div class="form-group1">
                                 <label>Number of passenger</label>
-                                <input type="number" min="1" value="1">
+                                <input type="number" min="1" value="0">
                             </div>
                             <button type="submit" class="search-button">Search Flights</button>
                         </form>                                                                                                    
                     </div>
                      
                     <!-- SEARCH-FLIGHT -->
-                    <div id="search-flight" class="form-container-2" style="display: none;">
+                    <div id="search-flight" class="form-container-2"  style="display:none">
                         <h2><i class='bx bxs-map-pin'></i>Select Flight</h2>
                         <p class="trip">One Way Flight</p>
                         <div class="routes1">
@@ -130,7 +132,7 @@
                                 <p class="place">MANILA</p>
                             </div>
                         </div>
-                        <div class="routes2" style="display: none;">
+                        <div class="routes2">
                             <div class="route">
                                 <p class="city">CEB</p>
                                 <img src="pics/o-w.png">
@@ -145,8 +147,8 @@
                             </div>
                         </div>
 
-                        <!-- CEB-MAN E.C ONE-WAY -->
-                        <div id="class-one-way" class="ow-flights" style="display: none;">
+                        <!-- ONE-WAY -->
+                        <div id="class-one-way" class="ow-flights">
                             <div class="ow-flight-card">
                                 <div class="ow-flight-info">
                                     <p class="ow-flight-number">PR1856</p>
@@ -253,8 +255,8 @@
                             </div>
                         </div>
 
-                        <!-- CEB-MAN E.C ROUND-TRIP -->
-                        <div id="class-round-trip" class="rt-flights">
+                        <!-- ROUND-TRIP -->
+                        <div id="class-round-trip" class="rt-flights"  style="display:none">
                             <div class="rt-flight-card">
                                 <div class="rt-flight-info">
                                     <p class="rt-flight-number">PR1856</p>
@@ -384,7 +386,7 @@
                     </div>
 
                     <!-- PASSENGER DETAILS -->
-                    <div id="passenger-details" class="form-container-3" style="display: none;">
+                    <div id="passenger-details" class="form-container-3"  style="display:none">
                         <h2><i class='bx bxs-book-reader'></i> Passenger Details</h2>
                         <form>
                             <div class="nm-add">
@@ -429,7 +431,7 @@
                     <!-- FLIGHT DETAILS (SUMMARY)-->
 
                     <!-- ONE-WAY SUMMARY -->
-                    <div id="one-way-summary" class="form-container-4" style="display: none;">
+                    <div id="one-way-summary" class="form-container-4"  style="display:none">
                         <img src="pics/airline logo.png" class="airline-logo">
                         
                         <div class="f-ow-location">
@@ -500,7 +502,7 @@
                     </div>
 
                     <!-- ROUND-TRIP SUMMARY -->
-                    <div id="one-way-summary" class="form-container-5" style="display: none;">
+                    <div id="one-way-summary" class="form-container-5" style="display:none">
                         <img src="pics/airline logo.png" class="rt-airline-logo">
 
                         <div class="top-wrap">
@@ -592,11 +594,10 @@
                         <button class="book-button">BOOK NOW</button>
                     </div>
 
-                    <!-- <button class="book-button">BOOK NOW</button> -->
-
                 </div>
             </div>
-        </div>
+        </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -120,6 +120,14 @@ body {
     color: #36649b;
 }
 
+.nav-item.active {
+    color: #36649b;
+}
+
+.nav-item.active i {
+    color: #36649b;
+}
+
 .nav-item p {
     font-size: 1.2rem;
     text-align: left;
