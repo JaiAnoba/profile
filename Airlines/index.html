@@ -427,7 +427,9 @@
                     </div>
 
                     <!-- FLIGHT DETAILS (SUMMARY)-->
-                    <div id="one-way-summary" class="form-container-4">
+
+                    <!-- ONE-WAY SUMMARY -->
+                    <div id="one-way-summary" class="form-container-4" style="display: none;">
                         <img src="pics/airline logo.png" class="airline-logo">
                         
                         <div class="f-ow-location">
@@ -462,12 +464,12 @@
                         </div>
                         <div class="f-ow-details2">
                           <div class="f-ow-detail-item">
-                            <p>Gate</p>
-                            <strong>C4</strong>
-                          </div>
-                          <div class="f-ow-detail-item">
                             <p>Terminal</p>
                             <strong>4</strong>
+                          </div>
+                          <div class="f-ow-detail-item">
+                            <p>Gate</p>
+                            <strong>C4</strong>
                           </div>
                           <div class="f-ow-detail-item">
                             <p>Flight No.</p>
@@ -496,7 +498,101 @@
                           <p>Total Fare</p>
                         </div>
                     </div>
-                    <button class="book-button">BOOK NOW</button>
+
+                    <!-- ROUND-TRIP SUMMARY -->
+                    <div id="one-way-summary" class="form-container-5" style="display: none;">
+                        <img src="pics/airline logo.png" class="rt-airline-logo">
+
+                        <div class="top-wrap">
+                            <div class="left-wrap">
+                                <div class="f-rt-location1">
+                                  <h3 class="f-rt-destination1">CEB</h3>
+                                  <img src="pics/o-w.png">
+                                  <h3 class="f-rt-destination1">MAN</h3>
+                                </div>
+                                <div class="f-rt-timeline1">
+                                  <p class="f-rt-time1">02:04 am</p>
+                                  <p class="f-rt-duration1">2h 10m</p>
+                                  <p class="f-rt-time2">04:14 am</p>
+                                </div>
+                                <div class="f-rt-dates1">
+                                  <p class="f-rt-date1">12 Dec., 2024</p>
+                                  <p class="f-rt-date2">12 Dec., 2024</p>
+                                </div>
+                            </div>
+                            <div class="vertical-line"></div>
+                            <div class="right-wrap">
+                                <div class="f-rt-location2">
+                                    <h3 class="f-rt-destination2">CEB</h3>
+                                    <img src="pics/r-t.png">
+                                    <h3 class="f-ow-destination2">MAN</h3>
+                                </div>
+                                <div class="f-rt-timeline2">
+                                    <p class="f-rt-time3">02:04 pm</p>
+                                    <p class="f-rt-duration2">2h 10m</p>
+                                    <p class="f-rt-time4">04:14 pm</p>
+                                </div>
+                                <div class="f-rt-dates2">
+                                  <p class="f-rt-date3">18 Dec., 2024</p>
+                                  <p class="f-rt-date4">18 Dec., 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="f-rt-line"></div>
+                        <div class="f-rt-details1">
+                          <div class="f-rt-detail-item">
+                            <p>Name</p>
+                            <strong>Jai Candia</strong>
+                          </div>
+                          <div class="f-rt-detail-item">
+                            <p>Class</p>
+                            <strong>Economy</strong>
+                          </div>
+                          <div class="f-rt-detail-item">
+                            <p>No. of Seats</p>
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                        <div class="f-rt-details2">
+                          <div class="f-rt-detail-item">
+                            <p>Terminal</p>
+                            <strong>4</strong>
+                          </div>
+                          <div class="f-rt-detail-item">
+                            <p>Gate</p>
+                            <strong>C4</strong>
+                          </div>
+                          <div class="f-rt-detail-item">
+                            <p>Flight No.</p>
+                            <strong>AB1234</strong>
+                          </div>
+                        </div>
+                        <div class="f-rt-line"></div>
+                        <div class="f-rt-fare-summary">
+                          <div class="f-rt-fare-item">
+                            <p>Ticket Price</p>
+                            <strong>$300</strong>
+                          </div>
+                          <div class="f-rt-fare-item">
+                            <p>Promo</p>
+                            <strong>10%</strong>
+                          </div>
+                          <div class="f-rt-fare-item">
+                            <p>Discount</p>
+                            <strong>5%</strong>
+                          </div>
+                        </div>
+                        <div class="f-rt-total-fare">
+                          <strong>$100</strong>
+                          <div class="f-rt-broken-line"></div>
+                          <p>Total Fare</p>
+                        </div>
+
+                        <button class="book-button">BOOK NOW</button>
+                    </div>
+
+                    <!-- <button class="book-button">BOOK NOW</button> -->
 
                 </div>
             </div>
