@@ -791,7 +791,7 @@ input[type="radio"]:checked + label  {
     justify-content: center;
 }
 
-.f-location {
+.f-ow-location {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -799,17 +799,17 @@ input[type="radio"]:checked + label  {
   margin-top: 10px;
 }
 
-.f-location img {
+.f-ow-location img {
     width: 175px;
     margin-top: 5px;
 }
 
-.f-destination {
+.f-ow-destination {
   font-size: 1.4em;
   margin: 0;
 }
 
-.f-timeline {
+.f-ow-timeline {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -817,19 +817,19 @@ input[type="radio"]:checked + label  {
   gap: 80px;
 }
 
-.f-duration {
+.f-ow-duration {
     font-size: 0.8em;
     color: #888;
     margin: 0 5px;
 }
 
-.f-time1, .f-time2{
+.f-ow-time1, .f-ow-time2{
     font-size: 0.8em;
     color: #888;
     margin: 0 5px;
 }
 
-.f-dates {
+.f-ow-dates {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -837,54 +837,54 @@ input[type="radio"]:checked + label  {
     gap: 190px;
 }
 
-.date1, .date2 {
+.f-ow-date1, .f-ow-date2 {
     font-size: 0.9em;
     font-weight: 700;
     color: #858585;
     margin: 0 5px;
 }
 
-.f-details1, .f-details2, .fare-summary {
+.f-ow-details1, .f-ow-details2, .f-ow-fare-summary {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
-.f-details1 {
+.f-ow-details1 {
     gap: 80px;
     margin: 35px 0 30px 0;
 }
 
-.f-details2 {
+.f-ow-details2 {
     gap: 115px;
     margin: 0 0 35px -20px;
 } 
 
-.fare-summary {
+.f-ow-fare-summary {
     gap: 105px;
     margin: 35px 0;
 }
 
-.detail-item p, .fare-item p {
+.f-ow-detail-item p, .f-ow-fare-item p {
     font-size: 0.9em;
 }
 
-.detail-item strong {
+.f-ow-detail-item strong {
   font-size: 1em;
 }
 
-.fare-item strong {
+.f-ow-fare-item strong {
     color: #36649b;
 }
 
-.line {
+.f-ow-line {
     width: 100%;      
     height: 1px;    
     background-color: #dbd6d6; 
     margin: 20px 0;  
 }
 
-.total-fare {
+.f-ow-total-fare {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -892,18 +892,18 @@ input[type="radio"]:checked + label  {
     gap: 20px;
 }
 
-.total-fare strong {
+.f-ow-total-fare strong {
     font-size: 2.5em;
     color: red;
 }
 
-.total-fare p {
+.f-ow-total-fare p {
     font-size: 1.2em;
     font-weight: 700;
     margin-block: auto;
 }
 
-.broken-line {
+.f-ow-broken-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
