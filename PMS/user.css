@@ -29,8 +29,8 @@ body {
 /* CONTAINER */
 .container {
     position: relative;
-    width: 95%;
-    height: 95vh;
+    width: 1900px;
+    height: 920px;
     background: rgba(40, 130, 204, 0.582);
     border-radius: 25px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1),
@@ -42,11 +42,11 @@ body {
     overflow: hidden;
 }
 
-/* left start */
+/* SIDEBAR start */
 .left {
     position: fixed;
     width: 240px;
-    height: 91%;
+    height: 880px;
     background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
@@ -243,8 +243,8 @@ body {
 .upBtn {
     position: relative;
     top: 20px;
-    width: 80%;
-    height: 45px;
+    width: 170px;
+    height: 55px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -270,7 +270,7 @@ body {
 }
 
 .up_pic {
-    width: 130%;
+    width: 250px;
     position: relative;
     bottom: -30px;
     overflow: hidden;
@@ -293,11 +293,12 @@ body {
 
 /* right start */
 .right {
-    width: 100rem;
-    height: 90%;
+    width: 1530px;
+    height: 800px;
     margin: 90px 0 20px 255px;
     flex-direction: column;
     gap: 20px;
+    border: solid;
 }
 
 /* SEARCHBX */
@@ -338,7 +339,7 @@ body {
 
 .inputBx input {
     position: relative;
-    width: 100%;
+    width: 300px;
     height: 25px;
     outline: none;
     border: none;
@@ -392,12 +393,10 @@ body {
 /* Dropdown */
 .dropdown {
     display: none;
-    position: absolute;
-    right: 0;
+    margin-right: 90px;
     background-color: #ebe9e9;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    display: none;
     z-index: 10000;
     width: 220px;
 }
@@ -474,8 +473,7 @@ body {
 
 .right main {
     position: relative;
-    width: 100%;
-    height: calc(100% - 90px);
+    height: 800px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -565,7 +563,7 @@ body {
     position: relative;
     right: 33rem;
     width: 69.1rem; 
-    height: 98%;
+    height: 410px;
     padding: 20px;
     background-color: rgb(248, 243, 243);
     border-radius: 15px;
@@ -600,7 +598,9 @@ body {
 .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 7px;
+    gap: 9px;
+    position: relative;
+    top: 15px;
 }
 
 /* Individual Project Card */
@@ -960,7 +960,7 @@ body {
     position: relative;
     left: 71rem;
     width: 385px;
-    height: 89%;
+    height: 410px;
     background-color: rgb(248, 243, 243);
     backdrop-filter: blur(5px);
     border-radius: 20px;
@@ -1000,6 +1000,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    top: 7px;
 }
 
 .messagesUserImg {
@@ -1038,7 +1039,7 @@ body {
     background-color: #f9f9f9;
     border-radius: 30px; 
     max-width: 1520px;
-    height: 785px;
+    height: 810px;
 }
 
 .proj {
@@ -1633,7 +1634,7 @@ body {
     background-color: #f9f9f9;
     border-radius: 30px; 
     width: 1520px;
-    height: 785px;
+    height: 810px;
 }
 
 .bx-chevron-left {
@@ -1981,13 +1982,13 @@ proj-stat p {
  
 /* Task Item Styles */
 .proj-task {
-  background-color: #f0f0f0;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* DOCS SECTION */
@@ -2046,7 +2047,7 @@ proj-stat p {
     background-color: #fff;
     border-radius: 25px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     position: relative;
     width: 200px;
@@ -2142,12 +2143,12 @@ proj-stat p {
 /* List View */
 .document-grid.list-view {
     display: flex;
-flex-direction: column;
-gap: 15px;
-max-height: 550px; 
-overflow-y: auto; 
-overflow-x: none;
-padding-right: 15px;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 550px; 
+    overflow-y: auto; 
+    overflow-x: none;
+    padding-right: 15px;
 }
 
 .document-card.list-view {
@@ -2175,7 +2176,7 @@ padding-right: 15px;
 /* CALENDAR */
 .calendars {
     max-width: 1520px;
-    height: 785px;
+    height: 810px;
     margin: 90px 0 20px 260px;
     padding: 50px;
     background-color: #f9f9f9;
@@ -2190,7 +2191,7 @@ padding-right: 15px;
 }
 
 .cal-wrapper {
-    margin-top: 35px;
+    margin-top: 55px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -2430,7 +2431,7 @@ button {
 .message {
     display: flex;
     max-width: 1520px;
-    height: 785px;  
+    height: 810px;  
     padding: 20px;
     margin: 90px 0 20px 260px;
     background-color: #f9f9f9;
@@ -2584,7 +2585,7 @@ button {
 .chat-window {
     width: 1165px;
     height: 100%;
-    margin: -745px 0 0 315px;
+    margin: -770px 0 0 315px;
     flex-grow: 1;
     background: #ffffff;
     border-radius: 25px;
@@ -2789,7 +2790,7 @@ button {
     position: fixed;
     display: flex;
     max-width: 1520px;
-    height: 875px;
+    height: 901px;
     padding: 20px;
     margin: 0 0 20px 260px;
     background-color: #f9f9f9;
@@ -2798,7 +2799,7 @@ button {
 }
 
 .settings-container {
-    height: 834px;
+    height: 862px;
     display: flex;
     border-radius: 30px;
     background-color: #fff;

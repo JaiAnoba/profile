@@ -1,3 +1,4 @@
+//SIDEBAR TOGGLE
 document.addEventListener('DOMContentLoaded', function() {
     // Sidebar links
     const dashboardLink = document.getElementById('dashboard-link');
@@ -84,6 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+//SIDEBAR COLLAPSED
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".left");
+    const toggleButton = document.querySelector(".logo");
+  
+    toggleButton.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+    });
+  });
+
+  
 
 // CHECK CIRCLE
 function toggleCheck(element) {
@@ -182,19 +195,6 @@ document.getElementById('save-password-btn').addEventListener('click', function(
   document.getElementById('password-view').style.display = 'flex';  // Shows the "Change" view
   document.getElementById('password-edit').style.display = 'none';  // Hides the "Edit" view
 });
-
-
-
-//SIDEBAR COLLAPSED
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebar = document.querySelector(".left");
-  const toggleButton = document.querySelector(".logo");
-
-  toggleButton.addEventListener("click", function () {
-      sidebar.classList.toggle("collapsed");
-  });
-});
-
 
 
 // PROJECT-DATE
@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Add functionality for the Edit and Delete options within each dropdown
+    //Functionality for the Edit and Delete options within each dropdown
     tasksContainer.querySelectorAll(".proj-task").forEach(task => {
         const dropdown = task.querySelector(".p-dropdown-icon");
         const editOption = dropdown.querySelector(".edit");
