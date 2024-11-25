@@ -1243,6 +1243,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-top: 5px solid transparent;
     height: 230px;
+    cursor: pointer;
 }
 
 .project-cards:hover {
@@ -1933,10 +1934,16 @@ proj-stat p {
     height: 60px;
 }
 
+#p-task-form input[type="date"] {
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    font-size: 14px;
+}
+
 .p-color-options {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .p-color-option {

@@ -461,7 +461,7 @@
         <!-- TASKS & DOCUMENTS -->
         <div class="proj-details" style="display: none;">
             <a href="#project-container"><i class='bx bx-chevron-left'></i></a>
-            <!-- Tabs for switching between Tasks and Documents -->
+
             <div class="tabs">
                 <span id="tasks-tab" class="tab">Tasks</span>
                 <span id="documents-tab" class="tab">Documents</span>
@@ -498,6 +498,9 @@
                 
                     <label for="assigned-to">Assigned To:</label>
                     <input type="text" id="assigned-to" name="assigned-to">
+
+                    <label for="due-date">Due Date:</label>
+                    <input type="date" id="due-date" name="due-date">
                 
                     <label for="p-task-color">Choose Color Theme:</label>
                     <div class="p-color-options">
@@ -517,8 +520,8 @@
                 <div class="proj-task">
                     <span class="check-circle" onclick="toggleCheck(this)"></span>
                   <div class="proj-task-info">
-                    <span class="proj-task-title">Web Designing</span>
-                    <span class="proj-task-subtitle">Prototyping</span>
+                    <span class="proj-task-title"></span>
+                    <span class="proj-task-subtitle"></span>
                   </div>
                   <div class="proj-icon">
                     <span class="dott"></span>
@@ -531,6 +534,8 @@
                   </div>
                 </div>
             </div>
+            
+
             </div>
 
             <!-- Documents Section -->

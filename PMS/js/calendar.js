@@ -55,8 +55,6 @@ initDashboardCalendar();
 
 
 
-
-// SECTION CALENDAR
 // SECTION CALENDAR
 let selectedDates = [];
 let selectedDate;
@@ -65,14 +63,14 @@ let tasks = {}; // Store tasks persistently
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
-
+    
     const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+                        "July", "August", "September", "October", "November", "December"];
 
     function loadCalendar(month, year) {
         document.getElementById("month-year").innerText = `${monthNames[month]} ${year}`;
         document.getElementById("big-month-year").innerText = `${monthNames[month]} ${year}`;
-
+        
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
@@ -98,7 +96,7 @@ function initSectionCalendar() {
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(Date.UTC(year, month, day)).toISOString().slice(0, 10);
             if (tasks[date]) {
-                tasks[date].forEach(task => highlightDateInCalendar(date, task.category, task.title));
+                tasks[date].forEach(task => highlightDateInCalendar(date, task.category, task.title, task.category));
             }
         }
 
@@ -106,26 +104,116 @@ function initSectionCalendar() {
         highlightCurrentDate(month, year);
     }
 
+    // Select a date (used for task management in the big calendar)
+    window.selectDate = function(date, element, isPastDate) {
+        if (isPastDate) return; // Prevent selecting past dates
+
+        selectedDate = date;
+        selectedDates.push(date);
+        element.classList.toggle('selected');
+        openTaskModal();
+        document.getElementById('task-date').value = date;
+    }
+
+    // Open the task modal
+    function openTaskModal() {
+        document.getElementById('task-modal').style.display = 'flex';
+        document.querySelector('.bx-x').onclick = closeTaskModal;
+    }
+
+    // Close the task modal
+    function closeTaskModal() {
+        document.getElementById('task-modal').style.display = 'none';
+        resetTaskForm();
+    }
+
+    // Add task to selected date
+    document.getElementById('add-task-btn').onclick = function() {
+        const title = document.getElementById('task-title').value.trim();
+        const desc = document.getElementById('task-desc').value.trim();
+        const time = document.getElementById('task-time').value;
+        const category = document.getElementById('task-category').value;
+
+        if (!title || !category || !selectedDate) {
+            closeTaskModal();
+            return;
+        }
+
+        if (!tasks[selectedDate]) {
+            tasks[selectedDate] = [];
+        }
+        tasks[selectedDate].push({ title, desc, time, category });
+        highlightDateInCalendar(selectedDate, category, title, category); // Added color
+
+        addTaskToList(title, formatTime(time), selectedDate, category);
+
+        closeTaskModal();
+    };
+
+    // Highlight dates in the calendar and add task titles for large calendar
+    function highlightDateInCalendar(date, category, title, color) {
+        const dateElements = document.querySelectorAll('#large-calendar div');
+        const selectedDay = new Date(date).getUTCDate(); // Get day in UTC format
+
+        dateElements.forEach(element => {
+            const dayText = element.innerText;
+            if (parseInt(dayText) === selectedDay) {
+                element.classList.add(category);
+                
+                // Apply the background color to the selected date cell
+                element.style.backgroundColor = color;
+                element.style.color = "#fff"; // Ensure text is readable when background is applied
+
+                // Add title to large calendar
+                if (element.parentElement.id === "large-calendar") {
+                    element.style.borderRadius = "10%";
+                    element.innerHTML = `<span>${dayText}</span><br><span class="task-title">${title}</span>`;
+                }
+            }
+        });
+    }
+
+    // Add task to the task list (task modal)
+    function addTaskToList(title, time, date, category) {
+        const taskList = document.querySelector('.taskss ul');
+        const li = document.createElement('li');
+        
+        const colorClass = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
+        
+        li.innerHTML = `
+            <span class="task-color" style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:${colorClass}; margin-right:5px;"></span>
+            ${title} - ${time} on ${date} 
+        `;
+        taskList.appendChild(li);
+    }
+
+    // Format time to AM/PM
+    function formatTime(timeString) {
+        const date = new Date(`1970-01-01T${timeString}`);
+        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+        return date.toLocaleString('en-US', options);
+    }
+
+    // Reset the task form
+    function resetTaskForm() {
+        document.getElementById('task-title').value = '';
+        document.getElementById('task-desc').value = '';
+        document.getElementById('task-time').value = '';
+        document.getElementById('task-category').value = 'personal';
+        selectedDates = [];
+        selectedDate = null;
+    }
+
     // Utility function to get current date in Philippines timezone
     function getCurrentDateInPhilippines() {
-        const now = new Date();
-        const options = { timeZone: "Asia/Manila", year: "numeric", month: "2-digit", day: "2-digit" };
-        const formatter = new Intl.DateTimeFormat("en-US", options);
-
-        // Format the date into a consistent string like "YYYY-MM-DD"
-        const parts = formatter.formatToParts(now);
-        const year = parts.find(p => p.type === "year").value;
-        const month = parts.find(p => p.type === "month").value;
-        const day = parts.find(p => p.type === "day").value;
-
-        return new Date(`${year}-${month}-${day}T00:00:00Z`);
+        return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" }));
     }
 
     // Check if two dates are the same day (ignoring time)
     function isSameDate(date1, date2) {
         return date1.getUTCFullYear() === date2.getUTCFullYear() &&
-            date1.getUTCMonth() === date2.getUTCMonth() &&
-            date1.getUTCDate() === date2.getUTCDate();
+               date1.getUTCMonth() === date2.getUTCMonth() &&
+               date1.getUTCDate() === date2.getUTCDate();
     }
 
     // Highlight current date in the mini calendar
@@ -147,8 +235,6 @@ function initSectionCalendar() {
             });
         }
     }
-
-    // Other existing functions remain unchanged...
 
     function prevMonth() {
         currentMonth--;
@@ -175,6 +261,112 @@ function initSectionCalendar() {
 }
 
 initSectionCalendar();
+
+
+
+
+// PROJ-TASK MODAL
+document.addEventListener("DOMContentLoaded", function () {
+    const taskModal = document.getElementById("p-task-modal");
+    const newTaskBtn = document.querySelector(".new-task-btn");
+    const saveTaskBtn = document.querySelector(".p-save-task-btn");
+    const tasksSection = document.getElementById("tasks-section");
+    const colorOptions = document.querySelectorAll(".p-color-option");
+    let selectedTaskColor = "#ffffff"; // Default color
+
+    // Open the task modal
+    newTaskBtn.addEventListener("click", function () {
+        taskModal.style.display = "flex";
+    });
+
+    // Select color option
+    colorOptions.forEach(function (colorOption) {
+        colorOption.addEventListener("click", function () {
+            colorOptions.forEach(function (opt) {
+                opt.classList.remove("selected");
+            });
+            colorOption.classList.add("selected");
+            selectedTaskColor = colorOption.getAttribute("data-color");
+        });
+    });
+
+    // Save task
+    saveTaskBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const taskTitle = document.getElementById("p-task-title").value;
+        const assignedTo = document.getElementById("assigned-to").value;
+        const dueDate = document.getElementById("due-date").value;
+        const category = selectedTaskColor || "#e6e6e6";
+
+        if (!taskTitle) {
+            alert("Please provide a task title.");
+            return;
+        }
+
+        // Create task card
+        const newTask = document.createElement("div");
+        newTask.classList.add("proj-task");
+        newTask.style.backgroundColor = category;
+
+        const checkCircle = document.createElement("span");
+        checkCircle.classList.add("check-circle");
+        checkCircle.onclick = function () { toggleCheck(this); };
+
+        const taskInfo = document.createElement("div");
+        taskInfo.classList.add("proj-task-info");
+
+        const titleSpan = document.createElement("span");
+        titleSpan.classList.add("proj-task-title");
+        titleSpan.textContent = taskTitle || "Untitled Task";
+
+        const assignedSpan = document.createElement("span");
+        assignedSpan.classList.add("proj-task-subtitle");
+        assignedSpan.textContent = assignedTo ? `Assigned to: ${assignedTo}` : "Unassigned";
+
+        const iconContainer = document.createElement("div");
+        iconContainer.classList.add("proj-icon");
+
+        const dot1 = document.createElement("span");
+        dot1.classList.add("dott");
+        const dot2 = document.createElement("span");
+        dot2.classList.add("dott");
+
+        // Append elements
+        taskInfo.appendChild(titleSpan);
+        taskInfo.appendChild(assignedSpan);
+        iconContainer.appendChild(dot1);
+        iconContainer.appendChild(dot2);
+
+        newTask.appendChild(checkCircle);
+        newTask.appendChild(taskInfo);
+        newTask.appendChild(iconContainer);
+
+        tasksSection.appendChild(newTask);
+
+        // Reset form and close modal
+        document.getElementById("p-task-form").reset();
+        colorOptions.forEach(opt => opt.classList.remove("selected"));
+        taskModal.style.display = "none";
+
+        // If a due date is provided, associate the task with the due date
+        if (dueDate) {
+            if (!tasks[dueDate]) {
+                tasks[dueDate] = [];
+            }
+            tasks[dueDate].push({
+                title: taskTitle,
+                assignedTo,
+                category
+            });
+
+            addTaskToList(taskTitle, assignedTo ? assignedTo : "No time specified", dueDate, category);
+
+            highlightDateInCalendar(dueDate, category, taskTitle, category);
+        }
+    });
+});
+
 
 
 
