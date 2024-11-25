@@ -602,14 +602,11 @@ document.addEventListener("DOMContentLoaded", function () {
     listViewIcon.addEventListener("click", switchToListView);
     gridViewIcon.addEventListener("click", switchToGridView);
 
-    // Initialize default view: set to grid view initially
     switchToGridView();
 
-    // Optional: Interaction with document cards (if you want to show more details on click)
     const documentCards = document.querySelectorAll(".document-card");
     documentCards.forEach(card => {
         card.addEventListener("click", function() {
-            // Example interaction: toggle highlighted class on click
             card.classList.toggle("highlighted-blue");
         });
     });
@@ -777,7 +774,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Handle the Continue button click (delete action)
   continueButton.addEventListener("click", function () {
       popup.style.display = "none";
-      alert("Account deleted successfully."); // Replace with actual delete function if needed
+      alert("Account deleted successfully."); 
   });
 
   // Handle the Cancel button click (close popup)

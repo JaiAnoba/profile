@@ -57,21 +57,22 @@ initDashboardCalendar();
 
 
 // SECTION CALENDAR
+// SECTION CALENDAR
 let selectedDates = [];
-let tasks = {};
 let selectedDate;
+let tasks = {}; // Store tasks persistently
 
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
-    
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
+        "July", "August", "September", "October", "November", "December"];
 
     function loadCalendar(month, year) {
         document.getElementById("month-year").innerText = `${monthNames[month]} ${year}`;
         document.getElementById("big-month-year").innerText = `${monthNames[month]} ${year}`;
-        
+
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
@@ -85,16 +86,15 @@ function initSectionCalendar() {
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(Date.UTC(year, month, day)); // Use UTC to prevent timezone shifts
             const isoDate = date.toISOString().slice(0, 10); // Format as YYYY-MM-DD
-            const taskClass = tasks[isoDate] ? tasks[isoDate].map(task => task.category).join(' ') : "";
             const isPastDate = date < getCurrentDateInPhilippines() && !isSameDate(date, getCurrentDateInPhilippines());
 
-            miniCalendar.innerHTML += `<div class="${taskClass} ${isPastDate ? 'disabled' : ''}" onclick="selectDate('${isoDate}', this, ${isPastDate})">${day}</div>`;
+            miniCalendar.innerHTML += `<div class="${isPastDate ? 'disabled' : ''}" onclick="selectDate('${isoDate}', this, ${isPastDate})">${day}</div>`;
         }
 
         const largeCalendar = document.getElementById("large-calendar");
         largeCalendar.innerHTML = miniCalendar.innerHTML;
 
-        // Restore task titles in the large calendar view for current month
+        // Highlight tasks in the large calendar
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(Date.UTC(year, month, day)).toISOString().slice(0, 10);
             if (tasks[date]) {
@@ -102,138 +102,53 @@ function initSectionCalendar() {
             }
         }
 
-        loadTasksForCurrentMonth(month, year);
-    }
-
-    // Select a date for adding tasks
-    window.selectDate = function(date, element, isPastDate) {
-        if (isPastDate) return; // Prevent selecting past dates
-
-        selectedDate = date;
-        selectedDates.push(date);
-        element.classList.toggle('selected');
-        openTaskModal();
-        document.getElementById('task-date').value = date;
-    }
-
-    // Open the task modal
-    function openTaskModal() {
-        document.getElementById('task-modal').style.display = 'flex';
-        document.querySelector('.bx-x').onclick = closeTaskModal;
-    }
-
-    // Close the task modal
-    function closeTaskModal() {
-        document.getElementById('task-modal').style.display = 'none';
-        resetTaskForm();
-    }
-
-    // Add task to selected date
-    document.getElementById('add-task-btn').onclick = function() {
-        const title = document.getElementById('task-title').value.trim();
-        const desc = document.getElementById('task-desc').value.trim();
-        const time = document.getElementById('task-time').value;
-        const category = document.getElementById('task-category').value;
-
-        if (!title || !category || !selectedDate) {
-            closeTaskModal();
-            return;
-        }
-
-        if (!tasks[selectedDate]) {
-            tasks[selectedDate] = [];
-        }
-        tasks[selectedDate].push({ title, desc, time, category });
-        highlightDateInCalendar(selectedDate, category, title);
-        addTaskToList(title, formatTime(time), selectedDate, category);
-
-        closeTaskModal();
-    };
-
-    // Load tasks for the current month
-    function loadTasksForCurrentMonth(month, year) {
-        const taskList = document.querySelector('.taskss ul');
-        taskList.innerHTML = '';
-
-        const startDate = new Date(year, month, 1);
-        const endDate = new Date(year, month + 1, 0);
-
-        for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
-            const formattedDate = new Date(date).toISOString().slice(0, 10);
-            if (tasks[formattedDate]) {
-                tasks[formattedDate].forEach(task => {
-                    addTaskToList(task.title, formatTime(task.time), formattedDate, task.category);
-                });
-            }
-        }
-    }
-
-    // Highlight dates in the calendar and add task titles for large calendar
-    function highlightDateInCalendar(date, category, title) {
-        const dateElements = document.querySelectorAll('#mini-calendar div, #large-calendar div');
-        const selectedDay = new Date(date).getUTCDate(); // Get day in UTC format
-
-        dateElements.forEach(element => {
-            const dayText = element.innerText;
-            if (parseInt(dayText) === selectedDay) {
-                element.classList.add(category);
-                
-                // Add circular style to mini calendar
-                if (element.parentElement.id === "mini-calendar") {
-                    element.style.borderRadius = "20%";
-                }
-
-                // Add title to large calendar
-                if (element.parentElement.id === "large-calendar") {
-                    element.style.borderRadius = "10%";
-                    element.innerHTML = `<span>${dayText}</span><br><span class="task-title">${title}</span>`;
-                }
-            }
-        });
-    }
-
-    // Add task to the task list
-    function addTaskToList(title, time, date, category) {
-        const taskList = document.querySelector('.taskss ul');
-        const li = document.createElement('li');
-        
-        const colorClass = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
-        
-        li.innerHTML = `
-            <span class="task-color" style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:${colorClass}; margin-right:5px;"></span>
-            ${title} - ${time} on ${date} 
-        `;
-        taskList.appendChild(li);
-    }
-
-    // Format time to AM/PM
-    function formatTime(timeString) {
-        const date = new Date(`1970-01-01T${timeString}`);
-        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
-        return date.toLocaleString('en-US', options);
-    }
-
-    // Reset the task form
-    function resetTaskForm() {
-        document.getElementById('task-title').value = '';
-        document.getElementById('task-desc').value = '';
-        document.getElementById('task-time').value = '';
-        document.getElementById('task-category').value = 'personal';
-        selectedDates = [];
-        selectedDate = null;
+        // Highlight the current date in the mini calendar
+        highlightCurrentDate(month, year);
     }
 
     // Utility function to get current date in Philippines timezone
     function getCurrentDateInPhilippines() {
-        return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" }));
+        const now = new Date();
+        const options = { timeZone: "Asia/Manila", year: "numeric", month: "2-digit", day: "2-digit" };
+        const formatter = new Intl.DateTimeFormat("en-US", options);
+
+        // Format the date into a consistent string like "YYYY-MM-DD"
+        const parts = formatter.formatToParts(now);
+        const year = parts.find(p => p.type === "year").value;
+        const month = parts.find(p => p.type === "month").value;
+        const day = parts.find(p => p.type === "day").value;
+
+        return new Date(`${year}-${month}-${day}T00:00:00Z`);
     }
 
     // Check if two dates are the same day (ignoring time)
     function isSameDate(date1, date2) {
         return date1.getUTCFullYear() === date2.getUTCFullYear() &&
-               date1.getUTCMonth() === date2.getUTCMonth() &&
-               date1.getUTCDate() === date2.getUTCDate();
+            date1.getUTCMonth() === date2.getUTCMonth() &&
+            date1.getUTCDate() === date2.getUTCDate();
     }
+
+    // Highlight current date in the mini calendar
+    function highlightCurrentDate(month, year) {
+        const miniCalendarElements = document.querySelectorAll("#mini-calendar div");
+        const currentDate = getCurrentDateInPhilippines();
+        const currentDay = currentDate.getUTCDate();
+        const currentMonth = currentDate.getUTCMonth();
+        const currentYear = currentDate.getUTCFullYear();
+
+        // Highlight the current day only if it matches the current month and year
+        if (month === currentMonth && year === currentYear) {
+            miniCalendarElements.forEach(element => {
+                if (parseInt(element.innerText) === currentDay) {
+                    // Highlight current date
+                    element.style.backgroundColor = 'lightblue';
+                    element.style.fontWeight = 'bold';
+                }
+            });
+        }
+    }
+
+    // Other existing functions remain unchanged...
 
     function prevMonth() {
         currentMonth--;

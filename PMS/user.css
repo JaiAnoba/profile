@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 ::-webkit-scrollbar{
@@ -298,7 +299,6 @@ body {
     margin: 90px 0 20px 255px;
     flex-direction: column;
     gap: 20px;
-    border: solid;
 }
 
 /* SEARCHBX */
@@ -1633,7 +1633,7 @@ body {
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 30px; 
-    width: 1520px;
+    width: 1510px;
     height: 810px;
 }
 
