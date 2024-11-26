@@ -55,6 +55,9 @@ initDashboardCalendar();
 
 
 
+
+
+
 // SECTION CALENDAR
 let selectedDates = [];
 let selectedDate;
@@ -271,8 +274,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const newTaskBtn = document.querySelector(".new-task-btn");
     const saveTaskBtn = document.querySelector(".p-save-task-btn");
     const tasksSection = document.getElementById("tasks-section");
+    const tTaskCard = document.getElementById("t-task-card");
+    const tCloseBtn = document.querySelector(".t-close-btn");
     const colorOptions = document.querySelectorAll(".p-color-option");
+    const tTaskName = document.querySelector(".t-task-name"); // Title inside the task card
+    const tDetails = document.querySelector(".t-description p"); // Description inside the task card
     let selectedTaskColor = "#ffffff"; // Default color
+
+    let tasks = {}; // To store tasks by due date
 
     // Open the task modal
     newTaskBtn.addEventListener("click", function () {
@@ -308,6 +317,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const newTask = document.createElement("div");
         newTask.classList.add("proj-task");
         newTask.style.backgroundColor = category;
+        newTask.setAttribute("data-title", taskTitle); // Store task title
+        newTask.setAttribute("data-description", `Assigned to: ${assignedTo || "Unassigned"}`); // Store description
 
         const checkCircle = document.createElement("span");
         checkCircle.classList.add("check-circle");
@@ -342,6 +353,11 @@ document.addEventListener("DOMContentLoaded", function () {
         newTask.appendChild(taskInfo);
         newTask.appendChild(iconContainer);
 
+        // Add click event listener for opening the task card
+        newTask.addEventListener("click", function () {
+            openTaskCard(newTask);
+        });
+
         tasksSection.appendChild(newTask);
 
         // Reset form and close modal
@@ -365,9 +381,27 @@ document.addEventListener("DOMContentLoaded", function () {
             highlightDateInCalendar(dueDate, category, taskTitle, category);
         }
     });
+
+    // Function to open the task card
+    function openTaskCard(taskElement) {
+        const taskTitle = taskElement.getAttribute("data-title");
+        const taskDescription = taskElement.getAttribute("data-description");
+
+        tTaskName.textContent = taskTitle;
+        tDetails.textContent = taskDescription;
+
+        tTaskCard.style.display = "block"; // Show the task card
+    }
+
+    // Close the task card
+    tCloseBtn.addEventListener("click", function () {
+        tTaskCard.style.display = "none"; // Hide the task card
+    });
 });
 
 
+
+//OPENING OF TASK-CARD
 
 
 

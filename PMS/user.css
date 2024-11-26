@@ -1788,6 +1788,7 @@ proj-stat p {
   width: 1400px;
   height: 80px;
   padding: 30px;
+  cursor: pointer;
 }
 
 .proj-task-info {
@@ -1996,6 +1997,170 @@ proj-stat p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+/* TASK-CARD */
+.t-task-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: none;
+}
+
+.task-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Header */
+.t-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.t-mark-complete {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.t-close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Task Name */
+.t-task-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Details */
+.t-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.t-details h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.t-avatars img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.t-due-date p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Description */
+.t-description {
+    margin-bottom: 20px;
+}
+
+.t-description h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.t-description p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Attachments */
+.t-attachments {
+    margin-bottom: 20px;
+}
+
+.t-attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.t-attachment-item img {
+    width: 20px;
+    height: 20px;
+}
+
+.t-add-attachment-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Comments */
+.t-comments-section .t-comment {
+    margin-bottom: 15px;
+}
+
+.t-comment-header {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.t-comment-header strong {
+    color: #333;
+}
+
+.t-comment p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.t-add-comment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 10px;
+}
+
+.t-add-comment img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.t-add-comment input {
+    border: none;
+    background: #f5f5f5;
+    border-radius: 20px;
+    padding: 10px;
+    flex: 1;
+    font-size: 14px;
+    outline: none;
 }
 
 /* DOCS SECTION */
