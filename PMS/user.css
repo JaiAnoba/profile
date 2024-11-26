@@ -1519,10 +1519,6 @@ body {
     width: 200px;
 }
 
-.des {
-    margin-bottom: -8px;
-}
-
 .team-members-container {
     position: relative;
     width: 460px;
@@ -1570,7 +1566,7 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 5px;
     z-index: 1000;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 .dropdown-item {
@@ -1899,7 +1895,6 @@ proj-stat p {
     width: 400px;
     max-width: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
 }
 
 .p-modal-content h2 {
@@ -1915,6 +1910,10 @@ proj-stat p {
     font-weight: 600;
     font-size: 14px;
     color: #333;
+}
+
+.des {
+    margin-bottom: -8px;
 }
 
 #p-task-form input[type="text"],
@@ -2019,8 +2018,8 @@ proj-stat p {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 30px;
     overflow: hidden;
 }
 
@@ -2029,14 +2028,19 @@ proj-stat p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .t-mark-complete {
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 14px;
+    font-size: 0.8rem;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bx-check {
+    font-size: 1.2rem;
 }
 
 .t-close-btn {
@@ -2047,21 +2051,36 @@ proj-stat p {
 }
 
 /* Task Name */
+.t-name p{
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.bx-credit-card {
+    margin-block: auto;
+    color: gray;
+}
+
 .t-task-name {
-    font-size: 18px;
+    font-size: 1.7rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    color: #074485;
+    margin-bottom: 30px;
 }
 
 /* Details */
 .t-details {
     display: flex;
+    width: 450px;
     justify-content: space-between;
-    margin-bottom: 20px;
+    padding-inline: 40px;
+    margin-bottom: 30px;
+    margin-inline: auto;
+    white-space: nowrap;
 }
 
-.t-details h4 {
-    font-size: 14px;
+.t-details p {
+    font-size: 0.8rem;
     margin-bottom: 5px;
 }
 
@@ -2072,19 +2091,44 @@ proj-stat p {
     margin-right: 5px;
 }
 
-.t-due-date p {
-    font-size: 14px;
-    color: #666;
+.t-date-title {
+    font-size: 0.8rem;
+}
+
+.t-due-date .t-due {
+    font-size: 0.9rem;
+    font-size: 700;
+    color: #535353;
 }
 
 /* Description */
 .t-description {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 30px;
+}
+
+.t-des_con {
+    display: flex;
+    flex-direction: row;
+    gap: 390px;
+}
+
+.bx-pencil {
+    font-size: 1.1rem;
+    margin-block: auto;
+    cursor: pointer;
 }
 
 .t-description h4 {
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.bx-poll {
+    font-size: 1.1rem;
+    margin-block: auto;
+    color: gray;
 }
 
 .t-description p {
@@ -2095,20 +2139,25 @@ proj-stat p {
 
 /* Attachments */
 .t-attachments {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.t-attachment-item {
+.t-labels {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
+    flex-direction: row;
+    gap: 230px;
+    white-space: nowrap;
+}
+
+.t-attachments h4 {
+    font-size: 1rem;
     margin-bottom: 10px;
 }
 
-.t-attachment-item img {
-    width: 20px;
-    height: 20px;
+.bx-paperclip {
+    font-size: 1.1rem;
+    margin-block: auto;
+    color: gray;
 }
 
 .t-add-attachment-btn {
@@ -2116,8 +2165,52 @@ proj-stat p {
     border: none;
     color: #007bff;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.9rem;
+    padding-top: 2px;
+    white-space: nowrap;
 }
+
+.files-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    margin-top: 10px;
+}
+
+.file-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px; 
+}
+
+.file-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    flex: 1;
+    font-size: 13px; 
+}
+
+.file-link:hover {
+    text-decoration: underline;
+}
+
+.remove-file-icon {
+    font-size: 14px; 
+    color: #ff4d4f;
+    cursor: pointer;
+}
+
+.remove-file-icon:hover {
+    color: #d9363e;
+}
+
+
 
 /* Comments */
 .t-comments-section .t-comment {
@@ -2127,16 +2220,6 @@ proj-stat p {
 .t-comment-header {
     font-size: 14px;
     margin-bottom: 5px;
-}
-
-.t-comment-header strong {
-    color: #333;
-}
-
-.t-comment p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
 }
 
 .t-add-comment {
@@ -2153,14 +2236,101 @@ proj-stat p {
     border-radius: 50%;
 }
 
-.t-add-comment input {
-    border: none;
-    background: #f5f5f5;
-    border-radius: 20px;
-    padding: 10px;
+.t-comment-input-wrapper {
     flex: 1;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+}
+
+.t-comment-input {
+    flex: 1;
+    border: none;
     outline: none;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.t-comment-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.t-comment-options button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.t-emoji-btn i, .t-mention-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.t-emoji-btn i, .t-mention-btn {
+    font-size: 18px;
+    color: #666;
+}
+
+.t-emoji-btn i, .t-send-btn i {
+    margin-top: 10px;
+}
+
+.t-send-btn i {
+    width: 30px;
+    border-radius: 80px;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+}
+
+.emoji-picker button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mention-list {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+}
+
+.mention-list div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.mention-list div:hover {
+    background-color: #f0f0f0;
 }
 
 /* DOCS SECTION */

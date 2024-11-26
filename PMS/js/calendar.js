@@ -277,11 +277,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const tTaskCard = document.getElementById("t-task-card");
     const tCloseBtn = document.querySelector(".t-close-btn");
     const colorOptions = document.querySelectorAll(".p-color-option");
-    const tTaskName = document.querySelector(".t-task-name"); // Title inside the task card
-    const tDetails = document.querySelector(".t-description p"); // Description inside the task card
-    let selectedTaskColor = "#ffffff"; // Default color
+    const tTaskName = document.querySelector(".t-task-name"); 
+    const tDescription = document.querySelector(".t-des"); 
+    const tAssigned = document.querySelector(".t-assigned"); 
+    const tDueDate = document.querySelector(".t-due"); 
+    let selectedTaskColor = "#ffffff"; 
 
-    let tasks = {}; // To store tasks by due date
+    let tasks = {}; 
 
     // Open the task modal
     newTaskBtn.addEventListener("click", function () {
@@ -304,6 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         const taskTitle = document.getElementById("p-task-title").value;
+        const description = document.getElementById("description").value;
         const assignedTo = document.getElementById("assigned-to").value;
         const dueDate = document.getElementById("due-date").value;
         const category = selectedTaskColor || "#e6e6e6";
@@ -317,8 +320,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const newTask = document.createElement("div");
         newTask.classList.add("proj-task");
         newTask.style.backgroundColor = category;
-        newTask.setAttribute("data-title", taskTitle); // Store task title
-        newTask.setAttribute("data-description", `Assigned to: ${assignedTo || "Unassigned"}`); // Store description
+
+        // Store task details in custom attributes
+        newTask.setAttribute("data-title", taskTitle); 
+        newTask.setAttribute("data-description", description); 
+        newTask.setAttribute("data-assigned", assignedTo || "unassigned"); 
+        newTask.setAttribute("data-due-date", dueDate || "no due date"); 
 
         const checkCircle = document.createElement("span");
         checkCircle.classList.add("check-circle");
@@ -333,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const assignedSpan = document.createElement("span");
         assignedSpan.classList.add("proj-task-subtitle");
-        assignedSpan.textContent = assignedTo ? `Assigned to: ${assignedTo}` : "Unassigned";
+        assignedSpan.textContent = assignedTo ? `Assigned to: ${assignedTo}` : "unassigned";
 
         const iconContainer = document.createElement("div");
         iconContainer.classList.add("proj-icon");
@@ -382,26 +389,208 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Function to open the task card
+    // Function to open the task card and populate it with task details
     function openTaskCard(taskElement) {
         const taskTitle = taskElement.getAttribute("data-title");
         const taskDescription = taskElement.getAttribute("data-description");
+        const assignedTo = taskElement.getAttribute("data-assigned");
+        const dueDate = taskElement.getAttribute("data-due-date");
 
+        // Populate the task card details
         tTaskName.textContent = taskTitle;
-        tDetails.textContent = taskDescription;
+        tDescription.textContent = taskDescription;
+        tAssigned.textContent = assignedTo;
+        tDueDate.textContent = dueDate;
 
-        tTaskCard.style.display = "block"; // Show the task card
+        // Show the task card
+        tTaskCard.style.display = "block"; 
     }
 
     // Close the task card
     tCloseBtn.addEventListener("click", function () {
-        tTaskCard.style.display = "none"; // Hide the task card
+        tTaskCard.style.display = "none"; 
     });
 });
 
 
 
-//OPENING OF TASK-CARD
+//TASK-CARD PENCIL AND ATTACHING FILES
+document.addEventListener("DOMContentLoaded", function () {
+    const tTaskCard = document.getElementById("t-task-card");
+    const pencilIcon = tTaskCard.querySelector(".bx-pencil");
+    const tDesElement = tTaskCard.querySelector(".t-des");
+    const tAddAttachmentBtn = tTaskCard.querySelector(".t-add-attachment-btn");
+    const filesContainer = tTaskCard.querySelector(".files-container");
+
+    // Functionality to edit and save the description
+    pencilIcon.addEventListener("click", function () {
+        if (!tDesElement.isContentEditable) {
+            // Enable editing
+            tDesElement.contentEditable = "true";
+            tDesElement.focus();
+            pencilIcon.classList.remove("bx-pencil");
+            pencilIcon.classList.add("bx-save");
+        } else {
+            // Save the description
+            tDesElement.contentEditable = "false";
+            pencilIcon.classList.remove("bx-save");
+            pencilIcon.classList.add("bx-pencil");
+            console.log("Updated description:", tDesElement.textContent);
+        }
+    });
+
+    // Functionality to attach files
+    tAddAttachmentBtn.addEventListener("click", function () {
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.style.display = "none"; 
+        document.body.appendChild(fileInput);
+
+        // Trigger file input click
+        fileInput.click();
+
+        // Handle file selection
+        fileInput.addEventListener("change", function () {
+            const file = fileInput.files[0]; 
+            if (file) {
+                // Create a file link
+                const fileLink = document.createElement("a");
+                fileLink.textContent = file.name;
+                fileLink.href = URL.createObjectURL(file); 
+                fileLink.target = "_blank";
+                fileLink.classList.add("file-link");
+
+                // Append the file link to the files container
+                const fileWrapper = document.createElement("div");
+                fileWrapper.classList.add("file-wrapper");
+                fileWrapper.appendChild(fileLink);
+
+                // Add a trash icon for file removal
+                const trashIcon = document.createElement("i");
+                trashIcon.classList.add("bx", "bx-trash", "remove-file-icon");
+                fileWrapper.appendChild(trashIcon);
+
+                // Append to the container
+                filesContainer.appendChild(fileWrapper);
+
+                // Log file details for debugging
+                console.log("Attached file:", file.name);
+            }
+
+            // Remove the file input from the DOM
+            document.body.removeChild(fileInput);
+        });
+    });
+
+    // Event delegation to handle file removal
+    filesContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("remove-file-icon")) {
+            const fileWrapper = event.target.closest(".file-wrapper");
+            filesContainer.removeChild(fileWrapper);
+        }
+    });
+});
+
+
+//TASK-CARD COMMENTS OPTIONS
+document.addEventListener('DOMContentLoaded', () => {
+    const emojiBtn = document.querySelector('.t-emoji-btn');
+    const mentionBtn = document.querySelector('.t-mention-btn');
+    const sendBtn = document.querySelector('.t-send-btn');
+    const commentInput = document.querySelector('.comment-input');
+    const emojiPicker = document.createElement('div');
+    const mentionList = document.createElement('div');
+    const commentSection = document.querySelector('.comment-section');
+
+    // List of emojis for the emoji picker
+    const emojis = ['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😊', '😎', '😍'];
+
+    // Add emoji picker to the DOM
+    emojiPicker.classList.add('emoji-picker');
+    emojis.forEach(emoji => {
+        const emojiButton = document.createElement('button');
+        emojiButton.textContent = emoji;
+        emojiPicker.appendChild(emojiButton);
+        emojiButton.addEventListener('click', () => {
+            commentInput.value += emoji;  // Insert emoji into the comment input
+            emojiPicker.style.display = 'none';  // Hide emoji picker after selection
+        });
+    });
+    document.body.appendChild(emojiPicker);
+
+    // Add mention list to the DOM (you can customize this list)
+    mentionList.classList.add('mention-list');
+    const mentionUsers = ['@John', '@Jane', '@Alice', '@Bob'];
+    mentionUsers.forEach(user => {
+        const mentionItem = document.createElement('div');
+        mentionItem.textContent = user;
+        mentionList.appendChild(mentionItem);
+        mentionItem.addEventListener('click', () => {
+            commentInput.value += ` ${user}`;  // Insert mention into the comment input
+            mentionList.style.display = 'none';  // Hide mention list after selection
+        });
+    });
+    document.body.appendChild(mentionList);
+
+    // Toggle emoji picker visibility
+    emojiBtn.addEventListener('click', () => {
+        emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
+        mentionList.style.display = 'none';  // Hide mention list if emoji picker is opened
+    });
+
+    // Toggle mention list visibility
+    mentionBtn.addEventListener('click', () => {
+        mentionList.style.display = mentionList.style.display === 'none' ? 'block' : 'none';
+        emojiPicker.style.display = 'none';  // Hide emoji picker if mention list is opened
+    });
+
+    // Function to get formatted timestamp
+    function getFormattedTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const isPM = hours >= 12;
+        const formattedTime = `${isPM ? hours - 12 || 12 : hours}:${minutes} ${isPM ? 'pm' : 'am'}`;
+        return `Today at ${formattedTime}`;
+    }
+
+    // Function to create and append a new comment
+    function createComment(text, time) {
+        const comment = document.createElement('div');
+        comment.classList.add('comment');
+        comment.innerHTML = `
+            <img src="user-avatar.jpg" alt="Avatar" class="user-avatar">
+            <div class="comment-details">
+                <div class="comment-header">
+                    <h4>You</h4>
+                    <span class="comment-time">${time}</span>
+                </div>
+                <p class="comment-text">${text}</p>
+                <button class="reply-btn">Reply</button>
+            </div>
+        `;
+        commentSection.insertBefore(comment, commentSection.querySelector('.add-comment'));
+    }
+
+    // Handle sending a comment
+    sendBtn.addEventListener('click', () => {
+        const text = commentInput.value.trim();
+        if (text) {
+            const time = getFormattedTime();
+            createComment(text, time);
+            commentInput.value = '';  // Clear the input after sending
+        } else {
+            alert('Please enter a comment!');
+        }
+    });
+
+    // Handle pressing Enter to send comment
+    commentInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendBtn.click();
+        }
+    });
+});
 
 
 

@@ -495,14 +495,19 @@
                   <form id="p-task-form">
                     <label for="p-task-title">Title</label>
                     <input type="text" id="p-task-title" name="p-task-title">
+
+                    <label for="description">Description</label>
+                    <div class="des">
+                        <textarea id="description" rows="2" placeholder="Task description"></textarea>
+                    </div>
                 
-                    <label for="assigned-to">Assigned To:</label>
+                    <label for="assigned-to">Assigned To</label>
                     <input type="text" id="assigned-to" name="assigned-to">
 
-                    <label for="due-date">Due Date:</label>
+                    <label for="due-date">Due Date</label>
                     <input type="date" id="due-date" name="due-date">
                 
-                    <label for="p-task-color">Choose Color Theme:</label>
+                    <label for="p-task-color">Color Theme</label>
                     <div class="p-color-options">
                       <span class="p-color-option" data-color="#e6b7e0" style="background-color: #e6b7e0;"></span>
                       <span class="p-color-option" data-color="#b6c1ff" style="background-color: #b6c1ff;"></span>
@@ -539,52 +544,58 @@
             <div class="t-task-card" id="t-task-card" style="display: none;">
                 <div class="task-card">
                     <div class="t-header">
-                        <div class="t-mark-complete">
-                            <input type="checkbox" id="mark-complete">
-                            <label for="mark-complete">Mark Complete</label>
-                        </div>
+                        <button class="t-mark-complete" id="mark-complete"><i class='bx bx-check'></i>Mark Complete</button>
                         <button class="t-close-btn">✖</button>
                     </div>
                 
                     <div class="t-content">
-                        <h2 class="t-task-name"></h2>
+                        <div class="t-name">
+                            <p><i class='bx bx-credit-card'></i> Task Name</p>
+                            <h2 class="t-task-name"></h2>
+                        </div>
                         <div class="t-details">
                             <div class="t-assignee">
-                                <h4>Assignee</h4>
-                                <div class="t-avatars">
+                                <p>Assignee</p>
+                                <div class="t-assigned">
                                 </div>
                             </div>
                             <div class="t-due-date">
-                                <h4>Due Date</h4>
-                                <p>Jan 3, 2018</p>
+                                <p class="t-date-title">Due Date</p>
+                                <p class="t-due"><i class='bx bx-time'></i> </p>
                             </div>
                         </div>
                     
                         <div class="t-description">
-                            <h4>Description</h4>
-                            <p></p>
+                            <div class="t-des_con">
+                                <h4><i class='bx bx-poll'></i> Description</h4>
+                                <i class='bx bx-pencil' ></i>
+                            </div>
+                            <p class="t-des"></p>
                         </div>
                     
                         <div class="t-attachments">
-                            <h4>Attachments</h4>
-                            <div class="t-attachment-item">
-                                <img src="attachment-icon.png" alt="Attachment Icon">
-                                <p>attachments.png</p>
-                                <span>10 KB</span>
+                            <div class="t-labels">
+                                <h4><i class='bx bx-paperclip bx-rotate-90' ></i> Attachments</h4>
+                                <p class="t-add-attachment-btn">+ Add an Attachment...</p>
                             </div>
-                            <button class="t-add-attachment-btn">+ Add an Attachment...</button>
+                            <div class="files-container"></div>
                         </div>
                     
                         <div class="t-comments-section">
-                            <div class="t-comment">
-                                <div class="t-comment-header">
-                                    <strong>RedQTeam</strong> <span>Yesterday at 0:27pm</span>
-                                </div>
-                                <p>Clay is a new type of tool that brings together the best parts of spreadsheets, coding & simple automation. </p>
-                            </div>
                             <div class="t-add-comment">
                                 <img src="user-avatar.jpg" alt="User Avatar">
-                                <input type="text" placeholder="Write a comment...">
+                                <div class="t-comment-input-wrapper">
+                                    <input 
+                                        type="text" 
+                                        class="t-comment-input" 
+                                        placeholder="Write a comment..."
+                                    >
+                                    <div class="t-comment-options">
+                                        <button class="t-emoji-btn"><i class='bx bx-smile'></i></button>
+                                        <button class="t-mention-btn">@</button>
+                                        <button class="t-send-btn"><i class='bx bxl-telegram'></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -642,12 +653,6 @@
         
                     <label for="project-category">Category</label>
                     <input type="text" id="project-category" placeholder="Enter category">
-
-                    <!-- Add Description -->
-                    <label for="description">Description</label>
-                    <div class="des">
-                        <textarea id="description" rows="2" placeholder="Project description"></textarea>
-                    </div>
 
                     <!-- Add Team Member -->
                     <label for="team-members">Team Members</label>
