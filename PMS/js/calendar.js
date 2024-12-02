@@ -96,7 +96,7 @@ function initSectionCalendar() {
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(Date.UTC(year, month, day)).toISOString().slice(0, 10);
             if (tasks[date]) {
-                tasks[date].forEach(task => highlightDateInCalendar(date, task.category, task.title, task.category));
+                tasks[date].forEach(task => highlightDateInCalendar(date, task.category, task.title, task.color));
             }
         }
 
@@ -133,9 +133,8 @@ function initSectionCalendar() {
         const desc = document.getElementById('task-desc').value.trim();
         const time = document.getElementById('task-time').value;
         const category = document.getElementById('task-category').value;
-        const dueDate = document.getElementById('due-date').value;
 
-        if (!title || !category || !selectedDate || !dueDate) {
+        if (!title || !category || !selectedDate) {
             closeTaskModal();
             return;
         }
@@ -144,8 +143,12 @@ function initSectionCalendar() {
             tasks[selectedDate] = [];
         }
         tasks[selectedDate].push({ title, desc, time, category });
-        highlightDateInCalendar(selectedDate, category, title, category); // Added color
 
+        // Highlight task in the large calendar
+        const color = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
+        highlightDateInCalendar(selectedDate, category, title, color);
+
+        // Add task to the task list in .taskss
         addTaskToList(title, formatTime(time), selectedDate, category);
 
         closeTaskModal();
@@ -159,16 +162,17 @@ function initSectionCalendar() {
         dateElements.forEach(element => {
             const dayText = element.innerText;
             if (parseInt(dayText) === selectedDay) {
-                element.classList.add(category);
-                
-                // Apply the background color to the selected date cell
-                element.style.backgroundColor = color;
+                element.classList.add(category); 
+                element.style.backgroundColor = color; 
                 element.style.color = "#fff"; 
 
-                // Add title to large calendar
-                if (element.parentElement.id === "large-calendar") {
-                    element.style.borderRadius = "10%";
-                    element.innerHTML = `<span>${dayText}</span><br><span class="task-title">${title}</span>`;
+                // Add task title to large calendar without replacing previous content
+                if (!element.querySelector(".task-title")) {
+                    const taskTitle = document.createElement("span");
+                    taskTitle.classList.add("task-title");
+                    taskTitle.innerText = title;
+                    taskTitle.style.color = "#fff";
+                    element.appendChild(taskTitle);
                 }
             }
         });
@@ -264,7 +268,7 @@ function initSectionCalendar() {
 initSectionCalendar();
 
 
-//PROJ-TASK 
+//PROJ-TASK
 document.addEventListener("DOMContentLoaded", function () {
     const taskModal = document.getElementById("p-task-modal");
     const newTaskBtn = document.querySelector(".new-task-btn");
@@ -280,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const remainingCount = document.getElementById("remaining-count");
     let selectedTaskColor = "#ffffff";
 
-    let tasks = {};
+    let tasks = {}; 
 
     // Open the task modal
     newTaskBtn.addEventListener("click", function () {
@@ -414,15 +418,14 @@ document.getElementById('mark-complete').addEventListener('click', function() {
 });
 
 
-//CHECK-CIRCLE
+//CHECK-CIRCLE FUNCTIONALITY
 function toggleCheck(element) {
     const currentColor = window.getComputedStyle(element).backgroundColor;
 
-    // Toggle the background color for check-circle
-    if (currentColor === "rgb(40, 42, 82)") { // if checked (original color)
+    if (currentColor === "rgb(40, 42, 82)") { 
         element.style.backgroundColor = ""; 
         moveTaskToRemaining(element);
-    } else { // if unchecked (clicked to mark as done)
+    } else { 
         element.style.backgroundColor = "#282a52"; 
         moveTaskToDone(element);
     }
@@ -432,16 +435,15 @@ function toggleCheck(element) {
 function moveTaskToDone(element) {
     const task = element.closest('.proj-task'); 
     const doneContainer = document.getElementById('done-tasks-container');
-    doneContainer.style.display = 'block'; // Show Done tasks container
+    
+    doneContainer.appendChild(task);
 
-    // Update Done task count
+    task.style.display = "block";
+    task.classList.remove("modified"); 
+
     const doneCount = document.getElementById('done-count');
     doneCount.textContent = parseInt(doneCount.textContent) + 1;
 
-    task.style.display = 'none'; // Hide the task from the original container
-    doneContainer.appendChild(task); // Move the task to the Done container
-
-    // Decrease the remaining count when a task is marked as done
     const remainingCount = document.getElementById('remaining-count');
     remainingCount.textContent = parseInt(remainingCount.textContent) - 1;
 }
@@ -450,19 +452,49 @@ function moveTaskToDone(element) {
 function moveTaskToRemaining(element) {
     const task = element.closest('.proj-task'); 
     const remainingContainer = document.getElementById('tasks-container');
-    remainingContainer.style.display = 'block'; // Show Remaining tasks container
+    
+    remainingContainer.appendChild(task);
 
-    // Update Remaining task count
+    task.style.display = "block";
+    task.classList.remove("modified"); 
+
     const remainingCount = document.getElementById('remaining-count');
     remainingCount.textContent = parseInt(remainingCount.textContent) + 1;
 
-    task.style.display = 'block'; // Make the task visible again
-    remainingContainer.appendChild(task); // Move the task back to Remaining container
-
-    // Decrease the done count when a task is moved back to remaining
     const doneCount = document.getElementById('done-count');
     doneCount.textContent = parseInt(doneCount.textContent) - 1;
 }
+
+// DELETING A TASK
+document.addEventListener("DOMContentLoaded", function () {
+    const taskContainers = document.querySelectorAll('#tasks-container, #done-tasks-container');
+
+    taskContainers.forEach(container => {
+        container.addEventListener("click", function (event) {
+            if (event.target.classList.contains("bx-trash-alt")) {
+                const taskToDelete = event.target.closest(".proj-task"); 
+
+                if (taskToDelete) {
+                    const isTaskInDoneContainer = taskToDelete.closest('#done-tasks-container') !== null;
+                    const isTaskInRemainingContainer = taskToDelete.closest('#tasks-container') !== null;
+
+                    taskToDelete.remove();
+
+                    // Update counts based on where the task was deleted
+                    if (isTaskInDoneContainer) {
+                        const doneCount = document.getElementById('done-count');
+                        doneCount.textContent = parseInt(doneCount.textContent) - 1;
+                    }
+
+                    if (isTaskInRemainingContainer) {
+                        const remainingCount = document.getElementById('remaining-count');
+                        remainingCount.textContent = parseInt(remainingCount.textContent) - 1;
+                    }
+                }
+            }
+        });
+    });
+});
 
 
 
@@ -474,47 +506,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const doneTasksContainer = document.getElementById("done-tasks-container");
     const tasksContainer = document.getElementById("tasks-container");
 
-    // Toggle visibility when clicking on done-count
     doneCount.addEventListener("click", function () {
-        doneTasksContainer.style.display = "block";  // Show Done tasks container
-        tasksContainer.style.display = "none";      // Hide Remaining tasks container
+        doneTasksContainer.style.display = "block";  
+        tasksContainer.style.display = "none";      
     });
 
-    // Toggle visibility when clicking on remaining-count
     remainingCount.addEventListener("click", function () {
-        tasksContainer.style.display = "block";    // Show Remaining tasks container
-        doneTasksContainer.style.display = "none";  // Hide Done tasks container
+        tasksContainer.style.display = "block";    
+        doneTasksContainer.style.display = "none";  
     });
-});
-
-
-
-//TASK-DROPDOWN
-document.querySelectorAll('.proj-icon').forEach(icon => {
-    icon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        
-        const dropdown = this.querySelector('.p-dropdown-icon');
-
-        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-    });
-});
-
-// Delete the proj-task when the delete option is clicked
-document.querySelectorAll('.p-dropdown-icon .del').forEach(deleteBtn => {
-    deleteBtn.addEventListener('click', function() {
-        const task = this.closest('.proj-task');
-        task.remove();  
-    });
-});
-
-// Close the dropdown if user clicks anywhere outside the dropdown menu
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.proj-icon')) {
-        document.querySelectorAll('.p-dropdown-icon').forEach(dropdown => {
-            dropdown.style.display = 'none';
-        });
-    }
 });
 
 
@@ -595,7 +595,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
 
 
 

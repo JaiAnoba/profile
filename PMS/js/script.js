@@ -349,16 +349,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add click event to each project card
     projectContainer.addEventListener("click", (event) => {
-        const clickedElement = event.target.closest(".project-cards");
-        if (clickedElement) {
-            showProjectDetails();
+        const menuIconClicked = event.target.closest(".menu-icon");
+        if (!menuIconClicked) { 
+            const clickedElement = event.target.closest(".project-cards");
+            if (clickedElement) {
+                showProjectDetails();
+            }
         }
     });
 
     // Add click event to the back button in proj-details
     backButton.addEventListener("click", hideProjectDetails);
 });
-
 
 
 //TASKS & DOCS TOGGLE
@@ -396,164 +398,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial setup: show the Tasks section and addUser button by default, hide upload button
     showTasks();
-});
-
-
-//UPLOAD-FILE IN DOCUMENTS
-document.addEventListener("DOMContentLoaded", function () {
-    const uploadButton = document.querySelector(".proj-upload-btn");
-    const documentGrid = document.querySelector(".document-grid");
-
-    // Function to handle file upload
-    function handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (file) {
-            // Create a new document card to display the uploaded file
-            const documentCard = document.createElement("div");
-            documentCard.classList.add("document-card");
-
-            // Create the content for the document card
-            const docContent = document.createElement("div");
-            docContent.classList.add("pp-docs");
-
-            // Set the title and date (using the file name and current date)
-            const fileName = file.name;
-            const fileDate = new Date().toLocaleDateString();
-            const titleSpan = document.createElement("span");
-            titleSpan.classList.add("document-title");
-            titleSpan.textContent = fileName;
-
-            const dateSpan = document.createElement("span");
-            dateSpan.classList.add("document-date");
-            dateSpan.textContent = fileDate;
-
-            // Append the title and date to the document content
-            docContent.appendChild(titleSpan);
-            docContent.appendChild(dateSpan);
-
-            // Add the icons and dropdown menu (if needed)
-            const icons = document.createElement("div");
-            icons.classList.add("projj-icon");
-            const dot1 = document.createElement("span");
-            dot1.classList.add("dottt");
-            const dot2 = document.createElement("span");
-            dot2.classList.add("dottt");
-
-            const dropdownMenu = document.createElement("div");
-            dropdownMenu.classList.add("p-dropdown-iconn");
-            dropdownMenu.style.display = "none";
-            const editItem = document.createElement("div");
-            editItem.classList.add("p-drop-itemm", "editt");
-            editItem.textContent = "Edit";
-            const deleteItem = document.createElement("div");
-            deleteItem.classList.add("p-drop-itemm", "dell");
-            deleteItem.textContent = "Delete";
-
-            // Append dots and dropdown menu to the icons
-            icons.appendChild(dot1);
-            icons.appendChild(dot2);
-            dropdownMenu.appendChild(editItem);
-            dropdownMenu.appendChild(deleteItem);
-
-            // Append everything to the document card
-            documentCard.appendChild(docContent);
-            documentCard.appendChild(icons);
-            documentCard.appendChild(dropdownMenu);
-
-            // Make the document card clickable to open the file
-            documentCard.addEventListener("click", function() {
-                const fileUrl = URL.createObjectURL(file);
-                window.open(fileUrl, "_blank");
-            });
-
-            // Append the document card to the document grid
-            documentGrid.appendChild(documentCard);
-        }
-    }
-
-    // Event listener for file selection
-    uploadButton.addEventListener("click", function() {
-        // Create an invisible file input
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.style.display = "none";
-        document.body.appendChild(fileInput);
-
-        // Trigger the file input click to open the file picker
-        fileInput.click();
-
-        // Handle the file selection
-        fileInput.addEventListener("change", handleFileUpload);
-    });
-});
-
-
-//GRID & LIST VIEW OF DOCS
-document.addEventListener("DOMContentLoaded", function () {
-    const listViewIcon = document.querySelector(".proj-list");
-    const gridViewIcon = document.querySelector(".proj-grid");
-    const documentGrid = document.querySelector(".document-grid");
-
-    // Function to switch to list view
-    function switchToListView() {
-        documentGrid.classList.add("list-view");
-        documentGrid.classList.remove("grid-view");
-    }
-
-    // Function to switch to grid view
-    function switchToGridView() {
-        documentGrid.classList.add("grid-view");
-        documentGrid.classList.remove("list-view");
-    }
-
-    // Event listeners for list and grid view icons
-    listViewIcon.addEventListener("click", switchToListView);
-    gridViewIcon.addEventListener("click", switchToGridView);
-
-    switchToGridView();
-
-    const documentCards = document.querySelectorAll(".document-card");
-    documentCards.forEach(card => {
-        card.addEventListener("click", function() {
-            card.classList.toggle("highlighted-blue");
-        });
-    });
-});
-
-
-//PROJECT-CARD MENU DROPDOWN
-document.addEventListener("DOMContentLoaded", function () {
-    const projectContainer = document.getElementById("project-container");
-
-    // Event listener for each menu-icon click to show/hide its dropdown
-    const menuIcons = projectContainer.querySelectorAll(".menu-icon");
-    
-    menuIcons.forEach(icon => {
-        icon.addEventListener("click", function (event) {
-            event.stopPropagation(); // Prevent click event from reaching document
-
-            // Toggle visibility of the dropdown menu within this icon
-            const dropdown = icon.querySelector(".p-dropdown-menu");
-            if (dropdown) {
-                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-            }
-        });
-    });
-
-    // Event listener for delete button inside each dropdown menu
-    projectContainer.addEventListener("click", function (event) {
-        if (event.target.classList.contains("delete")) {
-            const card = event.target.closest(".project-cards");
-            if (card) {
-                card.remove(); // Remove the project card
-            }
-        }
-    });
-
-    // Close all dropdowns if clicked outside any menu icon
-    document.addEventListener("click", function () {
-        document.querySelectorAll(".p-dropdown-menu").forEach(menu => menu.style.display = "none");
-    });
 });
 
 
