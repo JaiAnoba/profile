@@ -1135,7 +1135,7 @@ body {
 .projects-grids.list-view {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 50px;
     max-height: 550px; 
     overflow-y: auto; 
     overflow-x: none;
@@ -1630,7 +1630,7 @@ body {
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 30px; 
-    width: 1510px;
+    width: 1515px;
     height: 810px;
 }
 
@@ -1716,6 +1716,7 @@ body {
   display: flex;
   gap: 30px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .proj-status .proj-stat {
@@ -1723,10 +1724,11 @@ body {
   padding: 10px;
 }
 
-proj-stat p {
+.proj-stat p {
     font-size: 1.3rem;
     font-weight: bold;
     color: #25274e; 
+    cursor: pointer;
 }
 
 .proj-stat span {
@@ -1759,13 +1761,26 @@ proj-stat p {
 }
 
 .p-tasks {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-height: 550px;
+  gap: 50px;
+  padding: 20px; 
+  max-height: 500px;
   overflow-y: auto; 
   overflow-x: none;
 }
+
+.p-tasks::-webkit-scrollbar {
+    width: 7px;
+}
+
+.p-tasks::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.p-tasks::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+}
+
 
 .proj-task, .document-card {
   display: flex;
@@ -1781,7 +1796,7 @@ proj-stat p {
 .proj-task {
   position: relative;
   left: 18px;
-  width: 1400px;
+  width: 1360px;
   height: 80px;
   padding: 30px;
   cursor: pointer;
@@ -1792,7 +1807,8 @@ proj-stat p {
   flex-direction: column;
   position: relative;
   left: 15px;
-  flex: 1;
+  width: 350px;
+  margin: -40px 0 0 60px;
 }
 
 .proj-task-title {
@@ -1811,7 +1827,8 @@ proj-stat p {
     border: 1px solid #a3a4a5;
     background-color: white;
     display: inline-block;
-    margin-inline: 10px;
+    margin-inline: 20px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -1831,14 +1848,14 @@ proj-stat p {
 }
 
 .proj-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 4px;
-  width: 19px;
-  height: 19px;
-  cursor: pointer;
-  margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    margin: -30px 0 0 1300px;
 }
 
 .proj-icon .dott{
@@ -1847,10 +1864,6 @@ proj-stat p {
   height: 10px;      
   background-color: black;
   border-radius: 50%;
-}
-
-.proj-options {
-  cursor: pointer;
 }
 
 .p-dropdown-icon {
@@ -1884,7 +1897,7 @@ proj-stat p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: #00000080;
     z-index: 1000;
 }
 
@@ -2037,6 +2050,12 @@ proj-stat p {
     gap: 5px;
     font-size: 0.8rem;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.t-mark-complete.completed {
+    background-color: #064180;
+    color: white;
 }
 
 .bx-check {

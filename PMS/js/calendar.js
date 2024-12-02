@@ -55,13 +55,10 @@ initDashboardCalendar();
 
 
 
-
-
-
 // SECTION CALENDAR
 let selectedDates = [];
 let selectedDate;
-let tasks = {}; // Store tasks persistently
+let tasks = {}; 
 
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
@@ -85,8 +82,8 @@ function initSectionCalendar() {
         }
 
         for (let day = 1; day <= daysInMonth; day++) {
-            const date = new Date(Date.UTC(year, month, day)); // Use UTC to prevent timezone shifts
-            const isoDate = date.toISOString().slice(0, 10); // Format as YYYY-MM-DD
+            const date = new Date(Date.UTC(year, month, day)); 
+            const isoDate = date.toISOString().slice(0, 10); 
             const isPastDate = date < getCurrentDateInPhilippines() && !isSameDate(date, getCurrentDateInPhilippines());
 
             miniCalendar.innerHTML += `<div class="${isPastDate ? 'disabled' : ''}" onclick="selectDate('${isoDate}', this, ${isPastDate})">${day}</div>`;
@@ -109,7 +106,7 @@ function initSectionCalendar() {
 
     // Select a date (used for task management in the big calendar)
     window.selectDate = function(date, element, isPastDate) {
-        if (isPastDate) return; // Prevent selecting past dates
+        if (isPastDate) return;
 
         selectedDate = date;
         selectedDates.push(date);
@@ -136,8 +133,9 @@ function initSectionCalendar() {
         const desc = document.getElementById('task-desc').value.trim();
         const time = document.getElementById('task-time').value;
         const category = document.getElementById('task-category').value;
+        const dueDate = document.getElementById('due-date').value;
 
-        if (!title || !category || !selectedDate) {
+        if (!title || !category || !selectedDate || !dueDate) {
             closeTaskModal();
             return;
         }
@@ -156,7 +154,7 @@ function initSectionCalendar() {
     // Highlight dates in the calendar and add task titles for large calendar
     function highlightDateInCalendar(date, category, title, color) {
         const dateElements = document.querySelectorAll('#large-calendar div');
-        const selectedDay = new Date(date).getUTCDate(); // Get day in UTC format
+        const selectedDay = new Date(date).getUTCDate(); 
 
         dateElements.forEach(element => {
             const dayText = element.innerText;
@@ -165,7 +163,7 @@ function initSectionCalendar() {
                 
                 // Apply the background color to the selected date cell
                 element.style.backgroundColor = color;
-                element.style.color = "#fff"; // Ensure text is readable when background is applied
+                element.style.color = "#fff"; 
 
                 // Add title to large calendar
                 if (element.parentElement.id === "large-calendar") {
@@ -267,7 +265,7 @@ initSectionCalendar();
 
 
 
-
+// PROJ-TASK MODAL
 // PROJ-TASK MODAL
 document.addEventListener("DOMContentLoaded", function () {
     const taskModal = document.getElementById("p-task-modal");
@@ -277,13 +275,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const tTaskCard = document.getElementById("t-task-card");
     const tCloseBtn = document.querySelector(".t-close-btn");
     const colorOptions = document.querySelectorAll(".p-color-option");
-    const tTaskName = document.querySelector(".t-task-name"); 
-    const tDescription = document.querySelector(".t-des"); 
-    const tAssigned = document.querySelector(".t-assigned"); 
-    const tDueDate = document.querySelector(".t-due"); 
-    let selectedTaskColor = "#ffffff"; 
+    const tTaskName = document.querySelector(".t-task-name");
+    const tDescription = document.querySelector(".t-des");
+    const tAssigned = document.querySelector(".t-assigned");
+    const tDueDate = document.querySelector(".t-due");
+    let selectedTaskColor = "#ffffff";
 
-    let tasks = {}; 
+    let tasks = {};
 
     // Open the task modal
     newTaskBtn.addEventListener("click", function () {
@@ -301,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Save task
+    // Save task (modified)
     saveTaskBtn.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -316,58 +314,36 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Create task card
-        const newTask = document.createElement("div");
-        newTask.classList.add("proj-task");
+        // Clone the template
+        const taskTemplate = document.querySelector(".proj-task"); // Select the hidden template
+        const newTask = taskTemplate.cloneNode(true); // Deep clone the template
+
+        // Unhide and customize the new task
+        newTask.style.display = "block";
         newTask.style.backgroundColor = category;
 
+        // Populate the task details
+        newTask.querySelector(".proj-task-title").textContent = taskTitle;
+        newTask.querySelector(".proj-task-subtitle").textContent = assignedTo ? `Assigned to: ${assignedTo}` : "unassigned";
+
         // Store task details in custom attributes
-        newTask.setAttribute("data-title", taskTitle); 
-        newTask.setAttribute("data-description", description); 
-        newTask.setAttribute("data-assigned", assignedTo || "unassigned"); 
-        newTask.setAttribute("data-due-date", dueDate || "no due date"); 
-
-        const checkCircle = document.createElement("span");
-        checkCircle.classList.add("check-circle");
-        checkCircle.onclick = function () { toggleCheck(this); };
-
-        const taskInfo = document.createElement("div");
-        taskInfo.classList.add("proj-task-info");
-
-        const titleSpan = document.createElement("span");
-        titleSpan.classList.add("proj-task-title");
-        titleSpan.textContent = taskTitle || "Untitled Task";
-
-        const assignedSpan = document.createElement("span");
-        assignedSpan.classList.add("proj-task-subtitle");
-        assignedSpan.textContent = assignedTo ? `Assigned to: ${assignedTo}` : "unassigned";
-
-        const iconContainer = document.createElement("div");
-        iconContainer.classList.add("proj-icon");
-
-        const dot1 = document.createElement("span");
-        dot1.classList.add("dott");
-        const dot2 = document.createElement("span");
-        dot2.classList.add("dott");
-
-        // Append elements
-        taskInfo.appendChild(titleSpan);
-        taskInfo.appendChild(assignedSpan);
-        iconContainer.appendChild(dot1);
-        iconContainer.appendChild(dot2);
-
-        newTask.appendChild(checkCircle);
-        newTask.appendChild(taskInfo);
-        newTask.appendChild(iconContainer);
+        newTask.setAttribute("data-title", taskTitle);
+        newTask.setAttribute("data-description", description);
+        newTask.setAttribute("data-assigned", assignedTo || "unassigned");
+        newTask.setAttribute("data-due-date", dueDate || "no due date");
 
         // Add click event listener for opening the task card
-        newTask.addEventListener("click", function () {
-            openTaskCard(newTask);
+        newTask.addEventListener("click", function (event) {
+            if (!event.target.closest(".check-circle") && !event.target.closest(".proj-icon")) {
+                openTaskCard(newTask);
+            }
         });
 
-        tasksSection.appendChild(newTask);
+        // Append the new task to the tasks container
+        const tasksContainer = document.getElementById("tasks-container");
+        tasksContainer.appendChild(newTask);
 
-        // Reset form and close modal
+        // Reset the form and close the modal
         document.getElementById("p-task-form").reset();
         colorOptions.forEach(opt => opt.classList.remove("selected"));
         taskModal.style.display = "none";
@@ -383,8 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 category
             });
 
-            addTaskToList(taskTitle, assignedTo ? assignedTo : "No time specified", dueDate, category);
-
+            addTaskToList(taskTitle, assignedTo || "No time specified", dueDate, category);
             highlightDateInCalendar(dueDate, category, taskTitle, category);
         }
     });
@@ -403,13 +378,128 @@ document.addEventListener("DOMContentLoaded", function () {
         tDueDate.textContent = dueDate;
 
         // Show the task card
-        tTaskCard.style.display = "block"; 
+        tTaskCard.style.display = "block";
     }
 
     // Close the task card
     tCloseBtn.addEventListener("click", function () {
-        tTaskCard.style.display = "none"; 
+        tTaskCard.style.display = "none";
     });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === taskModal) {
+            taskModal.style.display = "none";
+        }
+    });
+});
+
+
+
+
+//MARK-COMPLETE IN TASK
+document.getElementById('mark-complete').addEventListener('click', function() {
+    // Toggle the 'completed' class
+    this.classList.toggle('completed');
+    
+    // Toggle the button text
+    if (this.classList.contains('completed')) {
+        this.innerHTML = "<i class='bx bx-check'></i>Completed"; 
+    } else {
+        this.innerHTML = "<i class='bx bx-check'></i>Mark Complete"; 
+    }
+});
+
+
+
+//CHECK-CIRCLE
+function toggleCheck(element) {
+    const currentColor = window.getComputedStyle(element).backgroundColor;
+
+    // Toggle the background color for check-circle
+    if (currentColor === "rgb(40, 42, 82)") {
+        element.style.backgroundColor = ""; 
+        moveTaskToRemaining(element);
+    } else {
+        element.style.backgroundColor = "#282a52"; 
+        moveTaskToDone(element);
+    }
+}
+
+// Move task to the "Done" container
+function moveTaskToDone(element) {
+    const task = element.closest('.proj-task'); 
+    const doneContainer = document.getElementById('done-tasks-container');
+    doneContainer.style.display = 'block'; // Make the Done container visible
+
+    // Update Done task count
+    const doneCount = document.getElementById('done-count');
+    doneCount.textContent = parseInt(doneCount.textContent) + 1;
+
+    task.style.display = 'none'; // Hide the task from the original container
+    doneContainer.appendChild(task); // Append the task to Done container
+
+    // Ensure the Done container is visible if there are tasks
+    doneContainer.style.display = doneContainer.children.length > 0 ? 'block' : 'none';
+}
+
+// Move task to the "Remaining Tasks" container
+function moveTaskToRemaining(element) {
+    const task = element.closest('.proj-task'); 
+    const remainingContainer = document.getElementById('remaining-tasks-container');
+    remainingContainer.style.display = 'block'; // Make the Remaining container visible
+
+    // Update Remaining task count
+    const remainingCount = document.getElementById('remaining-count');
+    remainingCount.textContent = parseInt(remainingCount.textContent) + 1;
+
+    task.style.display = 'block'; // Ensure the task is visible in the Remaining container
+    remainingContainer.appendChild(task); // Append the task to Remaining container
+
+    // Ensure the Remaining container is visible if there are tasks
+    remainingContainer.style.display = remainingContainer.children.length > 0 ? 'block' : 'none';
+}
+
+// Toggle visibility of Done tasks
+document.getElementById('done-count').addEventListener('click', function () {
+    const doneContainer = document.getElementById('done-tasks-container');
+    doneContainer.style.display = doneContainer.style.display === 'none' || doneContainer.children.length === 0 ? 'block' : 'none';
+});
+
+// Toggle visibility of Remaining tasks
+document.getElementById('remaining-count').addEventListener('click', function () {
+    const remainingContainer = document.getElementById('remaining-tasks-container');
+    remainingContainer.style.display = remainingContainer.style.display === 'none' || remainingContainer.children.length === 0 ? 'block' : 'none';
+});
+
+
+
+
+//TASK-DROPDOWN
+document.querySelectorAll('.proj-icon').forEach(icon => {
+    icon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        const dropdown = this.querySelector('.p-dropdown-icon');
+
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+    });
+});
+
+// Delete the proj-task when the delete option is clicked
+document.querySelectorAll('.p-dropdown-icon .del').forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', function() {
+        const task = this.closest('.proj-task');
+        task.remove();  
+    });
+});
+
+// Close the dropdown if user clicks anywhere outside the dropdown menu
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.proj-icon')) {
+        document.querySelectorAll('.p-dropdown-icon').forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
+    }
 });
 
 
@@ -491,106 +581,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-//TASK-CARD COMMENTS OPTIONS
-document.addEventListener('DOMContentLoaded', () => {
-    const emojiBtn = document.querySelector('.t-emoji-btn');
-    const mentionBtn = document.querySelector('.t-mention-btn');
-    const sendBtn = document.querySelector('.t-send-btn');
-    const commentInput = document.querySelector('.comment-input');
-    const emojiPicker = document.createElement('div');
-    const mentionList = document.createElement('div');
-    const commentSection = document.querySelector('.comment-section');
-
-    // List of emojis for the emoji picker
-    const emojis = ['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😊', '😎', '😍'];
-
-    // Add emoji picker to the DOM
-    emojiPicker.classList.add('emoji-picker');
-    emojis.forEach(emoji => {
-        const emojiButton = document.createElement('button');
-        emojiButton.textContent = emoji;
-        emojiPicker.appendChild(emojiButton);
-        emojiButton.addEventListener('click', () => {
-            commentInput.value += emoji;  // Insert emoji into the comment input
-            emojiPicker.style.display = 'none';  // Hide emoji picker after selection
-        });
-    });
-    document.body.appendChild(emojiPicker);
-
-    // Add mention list to the DOM (you can customize this list)
-    mentionList.classList.add('mention-list');
-    const mentionUsers = ['@John', '@Jane', '@Alice', '@Bob'];
-    mentionUsers.forEach(user => {
-        const mentionItem = document.createElement('div');
-        mentionItem.textContent = user;
-        mentionList.appendChild(mentionItem);
-        mentionItem.addEventListener('click', () => {
-            commentInput.value += ` ${user}`;  // Insert mention into the comment input
-            mentionList.style.display = 'none';  // Hide mention list after selection
-        });
-    });
-    document.body.appendChild(mentionList);
-
-    // Toggle emoji picker visibility
-    emojiBtn.addEventListener('click', () => {
-        emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
-        mentionList.style.display = 'none';  // Hide mention list if emoji picker is opened
-    });
-
-    // Toggle mention list visibility
-    mentionBtn.addEventListener('click', () => {
-        mentionList.style.display = mentionList.style.display === 'none' ? 'block' : 'none';
-        emojiPicker.style.display = 'none';  // Hide emoji picker if mention list is opened
-    });
-
-    // Function to get formatted timestamp
-    function getFormattedTime() {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const isPM = hours >= 12;
-        const formattedTime = `${isPM ? hours - 12 || 12 : hours}:${minutes} ${isPM ? 'pm' : 'am'}`;
-        return `Today at ${formattedTime}`;
-    }
-
-    // Function to create and append a new comment
-    function createComment(text, time) {
-        const comment = document.createElement('div');
-        comment.classList.add('comment');
-        comment.innerHTML = `
-            <img src="user-avatar.jpg" alt="Avatar" class="user-avatar">
-            <div class="comment-details">
-                <div class="comment-header">
-                    <h4>You</h4>
-                    <span class="comment-time">${time}</span>
-                </div>
-                <p class="comment-text">${text}</p>
-                <button class="reply-btn">Reply</button>
-            </div>
-        `;
-        commentSection.insertBefore(comment, commentSection.querySelector('.add-comment'));
-    }
-
-    // Handle sending a comment
-    sendBtn.addEventListener('click', () => {
-        const text = commentInput.value.trim();
-        if (text) {
-            const time = getFormattedTime();
-            createComment(text, time);
-            commentInput.value = '';  // Clear the input after sending
-        } else {
-            alert('Please enter a comment!');
-        }
-    });
-
-    // Handle pressing Enter to send comment
-    commentInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendBtn.click();
-        }
-    });
-});
 
 
 

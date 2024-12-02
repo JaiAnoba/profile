@@ -96,18 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  
 
-// CHECK CIRCLE
-function toggleCheck(element) {
-    const currentColor = window.getComputedStyle(element).backgroundColor;
-    
-    if (currentColor === "rgb(40, 42, 82)") {  
-        element.style.backgroundColor = ""; // Reset color
-    } else {
-        element.style.backgroundColor = "#282a52"; 
-    }
-}
 
 
 // SETTINGS
@@ -332,8 +321,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Clone the template
         const newCard = projectTemplate.cloneNode(true);
-        newCard.style.display = "block";  // Show the new card
-        newCard.removeAttribute("id");    // Remove id to avoid duplicates
+        newCard.style.display = "block";  
+        newCard.removeAttribute("id");  
         newCard.classList.add("project-cards");
         newCard.style.backgroundColor = selectedColor;
 
@@ -378,10 +367,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to go back to project list
     function hideProjectDetails() {
         projSection.style.display = "block"; 
-        projSection.style.visibility = "visible"; // Show proj section without affecting layout
-        projSection.style.position = "fixed";   // Ensure it stays in normal layout flow
+        projSection.style.visibility = "visible"; 
+        projSection.style.position = "fixed"; 
 
-        projDetails.style.visibility = "hidden";   // Hide proj-details without affecting layout
+        projDetails.style.visibility = "hidden";  
         projDetails.style.position = "absolute";  
     }
 
@@ -395,60 +384,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add click event to the back button in proj-details
     backButton.addEventListener("click", hideProjectDetails);
-});
-
-
-//TASKS-DROPDOWN
-document.addEventListener("DOMContentLoaded", function () {
-    // Select the container that holds all tasks
-    const tasksContainer = document.getElementById("tasks-container");
-
-    // Event delegation to handle clicks on the dots within each task
-    tasksContainer.addEventListener("click", function (event) {
-        // Check if the clicked element is one of the dots
-        if (event.target.classList.contains("dott")) {
-            // Find the closest .proj-task element and toggle its dropdown
-            const task = event.target.closest(".proj-task");
-            const dropdown = task.querySelector(".p-dropdown-icon");
-
-            // Toggle dropdown display
-            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-            event.stopPropagation(); // Prevent further propagation
-        }
-    });
-
-    // Hide dropdown if clicking outside of any task dropdown
-    document.addEventListener("click", function (event) {
-        // Check if the click is outside any .proj-task
-        const isClickInsideTask = event.target.closest(".proj-task");
-
-        // If clicked outside, hide all dropdowns
-        if (!isClickInsideTask) {
-            document.querySelectorAll(".p-dropdown-icon").forEach(dropdown => {
-                dropdown.style.display = "none";
-            });
-        }
-    });
-
-    //Functionality for the Edit and Delete options within each dropdown
-    tasksContainer.querySelectorAll(".proj-task").forEach(task => {
-        const dropdown = task.querySelector(".p-dropdown-icon");
-        const editOption = dropdown.querySelector(".edit");
-        const deleteOption = dropdown.querySelector(".del");
-
-        // Edit functionality
-        editOption.addEventListener("click", function () {
-            const taskTitle = task.querySelector(".proj-task-title").textContent;
-            alert(`Edit task: ${taskTitle}`);
-            dropdown.style.display = "none"; // Hide dropdown after selecting
-        });
-
-        // Delete functionality
-        deleteOption.addEventListener("click", function () {
-            task.remove(); // Remove the task from the DOM
-            alert("Task deleted");
-        });
-    });
 });
 
 

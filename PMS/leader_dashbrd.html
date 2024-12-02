@@ -473,19 +473,22 @@
 
             <!-- Tasks Section -->
             <div id="tasks-section" class="section-task">
-              <div class="proj-header">
-                <div class="proj-status">
-                    <div class="proj-stat">
-                        <p>0</p>
-                        <span>Done</span>
+                <div class="proj-header">
+                    <div class="proj-status">
+                        <div class="proj-stat">
+                            <p id="done-count">0</p>
+                            <span>Done</span>
+                            <div id="done-tasks-container" style="display: none;"></div>
+                        </div>
+                        <div class="proj-stat">
+                            <p id="remaining-count">0</p>
+                            <span>Remaining Tasks</span>
+                            <div id="remaining-tasks-container" style="display: none;"></div>
+                        </div>
                     </div>
-                    <div class="proj-stat">
-                        <p>0</p>
-                        <span>Remaining Tasks</span>
-                    </div>
+                    <button class="new-task-btn">+ New Task</button>
                 </div>
-                <button class="new-task-btn">+ New Task</button>
-            </div>
+                
 
             <!-- Proj-Task Modal -->
             <div id="p-task-modal" class="p-modal-task" style="display: none;">
@@ -520,24 +523,23 @@
                 </div>
             </div>
 
-            <div class="p-tasks" id="tasks-container" style="display: none;">
+            <div class="p-tasks" id="tasks-container">
                 <!-- Task items -->
-                <div class="proj-task">
-                    <span class="check-circle" onclick="toggleCheck(this)"></span>
-                  <div class="proj-task-info">
-                    <span class="proj-task-title"></span>
-                    <span class="proj-task-subtitle"></span>
-                  </div>
-                  <div class="proj-icon">
-                    <span class="dott"></span>
-                    <span class="dott"></span>
-                     <!-- Dropdown menu -->
-                    <div class="p-dropdown-icon" style="display: none;">
-                        <div class="p-drop-item edit">Edit</div>
-                        <div class="p-drop-item del">Delete</div>
+                    <div class="proj-task" style="display: none;">
+                        <span class="check-circle" onclick="toggleCheck(this)"></span>
+                      <div class="proj-task-info">
+                        <span class="proj-task-title"></span>
+                        <span class="proj-task-subtitle"></span>
+                      </div>
+                      <div class="proj-icon">
+                        <span class="dott"></span>
+                        <span class="dott"></span>
+                         <!-- Dropdown menu -->
+                        <div class="p-dropdown-icon" style="display: none;">
+                            <div class="p-drop-item del">Delete</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
             </div>
 
             <!-- TASK CONTENT -->
