@@ -2672,10 +2672,12 @@ button {
     margin: 0;
     max-height: 200px;
     overflow-y: auto;
-    overflow-x: none;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .taskss ul::-webkit-scrollbar {
+    height: 7px;
     width: 7px;
 }
 

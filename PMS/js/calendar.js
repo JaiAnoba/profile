@@ -50,15 +50,17 @@ function initDashboardCalendar() {
     renderCalendar(); // Initial render
 }
 
-// Call the function to initialize the dashboard calendar
 initDashboardCalendar();
 
+
+
+let tasks = {}; 
 
 
 // SECTION CALENDAR
 let selectedDates = [];
 let selectedDate;
-let tasks = {}; 
+
 
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
@@ -107,13 +109,14 @@ function initSectionCalendar() {
     // Select a date (used for task management in the big calendar)
     window.selectDate = function(date, element, isPastDate) {
         if (isPastDate) return;
-
+    
         selectedDate = date;
         selectedDates.push(date);
         element.classList.toggle('selected');
         openTaskModal();
-        document.getElementById('task-date').value = date;
+        document.getElementById('task-date').value = date; 
     }
+
 
     // Open the task modal
     function openTaskModal() {
@@ -121,7 +124,6 @@ function initSectionCalendar() {
         document.querySelector('.bx-x').onclick = closeTaskModal;
     }
 
-    // Close the task modal
     function closeTaskModal() {
         document.getElementById('task-modal').style.display = 'none';
         resetTaskForm();
@@ -152,32 +154,33 @@ function initSectionCalendar() {
     
         closeTaskModal();
     };
+    
 
     // Highlight dates in the calendar and add task titles for large calendar
     function highlightDateInCalendar(date, category, title, color) {
         const dateElements = document.querySelectorAll('#large-calendar div');
-        const selectedDay = new Date(date).getUTCDate(); 
+        const selectedDay = new Date(date).getUTCDate();
+    
         dateElements.forEach(element => {
             const dayText = element.innerText;
             if (parseInt(dayText) === selectedDay) {
-
                 const existingTaskTitle = element.querySelector(".task-title");
-            
+    
                 if (existingTaskTitle) {
                     existingTaskTitle.innerText = title;
-                
                     element.style.backgroundColor = color;
                     element.style.color = "#fff";
                 } else {
                     element.classList.add(category);
                     element.style.backgroundColor = color;
                     element.style.color = "#fff";
-                
+    
                     const taskTitle = document.createElement("span");
                     taskTitle.classList.add("task-title");
                     taskTitle.innerText = title;
                     taskTitle.style.color = "#fff";
                     element.appendChild(taskTitle);
+                    element.style.backgroundColor = category;
                 }
             }
         });
@@ -189,20 +192,20 @@ function initSectionCalendar() {
         const taskList = document.querySelector('.taskss ul');
         const li = document.createElement('li');
         const colorClass = category === 'personal' ? '#96e4a7' : category === 'work' ? '#7eb7e7' : '#ffbab6';
-
+        
         li.style.display = "flex";
         li.style.alignItems = "center";
         li.style.marginBottom = "10px";
-
+        
         li.innerHTML = `
             <span style="margin-right: 35px;">${new Date(date).getUTCDate()}.${new Date(date).getUTCMonth() + 1}</span>
-            <span class="task-color" style="display: inline-block; width: 10px; height: 10px; margin-right: 35px; border-radius: 50%; background-color: ${colorClass}; margin-right: 10px;"></span>
+            <span class="task-color" style="display: inline-block; width: 10px; height: 10px; margin-right: 35px; border-radius: 50%; 
+        background-color: ${colorClass}; margin-right: 10px;"></span>
             <span style="flex-grow: 1; font-weight: bold;">${title}</span>
             <span style="color: gray;">${time}</span>
         `;
         taskList.appendChild(li);
     }
-
 
     // Format time to AM/PM
     function formatTime(timeString) {
@@ -253,8 +256,8 @@ function initSectionCalendar() {
 
     function updateTaskListForMonth(month, year) {
         const taskList = document.querySelector('.taskss ul');
-        taskList.innerHTML = ""; 
-
+        taskList.innerHTML = "";
+    
         Object.keys(tasks).forEach(date => {
             const taskDate = new Date(date);
             if (taskDate.getUTCMonth() === month && taskDate.getUTCFullYear() === year) {
@@ -264,6 +267,7 @@ function initSectionCalendar() {
             }
         });
     }
+    
 
     function prevMonth() {
         currentMonth--;
@@ -293,7 +297,6 @@ initSectionCalendar();
 
 
 
-
 //PROJ-TASK
 document.addEventListener("DOMContentLoaded", function () {
     const taskModal = document.getElementById("p-task-modal");
@@ -310,7 +313,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const remainingCount = document.getElementById("remaining-count");
     let selectedTaskColor = "#ffffff";
 
-    let tasks = {}; 
 
     // Open the task modal
     newTaskBtn.addEventListener("click", function () {
@@ -331,72 +333,71 @@ document.addEventListener("DOMContentLoaded", function () {
     // Save task 
     saveTaskBtn.addEventListener("click", (event) => {
         event.preventDefault();
-
+    
         const taskTitle = document.getElementById("p-task-title").value;
         const description = document.getElementById("description").value;
         const assignedTo = document.getElementById("assigned-to").value;
         const dueDate = document.getElementById("due-date").value;
         const category = selectedTaskColor || "#e6e6e6";
-
+    
         if (!taskTitle) {
             alert("Please provide a task title.");
             return;
         }
-
+    
         // Clone the template
         const taskTemplate = document.querySelector(".proj-task"); 
         const newTask = taskTemplate.cloneNode(true); 
-
+    
         newTask.style.display = "block";
         newTask.style.backgroundColor = category;
-
+    
         const checkCircle = newTask.querySelector(".check-circle");
         checkCircle.style.backgroundColor = ""; 
         checkCircle.classList.remove('checked');
-
+    
         // Populate the task details
         newTask.querySelector(".proj-task-title").textContent = taskTitle;
-        newTask.querySelector(".proj-task-subtitle").textContent = assignedTo ? `Assigned to: ${assignedTo}` : "unassigned";
-
+        newTask.querySelector(".proj-task-subtitle").textContent = assignedTo ? `Assigned to: ${assignedTo}` : "Unassigned";
+    
         // Store task details in custom attributes
         newTask.setAttribute("data-title", taskTitle);
         newTask.setAttribute("data-description", description);
-        newTask.setAttribute("data-assigned", assignedTo || "unassigned");
-        newTask.setAttribute("data-due-date", dueDate || "no due date");
-
-        // Add click event listener for opening the task card
+        newTask.setAttribute("data-assigned", assignedTo || "Unassigned");
+        newTask.setAttribute("data-due-date", dueDate || "No due date");
+    
         newTask.addEventListener("click", function (event) {
             if (!event.target.closest(".check-circle") && !event.target.closest(".proj-icon")) {
                 openTaskCard(newTask);
             }
         });
-
+    
         const tasksContainer = document.getElementById("tasks-container");
         tasksContainer.appendChild(newTask);
-
+    
         // Update the remaining count
         remainingCount.textContent = parseInt(remainingCount.textContent) + 1;
-
+    
         // Reset the form and close the modal
         document.getElementById("p-task-form").reset();
         colorOptions.forEach(opt => opt.classList.remove("selected"));
         taskModal.style.display = "none";
-
-        // If a due date is provided, associate the task with the due date
-        if (dueDate) {
-            if (!tasks[dueDate]) {
-                tasks[dueDate] = [];
-            }
-            tasks[dueDate].push({
-                title: taskTitle,
-                assignedTo,
-                category
-            });
-
-            addTaskToList(taskTitle, assignedTo || "No time specified", dueDate, category);
-            highlightDateInCalendar(dueDate, category, taskTitle, category);
+    
+        // Associate the task with the due date in the tasks object
+        if (!tasks[dueDate]) {
+            tasks[dueDate] = [];
         }
+        tasks[dueDate].push({
+            title: taskTitle,
+            assignedTo,
+            category
+        });
+    
+            addTaskToList(taskTitle, "No time specified", dueDate, category);
+    
+            highlightDateInCalendar(dueDate, category, taskTitle, category);
     });
+    
 
     // Function to open the task card and populate it with task details
     function openTaskCard(taskElement) {
