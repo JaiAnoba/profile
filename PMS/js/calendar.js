@@ -264,9 +264,7 @@ function initSectionCalendar() {
 initSectionCalendar();
 
 
-
-// PROJ-TASK MODAL
-// PROJ-TASK MODAL
+//PROJ-TASK 
 document.addEventListener("DOMContentLoaded", function () {
     const taskModal = document.getElementById("p-task-modal");
     const newTaskBtn = document.querySelector(".new-task-btn");
@@ -279,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tDescription = document.querySelector(".t-des");
     const tAssigned = document.querySelector(".t-assigned");
     const tDueDate = document.querySelector(".t-due");
+    const remainingCount = document.getElementById("remaining-count");
     let selectedTaskColor = "#ffffff";
 
     let tasks = {};
@@ -299,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Save task (modified)
+    // Save task 
     saveTaskBtn.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -315,12 +314,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Clone the template
-        const taskTemplate = document.querySelector(".proj-task"); // Select the hidden template
-        const newTask = taskTemplate.cloneNode(true); // Deep clone the template
+        const taskTemplate = document.querySelector(".proj-task"); 
+        const newTask = taskTemplate.cloneNode(true); 
 
         // Unhide and customize the new task
         newTask.style.display = "block";
         newTask.style.backgroundColor = category;
+
+        const checkCircle = newTask.querySelector(".check-circle");
+        checkCircle.style.backgroundColor = ""; 
+        checkCircle.classList.remove('checked');
 
         // Populate the task details
         newTask.querySelector(".proj-task-title").textContent = taskTitle;
@@ -339,9 +342,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Append the new task to the tasks container
         const tasksContainer = document.getElementById("tasks-container");
         tasksContainer.appendChild(newTask);
+
+        // Update the remaining count
+        remainingCount.textContent = parseInt(remainingCount.textContent) + 1;
 
         // Reset the form and close the modal
         document.getElementById("p-task-form").reset();
@@ -395,7 +400,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 //MARK-COMPLETE IN TASK
 document.getElementById('mark-complete').addEventListener('click', function() {
     // Toggle the 'completed' class
@@ -410,16 +414,15 @@ document.getElementById('mark-complete').addEventListener('click', function() {
 });
 
 
-
 //CHECK-CIRCLE
 function toggleCheck(element) {
     const currentColor = window.getComputedStyle(element).backgroundColor;
 
     // Toggle the background color for check-circle
-    if (currentColor === "rgb(40, 42, 82)") {
+    if (currentColor === "rgb(40, 42, 82)") { // if checked (original color)
         element.style.backgroundColor = ""; 
         moveTaskToRemaining(element);
-    } else {
+    } else { // if unchecked (clicked to mark as done)
         element.style.backgroundColor = "#282a52"; 
         moveTaskToDone(element);
     }
@@ -429,48 +432,60 @@ function toggleCheck(element) {
 function moveTaskToDone(element) {
     const task = element.closest('.proj-task'); 
     const doneContainer = document.getElementById('done-tasks-container');
-    doneContainer.style.display = 'block'; // Make the Done container visible
+    doneContainer.style.display = 'block'; // Show Done tasks container
 
     // Update Done task count
     const doneCount = document.getElementById('done-count');
     doneCount.textContent = parseInt(doneCount.textContent) + 1;
 
     task.style.display = 'none'; // Hide the task from the original container
-    doneContainer.appendChild(task); // Append the task to Done container
+    doneContainer.appendChild(task); // Move the task to the Done container
 
-    // Ensure the Done container is visible if there are tasks
-    doneContainer.style.display = doneContainer.children.length > 0 ? 'block' : 'none';
+    // Decrease the remaining count when a task is marked as done
+    const remainingCount = document.getElementById('remaining-count');
+    remainingCount.textContent = parseInt(remainingCount.textContent) - 1;
 }
 
-// Move task to the "Remaining Tasks" container
+// Move task back to the "Remaining" container
 function moveTaskToRemaining(element) {
     const task = element.closest('.proj-task'); 
-    const remainingContainer = document.getElementById('remaining-tasks-container');
-    remainingContainer.style.display = 'block'; // Make the Remaining container visible
+    const remainingContainer = document.getElementById('tasks-container');
+    remainingContainer.style.display = 'block'; // Show Remaining tasks container
 
     // Update Remaining task count
     const remainingCount = document.getElementById('remaining-count');
     remainingCount.textContent = parseInt(remainingCount.textContent) + 1;
 
-    task.style.display = 'block'; // Ensure the task is visible in the Remaining container
-    remainingContainer.appendChild(task); // Append the task to Remaining container
+    task.style.display = 'block'; // Make the task visible again
+    remainingContainer.appendChild(task); // Move the task back to Remaining container
 
-    // Ensure the Remaining container is visible if there are tasks
-    remainingContainer.style.display = remainingContainer.children.length > 0 ? 'block' : 'none';
+    // Decrease the done count when a task is moved back to remaining
+    const doneCount = document.getElementById('done-count');
+    doneCount.textContent = parseInt(doneCount.textContent) - 1;
 }
 
-// Toggle visibility of Done tasks
-document.getElementById('done-count').addEventListener('click', function () {
-    const doneContainer = document.getElementById('done-tasks-container');
-    doneContainer.style.display = doneContainer.style.display === 'none' || doneContainer.children.length === 0 ? 'block' : 'none';
-});
 
-// Toggle visibility of Remaining tasks
-document.getElementById('remaining-count').addEventListener('click', function () {
-    const remainingContainer = document.getElementById('remaining-tasks-container');
-    remainingContainer.style.display = remainingContainer.style.display === 'none' || remainingContainer.children.length === 0 ? 'block' : 'none';
-});
 
+//DONE & REMAINING TASK TOGGLE
+document.addEventListener("DOMContentLoaded", function () {
+    // Elements
+    const doneCount = document.getElementById("done-count");
+    const remainingCount = document.getElementById("remaining-count");
+    const doneTasksContainer = document.getElementById("done-tasks-container");
+    const tasksContainer = document.getElementById("tasks-container");
+
+    // Toggle visibility when clicking on done-count
+    doneCount.addEventListener("click", function () {
+        doneTasksContainer.style.display = "block";  // Show Done tasks container
+        tasksContainer.style.display = "none";      // Hide Remaining tasks container
+    });
+
+    // Toggle visibility when clicking on remaining-count
+    remainingCount.addEventListener("click", function () {
+        tasksContainer.style.display = "block";    // Show Remaining tasks container
+        doneTasksContainer.style.display = "none";  // Hide Done tasks container
+    });
+});
 
 
 

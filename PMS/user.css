@@ -1064,7 +1064,7 @@ body {
 
 .projects-stats {
     display: flex;
-    margin-right: 820px;
+    margin-right: 895px;
     gap: 30px;
     white-space: nowrap;
 }
@@ -1113,46 +1113,6 @@ body {
 
 .new-project-btn:hover {
     background-color: #282a52;
-}
-
-.view-toggle {
-    display: flex;
-    gap: 10px;
-}
-
-.view-toggle i {
-    font-size: 24px;
-    cursor: pointer;
-    color: #555;
-}
-
-.view-toggle i:hover {
-    color: #000;
-}
-
-
-/* List View Styles */
-.projects-grids.list-view {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    max-height: 550px; 
-    overflow-y: auto; 
-    overflow-x: none;
-    padding-right: 15px;
-}
-
-.projects-grids.list-view::-webkit-scrollbar {
-    width: 7px;
-}
-
-.projects-grids.list-view::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 10px;
-}
-
-.projects-grids.list-view::-webkit-scrollbar-track {
-    background-color: #f1f1f1; 
 }
 
 .project-cards.list {
@@ -1225,6 +1185,19 @@ body {
     max-height: 550px;
     overflow-y: auto; 
     overflow-x: none;
+}
+
+.projects-grids::-webkit-scrollbar {
+    width: 7px;
+}
+
+.projects-grids::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.projects-grids::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
 }
 
 .projects-grids.hide {
@@ -1736,7 +1709,28 @@ body {
     color: #555;
     font-size: 1rem;
 }
-  
+
+#done-tasks-container {
+    gap: 50px;
+    padding: 20px; 
+    max-height: 500px;
+    overflow-y: auto; 
+    overflow-x: none;
+}
+
+#done-tasks-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+#done-tasks-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+#done-tasks-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+}
+   
 .new-task-btn, .proj-upload-btn {
   height: 45px;
   padding: 10px 20px;
@@ -2156,6 +2150,27 @@ body {
     line-height: 1.6;
 }
 
+.t-des {
+    padding-inline: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.t-des::-webkit-scrollbar {
+    height: 7px; 
+    width: 7px;
+}
+
+.t-des::-webkit-scrollbar-thumb {
+    background-color: #979696;
+    border-radius: 10px;
+}
+
+.t-des::-webkit-scrollbar-track {
+    background-color: #cac9c9; 
+}
+
 /* Attachments */
 .t-attachments {
     margin-bottom: 40px;
@@ -2194,6 +2209,22 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px; 
     margin-top: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: none;
+}
+
+.files-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.files-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.files-container::-webkit-scrollbar-track {
+    background-color: #b9b7b7; 
 }
 
 .file-wrapper {

@@ -200,33 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-// LIST-VIEW & GRID PROJECT-CARDS
-document.addEventListener("DOMContentLoaded", function () {
-  const listViewIcon = document.querySelector(".bx-list-ul");
-  const gridViewIcon = document.querySelector(".bx-grid-alt");
-  const projectsGrids = document.querySelector(".projects-grids");
-
-  // Toggle list view
-  listViewIcon.addEventListener("click", function () {
-      projectsGrids.classList.add("list-view");
-      document.querySelectorAll(".project-cards").forEach(card => {
-          card.classList.add("list");
-          card.classList.remove("grid");
-      });
-  });
-
-  // Toggle grid view
-  gridViewIcon.addEventListener("click", function () {
-      projectsGrids.classList.remove("list-view");
-      document.querySelectorAll(".project-cards").forEach(card => {
-          card.classList.remove("list");
-          card.classList.add("grid");
-      });
-  });
-});
-
-
 // PROJECT MODAL
 document.addEventListener("DOMContentLoaded", function () {
     const modalOverlay = document.getElementById("modal-overlay");
