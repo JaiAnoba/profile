@@ -2669,17 +2669,25 @@ button {
 
 .taskss ul {
     list-style: none;
-    padding-left: 30px;
     margin: 0;
-    overflow: auto;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: none;
 }
 
-.taskss li {
-    display: flex;
-    align-items: center;
-    margin-block: 1px;
-    font-size: 0.9rem;
+.taskss ul::-webkit-scrollbar {
+    width: 7px;
 }
+
+.taskss ul::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.taskss ul::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+}
+  
 
 .task-color {
     width: 12px;

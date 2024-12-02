@@ -63,14 +63,14 @@ let tasks = {};
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
-    
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"];
 
     function loadCalendar(month, year) {
         document.getElementById("month-year").innerText = `${monthNames[month]} ${year}`;
         document.getElementById("big-month-year").innerText = `${monthNames[month]} ${year}`;
-        
+
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
@@ -79,11 +79,11 @@ function initSectionCalendar() {
 
         for (let i = 0; i < firstDay; i++) {
             miniCalendar.innerHTML += `<div></div>`;
-        }
+        }   
 
         for (let day = 1; day <= daysInMonth; day++) {
-            const date = new Date(Date.UTC(year, month, day)); 
-            const isoDate = date.toISOString().slice(0, 10); 
+            const date = new Date(Date.UTC(year, month, day));
+            const isoDate = date.toISOString().slice(0, 10);
             const isPastDate = date < getCurrentDateInPhilippines() && !isSameDate(date, getCurrentDateInPhilippines());
 
             miniCalendar.innerHTML += `<div class="${isPastDate ? 'disabled' : ''}" onclick="selectDate('${isoDate}', this, ${isPastDate})">${day}</div>`;
@@ -92,16 +92,16 @@ function initSectionCalendar() {
         const largeCalendar = document.getElementById("large-calendar");
         largeCalendar.innerHTML = miniCalendar.innerHTML;
 
-        // Highlight tasks in the large calendar
-        for (let day = 1; day <= daysInMonth; day++) {
+         // Highlight tasks in the large calendar
+         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(Date.UTC(year, month, day)).toISOString().slice(0, 10);
             if (tasks[date]) {
                 tasks[date].forEach(task => highlightDateInCalendar(date, task.category, task.title, task.color));
             }
         }
 
-        // Highlight the current date in the mini calendar
         highlightCurrentDate(month, year);
+        updateTaskListForMonth(month, year);
     }
 
     // Select a date (used for task management in the big calendar)
@@ -133,24 +133,23 @@ function initSectionCalendar() {
         const desc = document.getElementById('task-desc').value.trim();
         const time = document.getElementById('task-time').value;
         const category = document.getElementById('task-category').value;
-
+    
         if (!title || !category || !selectedDate) {
             closeTaskModal();
             return;
         }
-
+    
         if (!tasks[selectedDate]) {
             tasks[selectedDate] = [];
         }
         tasks[selectedDate].push({ title, desc, time, category });
-
+    
         // Highlight task in the large calendar
-        const color = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
+        const color = category === 'personal' ? '#96e4a7' : category === 'work' ? '#7eb7e7' : '#ffbab6';
         highlightDateInCalendar(selectedDate, category, title, color);
-
-        // Add task to the task list in .taskss
+    
         addTaskToList(title, formatTime(time), selectedDate, category);
-
+    
         closeTaskModal();
     };
 
@@ -158,16 +157,22 @@ function initSectionCalendar() {
     function highlightDateInCalendar(date, category, title, color) {
         const dateElements = document.querySelectorAll('#large-calendar div');
         const selectedDay = new Date(date).getUTCDate(); 
-
         dateElements.forEach(element => {
             const dayText = element.innerText;
             if (parseInt(dayText) === selectedDay) {
-                element.classList.add(category); 
-                element.style.backgroundColor = color; 
-                element.style.color = "#fff"; 
 
-                // Add task title to large calendar without replacing previous content
-                if (!element.querySelector(".task-title")) {
+                const existingTaskTitle = element.querySelector(".task-title");
+            
+                if (existingTaskTitle) {
+                    existingTaskTitle.innerText = title;
+                
+                    element.style.backgroundColor = color;
+                    element.style.color = "#fff";
+                } else {
+                    element.classList.add(category);
+                    element.style.backgroundColor = color;
+                    element.style.color = "#fff";
+                
                     const taskTitle = document.createElement("span");
                     taskTitle.classList.add("task-title");
                     taskTitle.innerText = title;
@@ -178,19 +183,26 @@ function initSectionCalendar() {
         });
     }
 
+
     // Add task to the task list (task modal)
     function addTaskToList(title, time, date, category) {
         const taskList = document.querySelector('.taskss ul');
         const li = document.createElement('li');
-        
-        const colorClass = category === 'personal' ? 'green' : category === 'work' ? 'blue' : 'red';
-        
+        const colorClass = category === 'personal' ? '#96e4a7' : category === 'work' ? '#7eb7e7' : '#ffbab6';
+
+        li.style.display = "flex";
+        li.style.alignItems = "center";
+        li.style.marginBottom = "10px";
+
         li.innerHTML = `
-            <span class="task-color" style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:${colorClass}; margin-right:5px;"></span>
-            ${title} - ${time} on ${date} 
+            <span style="margin-right: 35px;">${new Date(date).getUTCDate()}.${new Date(date).getUTCMonth() + 1}</span>
+            <span class="task-color" style="display: inline-block; width: 10px; height: 10px; margin-right: 35px; border-radius: 50%; background-color: ${colorClass}; margin-right: 10px;"></span>
+            <span style="flex-grow: 1; font-weight: bold;">${title}</span>
+            <span style="color: gray;">${time}</span>
         `;
         taskList.appendChild(li);
     }
+
 
     // Format time to AM/PM
     function formatTime(timeString) {
@@ -229,16 +241,28 @@ function initSectionCalendar() {
         const currentMonth = currentDate.getUTCMonth();
         const currentYear = currentDate.getUTCFullYear();
 
-        // Highlight the current day only if it matches the current month and year
         if (month === currentMonth && year === currentYear) {
             miniCalendarElements.forEach(element => {
                 if (parseInt(element.innerText) === currentDay) {
-                    // Highlight current date
                     element.style.backgroundColor = 'lightblue';
                     element.style.fontWeight = 'bold';
                 }
             });
         }
+    }
+
+    function updateTaskListForMonth(month, year) {
+        const taskList = document.querySelector('.taskss ul');
+        taskList.innerHTML = ""; 
+
+        Object.keys(tasks).forEach(date => {
+            const taskDate = new Date(date);
+            if (taskDate.getUTCMonth() === month && taskDate.getUTCFullYear() === year) {
+                tasks[date].forEach(task => {
+                    addTaskToList(task.title, task.time, date, task.category);
+                });
+            }
+        });
     }
 
     function prevMonth() {
@@ -266,6 +290,8 @@ function initSectionCalendar() {
 }
 
 initSectionCalendar();
+
+
 
 
 //PROJ-TASK
@@ -321,7 +347,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const taskTemplate = document.querySelector(".proj-task"); 
         const newTask = taskTemplate.cloneNode(true); 
 
-        // Unhide and customize the new task
         newTask.style.display = "block";
         newTask.style.backgroundColor = category;
 
@@ -386,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function () {
         tAssigned.textContent = assignedTo;
         tDueDate.textContent = dueDate;
 
-        // Show the task card
         tTaskCard.style.display = "block";
     }
 
@@ -465,7 +489,7 @@ function moveTaskToRemaining(element) {
     doneCount.textContent = parseInt(doneCount.textContent) - 1;
 }
 
-// DELETING A TASK
+// Deleting a task
 document.addEventListener("DOMContentLoaded", function () {
     const taskContainers = document.querySelectorAll('#tasks-container, #done-tasks-container');
 
