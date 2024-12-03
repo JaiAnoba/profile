@@ -446,3 +446,26 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+
+//SUBSCRIPTION TOGGLE
+const upgradeButton = document.querySelector('.upgrade .upBtn button');
+const subscriptionSection = document.getElementById('subscription');
+const subWrapper = document.querySelector('.sub-wrapper');
+
+subscriptionSection.style.display = 'none';
+
+upgradeButton.addEventListener('click', (event) => {
+    event.stopPropagation(); 
+    if (subscriptionSection.style.display === 'none') {
+        subscriptionSection.style.display = 'block';
+    } else {
+        subscriptionSection.style.display = 'none';
+    }
+});
+
+document.addEventListener('click', (event) => {
+    if (subscriptionSection.style.display === 'block' && !subWrapper.contains(event.target)) {
+        subscriptionSection.style.display = 'none';
+    }
+});

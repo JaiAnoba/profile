@@ -61,7 +61,6 @@ let tasks = {};
 let selectedDates = [];
 let selectedDate;
 
-
 function initSectionCalendar() {
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
