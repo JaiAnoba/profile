@@ -208,21 +208,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectContainer = document.getElementById("project-container");
     const projectTemplate = document.getElementById("project-card-template");
     const colorOptions = document.querySelectorAll(".color-option");
-    let selectedColor = "#ffffff"; // Default color
+    let selectedColor = "#ffffff"; 
 
-    // Open the modal
     newProjectBtn.addEventListener("click", () => {
         modalOverlay.style.display = "flex";
     });
 
-    // Close the modal when clicking outside
     modalOverlay.addEventListener("click", (event) => {
         if (event.target === modalOverlay) {
             modalOverlay.style.display = "none";
         }
     });
 
-    // Event listener for selecting a color theme
     colorOptions.forEach(option => {
         option.addEventListener("click", () => {
             colorOptions.forEach(opt => opt.classList.remove("select"));
@@ -231,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Function to calculate days left
     function calculateDaysLeft(finishDate) {
         const currentDate = new Date();
         const endDate = new Date(finishDate);
@@ -467,5 +463,36 @@ upgradeButton.addEventListener('click', (event) => {
 document.addEventListener('click', (event) => {
     if (subscriptionSection.style.display === 'block' && !subWrapper.contains(event.target)) {
         subscriptionSection.style.display = 'none';
+    }
+});
+
+
+//FILTER IN PROJECTS FUNCTIONALITY
+const filterButton = document.querySelector('.bx-filter');
+const projectContainer = document.querySelector('.projects-grids');
+
+filterButton.addEventListener('click', function () {
+    const projectCards = Array.from(projectContainer.children);
+
+    if (projectCards.length > 0) {
+        const sortedCards = projectCards.sort((a, b) => {
+            const titleA = a.querySelector('.p-title h3').textContent.trim().toLowerCase();
+            const titleB = b.querySelector('.p-title h3').textContent.trim().toLowerCase();
+
+            if (titleA < titleB) {
+                return -1; 
+            } else if (titleA > titleB) {
+                return 1; 
+            } else {
+                return 0; 
+            }
+        });
+
+        projectContainer.innerHTML = ''; 
+        for (let i = 0; i < sortedCards.length; i++) {
+            projectContainer.appendChild(sortedCards[i]); 
+        }
+    } else {
+        console.log('No projects to sort.');
     }
 });

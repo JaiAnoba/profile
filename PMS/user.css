@@ -1064,7 +1064,7 @@ body {
 
 .projects-stats {
     display: flex;
-    margin-right: 895px;
+    margin-right: 775px;
     gap: 30px;
     white-space: nowrap;
 }
@@ -1097,6 +1097,26 @@ body {
     gap: 15px;
     margin-bottom: 20px;
     white-space: nowrap;
+}
+
+.bx-filter {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7rem;
+    margin-right: 15px;
+    margin-block: auto;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.filter-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 7px;
+}
+
+.bx-filter:hover {
+  color: #5f5f5f;
 }
 
 .new-project-btn {
@@ -1763,6 +1783,7 @@ body {
     max-height: 500px;
     overflow-y: auto; 
     overflow-x: none;
+    border: solid;
 }
 
 .p-tasks::-webkit-scrollbar {
