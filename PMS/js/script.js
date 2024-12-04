@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //USER DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
-  const userImg = document.querySelector(".userImg");
+  const userImg = document.querySelector(".profile-pic1");
   const dropdown = document.querySelector(".dropdown");
 
   userImg.addEventListener("click", function () {
@@ -495,4 +495,91 @@ filterButton.addEventListener('click', function () {
     } else {
         console.log('No projects to sort.');
     }
+});
+
+
+
+//SETTINGS UPLOAD PROFILE PIC
+const uploadButton = document.querySelector('.upload-btn');
+const removeButton = document.querySelector('.remove-btn');
+const profilePics = document.querySelectorAll('.profile-pic1, .profile-pic2');
+
+// hide the remove button if there's no image in .profile-pic2
+window.addEventListener('DOMContentLoaded', () => {
+  if (!profilePics[1].style.backgroundImage) {
+    removeButton.style.display = 'none';
+  }
+});
+
+// Create the file input for image uploads
+const filInput = document.createElement('input');
+filInput.type = 'file';
+filInput.accept = 'image/*';
+
+uploadButton.addEventListener('click', () => filInput.click());
+
+filInput.addEventListener('change', () => {
+  if (filInput.files && filInput.files[0]) {
+    const file = filInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      profilePics.forEach((pic) => {
+        pic.style.backgroundImage = `url('${e.target.result}')`;
+        pic.style.backgroundSize = 'cover';
+        pic.style.backgroundPosition = 'center';
+      });
+      checkImageDisplay();
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+// Function to check if any profile picture has an image
+function checkImageDisplay() {
+  const hasImage = profilePics[1].style.backgroundImage; 
+  removeButton.style.display = hasImage ? 'block' : 'none';
+}
+
+removeButton.addEventListener('click', () => {
+  profilePics.forEach((pic) => (pic.style.backgroundImage = ''));
+  checkImageDisplay();
+});
+
+
+
+//SETTINGS-PROFILE FORM
+const pencilIcon = document.querySelector('.bx-edit-alt');
+const formButtons = document.querySelector('.form-buttons');
+const inputField = document.querySelector('.input-field');
+const saveButton = document.querySelector('.save-btn');
+const clearButton = document.querySelector('.clear-btn');
+
+formButtons.style.display = 'none';
+inputField.disabled = true;
+
+pencilIcon.addEventListener('click', function () {
+    if (formButtons.style.display === 'none') {
+        formButtons.style.display = 'block';
+        inputField.disabled = false;
+    } else {
+        formButtons.style.display = 'none';
+        inputField.disabled = true;
+    }
+});
+
+saveButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    console.log('Saved Username:', inputField.value);
+
+    formButtons.style.display = 'none';
+    inputField.disabled = true;
+});
+
+clearButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    inputField.value = '';
 });

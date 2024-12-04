@@ -105,7 +105,7 @@
                         <button>Select Plan</button>
                     </div>
                     <div class="pricing-card featured">
-                        <div class="badge">Standard</div>
+                        <!-- <div class="badge">Standard</div> -->
                         <h3>Standard</h3>
                         <p class="sub-price">$39<span>/mo</span></p>
                         <ul>
@@ -147,9 +147,7 @@
             <!-- user start -->
             <div class="user">
                 <span class="material-symbols-outlined"></span>
-                <div class="userImg">
-                    <img src="pics/mona.jpg" alt="user">
-                </div>
+                <div class="profile-pic1"></div>
                 <div class="dropdown">
                     <div class="nam">
                         <h4>Angel</h4>
@@ -896,7 +894,8 @@
                         <div class="s_profile">
                             <!-- Profile Image Section -->
                             <div class="s_profile-image">
-                                <img src="pics/mona.jpg" alt="Profile" class="profile-pic">
+                                <div class="profile-pic2"></div>
+                                <input type="file" id="file-input" accept="image/*" style="display: none;">
                                 <div class="s_text">
                                     <h4>Upload new image</h4>
                                     <p class="file-size">Max file size - 10mb</p>
@@ -909,14 +908,11 @@
                     
                             <!-- Profile Form Section -->
                             <form>
-                                <label>Username</label>
+                                <label>Username<i class='bx bx-edit-alt'></i></label>
                                 <input type="text" value="Angel" class="input-field">
                                 
                                 <label>Role</label>
                                 <input type="text" value="Team Leader" class="input-field" disabled>
-                                
-                                <label>Bio</label>
-                                <textarea placeholder="Write a short introduction..." class="textarea-field"></textarea>
                                 
                                 <div class="form-buttons">
                                     <button type="submit" class="save-btn">Save Changes</button>
