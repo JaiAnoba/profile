@@ -1066,7 +1066,7 @@ body {
 
 .projects-stats {
     display: flex;
-    margin-right: 775px;
+    margin-right: 875px;
     gap: 30px;
     white-space: nowrap;
 }
@@ -1121,20 +1121,62 @@ body {
   color: #5f5f5f;
 }
 
-.new-project-btn {
-    padding: 10px 20px;
-    background-color: #4f8ed1;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+.plus-container {
+    position: relative;
+    text-align: center;
+}
+
+.plus-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
     font-weight: bold;
-    white-space: nowrap;
-    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plus-btn:hover {
+    background-color: #0056b3;
+}
+
+.plus-options {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.join-option-btn, .new-project-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #6c757d;
+    color: white;
+    cursor: pointer;
 }
 
 .new-project-btn:hover {
-    background-color: #282a52;
+    background-color: #4f8ed1;
+}
+
+.join-option-btn:hover {
+    background-color: #4f8ed1;
+}
+
+.plus-option-btn:hover {
+    background-color: #5a6268;
+}
+
+.hidden {
+    display: none;
 }
 
 .project-cards.list {
@@ -1785,7 +1827,6 @@ body {
     max-height: 500px;
     overflow-y: auto; 
     overflow-x: none;
-    border: solid;
 }
 
 .p-tasks::-webkit-scrollbar {
@@ -2427,7 +2468,6 @@ body {
   overflow-y: auto;
   overflow-x: none;
   z-index: 10000;
-  border: solid;
 }
 
 .document-grid::-webkit-scrollbar {

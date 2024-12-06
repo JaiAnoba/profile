@@ -281,10 +281,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const projectCategory = document.getElementById("project-category").value;
         const finishDate = document.getElementById("finish-date").value;
 
-        // if (!projectName || !projectCategory || !finishDate) {
-            // alert("Please fill in all fields.");
-            // return;
-        // }
+        if (!projectName || !projectCategory || !finishDate) {
+            alert("Please fill in all fields.");
+            return;
+        }
 
         const daysLeft = calculateDaysLeft(finishDate);
 
@@ -582,4 +582,19 @@ clearButton.addEventListener('click', function (event) {
     event.preventDefault();
 
     inputField.value = '';
+});
+
+
+//PLUS BUTTON FUNCTIONALITY
+const plusButton = document.getElementById('plusButton');
+const options = document.getElementById('plus-options');
+
+// Add click event listener to the plus button
+plusButton.addEventListener('click', function () {
+    // Check if options are hidden
+    if (options.classList.contains('hidden')) {
+        options.classList.remove('hidden'); // Show options
+    } else {
+        options.classList.add('hidden'); // Hide options
+    }
 });
