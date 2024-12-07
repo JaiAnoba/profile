@@ -532,12 +532,12 @@ canvas {
   }
 
 /* Action Buttons */
-.bx-trash-alt {
+.bx-archive-in {
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-.bx-trash-alt:hover {
+.bx-archive-in:hover {
     color: #b20f29;
 }
 

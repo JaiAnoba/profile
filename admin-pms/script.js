@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
     }else if (section === postsSection) {
       headerTitle.innerHTML = `
-        <h1> Posts Requests</h1>
-        <span class="des">Review users' posts</span>
+        <h1> Users' Subscriptions</h1>
+        <span class="des">Manage subscription plans</span>
       `;
     } else if (section === settingsSection) {
       headerTitle.innerHTML = `
