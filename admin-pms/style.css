@@ -8,7 +8,7 @@
 }
 
 .dashboard {
-    max-width: 1900px;
+    max-width: 1900px; 
     height: 1000px;
     display: flex;
 }
@@ -17,7 +17,7 @@
     width: 200px;
     min-width: 200px;
     max-height: 990px;
-    background-color: rgb(248, 243, 243);;
+    background: #a20d0d;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -53,11 +53,10 @@
 .sidebar .nav li i {
     font-size: 1.5rem;
     margin-right: 10px;
-    color: #000;
 }
 
 .sidebar .nav li a {
-    color: #363636;
+    color: #fff;
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
@@ -69,12 +68,12 @@
 
 .sidebar .nav li:hover i,
 .sidebar .nav li:hover a {
-    color: #5c9ed4;
+    color: #a20d0d;
 }
 
 /* Logout button */
 .sidebar .logout {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     margin: 20px 0 20px 20px;
     display: flex;
@@ -93,12 +92,12 @@
 }
 
 .sidebar .logout:hover {
-    color: #5c9ed4;
+    color: #a20d0d;
     background: #fff; 
 }
 
 .sidebar .logout:hover i {
-    color: #5c9ed4;
+    color: #a20d0d;
 }
 
 /* WRAPPERS */

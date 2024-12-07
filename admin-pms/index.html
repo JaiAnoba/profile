@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <main class="dashboard"> 
@@ -15,6 +17,7 @@
                 <img src="pics/logo.png" alt="Logo">
             </div>
             <ul class="nav">
+                <li><i class='bx bxs-dashboard'></i><a href="dashboard">Dashboard</a></li>
                 <li><i class='bx bxs-user-account'></i><a href="users">Accounts</a></li>
                 <li><i class='bx bxs-blanket'></i><a href="posts">Posts</a></li>
                 <li><i class='bx bxs-cog'></i><a href="settings">Settings</a></li>
@@ -62,6 +65,126 @@
                     </div>
                 </header>
             </section>   
+
+            <!-- DASHBOARD -->
+            <section class="content-wrapper1" id="dashboard">
+                <div class="overview">
+                    <div class="acc">
+                        <div class="stat-box">
+                            <h3>Accounts <span class="a-badge red"></span></h3>
+                        </div>
+                        <div class="a_number"></div>
+                    </div>
+                    <div class="request">
+                        <div class="stat-box">
+                            <h3>Posts Requests<span class="p-badge blue"></span></h3>
+                        </div>
+                        <div class="r_number"></div>
+                    </div>
+                </div>   
+
+                <div class="main-content">
+                    <div class="best-posts">
+                        <h3>Best Performing Posts</h3>
+                        <div class="post">
+                            <img src="pics/a1.jpg" alt="Post Image">
+                            <div class="post-info">
+                                <p>Likes</p>
+                                <div class="likes">
+                                    <span class="heart">❤</span>
+                                    <span class="count">7.2k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <img src="pics/a2.jpg" alt="Post Image">
+                            <div class="post-info">
+                                <p>Likes</p>
+                                <div class="likes">
+                                    <span class="heart">❤</span>
+                                    <span class="count">6.4k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <img src="pics/a3.jpg" alt="Post Image">
+                            <div class="post-info">
+                                <p>Likes</p>
+                                <div class="likes">
+                                    <span class="heart">❤</span>
+                                    <span class="count">3.5k</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-stats">
+                        <h3>Post Stats</h3>
+                        <canvas id="postStatsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="top-artists">
+                    <h3>Top 10 Artists</h3>
+                    <ul class="artist-list">
+                        <li>
+                            <img src="pics/1672369246156.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jera Anderson</span>
+                                <span class="artist-handle">@jeraander</span>
+                            </div>
+                            <span class="artist-percentage">35%</span>
+                        </li>
+                        <li>
+                            <img src="pics/mona.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jandeb Laplap</span>
+                                <span class="artist-handle">@jandebdab</span>
+                            </div>
+                            <span class="artist-percentage">18%</span>
+                        </li>
+                        <li>
+                            <img src="pics/SHREK.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jimmy Boy</span>
+                                <span class="artist-handle">@jimmyboy</span>
+                            </div>
+                            <span class="artist-percentage">25%</span>
+                        </li>
+                        <li>
+                            <img src="pics/1672369246156.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jera Anderson</span>
+                                <span class="artist-handle">@jeraander</span>
+                            </div>
+                            <span class="artist-percentage">35%</span>
+                        </li>
+                        <li>
+                            <img src="pics/mona.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jandeb Laplap</span>
+                                <span class="artist-handle">@jandebdab</span>
+                            </div>
+                            <span class="artist-percentage">18%</span>
+                        </li>
+                        <li>
+                            <img src="pics/SHREK.jpg" alt="Artist Image">
+                            <div class="artist-info">
+                                <span class="artist-name">Jimmy Boy</span>
+                                <span class="artist-handle">@jimmyboy</span>
+                            </div>
+                            <span class="artist-percentage">25%</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="view-more">View More</a>
+                </div>
+
+
+                <div class="activity">
+                    <h3>Activity</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </section>
 
             <!-- MANAGE USERS -->
             <section class="content-wrapper2" id="users" >
@@ -424,7 +547,7 @@
 
     </main>
 
-    <script src="admin.js"></script>
+    <script src="script.js"></script>
     
 </body>
 </html>
