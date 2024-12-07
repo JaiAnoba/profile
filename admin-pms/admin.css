@@ -53,10 +53,11 @@
 .sidebar .nav li i {
     font-size: 1.5rem;
     margin-right: 10px;
+    color: #000;
 }
 
 .sidebar .nav li a {
-    color: #fff;
+    color: #363636;
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
@@ -68,12 +69,12 @@
 
 .sidebar .nav li:hover i,
 .sidebar .nav li:hover a {
-    color: #a20d0d;
+    color: #5c9ed4;
 }
 
 /* Logout button */
 .sidebar .logout {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     margin: 20px 0 20px 20px;
     display: flex;
@@ -92,12 +93,12 @@
 }
 
 .sidebar .logout:hover {
-    color: #a20d0d;
+    color: #5c9ed4;
     background: #fff; 
 }
 
 .sidebar .logout:hover i {
-    color: #a20d0d;
+    color: #5c9ed4;
 }
 
 /* WRAPPERS */
