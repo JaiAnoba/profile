@@ -36,32 +36,6 @@
                     <div class="notifications">
                         <span class="bell-icon" id="notification-bell"><i class='bx bxs-bell' undefined ></i></span>
                         <div class="profile-pic1"></div>
-                        <div class="dropdown">
-                            <div class="nam">
-                                <h4>Angel</h4>
-                                <p>angelbaby123@gmail.com</p>
-                            </div>
-                            <ul>
-                                <li>
-                                    <i class='bx bx-user'></i>
-                                    My Profile
-                                </li>
-                                <li>
-                                    <i class='bx bx-cog' ></i>
-                                    Account Settings
-                                </li>
-                                <li>
-                                    <i class='bx bx-devices' ></i>
-                                    Device Management
-                                </li>
-                                <li>
-                                    <a href="signin.html">
-                                        <i class='bx bx-log-out' ></i>
-                                        Sign Out
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </header>
             </section>   
@@ -241,13 +215,13 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Popup Message for Delete Icon -->
+                <!-- Popup Message for Archive Icon -->
                 <div class="popup" id="popup">
                     <div class="popup-content">
-                        <i class='bx bxs-trash' ></i>
-                        <h2>Delete User?</h2>
-                        <p>Are you sure you want to delete this user? 
-                            <br>This action is irreversible and will permanently erase the user data.</p>
+                        <i class='bx bx-archive'></i>
+                        <h2>Archive User?</h2>
+                        <p>Are you sure you want to archive this user? 
+                            <br>This action is reversible and will temporarily erase the user data.</p>
                         <div class="popup-btns">
                           <button class="continue-btn" id="continueBtn">Continue</button>
                           <button class="cancel-btn" id="cancelBtn">Cancel</button>
@@ -258,27 +232,49 @@
 
             <!-- SUBSCRIPTIONS -->
             <section class="content-wrapper3" id="posts" >
-                <div class="posts-wrapper">
+                <div class="sub-header">
+                    <h2>All subscription plans</h2>
+                    <div class="sub-filter">Filter by ▼</div>
                 </div>
-
-                <!-- Modal -->
-                <div class="modal" id="image-modal">
-                    <button class="nav-btn left-btn">&lt;</button>
-                    <button class="nav-btn right-btn">&gt;</button>
-                    <div class="modal-content">
-                        <img src="" class="modal-image">
+                    <div class="subscription-container">
+                        <table class="subscription-table">
+                            <thead>
+                                <tr>
+                                    <th>Users</th>
+                                    <th>Amounts</th>
+                                    <th>Expiry Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="user-name netflix">John Doe</span></td>
+                                    <td>$75</td>
+                                    <td>02 Feb, 2023</td>
+                                    <td><span class="sub-status active">● Active</span></td>
+                                    <td>
+                                        <div class="action-container">
+                                            <button class="approve-btn">Approve</button>
+                                            <button class="decline-btn">Decline</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="user-name medium">Jane Smith</span></td>
+                                    <td>$5</td>
+                                    <td>15 Feb, 2023</td>
+                                    <td><span class="sub-status active">● Active</span></td>
+                                    <td>
+                                        <div class="action-container">
+                                            <button class="approve-btn">Approve</button>
+                                            <button class="decline-btn">Decline</button>
+                                        </div>
+                                    </td>      
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <!-- Popup Container -->
-                <div id="p-popup-container" class="p-popup">
-                    <div class="p-popup-content">
-                      <p id="p-popup-message" class="p-popup-message"></p>
-                      <div class="p-popup-actions">
-                        <button id="p-confirm-btn" class="btn p-confirm-btn">Confirm</button>
-                        <button id="p-cancel-btn" class="btn p-cancel-btn">Cancel</button>
-                      </div>
-                    </div>
-                </div>
             </section>
 
             <!-- SETTINGS -->
