@@ -589,12 +589,35 @@ clearButton.addEventListener('click', function (event) {
 const plusButton = document.getElementById('plusButton');
 const options = document.getElementById('plus-options');
 
-// Add click event listener to the plus button
 plusButton.addEventListener('click', function () {
-    // Check if options are hidden
     if (options.classList.contains('hidden')) {
-        options.classList.remove('hidden'); // Show options
+        options.classList.remove('hidden'); 
     } else {
-        options.classList.add('hidden'); // Hide options
+        options.classList.add('hidden');
     }
 });
+
+
+//JOIN BUTTON FUNCTIONALITY
+document.addEventListener("DOMContentLoaded", () => {
+    const joinButton = document.querySelector(".join-option-btn");
+    const modal = document.getElementById("join-modal");
+    const modalContent = document.getElementById("j-modal");
+    const inputs = document.querySelectorAll(".code-inputs input");
+  
+    joinButton.addEventListener("click", () => {
+      modal.style.display = "flex"; 
+    });
+  
+    modal.addEventListener("click", (event) => {
+      if (!modalContent.contains(event.target)) {
+        closeModal();
+      }
+    });
+  
+    function closeModal() {
+      modal.style.display = "none"; 
+      inputs.forEach((input) => (input.value = "")); 
+    }
+  });
+  
