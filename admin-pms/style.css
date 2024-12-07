@@ -17,7 +17,7 @@
     width: 200px;
     min-width: 200px;
     max-height: 990px;
-    background: #58b8df;
+    background: #5271ff;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
 
 .sidebar .nav li:hover i,
 .sidebar .nav li:hover a {
-    color: #58b8df;
+    color: #5271ff;
 }
 
 /* Logout button */
@@ -92,12 +92,12 @@
 }
 
 .sidebar .logout:hover {
-    color: #58b8df;
+    color: #5271ff;
     background: #fff; 
 }
 
 .sidebar .logout:hover i {
-    color: #58b8df;
+    color: #5271ff;
 }
 
 /* WRAPPERS */
@@ -859,11 +859,6 @@ canvas {
   border-right: 2px solid #ccc;
   padding: 50px;
   white-space: nowrap;
-}
-
-.s_sidebar h1 {
-  text-align: center;
-  margin-block: 35px;
 }
 
 .s_sidebar ul {
