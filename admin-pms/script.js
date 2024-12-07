@@ -127,14 +127,14 @@ let postStatsChart = new Chart(postStatsCanvas, {
             {
                 label: 'Saved',
                 data: [5, 10, 15],
-                backgroundColor: '#d68b8b', 
+                backgroundColor: '#58b8df', 
                 borderRadius: 20, 
                 barThickness: 40 
             },
             {
                 label: 'Likes', 
                 data: [8, 12, 18],
-                backgroundColor: '#8b0d0d',
+                backgroundColor: '#3762d8',
                 borderRadius: 20,
                 barThickness: 40
             }
@@ -208,24 +208,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                     label: 'Posts', 
                     data: [24, 25, 40, 50, 45], 
-                    borderColor: '#a20d0d', 
-                    backgroundColor: '#a20d0d', 
+                    borderColor: '#38b6ff', 
+                    backgroundColor: '#38b6ff', 
                     fill: false, 
                     borderWidth: 2
                 },
                 {
                     label: 'Requests', 
                     data: [35, 17, 45, 40, 50], 
-                    borderColor: '#ff7272', 
-                    backgroundColor: '#ff7272', 
+                    borderColor: '#5271ff', 
+                    backgroundColor: '#5271ff', 
                     fill: false, 
                     borderWidth: 2
                 },
                 {
                     label: 'Exhibitions', 
                     data: [10, 5, 20, 15, 35], 
-                    borderColor: '#ed1c24', 
-                    backgroundColor: '#ed1c24', 
+                    borderColor: '#004aad', 
+                    backgroundColor: '#004aad', 
                     fill: false, 
                     borderWidth: 2
                 }
