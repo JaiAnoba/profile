@@ -17,7 +17,7 @@
     width: 200px;
     min-width: 200px;
     max-height: 990px;
-    background: #a20d0d;
+    background: #58b8df;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
 
 .sidebar .nav li:hover i,
 .sidebar .nav li:hover a {
-    color: #a20d0d;
+    color: #58b8df;
 }
 
 /* Logout button */
@@ -92,12 +92,12 @@
 }
 
 .sidebar .logout:hover {
-    color: #a20d0d;
+    color: #58b8df;
     background: #fff; 
 }
 
 .sidebar .logout:hover i {
-    color: #a20d0d;
+    color: #58b8df;
 }
 
 /* WRAPPERS */
