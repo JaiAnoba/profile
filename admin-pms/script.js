@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   settingsSection.style.display = 'none';
   topSection.style.display = 'flex';
 
-  // Function to update the header title based on the section
   function updateHeaderTitle(section) {
     if (section === userSection) {
       headerTitle.innerHTML = `
@@ -215,6 +214,149 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
   
+
+//TOTAL OF PLANS FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function () {
+  const tableBody = document.querySelector('.subscription-table tbody');
+
+  if (tableBody) {
+    const rows = tableBody.querySelectorAll('tr');
+
+    let totalRows = 0;
+
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].style.display !== 'none') {
+        totalRows++;
+      }
+    }
+
+    const totalElement = document.querySelector('.sub-plans');
+
+    if (totalElement) {
+      totalElement.textContent = `${totalRows}`;
+    } else {
+      console.error('The element .sub-plans is not found in the DOM.');
+    }
+  } else {
+    console.error('The .subscription-table tbody is not found in the DOM.');
+  }
+});
+
+
+//FILTER IN PLANS FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function () {
+  const filterElement = document.querySelector('.sub-filter');
+
+  if (filterElement) {
+    const options = document.createElement('div');
+    options.className = 'filter-options';
+    options.innerHTML = `
+      <button class="filter-by-name">Name</button>
+      <button class="filter-by-date">Expiry Date</button>
+    `;
+    options.style.display = 'none';
+
+    filterElement.appendChild(options);
+
+    filterElement.addEventListener('click', function () {
+      if (options.style.display === 'none') {
+        options.style.display = 'block';
+        const rect = filterElement.getBoundingClientRect();
+      } else {
+        options.style.display = 'none';
+      }
+    });
+
+    const tableBody = document.querySelector('.subscription-table tbody');
+
+    if (tableBody) {
+      const nameFilter = options.querySelector('.filter-by-name');
+      if (nameFilter) {
+        nameFilter.addEventListener('click', function () {
+          filterByName(tableBody);
+          options.style.display = 'none';
+        });
+      }
+
+      const dateFilter = options.querySelector('.filter-by-date');
+      if (dateFilter) {
+        dateFilter.addEventListener('click', function () {
+          filterByDate(tableBody);
+          options.style.display = 'none';
+        });
+      }
+    } else {
+      console.error('The .subscription-table tbody element is not found in the DOM.');
+    }
+  } else {
+    console.error('The .sub-filter element is not found in the DOM.');
+  }
+
+  function filterByName(tableBody) {
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    rows.sort(function (rowA, rowB) {
+      const nameA = rowA.cells[0].textContent.trim().toLowerCase();
+      const nameB = rowB.cells[0].textContent.trim().toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+    tableBody.innerHTML = '';
+    for (let i = 0; i < rows.length; i++) {
+      tableBody.appendChild(rows[i]);
+    }
+  }
+
+  function filterByDate(tableBody) {
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    rows.sort(function (rowA, rowB) {
+      const dateA = new Date(rowA.cells[2].textContent.trim());
+      const dateB = new Date(rowB.cells[2].textContent.trim());
+      return dateA - dateB;
+    });
+    tableBody.innerHTML = '';
+    for (let i = 0; i < rows.length; i++) {
+      tableBody.appendChild(rows[i]);
+    }
+  }
+});
+
+
+//APPROVE AND DECLINE
+document.addEventListener('DOMContentLoaded', function () {
+  const subPopup = document.querySelector('.sub-popup');
+  const subPopupTitle = document.getElementById('sub-popup-title');
+  const subPopupMessage = document.getElementById('sub-popup-message');
+  const continueButton = document.querySelector('.sub-continue-btn');
+  const cancelButton = document.querySelector('.sub-cancel-btn');
+
+  const approveButtons = document.querySelectorAll('.approve-btn');
+  const declineButtons = document.querySelectorAll('.decline-btn');
+
+  approveButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      subPopupTitle.textContent = 'Approve User';
+      subPopupMessage.textContent = 'Are you sure you want to approve this user? This action is permanent.';
+      subPopup.classList.remove('hidden');
+    });
+  });
+
+  declineButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      subPopupTitle.textContent = 'Decline User';
+      subPopupMessage.textContent = 'Are you sure you want to decline this user? This action cannot be undone.';
+      subPopup.classList.remove('hidden');
+    });
+  });
+
+  continueButton.addEventListener('click', function () {
+    alert('Action confirmed!');
+    subPopup.classList.add('hidden');
+  });
+
+  cancelButton.addEventListener('click', function () {
+    subPopup.classList.add('hidden');
+  });
+});
+
 
 // SETTINGS
 document.getElementById("profile-link").addEventListener("click", function() {

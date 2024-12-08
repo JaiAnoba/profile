@@ -28,9 +28,9 @@
 }
 
 /* Sidebar Styles */
-.sidebar .logo img {
+.logo img {
     display: flex;
-    max-width: 40%;
+    width: 15%;
     margin-top: 20px;
     margin-inline: auto;
 }
@@ -209,16 +209,16 @@
 .bx-filter {
     display: flex;
     flex-direction: row;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-block: auto;
     cursor: pointer;
     gap: 10px;
 }
 
 .filter-btn {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 6px;
 }
 
 .bx-filter:hover {
@@ -226,13 +226,20 @@
 }
 
 /* Table Styles */
+.user-container {
+  width: 1550px;
+  padding: 20px;
+  margin: 0 auto;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
 .user-table {
   width: 100%;
-  background: #f4f1f1;
   border-collapse: collapse;
   table-layout: auto;
-  border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .user-table th, .user-table td {
@@ -248,7 +255,7 @@
 }
 
 .user-table tbody tr {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #eee;
 }
 
 .user-table tbody tr:last-child {
@@ -258,7 +265,10 @@
 .user-photo {
   width: 40px;
   height: 40px;
+  position: relative;
+  left: 60px;
   border-radius: 50%;
+  background-color: #c0bfbf;
 }
 
 /* Status Styles */
@@ -271,13 +281,11 @@
 }
 
 .status.active {
-  background-color: #9ce4a6;
-  color: #033a08;
+  color: #28a745;
 }
 
 .status.inactive {
-  background-color: #f5babc;
-  color: #a20d0d;
+  color: red;
 }
 
 /* Action Buttons */
@@ -358,23 +366,22 @@
 
 
 /* SUBSCRIPTIONS REQUESTS */
-.subscription-container::-webkit-scrollbar {
-    width: 8px; 
+.subscription-table::-webkit-scrollbar {
+  width: 8px; 
 }
 
-.subscription-container::-webkit-scrollbar-thumb {
-    background: #f7bdbb;
-    border-radius: 10px;
-    border: 3px solid #f0c2c2;
+.subscription-table::-webkit-scrollbar-thumb {
+  background: #f7bdbb;
+  border-radius: 10px;
+  border: 3px solid #f0c2c2;
 }
 
-.subscription-container::-webkit-scrollbar-track {
-    background: #f4dbfb;
+.subscription-table::-webkit-scrollbar-track {
+  background: #f4dbfb;
 }
 
 .subscription-container {
-  width: 1500px;
-  height: 760px;
+  width: 1550px;
   padding: 20px;
   margin: 0 auto;
   overflow-y: auto;
@@ -385,9 +392,9 @@
 
 .sub-header {
   display: flex;
-  gap: 1150px;
+  gap: 1280px;
   align-items: center;
-  margin-block: 20px;
+  margin-block: 30px;
   margin-left: 53px;
 }
 
@@ -406,8 +413,45 @@
 
 .sub-filter {
   font-size: 0.9rem;
+  font-weight: 500;
   color: #666;
+  position: relative;
   cursor: pointer;
+}
+
+.sub-filter:hover {
+  color: black;
+}
+
+.bx-chevron-down {
+  font-size: 1.7rem;
+  position: relative;
+  top: 8px;
+}
+
+.filter-options {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  padding: 5px;
+}
+
+.filter-options button {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-options button:hover {
+  background-color: #e0e0e0;
 }
 
 .subscription-table {
@@ -417,27 +461,23 @@
 }
 
 .subscription-table thead th {
-  font-size: 0.9rem;
-  color: #888;
+  font-size: 1.2rem;
+  color: #555;
   padding: 10px 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: none;
 }
 
 .subscription-table tbody tr td {
   padding: 15px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #444;
   vertical-align: middle;
   border-bottom: 1px solid #eee;
 }
 
 .user-name {
+  color: black;
   font-weight: bold;
-}
-
-.user-name.dribbble {
-  color: #ea4c89;
-  font-family: 'Brush Script MT', cursive;
 }
 
 .sub-status {
@@ -446,6 +486,11 @@
 
 .sub-status.active {
   color: #28a745;
+  font-size: 0.9rem;
+}
+
+.sub-status.inactive {
+  color: red;
   font-size: 0.9rem;
 }
 
@@ -484,6 +529,60 @@
 .decline-btn:hover {
   background-color: #e50914;
   color: #fff;
+}
+
+.sub-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-popup.hidden {
+  display: none;
+}
+
+.sub-popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+}
+
+.sub-popup-header h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.sub-popup-actions {
+  margin-top: 20px;
+}
+
+.sub-popup-actions button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.sub-continue-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.sub-cancel-btn {
+  background-color: #b8bbbd;
+  color: white;
 }
 
 /* SETTINGS */
@@ -529,7 +628,7 @@
   display: flex;
   width: 400px;
   flex: 1;
-  padding: 90px;
+  padding: 70px;
   flex-wrap: wrap;
 }
 
@@ -720,13 +819,16 @@
 }
 
 .s-em {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
   margin-top: 10px;
 }
 
 .email-display {
   font-size: 16px;
   color: #333;
-  margin-right: 568px;
+  margin-right: 75px;
 }
 
 .change-link {
@@ -748,6 +850,7 @@
 
 .email {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   white-space: nowrap;
 }

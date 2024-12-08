@@ -12,7 +12,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="pics/logo.png" alt="Logo">
+                <img src="pics/1.png" alt="Logo">
             </div>
             <ul class="nav">
                 <li><i class='bx bxs-user-account'></i><a href="users">Accounts</a></li>
@@ -48,45 +48,48 @@
                 </div>
 
                 <!-- Table -->
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Mobile no.</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src="pics/1672369246156.jpg" alt="Photo" class="user-photo"></td>
-                            <td class="name">Jera Anderson</td>
-                            <td class="mobile">123456789</td>
-                            <td class="email">@jeraunder</td>
-                            <td><span class="status inactive">Inactive</span></td>
-                            <td>
-                                <i class='bx bx-archive-in'></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="pics/a1.jpg" alt="Photo" class="user-photo"></td>
-                            <td class="name">Jandeb Laplap</td>
-                            <td class="mobile">123456789</td>
-                            <td class="email">@jeraunder</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>
-                                <i class='bx bx-archive-in'></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="user-container">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Mobile no.</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="user-photo"></div></td>
+                                <td class="name">Jera Anderson</td>
+                                <td class="mobile">123456789</td>
+                                <td class="email">@jeraunder</td>
+                                <td><span class="status inactive">● Inactive</span></td>
+                                <td>
+                                    <i class='bx bx-archive-in'></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-photo"></div></td>
+                                <td class="name">Jandeb Laplap</td>
+                                <td class="mobile">123456789</td>
+                                <td class="email">@jeraunder</td>
+                                <td><span class="status active">● Active</span></td>
+                                <td>
+                                    <i class='bx bx-archive-in'></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Popup Message for Archive Icon -->
                 <div class="popup" id="popup">
                     <div class="popup-content">
                         <i class='bx bx-archive'></i>
-                        <h2>Archive User?</h2>
+                        <h2>Archive User</h2>
                         <p>Are you sure you want to archive this user? 
                             <br>This action is reversible and will temporarily erase the user data.</p>
                         <div class="popup-btns">
@@ -101,7 +104,7 @@
             <section class="content-wrapper3" id="posts" >
                 <div class="sub-header">
                     <h2>All plans <span class="sub-plans"> 0</span></h2>
-                    <div class="sub-filter">Filter by ▼</div>
+                    <div class="sub-filter">Filter by <i class='bx bx-chevron-down'></i></div>
                 </div>
                     <div class="subscription-container">
                         <table class="subscription-table">
@@ -116,10 +119,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span class="user-name netflix">John Doe</span></td>
+                                    <td><span class="user-name">John Doe</span></td>
                                     <td>$75</td>
                                     <td>02 Feb, 2023</td>
-                                    <td><span class="sub-status active">● Active</span></td>
+                                    <td><span class="sub-status inactive">● Inactive</span></td>
                                     <td>
                                         <div class="action-container">
                                             <button class="approve-btn">Approve</button>
@@ -128,7 +131,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><span class="user-name medium">Jane Smith</span></td>
+                                    <td><span class="user-name">Jane Smith</span></td>
                                     <td>$5</td>
                                     <td>15 Feb, 2023</td>
                                     <td><span class="sub-status active">● Active</span></td>
@@ -142,6 +145,20 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="sub-popup hidden">
+                        <div class="sub-popup-content">
+                          <div class="sub-popup-header">
+                            <h3 id="sub-popup-title"></h3>
+                          </div>
+                          <p id="sub-popup-message"></p>
+                          <div class="sub-popup-actions">
+                            <button class="sub-continue-btn">Continue</button>
+                            <button class="sub-cancel-btn">Cancel</button>
+                          </div>
+                        </div>
+                    </div>
+                    
             </section>
 
             <!-- SETTINGS -->
@@ -221,7 +238,6 @@
                                         <label>Email Address</label>
                                         <div class="email">
                                             <p class="email-display">Your email is <strong>angelbaby@gmail.com</strong></p>
-                                            <!-- <a href="#" class="change-link">Change</a> -->
                                         </div>
                                     </div>
                                 </div>
