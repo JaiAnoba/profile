@@ -37,11 +37,11 @@
 
 .sidebar .nav {
     list-style: none;
-    margin-top: -4rem;
+    margin-top: -2rem;
 }
 
 .sidebar .nav li {
-    margin: 0 0 40px 20px;
+    margin: 0 0 60px 20px;
     display: flex;
     align-items: center;
     position: relative;
@@ -133,17 +133,17 @@
 }
 
 .header .date {
-    color: #666;
-    font-size: 0.9rem; 
-    text-align: center; 
-    width: 185px;
+  color: #666;
+  font-size: 0.9rem; 
+  text-align: center; 
+  width: 185px;
 }
 
 .notifications {
     display: flex;
     align-items: center;
     margin-left: 93rem;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
 }
 
 .bell-icon i {
@@ -169,252 +169,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* TOTAL NO. */
-.overview {
-    display: flex;
-    gap: 100px;
-    width: 700px;
-    justify-content: center;
-}
-
-.acc, .request {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* Stat Box */
-.stat-box {
-    background-color: #f1ecec;
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    width: 250px;
-    white-space: nowrap;
-}
-
-.stat-box h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    margin-top: 0;
-    display: inline-block;
-}
-
-.a_number, .r_number {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
-    margin-top: 20px;
-    position: relative;
-}
-
-/* Notification Badge */
-.a-badge, .p-badge {
-    display: inline-block;
-    padding: 2px 7px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border-radius: 50%;
-    color: #fff;
-    margin-left: 40px;
-}
-
-.red {
-    background-color: #c91f1f;
-}
-
-.blue {
-    background-color: #3762d8;
-}
-
-.a_number p, .r_number p {
-    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* BOXES */
-.top-artists, .best-posts, .post-stats, .activity {
-    background-color: #eeeeee;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.main-content {
-    display: flex;
-    width: 850px;
-    gap: 50px;
-    position: relative;
-    left: 740px;
-    top: -100px;
-}
-
-/* Best Posts */
-.best-posts {
-    width: 380px;
-    height: 350px;
-    padding: 35px;
-    border-radius: 30px;
-}
-
-.best-posts h3 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    margin-top: 0;
-    text-align: center;
-}
-
-.post {
-    width: 250px;
-    display: flex;
-    gap: 100px;
-    margin: 0 0 20px 50px;
-}
-
-.post img {
-    width: 65px;
-    height: 65px;
-    border-radius: 10px;
-}
-
-.post-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.post-info p {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #000;
-}
-
-.likes {
-    display: flex;
-    align-items: center;
-}
-
-.heart {
-    color: #a20d0d;
-    font-size: 1.5rem;
-    margin-right: 5px;
-}
-
-.count {
-    font-size: 1rem;
-    color: #666;
-}
-
-/* Post Stats Section */
-.post-stats {
-    width: 380px;
-    height: 350px;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-}
-
-.post-stats h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 0;
-    font-weight: bold;
-}
-
-/* Top Artists Section */
-.top-artists {
-    width: 700px; 
-    border-radius: 30px;
-    padding: 25px;
-    margin-top: -320px;
-}
-
-.top-artists h3 {
-    font-size: 1.4rem;
-    color: #91041b;
-    margin-bottom: 15px;
-    margin-top: 0;
-}
-
-.artist-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 20px;
-}
-
-.artist-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 29px;
-    text-align: justify;
-    padding: 5px;
-}
-
-.artist-list li:hover {
-    border-radius: 10px;
-    background-color: #fff;
-}
-
-.artist-list li img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-/* Artist Info Grouping */
-.artist-info {
-    display: flex;
-    flex-direction: column; 
-}
-
-.artist-name {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.artist-handle {
-    font-size: 0.9rem;
-    color: #888;
-}
-
-/* Artist Percentage */
-.artist-percentage {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-left: auto;
-}
-
-.view-more {
-    display: block;
-    margin-top: 20px;
-    color: #b20f29;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-canvas {
-    margin-inline: auto;
-    width: 85% !important;
-    height: 90% !important;
-}
-
-/* Activity Section */
-.activity {
-    float: right;
-    width: 815px;
-    height: 410px;
-    padding: 25px;
-    font-size: 1.1rem;
-    margin-top: -410px;
-    border-radius: 30px;
-    grid-column: span 1;
 }
 
 
@@ -525,11 +279,6 @@ canvas {
   background-color: #f5babc;
   color: #a20d0d;
 }
-
-.status.banned {
-    background-color: #bfbdbc;
-    color: #545454;
-  }
 
 /* Action Buttons */
 .bx-archive-in {
@@ -644,8 +393,15 @@ canvas {
 
 .sub-header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #333;
+}
+
+.sub-plans {
+  color: #a20d0d;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 20px;
 }
 
 .sub-filter {
@@ -875,8 +631,7 @@ canvas {
   cursor: pointer;
 }
 
-.s_profile form input,
-.s_profile form textarea {
+.s_profile form input {
   padding: 10px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -930,15 +685,6 @@ canvas {
   margin-bottom: -40px;
 }
 
-.s-full {
-  position: fixed;
-  margin-top: -60px;
-}
-
-.s-em {
-  margin-top: 150px;
-}
-
 /* Form Layout */
 .form-row {
   display: flex;
@@ -971,6 +717,10 @@ canvas {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
+}
+
+.s-em {
+  margin-top: 10px;
 }
 
 .email-display {
