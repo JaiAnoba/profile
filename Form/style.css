@@ -39,6 +39,7 @@ body {
 
 /* PAGE 1 */
 .page1 {
+    display: none;
     padding: 10px;
 }
 
@@ -91,23 +92,113 @@ body {
 }
 /* END OF PAGE 1 */
 
+/* PAGE 2 */
 .page2 {
     display: none;
     padding: 10px;
-    border: 1px solid yellow;
 }
 
+.sublabel2 {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.place-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; 
+    row-gap: 30px; 
+}
+
+.place-grid label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.place-grid input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #eeeeee;
+}
+/* END OF PAGE 2 */
+
+/* PAGE 3 */
 .page3 {
     display: none;
     padding: 10px;
-    border: 1px solid green;
+    margin-top: -25px;
 }
 
-.page4 {
-    display: none;
-    padding: 10px;
-    border: 1px solid orange;
+.sublabel3 {
+    font-size: 20px;
+    margin-bottom: 35px;
 }
+
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; 
+    row-gap: 30px;
+}
+
+.address-grid label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.address-grid input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #eeeeee;
+}
+/* END OF PAGE 3 */
+
+/* PAGE 4 */
+.page4 {
+    padding: 10px;
+}
+
+.sublabel4 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.parent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; 
+    row-gap: 30px;
+}
+
+.parent-grid .section-label {
+    grid-column: span 3; 
+    font-size: 18px;
+    margin-bottom: -10px;
+}
+
+.section-label1 {
+    grid-column: span 3; 
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.parent-grid label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.parent-grid input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #eeeeee;
+}
+/* END OF PAGE 4 */
 
 input[type=text], input[type=date] {
     padding: 12px;
