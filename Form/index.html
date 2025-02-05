@@ -12,131 +12,170 @@
 
         <h1 class="label1"> Personal Data </h1>
 
-        <form action="">
+        <form action="submit">
 
-            <div class="page1">
-                <label for="lastname">Last Name</label><br>
-                <input type="text"><br>
+            <section class="wrapper">
 
-                <label for="firstname">First Name</label><br>
-                <input type="text"><br>
-
-                <label for="middle">Middle Initial</label><br>
-                <input type="text"><br>
-
-                <label>Date of Birth</label>
-                    <div class="form-group">
-                        <input type="date">
-                    </div>
-
-                <label>Sex</label><br>
-                    <label><input type="radio" name="male"> Male</label>
-                    <label><input type="radio" name="female"> Female</label><br>
-
-                <label>Civil Status</label><br>
-                    <div class="form-group">
-                        <select>
-                            <option>Single</option>
-                            <option>Married</option>
-	                        <option>Widowed</option>
-                            <option>Legally Separated</option>
-                            <option>Others</option>
-                        </select>
-                    </div>
-
-                <label for="tax">Tax Identification Number</label><br>
-                <input type="text"><br>
+                <div class="page1">
+                    <p class="sublabel1"> Personal Information </p>
                 
-                <label for="nationality">Nationality</label><br>
-                <input type="text"><br>
+                    <div class="row1">
+                        <div>
+                            <label for="lastname">Last Name</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label for="firstname">First Name</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label for="middle">Middle Initial</label>
+                            <input type="text">
+                        </div>
+                    </div>
                 
-                <label for="religion">Religion</label><br>
-                <input type="text"><br>
-            </div>
+                    <div class="details-grid">
+                        <div>
+                            <label>Date of Birth</label>
+                            <input type="date">
+                        </div>
+                
+                        <div>
+                            <label>Sex</label>
+                            <div class="sex-options">
+                                <label><input type="radio" name="gender"> Male</label>
+                                <label><input type="radio" name="gender"> Female</label>
+                            </div>
+                        </div>
+                
+                        <div>
+                            <label>Civil Status</label>
+                            <select>
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Widowed</option>
+                                <option>Legally Separated</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                
+                        <div>
+                            <label for="nationality">Nationality</label>
+                            <input type="text">
+                        </div>
+                
+                        <div>
+                            <label for="religion">Religion</label>
+                            <input type="text">
+                        </div>
+                
+                        <div>
+                            <label for="tax">Tax Identification Number</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>                
 
-            <div class="page2">
-                <h2 class="label2"> Place of Birth </h2>
+                <div class="page2">
+                    <p class="label2"> Place of Birth </p>
 
-                <label for="city">City</label><br>
-                <input type="text"><br>
+                    <label for="unit"> RM/FLR/Unit No. & Bldg. Name</label><br>
+                    <input type="text"><br>
 
-                <label for="municipality">Municipality</label><br>
-                <input type="text"><br>
+                    <label for="blk"> House/Lot & Blk. No</label><br>
+                    <input type="text"><br>
 
-                <label for="province">Province</label><br>
-                <input type="text"><br>
-            </div>
+                    <label for="street"> Street Name</label><br>
+                    <input type="text"><br>
 
-            <div class="page3">
-                <h2 class="label3"> Home Address </h2>
+                    <label for="subdivision"> Subdivision</label><br>
+                    <input type="text"><br>
 
-                <label for="unit"> RM/FLR/Unit No. & Bldg. Name</label><br>
-                <input type="text"><br>
+                    <label for="barangay"> Barangay/District/Locality</label><br>
+                    <input type="text"><br>
 
-                <label for="blk"> House/Lot & Blk. No</label><br>
-                <input type="text"><br>
+                    <label for="city"> City/Municipality</label><br>
+                    <input type="text"><br>
 
-                <label for="street"> Street Name</label><br>
-                <input type="text"><br>
+                    <label for="province">Province</label><br>
+                    <input type="text"><br>
 
-                <label for="subdivision"> Subdivision</label><br>
-                <input type="text"><br>
+                    <label for="country">Country</label><br>
+                    <input type="text"><br>
 
-                <label for="barangay"> Barangay/District/Locality</label><br>
-                <input type="text"><br>
+                    <label for="zip">Zip Code</label><br>
+                    <input type="text"><br>
+                </div>
 
-                <label for="city"> City/Municipality</label><br>
-                <input type="text"><br>
+                <div class="page3">
+                    <p class="label3"> Home Address </p>
 
-                <label for="province">Province</label><br>
-                <input type="text"><br>
+                    <label for="unit"> RM/FLR/Unit No. & Bldg. Name</label><br>
+                    <input type="text"><br>
 
-                <label for="country">Country</label><br>
-                <input type="text"><br>
+                    <label for="blk"> House/Lot & Blk. No</label><br>
+                    <input type="text"><br>
 
-                <label for="zip">Zip Code</label><br>
-                <input type="text"><br>
+                    <label for="street"> Street Name</label><br>
+                    <input type="text"><br>
 
-                <label for="cell">Mobile/Cellphone Number</label><br>
-                <input type="text"><br>
+                    <label for="subdivision"> Subdivision</label><br>
+                    <input type="text"><br>
 
-                <label for="email">E-mail Address</label><br>
-                <input type="text"><br>
+                    <label for="barangay"> Barangay/District/Locality</label><br>
+                    <input type="text"><br>
 
-                <label for="tele">Telephone</label><br>
-                <input type="text"><br>
-            </div>
+                    <label for="city"> City/Municipality</label><br>
+                    <input type="text"><br>
 
-            <div class="page4">
-                <h2 class="label4"> Father's Name </h2>
+                    <label for="province">Province</label><br>
+                    <input type="text"><br>
 
-                <label for="flast">Last Name</label><br>
-                <input type="text"><br>
+                    <label for="country">Country</label><br>
+                    <input type="text"><br>
 
-                <label for="ffirst">First Name</label><br>
-                <input type="text"><br>
+                    <label for="zip">Zip Code</label><br>
+                    <input type="text"><br>
 
-                <label for="fmiddle">Middle Name</label><br>
-                <input type="text"><br>
-            </div>
+                    <label for="cell">Mobile/Cellphone Number</label><br>
+                    <input type="text"><br>
 
-            <div class="page5">
-                <h2 class="label4"> Mother's Maiden Name </h2>
+                    <label for="email">E-mail Address</label><br>
+                    <input type="text"><br>
 
-                <label for="mlast">Last Name</label><br>
-                <input type="text"><br>
+                    <label for="tele">Telephone</label><br>
+                    <input type="text"><br>
+                </div>
 
-                <label for="mfirst">First Name</label><br>
-                <input type="text"><br>
+                <div class="page4">
+                    <p class="label4"> Father's Name </p>
 
-                <label for="mmiddle">Middle Name</label><br>
-                <input type="text"><br>
-            </div>
+                    <label for="flast">Last Name</label><br>
+                    <input type="text"><br>
 
-            <br><button type="submit" class="done">Submit</button>
+                    <label for="ffirst">First Name</label><br>
+                    <input type="text"><br>
+
+                    <label for="fmiddle">Middle Name</label><br>
+                    <input type="text"><br>
+
+                    <p class="label4"> Mother's Maiden Name </p>
+
+                    <label for="mlast">Last Name</label><br>
+                    <input type="text"><br>
+
+                    <label for="mfirst">First Name</label><br>
+                    <input type="text"><br>
+
+                    <label for="mmiddle">Middle Name</label><br>
+                    <input type="text"><br>
+                </div>
+
+        </section>
                 
         </form>
     
     </section>
+        <br><div class="btn"?><button type="submit" class="done">Submit</button></div>
 </body>
 </html>
